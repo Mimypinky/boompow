@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/register',function(){
   return view('auth.register');
 });
+Route::get('/app',function(){
+  return view('layouts.app');
+});
