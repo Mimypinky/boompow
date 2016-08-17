@@ -12,15 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.layout');
 });
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
 Route::get('/register',function(){
-  return view('auth.register');
+  return view('site.register');
 });
-Route::get('/app',function(){
-  return view('layouts.app');
-});
+//Route::auth();
+
+//Route::get('/home', 'HomeController@index');
