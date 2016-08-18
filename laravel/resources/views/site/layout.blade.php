@@ -43,7 +43,7 @@
      });
      $('.datepicker').pickadate({
     selectMonths: true,
-    selectYears: 15 
+    selectYears: 15
   });
       $(document).ready(function() {
      $('select').material_select();
@@ -180,19 +180,19 @@
 <!---if user isn't member-->
 <div id="modal1" class="modal" style="width: 480px;">
     <div class="modal-content" >
-        <form action="check-login.php" method="post" id="loginform" name="loginform">
+        <form action="{{url('\login')}}" method="post" id="loginform" name="login">
             <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
             <h4 class="center">เข้าสู่ระบบ</h4>
             <div class="row">
                 <div class="input-field col s8 offset-s2">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <input id="icon_prefix" type="text" class="validate" name="username">
                     <label for="icon_prefix">เข้าสู่ระบบ</label>
                 </div>
 
                 <div class="input-field col s8 offset-s2">
                     <i class="material-icons prefix">https</i>
-                    <input id="icon_prefix" type="password" class="validate">
+                    <input id="icon_prefix" type="password" class="validate" name="password">
                     <label for="icon_prefix">รหัสผ่าน</label>
                 </div>
             </div>
@@ -200,7 +200,7 @@
 
             <div class="modal-footer" align="center">
                 <span>
-                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" name="remember"/>
                     <label for="filled-in-box">ให้ฉันอยู่ในระบบต่อไป</label>
                     หรือ <a href="#">ลืมรหัสผ่าน</a></span>
                 </div>
