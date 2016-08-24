@@ -59,28 +59,32 @@
                               &nbsp&nbsp&nbsp&nbsp&nbsp
                               <div class="input-field col s2" style="margin-top: -6px;margin-left:2em;">
                                 <select>
-                                  <option value="" disabled selected>เลือกวัน</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
+                                  <option value="0" disabled selected>เลือกวัน</option>
+                                  @for ($i = 0; $i < 32; $i++)
+
+
+
+                                  <option value="{{$i}}">{{$i}}</option>
+
+                                  @endfor
                                 </select>
 
                               </div>
                               <div class="input-field col s3" style="margin-top: -4px;">
                                 <select>
                                   <option value="" disabled selected>เลือกเดือน</option>
-                                  <option value="Jan">มกราคม</option>
-                                  <option value="Feb">กุมภาพันธ์</option>
-                                  <option value="Mar">มีนาคม</option>
+                                  @foreach($m as $data)
+                                  <option value="{{$data->month}}">{{$data->month_th}}</option>
+                                  @endforeach
                                 </select>
 
                               </div>
                               <div class="input-field col s2" style="margin-top: -4px;">
                                 <select>
                                   <option value="" disabled selected>ปีพ.ศ.</option>
-                                  <option value="1">Option 1</option>
-                                  <option value="2">Option 2</option>
-                                  <option value="3">Option 3</option>
+                                 @for($j=2480;$j<=2559;$j++)
+                                  <option value="{{$j-543}}">{{$j}}</option>
+                                  @endfor
                                 </select>
 
                               </div>
@@ -127,10 +131,9 @@
                                         <p style=" color: #EE6E74;font-size:1.5em;margin-bottom:10px;"> <span>  &nbsp&nbsp &nbsp คำถามเพื่อเป็นรหัสผ่าน </span></p>
                                         <br>
                                         <select class="browser-default">
-                                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                            <option value="1">คำถามที่ 1</option>
-                                            <option value="2">คำถามที่ 2</option>
-                                            <option value="3">คำถามที่ 3</option>
+                                          @foreach ($questions as $data)
+                                            <option value="{{$data->id}}" selected>{{$data->question}}</option>
+                                              @endforeach
                                         </select>
                                     </div>
                                 </td>
@@ -141,11 +144,15 @@
                                     <i class="material-icons prefix">mode_edit</i>
                                     <input id="answer" type="password" class="validate">
                                 </div></td>
-                                <td><div class="input-field">
 
-                                    <p style=" color: #EE6E74;font-size:1.5em"> <span> ยืนยันคำตอบของคุณอีกครั้ง</span></p>
-                                    <input id="confirm-answer" type="password" class="validate">
-                                </div></td>
+                            </tr>
+                            <tr><td>
+                              <div class="input-field">
+
+                                  <p style=" color: #EE6E74;font-size:1.5em"> <span> ยืนยันคำตอบของคุณอีกครั้ง</span></p>
+                                  <input id="confirm-answer" type="password" class="validate">
+                              </div>
+                            </td>
                             </tr>
                             <tr>
                               <td colspan="5" style="text-align:center">

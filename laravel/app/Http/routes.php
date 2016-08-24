@@ -11,12 +11,22 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('site.layout');
+  return view('site.layout');
 });
-Route::get('/register',function(){
-  return view('site.register');
+
+Route::get('/event',function(){
+  return view('site.event');
 });
+Route::get('/testNewEve',function(){
+  return view('site.newEvent');
+});
+Route::post('/testNewEve','CreateEvent@store');
+
+
+Route::get('/register','QuestforpwdController@index');
+
 //Route::auth();
 
 //Route::get('/home', 'HomeController@index');
