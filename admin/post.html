@@ -1,0 +1,299 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Boompow Adminpanel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/mycss.css" rel='stylesheet' type='text/css' />
+<!-- font CSS -->
+
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+ <!-- js-->
+ <script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<!--webfonts-->
+
+<!--//webfonts--> 
+<!--animate-->
+<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="js/wow.min.js"></script>
+	<script>
+		 new WOW().init();
+	</script>
+<!--//end-animate-->
+<!-- chart -->
+<script src="js/Chart.js"></script>
+<!-- //chart -->
+<!--Calender-->
+<link rel="stylesheet" href="css/clndr.css" type="text/css" />
+<script src="js/underscore-min.js" type="text/javascript"></script>
+<script src= "js/moment-2.2.1.js" type="text/javascript"></script>
+<script src="js/clndr.js" type="text/javascript"></script>
+<script src="js/site.js" type="text/javascript"></script>
+<!--End Calender-->
+<!-- Metis Menu -->
+<script src="js/metisMenu.min.js"></script>
+<script src="js/custom.js"></script>
+<link href="css/custom.css" rel="stylesheet">
+<!--//Metis Menu -->
+<script type="text/javascript">
+	$('#profile-detail').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+</script>
+
+</head> 
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+		<!--left-fixed -navigation-->
+		<div class=" sidebar" role="navigation">
+            <div class="navbar-collapse">
+				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="position: fixed;">
+					<ul class="nav" id="side-menu">
+						<li>
+							<a href="index.html"><i class="fa fa-tachometer nav_icon"></i>
+							<p style="margin-left: -9px;">Dashboard</p></a>
+						</li>
+						<li>
+							<a href="user.html" ><i class="fa fa fa-user nav_icon" style="margin-left: 5px;"></i>
+							<p style="margin-left: 6px;">Users <span class="nav-badge">12</span></p></a>
+						</li>
+						<li>
+							<a href="post.html" class="active"><i class="fa fa fa-book nav_icon" style="margin-left: 5px;"></i>
+							<p style="margin-left: 10px;">Post</p></a>
+						</li>
+						<li>
+							<a href="report.html"><i class="fa fa fa-bug nav_icon"></i>
+							<p style="margin-left: 2px;">Report <span class="nav-badge">12</span></p></a>
+						</li>
+				
+					</ul>
+					<!-- //sidebar-collapse -->
+				</nav>
+			</div>
+		</div>
+		<!--left-fixed -navigation-->
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left">
+				<!--toggle button start-->
+				<!--<button id="showLeftPush"><i class="fa fa-bars"></i></button>-->
+				<!--toggle button end-->
+				<!--logo -->
+				<div class="logo">
+					<a href="index.html">
+						<img src="images/logo_boom2.png" style="width: 169px; margin-left: -5%; margin-top: 2px;">
+						
+						
+					</a>
+				</div>
+				<!--//logo-->
+				<!--search-box-->
+				<div class="search-box" style="margin-left: 3%; margin-top: 16px;">
+					<form class="input">
+						<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
+						<label class="input__label" for="input-31">
+							<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+								<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+							</svg>
+						</label>
+					</form>
+				</div><!--//end-search-box-->
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right">
+				
+				<!--notification menu end -->
+				<div class="profile_details">		
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									
+									
+									<div class="user-name">
+										<p>Thida Sriprasert</p>
+										<span>Administrator</span>
+									</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>	
+								
+							</a>
+							<ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
+								<li> <a href="#"><i class="fa fa-plus"></i> Add new admin</a> </li> 
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>				
+			</div>
+			<div class="clearfix"> </div>	
+		</div>
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+				<div class="row">
+					<form class="form-inline">
+		    			<div class="input-group">
+		      				<input type="text" class="form-control" placeholder="Search post">
+		      				<span class="input-group-btn">
+		        				<button class="btn btn-default" type="button">Search</button>
+		      				</span>
+		    			</div><!-- /input-group -->
+		  				
+		  				<label style="color: #555">Sort by: </label>
+			  				<div class="form-group ">
+							    <select class="form-control">
+								  <option>Date</option>
+								  <option>Post</option>
+								  <option>Category</option>
+								  <option>Status: Draft</option>
+								  <option>Status: Publish</option>
+								</select>
+							</div>
+						<button type="button" class="btn btn-default">Sort</button>
+					</form>
+				</div>
+
+			<div class="row">
+				<a href="addnewpost.html" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new post</a>
+			</div>
+
+				<div class="row">
+						<div class="panel panel-default">
+	  						<!-- Default panel contents -->
+	  						<div class="head-table panel-heading">All post</div>
+
+	  						<!-- Table -->
+	  						<table class="table">
+	    						<thead>
+								<tr>
+									<th>DATE</th>
+									<th>POST</th>
+									<th>CATEGOEY</th>
+									<th>STATUS</th>
+									<th></th>
+									<th></th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">18/08/2559</th>
+									<td>Lorem ipsum</td>
+									<td>สุขภาพ</td>
+									<td><span class="label label-info">Draft</span></td>
+									<td><h5><a href="">Publish</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr>
+								<tr>
+									<th scope="row">17/08/2559</th>
+									<td>Aliquam</td>
+									<td>ตำรับอาหาร | <span>ของหวาน</span></td>
+									<td><span class="label label-info">Draft</span></td>
+									<td><h5><a href="">Publish</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr>
+								<tr>
+									<th scope="row">16/08/2559</th>
+									<td>Lorem ipsum</td>
+									<td>บันเทิง | <span>ฟังเพลง</span></td>
+									<td><span class="label label-primary">Publish</span></td>
+									<td><h5><a href="" target="_blank">View post</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr>
+								<tr>
+									<th scope="row">15/08/2559</th>
+									<td>Aliquam</td>
+									<td>ครัวเรือน</td>
+									<td><span class="label label-primary">Publish</span></td>
+									<td><h5><a href="" target="_blank">View post</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr>
+								<tr>
+									<th scope="row">14/08/2559</th>
+									<td>Lorem ipsum</td>
+									<td>ห้องข่าว</td>
+									<td><span class="label label-primary">Publish</span></td>
+									<td><h5><a href="" target="_blank">View post</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr>
+								<tr>
+									<th scope="row">13/08/2559</th>
+									<td>Aliquam</td>
+									<td>สิทธิประโยชน์</td>
+									<td><span class="label label-primary">Publish</span></td>
+									<td><h5><a href="" target="_blank">View post</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr><tr>
+									<th scope="row">13/08/2559</th>
+									<td>Aliquam</td>
+									<td>งานประดิษฐ์</td>
+									<td><span class="label label-primary">Publish</span></td>
+									<td><h5><a href="" target="_blank">View post</a> | <a href="" >Edit</a></h5></td>
+									<td><a href="" class="myred"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></td>
+								</tr>
+							</tbody>
+	  						</table>
+						</div>
+					</div>		
+			</div>
+		</div>
+		<!--footer-->
+		<div class="footer">
+		   <p>&copy; 2016 Boompow Admin Panel. All Rights Reserved | Design by Boompow</a></p>
+		</div>
+        <!--//footer-->
+	</div>
+
+
+
+	<!-- Classie -->
+
+		<script src="js/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+				
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+			
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!--scrolling js-->
+	<script src="js/jquery.nicescroll.js"></script>
+	<script src="js/scripts.js"></script>
+	<!--//scrolling js-->
+	<!-- Bootstrap Core JavaScript -->
+   <script src="js/bootstrap.js"> </script>
+</body>
+</html>

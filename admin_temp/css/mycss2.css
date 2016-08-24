@@ -1,0 +1,290 @@
+/*For Responsive */
+
+
+
+@media screen and (max-width: 600px) {
+
+    .shortenNav {
+        display: none;
+    }
+    .contentBtn {
+        position: relative; 
+        display: inline-block; 
+        top: 14px
+    }
+    .marginShareBtn-side {
+        display: none;
+    }
+
+    .marginShareBtn-ipad{
+        display: none;
+    }
+
+    .marginShareBtn-mobile{
+        top: 20px;
+        margin: 1px;
+    }
+    
+}
+@media screen and (min-width: 601px) {
+}
+@media screen and (min-width: 993px) {
+    .shortenNav {
+        width: 85%;
+        margin: auto;
+    }
+
+    .contentBtn {
+        position: relative; 
+        display: inline-block;  
+        top: 24px
+    }
+
+    .marginShareBtn-side {
+        top: 20px; 
+        margin-left: 40%;
+        margin-top: 8px;
+    }
+
+    .marginShareBtn-ipad {
+        display: none;
+    }
+
+    .marginShareBtn-mobile {
+        display: none;
+    }
+
+    span.badge.new:after {
+    content: " ใหม่";
+    }
+}
+@media screen and (max-width: 992px) and (min-width: 601px) {
+
+    .shortenNav {
+        width: 85%;
+        margin: auto;
+    }
+    .contentBtn {
+        position: relative; 
+        display: inline-block; 
+        top: 24px
+    }
+
+    .marginShareBtn-ipad {
+        top: 20px;
+        margin: 3px;
+    }
+
+    .marginShareBtn-side {
+        display: none;
+    }
+
+    .marginShareBtn-mobile {
+        display: none;
+    }
+
+    span.badge.new:after {
+        content: "";
+    }
+
+
+}
+
+
+span.badge {
+    position: unset;
+}
+
+span.badge.new {
+  background-color: #EE6E73;
+}
+
+
+.collection a.collection-item {
+    display: block;
+    transition: .25s;
+    color: #EE6E74;
+}
+
+
+/*For Content */
+.ContentBG {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.headContent {
+    padding-left: 2%;
+
+}
+
+#breadcrumbsContent {
+    background-color: #EE6E74;
+}
+
+.contentBox {
+    padding-left: 2em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+
+
+
+/* For See All Message */
+
+.allMessageBG {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.headAllMessage {
+    background-color: #60C2BF;
+}
+
+.messPreview {
+    font-size: 12px;
+    color: #969898;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+
+}
+
+.messageItem {
+    width: inherit;
+}
+
+article span {
+    font-size: 14px;
+}
+
+article img {
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+}
+
+.thumbnailMess {
+    width: 50px;
+}
+
+.thumbnailTime {
+}
+article time {
+    display: block;
+    font-size: 10px;
+    color: #969898;
+}
+
+article p {
+    font-size: 14px;
+}
+
+.who{
+    font-size: 14px;
+    color: #60C2BF;
+}
+
+.inputSearchMessage{
+    background-color: transparent !important;
+    color: black !important;
+    border-radius: 0px !important;
+    margin-top: 22px;
+
+}
+
+.headerInputMess {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 40px;
+    overflow-y: auto;
+    min-height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+
+}
+
+.inputBox {
+    margin-top: 420px;
+    width: 80%; 
+    height: 100px
+}
+
+
+.chatLabel {
+    text-align: center;
+}
+
+.whiteBG {
+    width: 400px;
+    background-color: white;
+    position: fixed;
+    top: 256px;
+    overflow-y: auto;
+}
+
+.sideListMassage {
+    overflow-y: auto;
+}
+
+.selectedChat li:hover,.selectedChat li.selected, .selectedChat li.active {
+    background-color: #e0f2f1;
+}
+
+.chattingThumbnail {
+    width: 35px;
+    height: 35px;
+    margin-left: -5px;
+}
+
+.messageInbox {
+    display: block;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;
+    width: inherit;
+}
+
+.messageReply {
+    display: block;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #60C2BF;
+    text-align: right;
+
+}
+
+.chattime {
+    margin-left: 5px;
+    font-size: 9px;
+    color: #969898;
+}
+
+
+
+    .eventOption .tabs .tab a{
+        color: #fff;
+    }
+    .eventOption .tabs .tab a:hover{
+        color: #EE6E74 ;
+    }
+    .eventOption .tabs  .indicator{
+        background-color: #650005 ;
+    }
+

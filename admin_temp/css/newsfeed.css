@@ -1,0 +1,29 @@
+.card-width{
+	height: 150px;
+}
+.feed-friend{
+	width: 80px;
+	height: 80px;
+	background-size: cover;
+}
+.feed-pro-detail{
+	margin-top: -7px;
+	color: #bdbdbd;
+	font-size: 13pt ;
+}
+.feed-picBg{
+	height: 250px;
+	background-size: cover;
+}
+.feed-picPro{
+	height: 180px !important;
+	width: 180px !important;
+    border-radius: 50% !important;
+    border: 3px solid #fafafa;
+}
+.pic-border{
+	border: 2px solid #fafafa;
+}
+.devide-hr{
+	color: #fafafa;
+}
