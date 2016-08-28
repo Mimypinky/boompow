@@ -1,8 +1,6 @@
 @extends('site.layout')
 
 @section('maincontent')
-
-
 <div class="container">
 
     <div class="row" style="">
@@ -58,7 +56,7 @@
                               <div><i  style="color: #EE6E74;font-size:1.5em" class="material-icons prefix">cake</i></div>
                               &nbsp&nbsp&nbsp&nbsp&nbsp
                               <div class="input-field col s2" style="margin-top: -6px;margin-left:2em;">
-                                <select>
+                                <select name="date">
                                   <option value="0" disabled selected>เลือกวัน</option>
                                   @for ($i = 0; $i < 32; $i++)
 
@@ -71,7 +69,7 @@
 
                               </div>
                               <div class="input-field col s3" style="margin-top: -4px;">
-                                <select>
+                                <select name="month">
                                   <option value="" disabled selected>เลือกเดือน</option>
                                   @foreach($m as $data)
                                   <option value="{{$data->month}}">{{$data->month_th}}</option>
@@ -80,7 +78,7 @@
 
                               </div>
                               <div class="input-field col s2" style="margin-top: -4px;">
-                                <select>
+                                <select name="year">
                                   <option value="" disabled selected>ปีพ.ศ.</option>
                                  @for($j=2480;$j<=2559;$j++)
                                   <option value="{{$j-543}}">{{$j}}</option>
@@ -130,7 +128,7 @@
                                     <div class="input-field col s8">
                                         <p style=" color: #EE6E74;font-size:1.5em;margin-bottom:10px;"> <span>  &nbsp&nbsp &nbsp คำถามเพื่อเป็นรหัสผ่าน </span></p>
                                         <br>
-                                        <select class="browser-default">
+                                        <select class="browser-default" style="font-size:1.3em">
                                           @foreach ($questions as $data)
                                             <option value="{{$data->id}}" selected>{{$data->question}}</option>
                                               @endforeach

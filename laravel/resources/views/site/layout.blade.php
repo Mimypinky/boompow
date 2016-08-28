@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -51,7 +51,7 @@
  </script>
 
 
-    <title>{{'title'}}</title>
+    <title>{{$title}}</title>
   </head>
   <body style="background-color: #eceff1;">
     <nav style="box-shadow: none;" id="main-nav">

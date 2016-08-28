@@ -21,7 +21,8 @@ class QuestforpwdController extends Controller
 
         $questions = QuestionPass::all();
         $m = Month::all();
-          return view('site.register',compact('questions','m'));
+        $title = 'Register';
+          return view('site.register',compact('questions','m','title'));
 
     }
 
