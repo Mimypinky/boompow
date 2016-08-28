@@ -69,10 +69,11 @@
                <!--Start tab-->
                <div id="allevent" class="col s12">
                    <ul class="collection" data-collapsible="accordion">
+                     @foreach($event as $data)
                        <li class=" collection-item">
                            <div class="row">
                                <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-                                   <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">ชื่อกิจกรรม<span></span>
+                                   <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
                                        <a href="#partiList2" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
 
                                        <div id="partiList2" class="modal" style="width: 500px;">
@@ -101,6 +102,7 @@
                                </div>
 
                                <div  style="margin-top: 20px background-color:#eeeeee;">
+
                                    <div class="row" style="padding: 20px;">
                                        <div class="col s4 center" >
                                            <div class="card">
@@ -126,42 +128,46 @@
                                            <div class="row" class="col s12" id="event_detail">
                                                <table >
                                                    <tr>
+
                                                        <td><p>ชื่อกิจกรรม</p></td>
-                                                       <td><p>ชื่อกิจกรรม</p></td>
+                                                       <td><p>{{$data->title}}</p></td>
                                                    </tr>
                                                    <tr>
                                                        <td><p>โดย</p></td>
-                                                       <td><p>คุณสมร</p></td>
+                                                       <td><p>{{$data->fname.'  '.$data->lname}}</p></td>
                                                    </tr>
                                                    <tr>
                                                        <td><p>สถานที่</p></td>
-                                                       <td><p>สวนธนบุรีรัมย์</p></td>
+                                                       <td><p>{{$data->location}}</p></td>
                                                    </tr>
                                                    <tr>
-                                                       <td><p>วัน</p></td>
-                                                       <td><p>2&nbsp;-&nbsp;4 เมษายน 2559</p></td>
+                                                       <td><p>เริ่มวันที่ </p></td>
+                                                       <td><p>{{$data->start_date}}ถึง วันที่ {{$data->finish_date}}</p></td>
+
                                                    </tr>
                                                    <tr>
                                                        <td><p>เวลา</p></td>
-                                                       <td><p>12.00น. &nbsp;-&nbsp;16.00น.</p></td>
+                                                       <td><p>{{$data->start_time}}ถึง{{$data->finish_time}}</p></td>
                                                    </tr>
                                                    <tr>
                                                        <td><p>เบอร์ติดต่อ</p></td>
-                                                       <td><p>081-999-9999</p></td>
+                                                       <td><p>{{$data->contact}}</p></td>
                                                    </tr>
                                                    <tr>
                                                        <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
                                                    </tr>
                                                    <tr>
-                                                       <td colspan="2"><p>ลงสนามด้วยความสง่า เก่งกล้าเหนือใคร เราเอาจริงมาชิงชัย ไม่มีใครหาญสู้ เรามาเชียร์เป็นแรงช่วยด้วยใจของเพื่อนพ้อง บางมดจะได้ครองความเป็นหนึ่งเหนือใคร ความเป็นหนึงเหนือใคร</p></td>
+                                                       <td colspan="2"><p>{{$data->description}}</p></td>
                                                    </tr>
+
                                                </table>
+
                                            </div>
                                        </div>
                                    </div>
                                </div>
                            </li>
-
+                           @endforeach
                            <li class=" collection-item">
                                <div class="row">
                                    <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
@@ -798,19 +804,5 @@
    </div>
    </li>
    </ul>
-                           <!--If not have event
-                           <div ><h3 style="color: #757575;text-align: center"><b>คุณยังไม่ได้สร้างกิจกรรม</b></h3></div>
-                       -->
-                   </div>
-               </ul>
-           </div>
-       </div>
-       <!--Container div-->
-   </div>
-
-   </div>
-   </div>
-   </div>
-   </div>
 
 @stop

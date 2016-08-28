@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
-class CreateEvent extends Controller
+use App\Event;
+use App\Users;
+use App\EventPhotos;
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,12 @@ class CreateEvent extends Controller
      */
     public function index()
     {
+          $title = 'กิจกรรม';
 
-
-
+          $event = Event::join('accounts', 'event.creator', '=', 'accounts.id')
+              ->select('event.*', 'accounts.first_name as fname','accounts.last_name as lname')
+              ->get();
+          return view('site.event',compact('title','event'));
     }
 
     /**
@@ -27,7 +32,8 @@ class CreateEvent extends Controller
      */
     public function create()
     {
-      //
+        //
+
     }
 
     /**
@@ -36,22 +42,9 @@ class CreateEvent extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
+    public function store(Request $request)
     {
-        $input  = new Event();
-        $input-> title = $req ->title;
-        $input-> location = $req ->location;
-        $input-> creator = $req ->creator;
-        $input-> start_time = $req ->start_time;
-        $input-> start_date = $req ->start_date;
-        $input-> finished_time = $req ->finish_time;
-        $input-> finished_date = $req ->finish_date;
-        $input-> detail = $req ->description;
-        $input-> phone = $req ->contact;
-        $input-> url = $req->url;
-        
-        $input->save();
-        return view('site.showEvent');
+        //
     }
 
     /**
@@ -97,5 +90,9 @@ class CreateEvent extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function eventBoardindex($eid)
+    {
+      return view('site.event_board');
     }
 }

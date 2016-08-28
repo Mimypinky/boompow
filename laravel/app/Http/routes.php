@@ -16,16 +16,12 @@ Route::get('/', function () {
   return view('site.layout');
 });
 
-Route::get('/event',function(){
-  return view('site.event');
-});
-Route::get('/testNewEve',function(){
-  return view('site.newEvent');
-});
-Route::post('/testNewEve','CreateEvent@store');
 
-
+Route::get('/event','EventController@index');
+Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
 Route::get('/register','QuestforpwdController@index');
+
+
 
 //Route::auth();
 

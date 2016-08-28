@@ -6,7 +6,8 @@
   </head>
   <body>
     <table border="1">
-      <form action ="post" >
+      <form method ="post" action="{{url('/event/create')}}">
+        <input type="hidden" name="_token" value="<?php echo csrf_token();?>"/>
         <tr><td colspan="4">
     ชื่อกิจกรรม : <input type="text" name="title"/>
   </td></tr>
