@@ -9,6 +9,7 @@
 
   <div class="row">
       <div class="col s12">
+
         @foreach($content as $data)
           <div class="col s4 m4">
               <div class="card">
@@ -20,7 +21,7 @@
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
-                      <a href="{{ URL::route('content/', $data->id) }}">This is a link</a>
+                      <a href="">This is a link</a>
                   </div>
               </div>
           </div>

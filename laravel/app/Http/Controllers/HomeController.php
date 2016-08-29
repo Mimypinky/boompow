@@ -25,9 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
+
           $content = Content::all();
+          //$data =
+          //dd("test");
           return view('site.index',compact('headtitle','title','content'));
     }
 }
