@@ -55,10 +55,14 @@ class AuthController extends Controller
       $username = $request['username'];
       $password = $request['password'];
       $query = DB::table('accounts')->select('id')->where('username', $request['username'])->first();
+      $qfname = DB::table('accounts')->select('first_name')->where('username', $request['username'])->first();
+      $qlname = DB::table('accounts')->select('last_name')->where('username', $request['username'])->first();
       $accid = $query->id;
+      $fname = $qfname->first_name;
+      $lname = $qlname->last_name;
       if(\Auth::attempt(['username' => $username, 'password' => $password])){
-      echo $accid,$username;
-      return "Is Logged in";
+      echo $accid.' - '.$fname.' '.$lname;
+      return " Is Logged in";
       return redirect()->intended('site.index');
     }
     return back()->withInput();
