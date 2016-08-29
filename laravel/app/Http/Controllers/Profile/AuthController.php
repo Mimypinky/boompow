@@ -47,16 +47,23 @@ class AuthController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function login(){
+    /*public function login(){
       return view('site.index');
-    }
+    }*/
 
     public function handleLogin(Request $request){
       $username = $request['username'];
       $password = $request['password'];
+      $query = DB::table('accounts')->select('id')->where('username', $request['username'])->first();
+      $qfname = DB::table('accounts')->select('first_name')->where('username', $request['username'])->first();
+      $qlname = DB::table('accounts')->select('last_name')->where('username', $request['username'])->first();
+      $accid = $query->id;
+      $fname = $qfname->first_name;
+      $lname = $qlname->last_name;
       if(\Auth::attempt(['username' => $username, 'password' => $password])){
-      return "Is Logged in";
-      return redirect()->intended('home');
+      echo $accid.' - '.$fname.' '.$lname;
+      return " Is Logged in";
+      return redirect()->intended('site.index');
     }
     return back()->withInput();
     }

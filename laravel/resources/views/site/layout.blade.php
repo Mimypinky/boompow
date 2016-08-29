@@ -38,8 +38,8 @@
      });
      */$(document).ready(function () {
          $('.modal-trigger').leanModal();
-         $('#modal1').openModal();
-         $('#modal1').closeModal();
+         $('#loginform').openModal();
+         $('#loginform').closeModal();
      });
      $('.datepicker').pickadate({
     selectMonths: true,
@@ -97,7 +97,7 @@
     <ul class="right hide-on-med-and-down">
 
         <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user-plus fa-2x right" aria-hidden="true"></i>สมัครสมาชิก</a></li>
-        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#modal1"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>เข้าสู่ระบบ</a></li>
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>เข้าสู่ระบบ</a></li>
 
     </ul>
 
@@ -115,7 +115,7 @@
     <ul id="dropdownhelp" class="dropdown-content">
     <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
     <li><a href="">สมัครสมาชิก</a></li>
-    <li><a href="">เข้าสู่ระบบ</a></li>
+    <li><a href="#loginform">เข้าสู่ระบบ</a></li>
     </ul>
 
     <!--Second Nav-->
@@ -195,9 +195,10 @@
 
 </section>
 <!---if user isn't member-->
-<div id="modal1" class="modal" style="width: 480px;">
+<div id="loginform" class="modal" style="width: 480px;">
     <div class="modal-content" >
-        <form action="{{url('/handleLogin')}}" method="POST" id="loginform">
+        <form action="{{url('/handleLogin')}}" method="POST">
+          {{ csrf_field() }}
             <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
             <h4 class="center">เข้าสู่ระบบ</h4>
             <div class="row">

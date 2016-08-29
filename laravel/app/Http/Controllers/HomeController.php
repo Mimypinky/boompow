@@ -26,8 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
+<<<<<<< HEAD
           $content = Content::join('category','contents.cate_id','=','category.id')
           ->select('category.*','contents.*')->get();
           return view('site.index',compact('headtitle','title','content'));
@@ -35,5 +37,12 @@ class HomeController extends Controller
     public function show()
     { 
           return view('site.index',compact('headtitle','title','content'));
+=======
+
+          $content = Content::all();
+          //$data =
+          //dd("test");
+          return view('site.home',compact('headtitle','title','content'));
+>>>>>>> 3136ceee590ccbe7c5f7440841bfae82875ef806
     }
 }

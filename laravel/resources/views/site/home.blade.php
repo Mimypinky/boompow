@@ -9,6 +9,7 @@
 
   <div class="row">
       <div class="col s12">
+
         @foreach($content as $data)
           <div class="col s4 m4">
               <div class="card">
@@ -20,7 +21,11 @@
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
+<<<<<<< HEAD:laravel/resources/views/site/index.blade.php
                       <a href="content/{{ $data->category->category_title }}/{{ $data->id }}">เพิ่มเติม</a>
+=======
+                      <a href="">This is a link</a>
+>>>>>>> 3136ceee590ccbe7c5f7440841bfae82875ef806:laravel/resources/views/site/home.blade.php
                   </div>
               </div>
           </div>
