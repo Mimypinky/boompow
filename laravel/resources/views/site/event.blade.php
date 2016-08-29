@@ -51,6 +51,7 @@
         }
     }
 
+
 </style>
 <div id="activities" >
         <center><h1 style="font-size: 36pt; text-shadow: 2px 2px #3A3737;" class="hello-content">{{$title}}</h1></center>
@@ -67,7 +68,7 @@
                    </ul>
                </div>
                <!--Start tab-->
-               <div id="allevent" class="col s12">
+               <div id="allevent" class="col s12 ">
                    <ul class="collection" data-collapsible="accordion">
                      @foreach($event as $data)
                        <li class=" collection-item">

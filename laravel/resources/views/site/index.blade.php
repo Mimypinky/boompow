@@ -15,12 +15,12 @@
                   <div class="card-image">
                       <img src="img/healthy.jpg">
                   </div>
-                  <div class="card-content">
-                      <h6>{{$data->content_title}}</h6>
-                      <p>......</p>
+                  <div class="card-content" style="height:200px;background-color:eecc6;">
+                      <h5 >{{$data->content_title}}</h5>
+                      <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
-                      <a href="#">This is a link</a>
+                      <a href="{{ URL::route('content/', $data->id) }}">This is a link</a>
                   </div>
               </div>
           </div>

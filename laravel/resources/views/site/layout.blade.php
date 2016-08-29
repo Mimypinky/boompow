@@ -49,6 +49,23 @@
      $('select').material_select();
    });
  </script>
+ <style>
+.wordwrap{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-height: 1.5;
+  max-height: 70px;
+  text-align: left;
+
+  color: #454545;
+  font-size: 15px;
+
+    /*font-size: 12px;*/
+}
+ </style>
 
 
     <title>{{$title}}</title>

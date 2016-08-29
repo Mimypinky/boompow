@@ -16,6 +16,7 @@ Route::get('/','HomeController@index');
 
 
 Route::get('/event','EventController@index');
+//Route::get('/event/{cid}','')
 Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
 Route::get('/register','QuestforpwdController@index');
 

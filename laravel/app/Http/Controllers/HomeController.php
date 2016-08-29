@@ -28,6 +28,7 @@ class HomeController extends Controller
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
           $content = Content::all();
+
           return view('site.index',compact('headtitle','title','content'));
     }
 }
