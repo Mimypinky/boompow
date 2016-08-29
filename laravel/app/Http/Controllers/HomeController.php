@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Content;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //return view('home');
+          $title =  'Boompow';
+          $headtitle = 'รวมสาระน่ารู้';
+          $content = Content::all();
+
+          return view('site.index',compact('headtitle','title','content'));
     }
 }
