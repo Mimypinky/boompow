@@ -38,8 +38,8 @@
      });
      */$(document).ready(function () {
          $('.modal-trigger').leanModal();
-         $('#modal1').openModal();
-         $('#modal1').closeModal();
+         $('#loginform').openModal();
+         $('#loginform').closeModal();
      });
      $('.datepicker').pickadate({
     selectMonths: true,
