@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -180,7 +180,7 @@
 <!---if user isn't member-->
 <div id="modal1" class="modal" style="width: 480px;">
     <div class="modal-content" >
-        <form action="{{url('\login')}}" method="post" id="loginform" name="login">
+        <form action="{{url('/handleLogin')}}" method="POST" id="loginform">
             <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
             <h4 class="center">เข้าสู่ระบบ</h4>
             <div class="row">
