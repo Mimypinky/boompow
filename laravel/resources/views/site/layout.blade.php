@@ -123,17 +123,17 @@
     <div class="second-nav nav-wrapper" style="background-color: #EE6E73;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
     <ul class="secnav hide-on-med-and-down center" >
 
-        <li><a href="#"><i class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+        <li><a href="/"><i class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
             <!--Slide nav menu
             <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
         -->
-        <li><a href="#"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
-        <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+        <li><a href="content/health"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        <li><a href="#" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
         <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
-        <li><a href="#"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+        <li><a href="content/family"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
         <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
-        <li><a href="#"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
-        <li><a href="#"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+        <li><a href="content/elder_promotion"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+        <li><a href="content/diy"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
     </ul>
 
     <!--Slidenav -->
@@ -146,7 +146,7 @@
                     <a class="collapsible-header">Dropdown</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!">First</a></li>
+                            <li><a href="#!" >First</a></li>
                             <li><a href="#!">Second</a></li>
                             <li><a href="#!">Third</a></li>
                             <li><a href="#!">Fourth</a></li>
@@ -161,24 +161,24 @@
 
     <!-- Dropdownhealth Structure -->
     <ul id="dropdownfood" class="dropdown-content">
-    <li><a href="#">ของหวาน</a></li>
-    <li><a href="meal_recipe.html">ของคาว</a></li>
+    <li><a href="content/sweets">ของหวาน</a></li>
+    <li><a href="content/foods">ของคาว</a></li>
     </ul>
 
     <!-- Dropdownent Structure -->
     <ul id="dropdownent" class="dropdown-content">
-    <li><a href="#">วิทยุ</a></li>
-    <li><a href="#!">ดูหนัง</a></li>
-    <li><a href="#!">ฟังเพลง</a></li>
-    <li><a href="#!">ธรรมมะ</a></li>
+    <li><a href="content/radio">วิทยุ</a></li>
+    <li><a href="content/movie">ดูหนัง</a></li>
+    <li><a href="content/music">ฟังเพลง</a></li>
+    <li><a href="content/dhamma">ธรรมมะ</a></li>
     </ul>
 
     <!-- Dropdownnews Structure -->
     <ul id="dropdownnews" class="dropdown-content">
-    <li><a href="#">ข่าวบันเทิง</a></li>
-    <li><a href="#!">ข่าวกีฬา</a></li>
-    <li><a href="#!">ข่าวเศรษฐกิจ</a></li>
-    <li><a href="#!">ข่าวการเมือง</a></li>
+    <li><a href="content/entertain_news">ข่าวบันเทิง</a></li>
+    <li><a href="content/sport_news">ข่าวกีฬา</a></li>
+    <li><a href="content/economic_news">ข่าวเศรษฐกิจ</a></li>
+    <li><a href="content/politics_news">ข่าวการเมือง</a></li>
 
     </ul>
     </nav>

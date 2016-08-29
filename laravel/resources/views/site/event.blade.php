@@ -120,10 +120,10 @@
                                                             <p style="color: white;">กำลังเปิดรับ</p>
                                                         </div>
 
-                                                    <a class="waves-effect waves-light btn-large modal-trigger " href="#modal1" id="EventButton"  value=""><i class="fa fa-plus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>เข้าร่วม </a>
+                                                    <a class="waves-effect waves-light btn-large modal-trigger " href="#join" id="EventButton"  value=""><i class="fa fa-plus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>เข้าร่วม </a>
                                                     <a class="waves-effect waves-light btn-large blue darken-4" href="#"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
 
-                                                <div id="modal1" class="modal" style="width: 480px;">
+                                                <div id="join" class="modal" style="width: 480px;">
                                                     <div class="modal-content">
                                                         <p>คุณต้องการเข้าร่วมกิจกรรม&nbsp;ชื่อกิจกรรม&nbsp;ใช่หรือไม่</p>
                                                     </div>

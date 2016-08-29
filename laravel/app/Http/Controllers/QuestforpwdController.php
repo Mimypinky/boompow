@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\QuestionPass;
+use App\Question;
 use App\Month;
 use Auth;
 
@@ -19,7 +19,7 @@ class QuestforpwdController extends Controller
     public function index()
     {
 
-        $questions = QuestionPass::all();
+        $questions = Question::all();
         $m = Month::all();
         $title = 'Register';
           return view('site.register',compact('questions','m','title'));

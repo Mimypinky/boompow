@@ -22,7 +22,6 @@ class EventController extends Controller
           $event = Event::join('accounts', 'event.creator', '=', 'accounts.id')
               ->select('event.*', 'accounts.first_name as fname','accounts.last_name as lname')
               ->get();
-
           return view('site.event',compact('title','event'));
     }
 
@@ -46,8 +45,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $obj =new Event();
-        //$obj ->
+      //
     }
 
     /**
@@ -59,6 +57,7 @@ class EventController extends Controller
     public function show($id)
     {
         $obj = Event::find($id);
+
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Content;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,12 @@ class HomeController extends Controller
     {
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
-          $content = Content::all();
-
+          $content = Content::join('category','contents.cate_id','=','category.id')
+          ->select('category.*','contents.*')->get();
+          return view('site.index',compact('headtitle','title','content'));
+    }
+    public function show()
+    { 
           return view('site.index',compact('headtitle','title','content'));
     }
 }

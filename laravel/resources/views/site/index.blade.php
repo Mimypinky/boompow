@@ -20,7 +20,7 @@
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
-                      <a href="{{ URL::route('content/', $data->id) }}">This is a link</a>
+                      <a href="content/{{ $data->category->category_title }}/{{ $data->id }}">เพิ่มเติม</a>
                   </div>
               </div>
           </div>
