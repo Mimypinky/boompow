@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/','HomeController@index');
+//Route::get('/home','HomeController@index');
+Route::get('/home',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
 Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
