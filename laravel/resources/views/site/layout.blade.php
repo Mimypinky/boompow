@@ -115,7 +115,7 @@
     <ul id="dropdownhelp" class="dropdown-content">
     <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
     <li><a href="">สมัครสมาชิก</a></li>
-    <li><a href="">เข้าสู่ระบบ</a></li>
+    <li><a href="#loginform">เข้าสู่ระบบ</a></li>
     </ul>
 
     <!--Second Nav-->

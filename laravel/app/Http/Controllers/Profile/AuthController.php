@@ -47,16 +47,16 @@ class AuthController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function login(){
+    /*public function login(){
       return view('site.index');
-    }
+    }*/
 
     public function handleLogin(Request $request){
       $username = $request['username'];
       $password = $request['password'];
       if(\Auth::attempt(['username' => $username, 'password' => $password])){
       return "Is Logged in";
-      return redirect()->intended('home');
+      return redirect()->intended('site.index');
     }
     return back()->withInput();
     }

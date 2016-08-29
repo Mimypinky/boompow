@@ -11,21 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-//Route::get('/','HomeController@index');
+Route::get('/','HomeController@index');
 
-
-//Route::get('/event','EventController@index');
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
-
 Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
 Route::get('/register','QuestforpwdController@index');
 
 
 
 Route::group(['middleware' => ['web']], function (){
-  Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
+  //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
 });
