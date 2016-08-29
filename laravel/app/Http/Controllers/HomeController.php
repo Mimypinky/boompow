@@ -32,6 +32,6 @@ class HomeController extends Controller
           $content = Content::all();
           //$data =
           //dd("test");
-          return view('site.index',compact('headtitle','title','content'));
+          return view('site.home',compact('headtitle','title','content'));
     }
 }
