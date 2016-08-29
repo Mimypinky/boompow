@@ -10,13 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-<<<<<<< HEAD
-Route::get('/','HomeController@index');
-Route::get('/event','EventController@index');
-Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
-Route::get('/register','QuestforpwdController@index');
-Route::get('/content/{cate_id}/{id}', 'HomeController@show');
-=======
+
 
 //Route::get('/home','HomeController@index');
 
@@ -25,7 +19,7 @@ Route::get('/home',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
 Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
 Route::get('/register','QuestforpwdController@index');
-
+Route::get('/content/{cate_id}/{id}', 'HomeController@show');
 
 
 >>>>>>> 3136ceee590ccbe7c5f7440841bfae82875ef806
