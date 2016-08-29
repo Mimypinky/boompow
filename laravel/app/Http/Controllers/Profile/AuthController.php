@@ -54,7 +54,10 @@ class AuthController extends Controller
     public function handleLogin(Request $request){
       $username = $request['username'];
       $password = $request['password'];
+      $query = DB::table('accounts')->select('id')->where('username', $request['username'])->first();
+      $accid = $query->id;
       if(\Auth::attempt(['username' => $username, 'password' => $password])){
+      echo $accid,$username;
       return "Is Logged in";
       return redirect()->intended('site.index');
     }

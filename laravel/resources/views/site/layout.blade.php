@@ -198,6 +198,7 @@
 <div id="loginform" class="modal" style="width: 480px;">
     <div class="modal-content" >
         <form action="{{url('/handleLogin')}}" method="POST">
+          {{ csrf_field() }}
             <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
             <h4 class="center">เข้าสู่ระบบ</h4>
             <div class="row">
