@@ -16,11 +16,13 @@
 
 Route::get('/home',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 
-Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
+//Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
 Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
 Route::get('/register','QuestforpwdController@index');
 Route::get('/content/{cate_id}/{id}', 'HomeController@show');
 
+Route::resource('event','EventController');
+Route::post('event/create', 'EventController@store');
 
 Route::group(['middleware' => ['web']], function (){
   //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
