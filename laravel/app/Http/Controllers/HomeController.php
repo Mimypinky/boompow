@@ -26,9 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
+<<<<<<< HEAD
 
           $content = Content::join('category','contents.cate_id','=','category.id')
           ->select('category.*','contents.*')->get();
@@ -43,5 +43,11 @@ class HomeController extends Controller
       //dd($content);
           return view('contents.subcontent',compact('content','title'));
 
+=======
+          $content = Content::join('category','contents.cate_id','=','category.id')
+          ->select('category.*','contents.*')->get();
+          return view('site.home',compact('headtitle','title','content'));
+>>>>>>> 5b8214d17a1e9351486cc16c82414176e1a787ab
     }
+
 }

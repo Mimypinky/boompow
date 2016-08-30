@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use App\Http\Requests;
 use App\Event;
 use App\Users;
@@ -19,8 +20,8 @@ class EventController extends Controller
     {
           $title = 'กิจกรรม';
 
-          $event = Event::join('accounts', 'event.creator', '=', 'accounts.id')
-              ->select('event.*', 'accounts.first_name as fname','accounts.last_name as lname')
+          $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+              ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
               ->get();
           return view('site.event',compact('title','event'));
     }
@@ -46,6 +47,20 @@ class EventController extends Controller
     public function store(Request $request)
     {
       //
+      $obj1 = new Event();
+      $obj1->title = $request['title'];
+      $obj1->creator = 21;
+      $obj1->description = $request['description'];
+      $obj1->start_time = $request['start_time'];
+      $obj1->finish_time = $request['finish_time'];
+      $obj1->start_date = $request['start_date'];
+      $obj1->finish_date = $request['finish_date'];
+      $obj1->location = $request['location'];
+      $obj1->contact = $request['contact'];
+      $obj1->title = $request['title'];
+      $obj1->save();
+
+      return redirect('event');
     }
 
     /**

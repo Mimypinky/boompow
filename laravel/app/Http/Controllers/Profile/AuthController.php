@@ -51,6 +51,7 @@ class AuthController extends Controller
       return view('site.index');
     }*/
 
+
     public function handleLogin(Request $request){
       $username = $request['username'];
       $password = $request['password'];
@@ -61,6 +62,7 @@ class AuthController extends Controller
       $fname = $qfname->first_name;
       $lname = $qlname->last_name;
       if(\Auth::attempt(['username' => $username, 'password' => $password])){
+
       echo $accid.' - '.$fname.' '.$lname;
       return " Is Logged in";
       return redirect()->intended('site.index');
@@ -87,6 +89,7 @@ class AuthController extends Controller
         $obj2->last_name = $request['last_name'];
         $obj2->password = bcrypt($request['password']);
         $obj2->profile_id = $id;
+        $obj2->rememberToken();
         $obj2->save();
 
     }
