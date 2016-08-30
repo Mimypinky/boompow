@@ -22,7 +22,6 @@ Route::get('/register','QuestforpwdController@index');
 Route::get('/content/{cate_id}/{id}', 'HomeController@show');
 
 
->>>>>>> 3136ceee590ccbe7c5f7440841bfae82875ef806
 Route::group(['middleware' => ['web']], function (){
   //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);

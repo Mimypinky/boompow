@@ -26,12 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
           $content = Content::join('category','contents.cate_id','=','category.id')
           ->select('category.*','contents.*')->get();
-          return view('site.index',compact('headtitle','title','content'));
+          return view('site.home',compact('headtitle','title','content'));
     }
 
 }
