@@ -127,13 +127,14 @@
             <!--Slide nav menu
             <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
         -->
-        <li><a href="content/health"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        <li><a href="{{ url('content/health') }}"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
         <li><a href="#" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
         <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
-        <li><a href="content/family"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+        <li><a href="{{url('content/family')}}">
+          <img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
         <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
-        <li><a href="content/elder_promotion"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
-        <li><a href="content/diy"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+        <li><a href="{{url('content/elder_promotion')}}"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+        <li><a href="{{url('content/diy')}}"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
     </ul>
 
     <!--Slidenav -->
@@ -161,24 +162,24 @@
 
     <!-- Dropdownhealth Structure -->
     <ul id="dropdownfood" class="dropdown-content">
-    <li><a href="content/sweets">ของหวาน</a></li>
-    <li><a href="content/foods">ของคาว</a></li>
+    <li><a href="{{url('content/sweets')}}">ของหวาน</a></li>
+    <li><a href="{{url('content/foods')}}">ของคาว</a></li>
     </ul>
 
     <!-- Dropdownent Structure -->
     <ul id="dropdownent" class="dropdown-content">
-    <li><a href="content/radio">วิทยุ</a></li>
-    <li><a href="content/movie">ดูหนัง</a></li>
-    <li><a href="content/music">ฟังเพลง</a></li>
-    <li><a href="content/dhamma">ธรรมมะ</a></li>
+    <li><a href="{{url('content/radio')}}">วิทยุ</a></li>
+    <li><a href="{{url('content/movie')}}">ดูหนัง</a></li>
+    <li><a href="{{url('content/music')}}">ฟังเพลง</a></li>
+    <li><a href="{{url('content/dhamma')}}">ธรรมมะ</a></li>
     </ul>
 
     <!-- Dropdownnews Structure -->
     <ul id="dropdownnews" class="dropdown-content">
-    <li><a href="content/entertain_news">ข่าวบันเทิง</a></li>
-    <li><a href="content/sport_news">ข่าวกีฬา</a></li>
-    <li><a href="content/economic_news">ข่าวเศรษฐกิจ</a></li>
-    <li><a href="content/politics_news">ข่าวการเมือง</a></li>
+    <li><a href="{{url('content/entertain_news')}}">ข่าวบันเทิง</a></li>
+    <li><a href="{{url('content/sport_news')}}">ข่าวกีฬา</a></li>
+    <li><a href="{{url('content/economic_news')}}">ข่าวเศรษฐกิจ</a></li>
+    <li><a href="{{url('content/politics_news')}}">ข่าวการเมือง</a></li>
 
     </ul>
     </nav>
@@ -228,7 +229,15 @@
             </form>
         </div>
     </div>
-
+    <div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">
+        <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><i class="large material-icons" >mode_edit</i></a>
+        <ul class="resizer">
+            <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
+                <img src="img/ismall.png" style="margin: 6px"></a></li>
+                <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="img/ismall.png" style="margin: 10px; width: 15px"></a></li>
+                <li id="small"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดเล็ก"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a></li>
+            </ul>
+        </div>
 <footer class="page-footer">
   <div class="container">
     <div class="row">
