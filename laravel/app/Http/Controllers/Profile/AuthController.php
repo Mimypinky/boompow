@@ -13,6 +13,8 @@ use App\Question;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
+use Session;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller
@@ -28,7 +30,7 @@ class AuthController extends Controller
     {
         //
         $data['title'] = 'สมัครสมาชิก';
-        return view('auth.register',$data);
+        return view('auth.register');
 
     }
 
@@ -40,8 +42,7 @@ class AuthController extends Controller
     public function create()
     {
         //
-        $data['title'] = 'สมัครสมาชิก';
-        return view('auth.register',$data);
+        return view('auth.register');
     }
 
     /**
@@ -55,6 +56,10 @@ class AuthController extends Controller
       return view('site.index');
     }*/
 
+    public function logout(){
+      Auth::logout();
+      return redirect()->intended('/');
+    }
 
     public function handleLogin(Request $request){
       $username = $request['username'];
@@ -67,11 +72,12 @@ class AuthController extends Controller
       $lname = $qlname->last_name;
       $remember = Input::has('remember')? true : false;
       if(\Auth::attempt(['username' => $username, 'password' => $password], $remember)){
-      //echo $accid.' - '.$fname.' '.$lname.' remember= '.$remember;
-      return " Is Logged in";
-      return redirect()->intended('site.index');
+        //Session::put('user' , Auth::user());
+        //echo Auth::user()->username ;
+
+      return redirect()->intended('/');
     }
-    return back()->withInput();
+      return back()->withInput();
     }
 
     public function store(Request $request)
@@ -107,7 +113,7 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-
+      //
     }
 
     /**

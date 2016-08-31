@@ -95,17 +95,9 @@
     </ul>
 
     <ul class="right hide-on-med-and-down">
-      @if(Auth::guest())
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user-plus fa-2x right" aria-hidden="true"></i>สมัครสมาชิก</a></li>
-      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>เข้าสู่ระบบ</a></li>
-      @else
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user fa-2x right" aria-hidden="true"></i>{{Auth::user()->username}}</a></li>
 
-      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="{{url('/logout')}}"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>ออกจากระบบ</a></li>
-
-
-      @endif
-
+        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user-plus fa-2x right" aria-hidden="true"></i>สมัครสมาชิก</a></li>
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>เข้าสู่ระบบ</a></li>
 
     </ul>
 
@@ -122,15 +114,9 @@
     <!-- Dropdownhelp Structure -->
     <ul id="dropdownhelp" class="dropdown-content">
     <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
-    @if(Auth::guest())
     <li><a href="">สมัครสมาชิก</a></li>
     <li><a href="#loginform">เข้าสู่ระบบ</a></li>
-    @else
-    <li><a href="">{{Auth::user()->username}}</a></li>
-    <li><a href="">ออกจากระบบ</a></li>
-    @endif
     </ul>
-
 
     <!--Second Nav-->
 

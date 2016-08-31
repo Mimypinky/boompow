@@ -24,8 +24,6 @@
 
                       <a href="content/{{ $data->category->category_title }}/{{ $data->id }}">เพิ่มเติม</a>
 
-
-
                   </div>
               </div>
           </div>

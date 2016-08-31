@@ -24,4 +24,5 @@ Route::get('/event/board/{{$eid}}','EventController@eventBoardindex');
 Route::group(['middleware' => ['web']], function (){
   //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
+  Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });

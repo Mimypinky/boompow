@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Event;
 use App\Users;
 use App\EventPhotos;
+use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
     /**
@@ -18,12 +19,17 @@ class EventController extends Controller
      */
     public function index()
     {
-          $title = 'กิจกรรม';
+      if(Auth::check()){
+        $title = 'กิจกรรม';
+        $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
+            ->get();
+        return view('site.event',compact('title','event'));
 
-          $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
-              ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
-              ->get();
-          return view('site.event',compact('title','event'));
+      }else {
+        echo 'please login';
+      }
+
     }
 
     /**
@@ -49,7 +55,7 @@ class EventController extends Controller
       //
       $obj1 = new Event();
       $obj1->title = $request['title'];
-      $obj1->creator = 21;
+      $obj1->creator = Auth::user()->id;
       $obj1->description = $request['description'];
       $obj1->start_time = $request['start_time'];
       $obj1->finish_time = $request['finish_time'];
@@ -112,4 +118,5 @@ class EventController extends Controller
     {
       return view('site.event_board');
     }
+
 }
