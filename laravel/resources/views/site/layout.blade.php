@@ -218,7 +218,7 @@
 
             <div class="modal-footer" align="center">
                 <span>
-                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" name="remember"/>
+                    <input type="checkbox" class="filled-in" id="filled-in-box" name="remember"/>
                     <label for="filled-in-box">ให้ฉันอยู่ในระบบต่อไป</label>
                     หรือ <a href="#">ลืมรหัสผ่าน</a></span>
                 </div>
