@@ -27,7 +27,8 @@ class AuthController extends Controller
     public function index()
     {
         //
-        //return view('auth.register');
+        $data['title'] = 'สมัครสมาชิก';
+        return view('auth.register',$data);
 
     }
 
@@ -39,7 +40,8 @@ class AuthController extends Controller
     public function create()
     {
         //
-        //return view('auth.register');
+        $data['title'] = 'สมัครสมาชิก';
+        return view('auth.register',$data);
     }
 
     /**
@@ -91,9 +93,11 @@ class AuthController extends Controller
         $obj2->last_name = $request['last_name'];
         $obj2->password = bcrypt($request['password']);
         $obj2->profile_id = $id;
+        $obj2->remember_token;
         $obj2->save();
 
     }
+
 
     /**
      * Display the specified resource.
