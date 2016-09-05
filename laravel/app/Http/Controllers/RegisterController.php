@@ -26,7 +26,7 @@ class RegisterController extends Controller
         'username'      =>'required|min:4|max:20|unique:accounts'
         'question_password'=>'requiured',
         'password'                          => 'required|min:4|max:15|confirmed',
-        'password_confirmation'   t          => 'required|min:4|max:15',
+        'password_confirmation'          => 'required|min:4|max:15',
       ),array(
         'name.required'                     => 'Full Name ไม่สามารถเป็นค่าว่างได้',
                         'email.required'                    => 'email ไม่สามารถเป็นค่าว่างได้',
@@ -39,4 +39,5 @@ class RegisterController extends Controller
       )
       )
     }
+    
 }

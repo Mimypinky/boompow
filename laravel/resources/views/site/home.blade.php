@@ -14,19 +14,15 @@
           <div class="col s4 m4">
               <div class="card">
                   <div class="card-image">
-                      <img src="img/healthy.jpg">
+                      <img src="{{url('img/healthy.jpg')}}">
                   </div>
                   <div class="card-content" style="height:200px;background-color:eecc6;">
                       <h5 >{{$data->content_title}}</h5>
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
-
-                      <a href="content/{{ $data->category->category_title }}/{{ $data->id }}">เพิ่มเติม</a>
-
-
-
-                  </div>
+                      <a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}">เพิ่มเติม</a>
+                </div>
               </div>
           </div>
           @endforeach

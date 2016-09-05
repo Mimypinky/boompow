@@ -28,7 +28,6 @@ class HomeController extends Controller
     {
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
-<<<<<<< HEAD
 
           $content = Content::join('category','contents.cate_id','=','category.id')
           ->select('category.*','contents.*')->get();
@@ -40,14 +39,21 @@ class HomeController extends Controller
       $title = 'Boompow';
       $content = Content::join('category','contents.cate_id','=','category.id')
       ->select('category.*','contents.*')->where('category_title','=', $cateid)->get();
-      //dd($content);
-          return view('contents.subcontent',compact('content','title'));
+      $headtitle= Category::select('category_title_th')->where('category_title','=',$cateid)->first();
+    //  dd($headtitle);
+          return view('contents.subcontent',compact('content','title','headtitle'));
+    }
+    public function getTopic(Request $req){
 
-=======
-          $content = Content::join('category','contents.cate_id','=','category.id')
-          ->select('category.*','contents.*')->get();
-          return view('site.home',compact('headtitle','title','content'));
->>>>>>> 5b8214d17a1e9351486cc16c82414176e1a787ab
+      $cateid =$req->category_title;
+      $topicid = $req->topic;
+      $title = 'Boompow';
+      $headtitle= Category::select('category.*')->where('category_title','=',$cateid)->first();
+
+      $article = Content::select('contents.*')->where('contents.id','=',$topicid)->get();
+        return view('contents.topic',compact('content','headtitle','article','title'));
+        dd($article);
+
     }
 
 }

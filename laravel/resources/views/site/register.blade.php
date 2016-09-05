@@ -14,22 +14,24 @@
                       <div class="row">
                           <div class="col s3" style="margin-top: 19px;"><p style="margin-left: 40%;">ชื่อผู้ใช้</p></div>
                           <div class="col s6 ">
-                              <form class="col s11">
+                              <form class="col s11" >
                                       <input name="username" type="text" class="validate" placeholder="ใส่ชื่อผู้ใช้ของคุณ">
                               </form>
                           </div>
-                          <div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>
+                          <div class="col s3" style="margin-top: 19px;">
+                            <a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a>
+                          </div>
                       </div>
                   </center>
 
                   <div class="section"></div>
-                  <div id="alert" class="card green darken-1" style="box-shadow: none;">
+                  <div id="alertAvailable" class="card green darken-1" style="box-shadow: none;">
                       <div class="card-content white-text">
                           <i class="left material-icons">verified_user</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> สามารถใช้ได้
                       </div>
                   </div>
 
-                  <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                  <div id="alertUnavailable" class="card red darken-2" style="box-shadow: none;">
                       <div class="card-content white-text">
                           <i class="left material-icons">cancel</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> ไม่สามารถใช้ได้
                       </div>

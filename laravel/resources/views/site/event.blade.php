@@ -60,7 +60,7 @@ function unjoinedEvent(){
 <div class="container">
   <div class="row">
     <div class="col s12 eventOption">
-      <ul class="tabs tab-set" style="background-color: #BC2C33;">
+      <ul class="tabs tab-set" style="background-color: #BC2C33;font-size:1.5em">
         <li class="tab"><a href="#allevent">กิจกรรมทั้งหมด</a></li>
         <li class="tab"><a href="#attendevent">กิจกรรมที่เข้าร่วม</a></li>
         <li class="tab"><a href="#myevent">กิจกรรมของฉัน</a></li>

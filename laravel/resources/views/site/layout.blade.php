@@ -14,8 +14,9 @@
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/style.css') }}">
-
-
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/newsfeed.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mimcss.css')}}">
     <!--Import bootstrap.css
 
     <!--Let browser know website is optimized for mobile-->
@@ -73,7 +74,7 @@
   <body style="background-color: #eceff1;">
     <nav style="box-shadow: none;" id="main-nav">
         <div class="nav-wrapper white">
-            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="{{url('img/logo_boom2.png')}}"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse">
                 <i style="color: #263238" class="material-icons">menu</i>
             </a>
@@ -131,7 +132,7 @@
         <li><a href="#" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
         <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
         <li><a href="{{url('content/family')}}">
-          <img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+          <img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
         <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
         <li><a href="{{url('content/elder_promotion')}}"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
         <li><a href="{{url('content/diy')}}"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
