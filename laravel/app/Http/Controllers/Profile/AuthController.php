@@ -12,6 +12,10 @@ use App\Profile;
 use App\Question;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Input;
+use Session;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -25,7 +29,8 @@ class AuthController extends Controller
     public function index()
     {
         //
-        //return view('auth.register');
+        $data['title'] = 'สมัครสมาชิก';
+        return view('auth.register');
 
     }
 
@@ -37,7 +42,7 @@ class AuthController extends Controller
     public function create()
     {
         //
-        //return view('auth.register');
+        return view('auth.register');
     }
 
     /**
@@ -51,6 +56,10 @@ class AuthController extends Controller
       return view('site.index');
     }*/
 
+    public function logout(){
+      Auth::logout();
+      return redirect()->intended('/');
+    }
 
     public function handleLogin(Request $request){
       $username = $request['username'];
@@ -61,13 +70,14 @@ class AuthController extends Controller
       $accid = $query->id;
       $fname = $qfname->first_name;
       $lname = $qlname->last_name;
-      if(\Auth::attempt(['username' => $username, 'password' => $password])){
+      $remember = Input::has('remember')? true : false;
+      if(\Auth::attempt(['username' => $username, 'password' => $password], $remember)){
+        //Session::put('user' , Auth::user());
+        //echo Auth::user()->username ;
 
-      echo $accid.' - '.$fname.' '.$lname;
-      return " Is Logged in";
-      return redirect()->intended('site.index');
+      return redirect()->intended('/');
     }
-    return back()->withInput();
+      return back()->withInput();
     }
 
     public function store(Request $request)
@@ -89,10 +99,11 @@ class AuthController extends Controller
         $obj2->last_name = $request['last_name'];
         $obj2->password = bcrypt($request['password']);
         $obj2->profile_id = $id;
-        $obj2->rememberToken();
+        $obj2->remember_token;
         $obj2->save();
 
     }
+
 
     /**
      * Display the specified resource.
@@ -102,7 +113,7 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-
+      //
     }
 
     /**
