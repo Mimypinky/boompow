@@ -29,8 +29,8 @@ class AuthController extends Controller
     public function index()
     {
         //
-        $data['title'] = 'สมัครสมาชิก';
-        return view('auth.register');
+        $title = 'สมัครสมาชิก';
+        return view('auth.register',compact('title'));
 
     }
 
@@ -42,7 +42,8 @@ class AuthController extends Controller
     public function create()
     {
         //
-        return view('auth.register');
+        $title = 'สมัครสมาชิก';
+        return view('auth.register',compact('title'));
     }
 
     /**
@@ -72,13 +73,11 @@ class AuthController extends Controller
       $lname = $qlname->last_name;
       $remember = Input::has('remember')? true : false;
       if(\Auth::attempt(['username' => $username, 'password' => $password], $remember)){
-        //Session::put('user' , Auth::user());
-        //echo Auth::user()->username ;
 
-      return redirect()->intended('/');
-    }
-      return back()->withInput();
-    }
+        return redirect()->intended('/');
+      }
+        return back()->withInput();
+      }
 
     public function store(Request $request)
     {
@@ -88,7 +87,7 @@ class AuthController extends Controller
         $obj1->dob = $request['dob'];
         $obj1->gender = $request['gender'];
         $obj1->email = $request['email'];
-        $obj1->qp_id = $query->id;
+        $obj1->qp_id = $query;//->id;
         $obj1->save();
         $obj3 = Profile::all()->last();
         $id = $obj3->id;
