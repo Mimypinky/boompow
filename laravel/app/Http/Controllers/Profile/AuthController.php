@@ -29,8 +29,8 @@ class AuthController extends Controller
     public function index()
     {
         //
-        $data['title'] = 'สมัครสมาชิก';
-        return view('auth.register');
+        $title = 'สมัครสมาชิก';
+        return view('auth.register',compact('title'));
 
     }
 
@@ -42,7 +42,8 @@ class AuthController extends Controller
     public function create()
     {
         //
-        return view('auth.register');
+        $title = 'สมัครสมาชิก';
+        return view('auth.register',compact('title'));
     }
 
     /**
@@ -72,13 +73,11 @@ class AuthController extends Controller
       $lname = $qlname->last_name;
       $remember = Input::has('remember')? true : false;
       if(\Auth::attempt(['username' => $username, 'password' => $password], $remember)){
-        //Session::put('user' , Auth::user());
-        //echo Auth::user()->username ;
 
-      return redirect()->intended('/');
-    }
-      return back()->withInput();
-    }
+        return redirect()->intended('/');
+      }
+        return back()->withInput();
+      }
 
     public function store(Request $request)
     {
