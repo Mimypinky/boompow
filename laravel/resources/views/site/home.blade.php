@@ -21,15 +21,9 @@
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
-<<<<<<< HEAD
+
                       <a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}">เพิ่มเติม</a>
                 </div>
-=======
-
-                      <a href="content/{{ $data->category->category_title }}/{{ $data->id }}">เพิ่มเติม</a>
-
-                  </div>
->>>>>>> f025b263b3e298ab7012c6145e5e8d4592210b6a
               </div>
           </div>
           @endforeach
