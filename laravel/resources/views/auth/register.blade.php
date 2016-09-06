@@ -2,18 +2,12 @@
 @section('maincontent')
 
 <div class="container" style="width: 90%;">
-  <script>
-  function submitRegisterForm() {
-    document.getElementById("registerForm").submit();
-  }
-</script>
-
 
     <div class="row" style="margin-top: 160px;">
         <div class="col s12 m12 l10 offset-l1">
+          <form method="POST" action="{{ url('/register') }}">
             <ul class="collection with-header">
-                <form action="{{ url('/register') }}" method="POST" id="registerForm">
-                  {{ csrf_field() }}
+                {{ csrf_field() }}
                 <li class="collection-header"><center><h4>สมัครสมาชิก</h4></center></li>
                 <li class="collection-item"><i class="left material-icons">verified_user</i><p>ตรวจสอบชื่อผู้ใช้</p>
                 <div class="section"></div>
@@ -65,10 +59,16 @@
                                     <input name="gender" type="radio" id="female" value="female" />
                                     <label for="female" style="color: #424242 ;">หญิง</label>
                                 </p></td>
-                                <td><p>
+                                <td>
+                                  <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                    <input class="span2" size="16" type="text" value="12-02-2012" name="dob">
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                  </div>
+                                </td>
+                                <!--<td><p>
                                     <span>วันเกิด: </span> &nbsp&nbsp
                                     <input type="date" class="datepicker" name="dob">
-                                </p></td>
+                                </p></td>-->
                             </tr>
                         </tbody>
                     </table>
@@ -116,8 +116,8 @@
                                 </div></td>
                             </tr>
                             <tr>
-                                <td><label for="icon_prefix" class="email-label" name="email">กรอกอีเมล์ของคุณ </label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email"></td>
-                                <td><label for="icon-prefix" class="email-label" name="email-comfirmation">กรอกอีเมล์ของคุณ อีกครั้ง</label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email"></td>
+                                <td><label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email"></td>
+                                <td><label for="icon-prefix" class="email-label">กรอกอีเมล์ของคุณ อีกครั้ง</label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email"></td>
                             </tr>
                         </tbody>
                 </table>
@@ -139,7 +139,8 @@
                 <li class="collection-item" style="padding-bottom: 20px;">
                     <div class="section"></div>
                     <div align="center">
-                      <input type="submit" id="registerForm" onclick="submitRegisterForm()" name="name" value="ยืนยันการเข้าร่วม">
+                      <input type="submit" value="ยืนยันการเข้าร่วม">
+
                       <!--<button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" onclick="submitRegisterForm" name="action">ยืนยันการเข้าร่วม</button>
                       <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>-->
 

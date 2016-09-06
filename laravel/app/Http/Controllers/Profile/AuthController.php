@@ -87,7 +87,7 @@ class AuthController extends Controller
         $obj1->dob = $request['dob'];
         $obj1->gender = $request['gender'];
         $obj1->email = $request['email'];
-        $obj1->qp_id = $query;//->id;
+        $obj1->qp_id = $query->id;
         $obj1->save();
         $obj3 = Profile::all()->last();
         $id = $obj3->id;
