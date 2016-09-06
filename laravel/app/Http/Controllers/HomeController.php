@@ -28,10 +28,7 @@ class HomeController extends Controller
     {
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
-<<<<<<< HEAD
 
-=======
->>>>>>> f025b263b3e298ab7012c6145e5e8d4592210b6a
           $content = Content::join('category','contents.cate_id','=','category.id')
           ->select('category.*','contents.*')->get();
           return view('site.home',compact('headtitle','title','content'));
@@ -42,7 +39,7 @@ class HomeController extends Controller
       $title = 'Boompow';
       $content = Content::join('category','contents.cate_id','=','category.id')
       ->select('category.*','contents.*')->where('category_title','=', $cateid)->get();
-<<<<<<< HEAD
+
       $headtitle= Category::select('category_title_th')->where('category_title','=',$cateid)->first();
     //  dd($headtitle);
           return view('contents.subcontent',compact('content','title','headtitle'));
@@ -58,10 +55,10 @@ class HomeController extends Controller
         return view('contents.topic',compact('content','headtitle','article','title'));
         dd($article);
 
-=======
+
       //dd($content);
           return view('contents.subcontent',compact('content','title'));
->>>>>>> f025b263b3e298ab7012c6145e5e8d4592210b6a
+
     }
 
 }
