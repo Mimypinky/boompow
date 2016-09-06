@@ -19,8 +19,6 @@ Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
 Route::get('/content',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
 Route::get('/event/board/{$eid}','EventController@eventBoardindex');
-
-
 Route::resource('event','EventController');
 Route::post('event/create', 'EventController@store');
 
@@ -40,13 +38,9 @@ Route::get('myprofile',function(){
   $title = '...s Profile';
   return view('social.myprofile',compact('title'));
 });
-<<<<<<< HEAD
+
   Route::group(['middleware' => ['web']], function (){
     //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
     Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
     Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
   });
-  Route::auth();
-Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
-=======
->>>>>>> e092644b14d5019ddba975c1e7963ccd4baaddb8
