@@ -51,5 +51,6 @@ class HomeController extends Controller
       $article = Content::select('contents.*')->where('contents.id','=',$topicid)->get();
         return view('contents.topic',compact('content','headtitle','article','title'));
         dd($article);
+
     }
 }

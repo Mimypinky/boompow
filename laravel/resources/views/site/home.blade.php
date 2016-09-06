@@ -21,7 +21,6 @@
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
                   <div class="card-action">
-
                       <a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}">เพิ่มเติม</a>
                 </div>
               </div>
