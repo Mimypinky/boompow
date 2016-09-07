@@ -83,7 +83,7 @@ input[type="checkbox"].filled-in:checked + label:after {
 }
 
 #secnav-icon{
-    line-height: 3;
+    line-height: 2.3;
 }
 
 .myred-font {
@@ -468,7 +468,7 @@ span.mynoti:after {
 }
 
 .noti-right{
-    right: 5% !important;
+    right: 5.4% !important;
 }
 
 
@@ -484,7 +484,7 @@ span.mynoti:after {
     -o-border-radius: 68%;
     position: absolute;
     top: 19%;
-    right: 16.8%;
+    right: 17.6%;
     line-height: 25px;
     letter-spacing: 1px;
     text-align: center;
@@ -497,7 +497,8 @@ span.mynoti:after {
     box-shadow: none;
 }
 .secnav{
-    margin-left: 14% !important;
+    margin-left: 11% !important;
+    line-height: 3.3;
 }
 
 #dropdownhelp{
@@ -647,7 +648,7 @@ article img {
 /*ipad Horizontal */
 @media screen and (max-width: 1025px) {  
     .secnav{
-        margin-left: 3% !important;
+        margin-left: 0.4% !important;
     }
     .likeicon{
         margin-left: -20px;
@@ -700,7 +701,7 @@ article img {
 
     }
     .mynoti{
-        right: 21%;
+        right: 22%;
     }
     .noti-right{
         right: 6.4% !important;
