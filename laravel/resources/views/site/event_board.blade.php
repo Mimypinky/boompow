@@ -13,13 +13,16 @@
         <div class="col s10">
             <div class="card" style="margin-top: 0">
                 <div class="card-image" >
-                    <img src="img/polygons.jpg"  id="eve_img" >
-                    <span class="card-title">ชื่อกิจกรรม</span>
+                    <img src="{{url('img/polygons.jpg')}}"  id="eve_img" >
+                    <span class="card-title">{{$eve_name->title}}</span>
                 </div>
                 <div class="card-content">
-                    <p >สร้างโดย <a href="Social-Profile.html" style="color: #0d47a1;">พรทิพย์ มัชัย </a>
+                  @if($eve_name->creator == $user)
+                  <p ><span class=" right" style=" margin-right: 10px;"><i class="fa  fa-user"></i> คุณ</span>
+                  @else
+                    สร้างโดย <a href="Social-Profile.html" style="color: #0d47a1;">{{$eve_name->fname.' '.$eve_name->lname}}</a>
+                  @endif
                     <a id="status_join "class="waves-effect waves-light btn  red right" style="color: white;"><i class="fa fa-times"></i> ลบกิจกรรม</a>
-                    <span class="waves-effect waves-light btn light-green darken-1 right" style="color: white; margin-right: 10px;"><i class="fa  fa-user"></i> กิจกรรมของฉัน</span>
                     </p>
                 </div>
             </div>
@@ -339,6 +342,6 @@
                     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
             </div>
-        
+
 
 @stop

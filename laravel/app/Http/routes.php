@@ -18,9 +18,10 @@ Route::get('/content/{category_title}', 'HomeController@showContent');
 Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
 Route::get('/content',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
-Route::get('/event/board/{$eid}','EventController@eventBoardindex');
+Route::get('/event/board/{eid}','EventController@eventBoardindex');
 Route::resource('event','EventController');
 Route::post('event/create', 'EventController@store');
+Route::get('/event/remove/{eve_id}'.'EventController@deleteEvent');
 
 Route::auth();
 Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);

@@ -189,102 +189,14 @@ function unjoinedEvent(){
 
     <div id="attendevent" class="col s12">
       <ul class="collection" data-collapsible="accordion">
-        <li class=" collection-item"><div class="row">
-          <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-            <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">ชื่อกิจกรรม<span>
-              <a href="#partiList" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
-              <div id="partiList" class="modal" style="width: 500px;">
-                <ul class="collection">
-                  <li class="collection-item avatar">
-                    <img src="img/f1.jpg" alt="" class="circle">
-                    <p>First Line </p>
-                    <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                  </li>
-                  <li class="collection-item avatar">
-                    <img src="img/f1.jpg" alt="" class="circle">
-                    <p>First Line </p>
-                    <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                  </li>
-                  <li class="collection-item avatar">
-                    <img src="img/f1.jpg" alt="" class="circle">
-                    <p>First Line </p>
-                    <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                  </li>
-                </ul>
-                <div class="modal-footer">
-                  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div  style="margin-top: 20px background-color:#eeeeee;">
-            <div class="row" style="padding: 20px;">
-              <div class="col s4 center" >
-                <div class="card">
-                  <div class="card-image">
-                    <img class=" materialboxed" src="img/love.jpg">
-                  </div>
-                  <div class="card-action card-panel cyan accent-4" id="event_status" >
-                    <p style="color: white">วันนี้เป็นวันกิจกรรม!</p>
-                  </div>
-                </div>
-                <a style=" height: 100%"class="waves-effect waves-light btn-large modal-trigger " href="#cancel" id="EventButton"  value=""><i class="fa fa-minus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>ยกเลิก</a>
-                <a style=" height: 100%"class="waves-effect waves-light btn-large blue darken-4" href="event_activity_party.html"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
-              </div>
-              <div id="cancel" class="modal" style="width: 480px;">
-                <div class="modal-content">
-                  <p>คุณต้องการยกเลิกการเข้าร่วมกิจกรรม&nbsp;ชื่อกิจกรรม&nbsp;ใช่หรือไม่</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                  <a href="#!" class=" modal-action modal-close waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
-                </div>
-              </div>
-              <div class="col s6" style="margin-left: 10px;">
-                <div class="row" class="col s12" id="event_detail">
-                  <table cellpadding="5px">
-                    <tr>
-                      <td><p>ชื่อกิจกรรม</p></td>
-                      <td><p>ชื่อกิจกรรม</p></td>
-                    </tr>
-                    <tr>
-                      <td ><p>โดย</p></td>
-                      <td><p>ยายละม้าย คล้ายจะเป็นลม</p></td>
-                    </tr>
-                    <tr>
-                      <td><p>สถานที่</p></td>
-                      <td><p>สวนธนบุรีรัมย์</p></td>
-                    </tr>
-                    <tr>
-                      <td><p>วัน</p></td>
-                      <td><p>2&nbsp;-&nbsp;4 เมษายน 2559</p></td>
-                    </tr>
-                    <tr>
-                      <td><p>เวลา</p></td>
-                      <td><p>12.00น. &nbsp;-&nbsp;16.00น.</p></td>
-                    </tr>
-                    <tr>
-                      <td><p>เบอร์ติดต่อ</p></td>
-                      <td><p>081-999-9999</p></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"><p>ลงสนามด้วยความสง่า เก่งกล้าเหนือใคร เราเอาจริงมาชิงชัย ไม่มีใครหาญสู้ เรามาเชียร์เป็นแรงช่วยด้วยใจของเพื่อนพ้อง บางมดจะได้ครองความเป็นหนึ่งเหนือใคร ความเป็นหนึงเหนือใคร</p></td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
+        @foreach($joinEvent as $join)
         <li class=" collection-item">
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-              <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">ชื่อกิจกรรม<span>
-                <a href="#partiList" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
-                <div id="partiList" class="modal" style="width: 500px;">
+              <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$join->title}}<span></span>
+                <a href="#partiList2" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
+
+                <div id="partiList2" class="modal" style="width: 500px;">
                   <ul class="collection">
                     <li class="collection-item avatar">
                       <img src="img/f1.jpg" alt="" class="circle">
@@ -308,161 +220,68 @@ function unjoinedEvent(){
                 </div>
               </div>
             </div>
+
             <div  style="margin-top: 20px background-color:#eeeeee;">
+
               <div class="row" style="padding: 20px;">
                 <div class="col s4 center" >
                   <div class="card">
                     <div class="card-image">
                       <img class=" materialboxed" src="img/love.jpg">
                     </div>
-                    <div class="card-action card-panel yellow darken-4" id="event_status" >
-                      <p style="color: #fff;">กิจกรรมเริ่มพรุ่งนี้</p>
-                    </div>
                   </div>
-                  <a style=" height: 100%"class="waves-effect waves-light btn-large modal-trigger " href="#cancel2" id="EventButton"  value=""><i class="fa fa-minus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>ยกเลิก</a>
-                  <a style=" height: 100%"class="waves-effect waves-light btn-large blue darken-4" href="event_activity_party.html"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
-                </div>
-                <div id="cancel2" class="modal" style="width: 480px;">
-                  <div class="modal-content">
-                    <p>คุณต้องการยกเลิกการเข้าร่วมกิจกรรม&nbsp;ชื่อกิจกรรม&nbsp;ใช่หรือไม่</p>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
-                  </div>
-                </div>
-                <div class="col s6" style="margin-left: 10px;">
-                  <div class="row" class="col s12" id="event_detail">
-                    <table cellpadding="5px">
-                      <tr>
-                        <td><p>ชื่อกิจกรรม</p></td>
-                        <td><p>ชื่อกิจกรรม</p></td>
-                      </tr>
-                      <tr>
-                        <td ><p>โดย</p></td>
-                        <td><p>คุณสมร</p></td>
-                      </tr>
-                      <tr>
-                        <td><p>สถานที่</p></td>
-                        <td><p>สวนธนบุรีรัมย์</p></td>
-                      </tr>
-                      <tr>
-                        <td><p>วัน</p></td>
-                        <td><p>2&nbsp;-&nbsp;4 เมษายน 2559</p></td>
-                      </tr>
-                      <tr>
-                        <td><p>เวลา</p></td>
-                        <td><p>12.00น. &nbsp;-&nbsp;16.00น.</p></td>
-                      </tr>
-                      <tr>
-                        <td><p>เบอร์ติดต่อ</p></td>
-                        <td><p>081-999-9999</p></td>
-                      </tr>
-                      <tr>
-                        <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
-                      </tr>
-                      <tr>
-                        <td colspan="2"><p>ลงสนามด้วยความสง่า เก่งกล้าเหนือใคร เราเอาจริงมาชิงชัย ไม่มีใครหาญสู้ เรามาเชียร์เป็นแรงช่วยด้วยใจของเพื่อนพ้อง บางมดจะได้ครองความเป็นหนึ่งเหนือใคร ความเป็นหนึงเหนือใคร</p></td>
-                      </tr>
-                    </table>
-                  </div>
+              </div>
+
+              <div class="col s6" style="margin-left: 10px;">
+                <div class="row" class="col s12" id="event_detail">
+                  <table >
+                    <tr>
+
+                      <td><p>ชื่อกิจกรรม</p></td>
+                      <td><p>{{$join->title}}</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>โดย</p></td>
+                      <td><p>{{$join->fname.'  '.$data->lname}}</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>สถานที่</p></td>
+                      <td><p>{{$join->location}}</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>เริ่มวันที่ </p></td>
+                      <td><p>{{$join->start_date}}ถึง วันที่ {{$join->finish_date}}</p></td>
+
+                    </tr>
+                    <tr>
+                      <td><p>เวลา</p></td>
+                      <td><p>{{$join->start_time}}ถึง{{$join->finish_time}}</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>เบอร์ติดต่อ</p></td>
+                      <td><p>{{$join->contact}}</p></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><p>{{$join->description}}</p></td>
+                    </tr>
+
+                  </table>
+
                 </div>
               </div>
             </div>
-          </li>
-          <li class=" collection-item">
-            <div class="row">
-              <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-                <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">ชื่อกิจกรรม<span>
-                  <a href="#partiList" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
-                  <div id="partiList" class="modal" style="width: 500px;">
-                    <ul class="collection">
-                      <li class="collection-item avatar">
-                        <img src="img/f1.jpg" alt="" class="circle">
-                        <p>First Line </p>
-                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                      </li>
-                      <li class="collection-item avatar">
-                        <img src="img/f1.jpg" alt="" class="circle">
-                        <p>First Line </p>
-                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                      </li>
-                      <li class="collection-item avatar">
-                        <img src="img/f1.jpg" alt="" class="circle">
-                        <p>First Line </p>
-                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                      </li>
-                    </ul>
-                    <div class="modal-footer">
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div  style="margin-top: 20px background-color:#eeeeee;">
-                <div class="row" style="padding: 20px;">
-                  <div class="col s4 center" >
-                    <div class="card">
-                      <div class="card-image">
-                        <img class=" materialboxed" src="img/love.jpg">
-                      </div>
-                      <div class="card-action card-panel green darken-2" id="event_status" >
-                        <p style="color: white;">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
-                      </div>
-                    </div>
-                    <a style="height: 100%"class="waves-effect waves-light btn-large modal-trigger" href="#cancel3" id="EventButton" value=""><i class="fa fa-minus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>ยกเลิก</a>
-                    <a style=" height: 100%"class="waves-effect waves-light btn-large blue darken-4" href="event_activity_party.html"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
-                  </div>
-                  <div id="cancel3" class="modal" style="width: 480px;">
-                    <div class="modal-content">
-                      <p>คุณต้องการยกเลิกการเข้าร่วมกิจกรรม&nbsp;ชื่อกิจกรรม&nbsp;ใช่หรือไม่</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                      <a href="#!" class=" modal-action modal-close waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
-                    </div>
-                  </div>
-                  <div class="col s6" style="margin-left: 10px;">
-                    <div class="row" class="col s12" id="event_detail">
-                      <table cellpadding="5px">
-                        <tr>
-                          <td><p>ชื่อกิจกรรม</p></td>
-                          <td ><p>ชื่อกิจกรรม</p></td>
-                        </tr>
-                        <tr>
-                          <td ><p>โดย</p></td>
-                          <td><p>คุณสมร</p></td>
-                        </tr>
-                        <tr>
-                          <td><p>สถานที่</p></td>
-                          <td><p>สวนธนบุรีรัมย์</p></td>
-                        </tr>
-                        <tr>
-                          <td><p>วัน</p></td>
-                          <td><p>2&nbsp;-&nbsp;4 เมษายน 2559</p></td>
-                        </tr>
-                        <tr>
-                          <td><p>เวลา</p></td>
-                          <td><p>12.00น. &nbsp;-&nbsp;16.00น.</p></td>
-                        </tr>
-                        <tr>
-                          <td><p>เบอร์ติดต่อ</p></td>
-                          <td><p>081-999-9999</p></td>
-                        </tr>
-                        <tr>
-                          <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
-                        </tr>
-                        <tr>
-                          <td colspan="2"><p>ลงสนามด้วยความสง่า เก่งกล้าเหนือใคร เราเอาจริงมาชิงชัย ไม่มีใครหาญสู้ เรามาเชียร์เป็นแรงช่วยด้วยใจของเพื่อนพ้อง บางมดจะได้ครองความเป็นหนึ่งเหนือใคร ความเป็นหนึงเหนือใคร</p></td>
-                        </tr>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+          </div>
+        </li>
+@endforeach
+
           </ul>
         </div>
+
+
+
         <div id="myevent" class="col s12">
 
           <ul class="collection">
@@ -549,12 +368,21 @@ function unjoinedEvent(){
                 </div>
               </li>
             </ul>
+            @foreach($myEvent as $mine)
             <li class=" collection-item">
+<div class="row">
 
               <div class="row">
-                <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-                  <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">ชื่อกิจกรรม<span>
-                    <a href="#myevePartiList" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
+                <div class="col s12" style="margin-top: 10px; margin-bottom: -10px;">
+                  <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$mine->title}}
+
+                    <a href="#myevePartiList" class="modal-trigger">
+                      <div class="chip" align="right">7 ผู้เข้าร่วม</div>
+                      </a>
+                      <a style="float:right"class="waves-effect waves-light modal-trigger  " href="#edit" id="EventButton"  value="">
+                        <i class="fa fa-pencil-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>แก้ไข </a>
+                      </div>
+
                     <div id="myevePartiList" class="modal" style="width: 500px;">
 
                       <ul class="collection">
@@ -589,8 +417,8 @@ function unjoinedEvent(){
 
                 </div>
 
-                <div  style="margin-top: 20px background-color:#eeeeee;">
-                  <div class="row" style="padding: 20px;">
+                <div  >
+                  <div class="row" >
                     <div class="col s4 center" >
                       <div class="card">
                         <div class="card-image">
@@ -601,21 +429,26 @@ function unjoinedEvent(){
                         </div>
 
                       </div>
-                      <a style=" height: 100%"class="waves-effect waves-light btn modal-trigger " href="#edit" id="EventButton"  value=""><i class="fa fa-pencil-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>แก้ไข </a>
+
                       <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn red" href="#eve-del"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
-                      <a style=" height: 100%; margin-top: 15px;"class="waves-effect waves-light btn blue darken-4" href="event_activity_owner.html"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
+                      <a style=" height: 100%;"class="waves-effect waves-light btn blue darken-4" href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
+
 
 
                     </div>
+                    <!---ส่วนของ delete event-->
                     <div id="eve-del" class="modal" style="width: 480px;">
                       <div class="modal-content">
                         <p>คุณต้องการลบกิจกรรม&nbsp;ชื่อกิจกรรม&nbsp;ใช่หรือไม่</p>
                       </div>
                       <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                        <a href="#!" class=" modal-action waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
+                        <a  class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
+                        <a href="{{ url('event/remove/'.$mine->id) }}" class=" modal-action waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
                       </div>
                     </div>
+
+
+                    <!--ส่วนของ edit event-->
                     <div id="edit" class="modal" style="width: 500px;height: 800px;">
                       <div class="modal-content">
                         <table>
@@ -639,14 +472,16 @@ function unjoinedEvent(){
                                   เวลาจัดกิจกรรม
                                 </td>
                                 <td>
-                                  <input id="stime" type="datetime" class="validate" width="50px" value="12.00" required>&nbsp;&nbsp;ถึง &nbsp;&nbsp;<input id="stime" type="datetime" class="validate" width="50px" value="16.00" required>
+                                  <input id="stime" type="datetime" class="validate" width="50px" value="12.00" required>&nbsp;&nbsp;ถึง &nbsp;&nbsp;
+                                  <input id="stime" type="datetime" class="validate" width="50px" value="16.00" required>
                                 </td>
                               </tr>
                               <tr>
                                 <td style="text-align: right;">
                                   วันที่
                                 </td>
-                                <td><input id="sdate" type="datetime" class="validate" width="50px" value="2-04-2559">&nbsp;&nbsp;ถึง &nbsp;&nbsp;<input id="edate" type="datetime" class="validate" width="50px" required value="4-04-2559"></td>
+                                <td><input id="sdate" type="datetime" class="validate" width="50px" value="2-04-2559">&nbsp;&nbsp;ถึง &nbsp;&nbsp;
+                                  <input id="edate" type="datetime" class="validate" width="50px" required value="4-04-2559"></td>
                               </tr>
                               <tr>
                                 <td style="text-align: right;">
@@ -697,33 +532,35 @@ function unjoinedEvent(){
                         <table cellpadding="5px">
                           <tr >
                             <td ><p>ชื่อกิจกรรม</p></td>
-                            <td ><p>ชื่อกิจกรรม</p></td>
+                            <td ><p>{{$mine->title}}</p></td>
                           </tr>
                           <tr>
                             <td ><p>โดย</p></td>
-                            <td><p>คุณสมร</p></td>
+                            <td><p>{{$mine->fname.'  '.$mine->lname}}</p></td>
                           </tr>
                           <tr>
                             <td><p>สถานที่</p></td>
-                            <td><p>สวนธนบุรีรัมย์</p></td>
+                            <td><p>{{$mine->location}}</p></td>
                           </tr>
+
                           <tr>
-                            <td><p>วัน</p></td>
-                            <td><p>2&nbsp;-&nbsp;4 เมษายน 2559</p></td>
+                            <td><p>เริ่มวันที่ </p></td>
+                            <td><p>{{$mine->start_date}}ถึง วันที่ {{$mine->finish_date}}</p></td>
+
                           </tr>
                           <tr>
                             <td><p>เวลา</p></td>
-                            <td><p>12.00น. &nbsp;-&nbsp;16.00น.</p></td>
+                            <td><p>{{$mine->start_time}}ถึง{{$mine->finish_time}}</p></td>
                           </tr>
                           <tr>
                             <td><p>เบอร์ติดต่อ</p></td>
-                            <td><p>081-999-9999</p></td>
+                            <td><p>{{$mine->contact}}</p></td>
                           </tr>
                           <tr>
                             <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
                           </tr>
                           <tr>
-                            <td colspan="2"><p>ลงสนามด้วยความสง่า เก่งกล้าเหนือใคร เราเอาจริงมาชิงชัย ไม่มีใครหาญสู้ เรามาเชียร์เป็นแรงช่วยด้วยใจของเพื่อนพ้อง บางมดจะได้ครองความเป็นหนึ่งเหนือใคร ความเป็นหนึงเหนือใคร</p></td>
+                            <td colspan="2"><p>{{$mine->description}}</p></td>
                           </tr>
                         </table>
 
@@ -733,6 +570,7 @@ function unjoinedEvent(){
                   </div>
                 </div>
               </li>
+              @endforeach
             </ul>
 
             @stop
