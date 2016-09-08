@@ -39,12 +39,3 @@ Route::get('myprofile',function(){
   $title = '...s Profile';
   return view('social.myprofile',compact('title'));
 });
-<<<<<<< HEAD
-
-  Route::group(['middleware' => ['web']], function (){
-    //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
-    Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
-    Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
-  });
-=======
->>>>>>> 22adb3f53ab4bd80d5aa788fbb60356de0ce07d9
