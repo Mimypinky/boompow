@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Event;
 use App\Users;
 use App\EventPhotos;
+use App\JoinEvent;
 use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
@@ -20,15 +21,35 @@ class EventController extends Controller
     public function index()
     {
       if(Auth::check()){
+        $user =Auth::user()->id;
         $title = 'กิจกรรม';
         $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
             ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
             ->get();
-        return view('site.event',compact('title','event'));
+        $myEvent = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
+            ->where('creator','=',$user)
+            ->get();
+        $joinEvent = JoinEvent::join('accounts','join_event.user_id','=','accounts.id')
+        ->join('events','join_event.eve_id','=','events.id')
+        ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
+        ->where('user_id','=',$user)
+        ->get();
+
+
+        return view('site.event',compact('title','event','myEvent','joinEvent'));
 
       }else {
-        echo 'please login';
+        return view('site.home');
       }
+
+    }
+    public function deleteEvent(Request  $req){
+
+      $eve_id= $req->eve_id;
+      $deleted_eve = find($eve_id);
+      $deleted_eve = delete();
+      return view('event');
 
     }
 
@@ -114,9 +135,17 @@ class EventController extends Controller
     {
         //
     }
-    public function eventBoardindex($eid)
+    public function eventBoardindex(Request $req)
     {
-      return view('site.event_board');
+      $eid = $req->eid;
+      $user = Auth::user()->id;
+      $eve_name = Event::select('events.*')->where('id','=',$eid)->first();
+
+
+      $title = $eve_name->title;
+      return view('site.event_board',compact('title','eve_name','user'));
+
     }
+
 
 }
