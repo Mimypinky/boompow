@@ -1,3 +1,6 @@
+body{
+    font-family: 'Mitr', sans-serif;
+}
 p{
     font-size: 14pt;
 }
@@ -79,6 +82,10 @@ input[type="checkbox"].filled-in:checked + label:after {
           transform: translateX(-50%);
 }
 
+#secnav-icon{
+    line-height: 2.3;
+}
+
 .myred-font {
     color: #EE6E74;
 }
@@ -94,7 +101,9 @@ input[type="checkbox"].filled-in:checked + label:after {
 }
 
 .mylogo{
-	width: 200px;	
+	width: 200px;
+    margin-top: 7%;
+    margin-left: -18%;	
 }
 
 nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
@@ -182,7 +191,9 @@ nav ul a{
 	margin: 14px;
 }
 
-
+#mysearch.input-field input[type="search"]{
+    line-height: normal;
+}
 
 
 
@@ -394,8 +405,8 @@ a{
 }
 
 .myicon{
-    width: 31px;
-    margin-top: 18px;
+    width: 28px;
+    margin-top: 14px;
 
 }
 .mypropic{
@@ -452,6 +463,33 @@ span.badge.new:after {
     content: " ใหม่";
 }
 
+span.mynoti:after {
+    content: "";
+}
+
+.noti-right{
+    right: 5.4% !important;
+}
+
+
+.mynoti{
+    font-size: 13px;
+    color: #FFFFFF;
+    background: #ff7761;
+    width: 22px;
+    height: 22px;
+    border-radius: 68%;
+    -webkit-border-radius: 68%;
+    -moz-border-radius: 68%;
+    -o-border-radius: 68%;
+    position: absolute;
+    top: 19%;
+    right: 17.6%;
+    line-height: 25px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 #main-nav{
     position: fixed;
      z-index: 999;
@@ -459,7 +497,8 @@ span.badge.new:after {
     box-shadow: none;
 }
 .secnav{
-    margin-left: 14% !important;
+    margin-left: 11% !important;
+    line-height: 3.3;
 }
 
 #dropdownhelp{
@@ -609,7 +648,7 @@ article img {
 /*ipad Horizontal */
 @media screen and (max-width: 1025px) {  
     .secnav{
-        margin-left: 3% !important;
+        margin-left: 0.4% !important;
     }
     .likeicon{
         margin-left: -20px;
@@ -660,7 +699,21 @@ article img {
         border: 1px solid #e0e0e0;
         border-radius: 5px;
 
-    }    
+    }
+    .mynoti{
+        right: 22%;
+    }
+    .noti-right{
+        right: 6.4% !important;
+    }
+
+    
+
+    .mylogo {
+        width: 180px;
+        margin-left: -23%;
+        margin-top: 10%;
+    }   
 }
 
 /*ipad Vertical */

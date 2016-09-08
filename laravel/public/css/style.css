@@ -1,10 +1,26 @@
+@font-face {
+    font-family: 'sukhumvitregular';
+    src: url('fonts/sukhumvit-webfont.eot');
+    src: url('fonts/sukhumvit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sukhumvit-webfont.woff2') format('woff2'),
+         url('fonts/sukhumvit-webfont.woff') format('woff'),
+         url('fonts/sukhumvit-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'sukhumvitregular', sans-serif;
+
 }
-/* ใช้เฉพาะหัวข้อ */
+
+a{
+  font-size: 18px !important;
+}
+/*ใช้เฉพาะหัวข้อ
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Kanit', sans-serif;
-}
+  font-family: 'Taviraj', sans-serif;
+}*/
 a .breadcrumb{
 	color: #000 !important;
 	text-decoration: none!important;

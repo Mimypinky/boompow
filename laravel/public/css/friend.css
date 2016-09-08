@@ -51,11 +51,29 @@ a.unfollow:hover {
 }
 
 a.unfollow:hover:after {
-	content: "เลิกติดตาม";
+	content: "เลิกเป็นเพื่อน";
 }
 a.unfollow:hover span {
 	display: none;
 }
+
+a.quit {
+	font-size: 1em;
+	width: 150px;
+	background-color: #4db6ac;
+}
+
+  a.quit:hover {
+	background-color: #c62828;
+}
+
+a.quit:hover:after {
+	content: "ยกเลิกกิจกรรม";
+}
+a.quit:hover span {
+	display: none;
+}
+
 
 img.following {
 	width: 100px;
@@ -74,7 +92,7 @@ span.align-friend-name{
 	    top: 30px;
     position: absolute;
     margin-left: 20px;
-    	white-space: nowrap; 
+    	white-space: nowrap;
 	text-overflow: ellipsis;
 	width: 66%;
 	overflow: hidden;
@@ -111,7 +129,7 @@ span.follow-status {
 	    top: 30px;
     position: absolute;
     margin-left: 20px;
-    	white-space: nowrap; 
+    	white-space: nowrap;
 	text-overflow: ellipsis;
 	width: 50%;
 	overflow: hidden;

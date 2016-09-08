@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class JoinEvent extends Model
 {
     protected $table = 'join_event';
+    public $timestamps = true;
     public function event()
     {
         return $this->belongsTo('App\Event', 'eve_id');

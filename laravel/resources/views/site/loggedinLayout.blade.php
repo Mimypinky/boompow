@@ -96,7 +96,7 @@
 
     <ul class="right hide-on-med-and-down">
 
-        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user-plus fa-2x right" aria-hidden="true"></i>สมัครสมาชิก</a></li>
+   <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user-plus fa-2x right" aria-hidden="true"></i>สมัครสมาชิก</a></li>
         <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>เข้าสู่ระบบ</a></li>
 
     </ul>

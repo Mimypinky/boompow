@@ -17,6 +17,11 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/newsfeed.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss2.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mimcss.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
+
     <!--Import bootstrap.css
 
     <!--Let browser know website is optimized for mobile-->
@@ -27,17 +32,18 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
 
-
+    <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
+
   <script type="text/javascript">
-        /*$( document ).ready(function(){
+        $( document ).ready(function(){
          $(".button-collapse2").sideNav();
          $(".button-collapse").sideNav();
      });
-     */$(document).ready(function () {
+     $(document).ready(function () {
          $('.modal-trigger').leanModal();
          $('#loginform').openModal();
          $('#loginform').closeModal();
@@ -97,12 +103,20 @@
 
     <ul class="right hide-on-med-and-down">
       @if(Auth::guest())
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user-plus fa-2x right" aria-hidden="true"></i>สมัครสมาชิก</a></li>
-      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>เข้าสู่ระบบ</a></li>
-      @else
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink " href="{{ url('/register') }}"><i class="fa fa-user fa-2x right" aria-hidden="true"></i>{{Auth::user()->username}}</a></li>
 
-      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="{{url('/logout')}}"><i class="fa fa-sign-in fa-2x right" aria-hidden="true"></i>ออกจากระบบ</a></li>
+          <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
+          <strong>สมัครสมาชิก</strong></a></li>
+          <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
+
+
+
+      @else
+      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>ข้อมูลส่วนตัว</a></li>
+
+      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="{{url('/newsfeed')}}"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span>สังคมของฉัน</a></li>
+
+      <li><a class="navlink" href="{{url('/chat')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i><span class="mynoti">4</span>ข้อความ</a></li>
+
 
 
       @endif
@@ -112,44 +126,102 @@
 
     <!--Slidenav mobile-->
     <ul id="mobile-demo" class="side-nav" >
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">แก้ไขข้อมูลส่วนตัว</a></li>
+                <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">4</span></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="/newsfeed">กระดานข่าว </a></li>
+                <li><a href="/friends">เพื่อน</a></li>
+                <li><a href="#!">รายการโปรด</a></li>
+                <li><a href="/event">กิจกรรม <span class="new badge">4</span></a></li>
+                <li><a href="/chat">ข้อความ <span class="new badge">4</span></a></li>
+                <li><a href="/notificate">แจ้งเตือน <span class="new badge">4</span></a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+
+
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">สาระน่ารู้<i class="material-icons">library_books</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{{url('/')}}">หน้าแรก</a></li>
+                <li><a href="{{url('/')}}">ตำรับอาหาร</a></li>
+                <li><a href="{{url('/')}}">บันเทิง</a></li>
+                <li><a href="{{url('/')}}">ครัวเรือน</a></li>
+                <li><a href="{{url('/')}}">ห้องข่าว</a></li>
+                <li><a href="{{url('/')}}">สิทธิประโยชน์</a></li>
+                <li><a href="{{url('/')}}">งานประดิษฐ์</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
     </ul>
     <!--End Slidenav mobile-->
+
     </div>
 
     <!-- Dropdownhelp Structure -->
     <ul id="dropdownhelp" class="dropdown-content">
     <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
-    @if(Auth::guest())
-    <li><a href="">สมัครสมาชิก</a></li>
-    <li><a href="#loginform">เข้าสู่ระบบ</a></li>
-    @else
-    <li><a href="">{{Auth::user()->username}}</a></li>
-    <li><a href="">ออกจากระบบ</a></li>
-    @endif
+    <!-- ถ้าอยู่หน้าไหนให้ไปตามหน้านั้น-->
     </ul>
 
+    <ul id="dropdownprofile" class="dropdown-content">
+        <li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>
+        <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
+
+    </ul>
+    <ul id="slide-out" class="side-nav">
+        <li><a href="{{url('/newsfeed')}}"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
+        <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
+        <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
+        <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
+        <li><a href="{{url('/chat')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
+        <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+    </ul>
 
     <!--Second Nav-->
+      <header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+          <ul class="secnav hide-on-med-and-down center">
 
-    <div class="second-nav nav-wrapper" style="background-color: #EE6E73;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
-    <ul class="secnav hide-on-med-and-down center" >
+              <li><a href="/"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+                  <!--Slide nav menu
+                  <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+              -->
+              <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+              <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+              <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+              <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
+              <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+              <li><a href="{{url('content/elder_promotion')}}"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+              <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+          </ul>
 
-        <li><a href="/"><i class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
             <!--Slide nav menu
             <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
         -->
-        <li><a href="{{ url('content/health') }}"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
-        <li><a href="#" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
-        <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
-        <li><a href="{{url('content/family')}}">
-          <img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
-        <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
-        <li><a href="{{url('content/elder_promotion')}}"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
-        <li><a href="{{url('content/diy')}}"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+
     </ul>
 
     <!--Slidenav -->
@@ -162,7 +234,7 @@
                     <a class="collapsible-header">Dropdown</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!" >First</a></li>
+                            <li><a href="#!">First</a></li>
                             <li><a href="#!">Second</a></li>
                             <li><a href="#!">Third</a></li>
                             <li><a href="#!">Fourth</a></li>
@@ -174,29 +246,29 @@
         <!--End Slidenav -->
     </div>
     </nav>
-
     <!-- Dropdownhealth Structure -->
     <ul id="dropdownfood" class="dropdown-content">
-    <li><a href="{{url('content/sweets')}}">ของหวาน</a></li>
-    <li><a href="{{url('content/foods')}}">ของคาว</a></li>
+        <li><a href="{{url('content/sweets')}}">ของหวาน</a></li>
+        <li><a href="{{url('content/foods')}}">ของคาว</a></li>
     </ul>
 
     <!-- Dropdownent Structure -->
     <ul id="dropdownent" class="dropdown-content">
-    <li><a href="{{url('content/radio')}}">วิทยุ</a></li>
-    <li><a href="{{url('content/movie')}}">ดูหนัง</a></li>
-    <li><a href="{{url('content/music')}}">ฟังเพลง</a></li>
-    <li><a href="{{url('content/dhamma')}}">ธรรมมะ</a></li>
+        <li><a href="{{url('content/radio')}}">วิทยุ</a></li>
+        <li><a href="{{url('content/movie')}}">ดูหนัง</a></li>
+        <li><a href="{{url('content/music')}}">ฟังเพลง</a></li>
+        <li><a href="{{url('content/dhamma')}}">ธรรมมะ</a></li>
     </ul>
 
     <!-- Dropdownnews Structure -->
     <ul id="dropdownnews" class="dropdown-content">
-    <li><a href="{{url('content/entertain_news')}}">ข่าวบันเทิง</a></li>
-    <li><a href="{{url('content/sport_news')}}">ข่าวกีฬา</a></li>
-    <li><a href="{{url('content/economic_news')}}">ข่าวเศรษฐกิจ</a></li>
-    <li><a href="{{url('content/politics_news')}}">ข่าวการเมือง</a></li>
+        <li><a href="{{url('content/entertain_news')}}">ข่าวบันเทิง</a></li>
+        <li><a href="{{url('content/sport_news')}}">ข่าวกีฬา</a></li>
+        <li><a href="{{url('content/scnomic_news')}}">ข่าวเศรษฐกิจ</a></li>
+        <li><a href="{{url('content/politics_news')}}">ข่าวการเมือง</a></li>
 
     </ul>
+</header>
     </nav>
 <!--<header>
   <div class="row">
