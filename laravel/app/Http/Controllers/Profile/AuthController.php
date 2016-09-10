@@ -13,7 +13,7 @@ use App\Question;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
-use Session;
+use Validator;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -79,6 +79,14 @@ class AuthController extends Controller
         return back()->withInput();
       }
 
+    public function messages()
+      {
+        return [
+            'email.required' => 'กรุณากรอกอีเมล์',
+            'email.unique' => 'อีเมล์ถูกใช้ไปแล้ว กรุณากรอกอีเมล์อื่น',
+        ];
+      }
+
     public function store(Request $request)
     {
         $data = $request['question'];
@@ -102,6 +110,8 @@ class AuthController extends Controller
         $obj2->save();
 
     }
+
+
 
 
     /**
