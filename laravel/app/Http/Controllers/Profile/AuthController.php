@@ -86,6 +86,17 @@ class AuthController extends Controller
             'email.unique' => 'อีเมล์ถูกใช้ไปแล้ว กรุณากรอกอีเมล์อื่น',
         ];
       }
+    public function checkAvailableUsername(Request $request){
+        $username = $request['username'];
+        $query = DB::table('accounts')->select('username')->where('username', $request['username'])->first();
+        if($query){
+          echo '<span>ไม่สามารถใช้ได้</span>';
+          return $username;
+        }else {
+          echo '<span>สามารถใช้ได้</span>';
+          return $username;
+        }
+    }
 
     public function store(Request $request)
     {

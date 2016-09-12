@@ -25,6 +25,7 @@ Route::get('/event/remove/{eve_id}'.'EventController@deleteEvent');
 
 Route::auth();
 Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
+Route::post('/checkAvailableUsername',[ 'as' => 'checkAvailableUsername', 'uses' => 'Profile\AuthController@checkAvailableUsername']);
 Route::group(['middleware' => ['web']], function (){
   //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);

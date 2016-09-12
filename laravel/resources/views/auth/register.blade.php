@@ -1,5 +1,24 @@
 @extends('site.layout')
 @section('maincontent')
+<script>
+  $(document).ready(function(){
+    $.ajax({
+      type: 'post',
+      url: {{'route('/checkAvailableUsername')'}},
+      data: data,
+      dataType: 'json',
+      success: function(data){
+        // success logic
+      }),
+      error: function(data){
+        var errors = data.responseJSON;
+        console.log(errors);
+        // Render the errors with js ...
+      }
+    });
+  });
+
+</script>
 
 <div class="container" style="width: 90%;">
 
@@ -16,13 +35,22 @@
                         <div class="col s3" style="margin-top: 19px;"><p style="margin-left: 40%;">ชื่อผู้ใช้</p></div>
                         <div class="col s6 ">
                             <form class="col s11">
-                                    <input type="text" class="validate" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ">
+                                    <input type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ">
                             </form>
                         </div>
                         <div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>
                     </div>
                 </center>
-                <div class="section"></div>
+                <div class="section">
+                  <div id="alert" class="card green darken-1" style="box-shadow: none;">
+                      <div class="card-content white-text">
+                          <i class="left material-icons">verified_user</i>ชื่อผู้ใช้: <span></span> <span id="#usernameAvailability"></span>
+                      </div>
+                  </div>
+
+                </div>
+
+                <!--<div class="section"></div>
                 <div id="alert" class="card green darken-1" style="box-shadow: none;">
                     <div class="card-content white-text">
                         <i class="left material-icons">verified_user</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> สามารถใช้ได้
@@ -34,6 +62,7 @@
                         <i class="left material-icons">cancel</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> ไม่สามารถใช้ได้
                     </div>
                 </div>
+              -->
                 </li>
                 <li class="collection-item"><i class="left material-icons">perm_identity</i>
                 <p>ข้อมูลส่วนตัว</p>
