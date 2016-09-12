@@ -1,14 +1,17 @@
 @extends('site.layout')
 @section('maincontent')
 <script>
-  $(document).ready(function(){
+
+$(document).ready(function(){
+  $('#username').blur(function(){
+    var username = $(this).val();
     $.ajax({
-      type: 'post',
-      url: {{'route('/checkAvailableUsername')'}},
-      data: data,
-      dataType: 'json',
+      type: 'POST',
+      url: {{ url('/checkAvailableUsername') }},
+      data: {username: username},
+      dataType: 'JSON',
       success: function(data){
-        // success logic
+        $(#usernameAvailability).html(html);
       }),
       error: function(data){
         var errors = data.responseJSON;
@@ -17,7 +20,7 @@
       }
     });
   });
-
+});
 </script>
 
 <div class="container" style="width: 90%;">
@@ -41,17 +44,17 @@
                         <div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>
                     </div>
                 </center>
-                <div class="section">
-                  <div id="alert" class="card green darken-1" style="box-shadow: none;">
-                      <div class="card-content white-text">
-                          <i class="left material-icons">verified_user</i>ชื่อผู้ใช้: <span></span> <span id="#usernameAvailability"></span>
-                      </div>
-                  </div>
 
-                </div>
 
-                <!--<div class="section"></div>
-                <div id="alert" class="card green darken-1" style="box-shadow: none;">
+                <div class="section"></div>
+                @if ($errors->has('username'))
+                    <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                        <div class="card-content white-text">
+                            <i class="left material-icons">cancel</i><span>{{ $errors->first('username') }}</span>
+                        </div>
+                    </div>
+                @endif
+                <!--<div id="alert" class="card green darken-1" style="box-shadow: none;">
                     <div class="card-content white-text">
                         <i class="left material-icons">verified_user</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> สามารถใช้ได้
                     </div>
@@ -61,8 +64,8 @@
                     <div class="card-content white-text">
                         <i class="left material-icons">cancel</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> ไม่สามารถใช้ได้
                     </div>
-                </div>
-              -->
+                </div>-->
+
                 </li>
                 <li class="collection-item"><i class="left material-icons">perm_identity</i>
                 <p>ข้อมูลส่วนตัว</p>
@@ -72,11 +75,11 @@
                             <tr>
                                 <td><div class="input-field">
                                     <label for="icon_prefix">ชื่อ</label>
-                                    <input id="first_name" name="first_name" type="text" class="validate">
+                                    <input id="first_name" name="first_name" type="text" class="validate" value="{{ old('first_name' )}}">
                                 </div></td>
                                 <td><div class="input-field">
                                     <label for="icon_prefix">นามสกุล</label>
-                                    <input id="last_name" name="last_name" type="text" class="validate">
+                                    <input id="last_name" name="last_name" type="text" class="validate" value="{{ old('last_name' )}}">
                                 </div></td>
                             </tr>
                             <tr>
@@ -88,22 +91,50 @@
                                     <input name="gender" type="radio" id="female" value="female" />
                                     <label for="female" style="color: #424242 ;">หญิง</label>
                                 </p></td>
-                                <td>
+                                <!--<td>
                                   <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
                                     <input class="span2" size="16" type="text" value="12-02-2012" name="dob">
                                     <span class="add-on"><i class="icon-th"></i></span>
                                   </div>
-                                </td>
-                                <!--<td><p>
+                                </td>-->
+                                <td><p>
                                     <span>วันเกิด: </span> &nbsp&nbsp
                                     <input type="date" class="datepicker" name="dob">
-                                </p></td>-->
+                                </p></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="section"></div>
-                    <div id="alert" class="card green darken-1" style="box-shadow: none;">
+                    @if ($errors->has('first_name'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('first_name') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($errors->has('last_name'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('last_name') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($errors->has('gender'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('gender') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($errors->has('dob'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('dob') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    <!--<div id="alert" class="card green darken-1" style="box-shadow: none;">
                         <div class="card-content white-text">
                             <i class="left material-icons">verified_user</i> กรอกข้อมูลเรียบร้อย
                         </div>
@@ -113,7 +144,7 @@
                         <div class="card-content white-text">
                             <i class="left material-icons">cancel</i> กรุณากรอก <span>วันเกิด</span> ให้เรียบร้อย
                         </div>
-                    </div>
+                    </div>-->
 
                 </li>
                 <li class="collection-item"><i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
@@ -135,24 +166,53 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><div class="input-field">
+                                <td class="col s6"><div class="input-field">
                                     <label for="icon_prefix email-label">กรอกคำตอบของคุณ </label>
                                     <input id="answer" type="password" name="password" class="validate">
                                 </div></td>
-                                <td><div class="input-field">
+                                <td class="col s6"><div class="input-field">
                                     <label for="icon_prefix email-label">กรอกคำตอบของคุณอีกครั้ง </label>
-                                    <input id="confirm-answer" type="password" class="validate">
+                                    <input id="confirm-answer" name="password_confirmation" type="password" class="validate">
                                 </div></td>
                             </tr>
                             <tr>
-                                <td><label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email"></td>
-                                <td><label for="icon-prefix" class="email-label">กรอกอีเมล์ของคุณ อีกครั้ง</label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email"></td>
+                                <td colspan="1"><label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email"></td>
+                                <!--<td><label for="icon-prefix" class="email-label">กรอกอีเมล์ของคุณ อีกครั้ง</label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email"></td>-->
+
                             </tr>
                         </tbody>
                 </table>
 
                 <div class="section"></div>
-                    <div id="alert" class="card green darken-1" style="box-shadow: none;">
+                    @if ($errors->has('question'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('question') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($errors->has('password'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('password') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($errors->has('password_confirmation'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('password_confirmation') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($errors->has('email'))
+                        <div id="alert" class="card red darken-2" style="box-shadow: none;">
+                            <div class="card-content white-text">
+                                <i class="left material-icons">cancel</i><span>{{ $errors->first('email') }}</span>
+                            </div>
+                        </div>
+                    @endif
+                    <!--<div id="alert" class="card green darken-1" style="box-shadow: none;">
                         <div class="card-content white-text">
                             <i class="left material-icons">verified_user</i> กรอกข้อมูลเรียบร้อย
                         </div>
@@ -162,16 +222,16 @@
                         <div class="card-content white-text">
                             <i class="left material-icons">cancel</i> กรุณากรอก <span>อีเมล์</span> ให้ตรงกัน
                         </div>
-                    </div>
+                    </div>-->
                 </li>
 
                 <li class="collection-item" style="padding-bottom: 20px;">
                     <div class="section"></div>
                     <div align="center">
-                      <input type="submit" value="ยืนยันการเข้าร่วม">
+                      <!--<input type="submit" value="ยืนยันการเข้าร่วม">-->
 
-                      <!--<button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" onclick="submitRegisterForm" name="action">ยืนยันการเข้าร่วม</button>
-                      <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>-->
+                      <button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" name="action">ยืนยันการเข้าร่วม</button>
+                      <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>
 
                     <!--<a class="blue darken-3 btn waves-effect waves-light modal-trigger" href="#confirm-register">เข้าร่วม</a>
                     <a class="btn waves-effect waves-light" href="">ยกเลิก</a>-->

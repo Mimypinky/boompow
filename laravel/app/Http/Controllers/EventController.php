@@ -40,7 +40,8 @@ class EventController extends Controller
         return view('site.event',compact('title','event','myEvent','joinEvent'));
 
       }else {
-        return view('site.home');
+        echo 'Please login ..';
+        return redirect()->intended('/');
       }
 
     }
