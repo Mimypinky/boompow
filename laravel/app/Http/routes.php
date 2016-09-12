@@ -45,7 +45,7 @@ Route::get('/myprofile',function(){
   $title = '...s Profile';
   return view('social.myprofile',compact('title'));
 });
-<<<<<<< HEAD
+
 Route::get('/friends',function(){
   $title ='Boompow - My Friends';
   return view('social.friend',compact('title'));
@@ -58,5 +58,3 @@ Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
-=======
->>>>>>> a9173ea523067c748f52a2583539a6add991861b

@@ -111,7 +111,7 @@
 
 
       @else
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>ข้อมูลส่วนตัว</a></li>
+      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
 
       <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="{{url('/newsfeed')}}"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span>สังคมของฉัน</a></li>
 
