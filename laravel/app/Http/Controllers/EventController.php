@@ -44,13 +44,31 @@ class EventController extends Controller
       }
 
     }
-    public function deleteEvent(Request  $req){
+    public function deleteEvents($eid){
+          $event = Event::find($eid);
+          $event->delete();
+          return redirect('event');
+    }
+    public function joinEvents($eid){
+      $user =Auth::user()->id;
+      $join = new JoinEvent();
+      $join->eve_id = $req->eid;
+      $join->user_id = $user;
+      $join->save();
+    return redirect('event');
+    }
 
-      $eve_id= $req->eve_id;
-      $deleted_eve = find($eve_id);
-      $deleted_eve = delete();
-      return view('event');
-
+    public function editEvents($eid){
+      $event =Event::find($eid);
+      $event->description = $request['description'];
+      $event->start_time = $request['start_time'];
+      $event->finish_time = $request['finish_time'];
+      $event->start_date = $request['start_date'];
+      $event->finish_date = $request['finish_date'];
+      $event->location = $request['location'];
+      $event->contact = $request['contact'];
+      $event->title = $request['title'];
+      $event->save();
     }
 
     /**
@@ -86,7 +104,6 @@ class EventController extends Controller
       $obj1->contact = $request['contact'];
       $obj1->title = $request['title'];
       $obj1->save();
-
       return redirect('event');
     }
 
@@ -139,10 +156,9 @@ class EventController extends Controller
     {
       $eid = $req->eid;
       $user = Auth::user()->id;
-      $eve_name = Event::select('events.*')->where('id','=',$eid)->first();
-
-
-      $title = $eve_name->title;
+      $eve_name = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+      ->select('events.*','accounts.first_name as fname','accounts.last_name as lname')->where('events.id','=',$eid)->first();
+      $title = 'กระดานกิจกรรม - '.$eve_name->title;
       return view('site.event_board',compact('title','eve_name','user'));
 
     }

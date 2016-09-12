@@ -42,6 +42,11 @@ function unjoinedEvent(){
 });
 </script>
 
+<style>
+table{
+    margin-left: 3em;
+  }
+</style>
 <style type="text/css">
 
 @media screen and (max-width: 1025px) {
@@ -49,6 +54,7 @@ function unjoinedEvent(){
   .secnav{
     margin-left: 1%;
   }
+
 }
 
 
@@ -75,25 +81,17 @@ function unjoinedEvent(){
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
               <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
-                <a href="#partiList2" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
+                <a href="#partiList1" class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
 
-                <div id="partiList2" class="modal" style="width: 500px;">
+                <div id="partiList1" class="modal" style="width: 500px;">
                   <ul class="collection">
+                    @for($i=0;$i<=6;$i++)
                     <li class="collection-item avatar">
-                      <img src="img/f1.jpg" alt="" class="circle">
+                      <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
                       <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
+                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
                     </li>
-                    <li class="collection-item avatar">
-                      <img src="img/f1.jpg" alt="" class="circle">
-                      <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                    </li>
-                    <li class="collection-item avatar">
-                      <img src="img/f1.jpg" alt="" class="circle">
-                      <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                    </li>
+                    @endfor
                   </ul>
                   <div class="modal-footer">
                     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -121,7 +119,7 @@ function unjoinedEvent(){
                 </div>
 
                 <a class="waves-effect waves-light btn-large modal-trigger " href="#join" id="EventButton"  value=""><i class="fa fa-plus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>เข้าร่วม </a>
-                <a class="waves-effect waves-light btn-large blue darken-4" href="#"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
+                <a class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
 
                 <div id="join" class="modal" style="width: 480px;">
                   <div class="modal-content">
@@ -129,7 +127,7 @@ function unjoinedEvent(){
                   </div>
                   <div class="modal-footer">
                     <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
+                    <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
                   </div>
                 </div>
                 @endif
@@ -198,39 +196,46 @@ function unjoinedEvent(){
 
                 <div id="partiList2" class="modal" style="width: 500px;">
                   <ul class="collection">
+                    @for($i=1;$i<=6;$i++)
                     <li class="collection-item avatar">
-                      <img src="img/f1.jpg" alt="" class="circle">
+                      <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
                       <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
+                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
                     </li>
-                    <li class="collection-item avatar">
-                      <img src="img/f1.jpg" alt="" class="circle">
-                      <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                    </li>
-                    <li class="collection-item avatar">
-                      <img src="img/f1.jpg" alt="" class="circle">
-                      <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
-                    </li>
+                    @endfor
+
                   </ul>
                   <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">
+                      <i class="fa fa-times" aria-hidden="true"></i></a>
                   </div>
                 </div>
               </div>
             </div>
 
             <div  style="margin-top: 20px background-color:#eeeeee;">
-
               <div class="row" style="padding: 20px;">
-                <div class="col s4 center" >
-                  <div class="card">
-                    <div class="card-image">
-                      <img class=" materialboxed" src="img/love.jpg">
-                    </div>
+                  <div class="col s4 center" >
+                      <div class="card">
+                          <div class="card-image">
+                              <img class=" materialboxed" src="img/love.jpg">
+                          </div>
+                          <div class="card-action card-panel cyan accent-4" id="event_status" >
+                              <p style="color: white">วันนี้เป็นวันกิจกรรม!</p>
+                          </div>
+                      </div>
+                      <a style=" height: 100%"class="waves-effect waves-light btn-large modal-trigger " href="#cancel" id="EventButton"  value=""><i class="fa fa-minus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>ยกเลิก</a>
+                      <a style=" height: 100%"class="waves-effect waves-light btn-large blue darken-4" href="event_activity_party.html"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
                   </div>
-              </div>
+                  <div id="cancel" class="modal" style="width: 480px;">
+                      <div class="modal-content">
+                          <p>คุณต้องการยกเลิกการเข้าร่วมกิจกรรม&nbsp;ชื่อกิจกรรม&nbsp;ใช่หรือไม่</p>
+                      </div>
+                      <div class="modal-footer">
+                          <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
+                          <a href="#!" class=" modal-action modal-close waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
+                      </div>
+                  </div>
 
               <div class="col s6" style="margin-left: 10px;">
                 <div class="row" class="col s12" id="event_detail">
@@ -387,14 +392,14 @@ function unjoinedEvent(){
 
                       <ul class="collection">
                         <li class="collection-item avatar">
-                          <img src="img/f1.jpg" alt="" class="circle">
+                          <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
 
                           <p>First Line </p>
 
                           <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
                         </li>
                         <li class="collection-item avatar">
-                          <img src="img/f1.jpg" alt="" class="circle">
+                          <img src="url('img/f1.jpg')" alt="" class="circle">
 
                           <p>First Line </p>
 
@@ -430,8 +435,8 @@ function unjoinedEvent(){
 
                       </div>
 
-                      <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn red" href="#eve-del"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
-                      <a style=" height: 100%;"class="waves-effect waves-light btn blue darken-4" href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
+                      <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn-large red" href="#eve-del"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
+                      <a style=" height: 100%;"class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
 
 
 
@@ -443,7 +448,7 @@ function unjoinedEvent(){
                       </div>
                       <div class="modal-footer">
                         <a  class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                        <a href="{{ url('event/remove/'.$mine->id) }}" class=" modal-action waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
+                        <a href="{{url('/event/remove/'.$mine->id)}}" class=" modal-action waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
                       </div>
                     </div>
 
