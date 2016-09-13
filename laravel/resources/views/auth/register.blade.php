@@ -2,6 +2,7 @@
 @section('maincontent')
 <script>
 
+
 $(document).ready(function(){
   $('#username').blur(function(){
     var username = $(this).val();
@@ -41,7 +42,7 @@ $(document).ready(function(){
                                     <input type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ">
                             </form>
                         </div>
-                        <div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>
+                        <!--<div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>-->
                     </div>
                 </center>
 
@@ -224,56 +225,49 @@ $(document).ready(function(){
                         </div>
                     </div>-->
                 </li>
-
                 <li class="collection-item" style="padding-bottom: 20px;">
                     <div class="section"></div>
                     <div align="center">
+                      <span>
+
+                          <label for="filled-in-box" style="font-size: 18px;">อ่านข้อตกลงในการให้บริการ </label>
+                          <a class="modal-trigger" href="#" style="font-size: 24px;">ที่นี่</a><br>
+
+                      </span>
+                    </div>
+                    <div class="section"></div>
+                    <div align="center">
+                        <input type="checkbox" class="filled-in" id="filled-in-box"/>
+                        <label for="filled-in-box">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
+                    </div>
+                    <div class="section">
+
+                    </div>
+                    <div align="center">
                       <!--<input type="submit" value="ยืนยันการเข้าร่วม">-->
 
-                      <button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" name="action">ยืนยันการเข้าร่วม</button>
-                      <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>
+                      <input type="submit" id="submit" class="blue darken-3 btn waves-effect waves-light" style="font-size: 18px; padding-top: 2px" value="ตกลง">
+                      <!--<button style="float: none" class="blue darken-3 btn waves-effect waves-light " type="submit" name="action" id="submit">ตกลง</button>-->
+
+                      <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
+
+
 
                     <!--<a class="blue darken-3 btn waves-effect waves-light modal-trigger" href="#confirm-register">เข้าร่วม</a>
                     <a class="btn waves-effect waves-light" href="">ยกเลิก</a>-->
                     </div>
+
                 </li>
 
 
 
             </ul>
             </form>
+            
         </div>
 
     </div>
 
-    <!-- Confirm Register Modal Structure -->
-    <div id="confirm-register" class="modal" style="width: 480px; height: 360px">
-        <div class="modal-content">
-
-            <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
-            <h4 class="center">ยืนยันการเข้าร่วม</h4>
-            <div class="row">
-                <div class="input-field col s8 offset-s2">
-                    <span>คุณกำลังเข้าร่วมเป็นสมาชิกของ <a href="">Boompow </a> คุณแน่ใจหรือไม่?</span>
-                </div>
-            </div>
-            <div class="modal-footer" align="center">
-                <span>
-                    <label for="filled-in-box" style="font-size: 14px;">อ่านข้อตกลงในการให้บริการ </label>
-                    <a class="modal-trigger" href="#">ที่นี่</a><br>
-
-                </span>
-                <div class="section"></div>
-                <div align="center" style="margin-bottom: 10px;">
-                  <button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" onclick="submitRegisterForm" name="action">ยืนยันการเข้าร่วม</button>
-                  <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>
-
-
-                </div>
-
-            </div>
-
-    </div>
 
 </div>
 

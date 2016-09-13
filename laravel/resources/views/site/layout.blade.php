@@ -29,7 +29,7 @@
 
     <!--materialize javaScript-->
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
@@ -56,6 +56,7 @@
      $('select').material_select();
    });
  </script>
+
  <style>
 .wordwrap{
   overflow: hidden;

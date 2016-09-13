@@ -30,6 +30,7 @@ Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
 Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
+Route::get('/checkAvailableUsername',[ 'as' => 'checkAvailableUsername', 'uses' => 'Profile\AuthController@checkAvailableUsername']);
 Route::post('/checkAvailableUsername',[ 'as' => 'checkAvailableUsername', 'uses' => 'Profile\AuthController@checkAvailableUsername']);
 Route::group(['middleware' => ['web']], function (){
   //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
