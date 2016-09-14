@@ -1,28 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
-<script>
 
-
-$(document).ready(function(){
-  $('#username').blur(function(){
-    var username = $(this).val();
-    $.ajax({
-      type: 'POST',
-      url: {{ url('/checkAvailableUsername') }},
-      data: {username: username},
-      dataType: 'JSON',
-      success: function(data){
-        $(#usernameAvailability).html(html);
-      }),
-      error: function(data){
-        var errors = data.responseJSON;
-        console.log(errors);
-        // Render the errors with js ...
-      }
-    });
-  });
-});
-</script>
 
 <div class="container" style="width: 90%;">
 
@@ -39,7 +17,7 @@ $(document).ready(function(){
                         <div class="col s3" style="margin-top: 19px;"><p style="margin-left: 40%;">ชื่อผู้ใช้</p></div>
                         <div class="col s6 ">
                             <form class="col s11">
-                                    <input type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ">
+                                    <input type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ" onchange="checkAvailableUsername()">
                             </form>
                         </div>
                         <!--<div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>-->
@@ -48,6 +26,9 @@ $(document).ready(function(){
 
 
                 <div class="section"></div>
+                <div class="usernameAvailability">
+
+                </div>
                 @if ($errors->has('username'))
                     <div id="alert" class="card red darken-2" style="box-shadow: none;">
                         <div class="card-content white-text">
@@ -263,7 +244,7 @@ $(document).ready(function(){
 
             </ul>
             </form>
-            
+
         </div>
 
     </div>
@@ -272,4 +253,37 @@ $(document).ready(function(){
 </div>
 
 
-</div>
+</div><script>
+
+function checkAvailableUsername(){
+  $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+  $(document).ready(function(){
+      var username = $('#username').val();
+      $.ajax({
+        type: 'GET',
+        dataType : '',
+        url: 'checkAvailableUsername',
+        data: {username: username},
+        success: function(data){
+          //$(#usernameAvailability).html(html);
+          if (data==1) {
+            $( "div.usernameAvailability" ).html( "<div id='alert' class='card red darken-2' style='box-shadow: none;>"+"<div class='card-content white-text'>"+"<i class='left material-icons'>cancel</i><span>CAnnot</span>"+"</div>"+"</div>" );
+
+            //$( "div.usernameAvailability" ).html( "Username can not be use" );
+            //console.log('has data');
+          }
+          else {
+            $( "div.usernameAvailability" ).html( "<div id='alert' class='card red darken-2' style='box-shadow: none;>"+"<div class='card-content white-text'>"+"<i class='left material-icons'>cancel</i><span>CAN</span>"+"</div>"+"</div>" );
+
+          }
+        }
+      });
+  });
+}
+
+</script>

@@ -30,8 +30,16 @@ Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
 Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
-Route::get('/checkAvailableUsername',[ 'as' => 'checkAvailableUsername', 'uses' => 'Profile\AuthController@checkAvailableUsername']);
-Route::post('/checkAvailableUsername',[ 'as' => 'checkAvailableUsername', 'uses' => 'Profile\AuthController@checkAvailableUsername']);
+Route::get('/checkAvailableUsername',function(){
+  $username = Request::Input('username');
+
+  $result = App\Account::where('username', $username)->first();
+  if(isset($result)){
+    return Response::json('1');
+  }else {
+    return Response::json('0');
+  }
+});
 Route::group(['middleware' => ['web']], function (){
   //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);

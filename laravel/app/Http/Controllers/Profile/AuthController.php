@@ -15,6 +15,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use Response;
 
 
 class AuthController extends Controller
@@ -87,12 +88,15 @@ class AuthController extends Controller
         ];
       }
     public function checkAvailableUsername(Request $request){
-        $result = Input::get('username')->get()->count();
+        /*$username = Input::get('username');
+
+        $result = DB::table('accounts')->select('username')->where('username', $username)->count();
         if($result > 0){
-          echo '<span>true</span>';
+          return Response::json('1');
         }else {
-          echo '<span>false</span>';
-        }
+          return Response::json('0');
+        }*/
+        //return Response::json('0');
     }
 
     public function store(Request $request)
