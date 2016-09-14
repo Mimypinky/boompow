@@ -64,6 +64,18 @@ class AuthController extends Controller
     }
 
     public function handleLogin(Request $request){
+
+      $validator = Validator::make(Input::all(),array(
+        'username'                              => 'required|unique:accounts,username',
+        'password'                              => 'required|min:4|max:15',
+
+      ),
+      array(
+        'username.required'                     => 'กรุณากรอกชื่อผู้ใช้',
+        'username.unique'                       => 'ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว กรุณากรอกชื่อผู้ใช้อื่น',
+        'password.required'                     => 'กรุณากรอกรหัสผ่าน',
+      ));
+
       $username = $request['username'];
       $password = $request['password'];
       $query = DB::table('accounts')->select('id')->where('username', $request['username'])->first();
@@ -80,23 +92,7 @@ class AuthController extends Controller
         return back()->withInput();
       }
 
-    public function messages()
-      {
-        return [
-            'email.required' => 'กรุณากรอกอีเมล์',
-            'email.unique' => 'อีเมล์ถูกใช้ไปแล้ว กรุณากรอกอีเมล์อื่น',
-        ];
-      }
     public function checkAvailableUsername(Request $request){
-        /*$username = Input::get('username');
-
-        $result = DB::table('accounts')->select('username')->where('username', $username)->count();
-        if($result > 0){
-          return Response::json('1');
-        }else {
-          return Response::json('0');
-        }*/
-        //return Response::json('0');
     }
 
     public function store(Request $request)
@@ -108,8 +104,8 @@ class AuthController extends Controller
                 'gender'                                => 'required',
                 'dob'                                   => 'required',
                 'question'                              => 'required|not_in:0',
-                'password'                              => 'required|min:4|max:15|confirmed',
-                'password_confirmation'                 => 'required|min:4|max:15',
+                'password'                              => 'required|min:4|max:15',
+                'password_confirmation'                 => 'required|min:4|max:15|confirmed',
                 'email'                                 => 'required|email|max:100|unique:profiles,email',
             ),
             array(
@@ -127,7 +123,7 @@ class AuthController extends Controller
                 'email.email'                           => 'รูปแบบอีเมล์ไม่ถูก ตัวอย่าง abc@boompow.com',
                 'email.unique'                          => 'อีเมล์นี้มีอยู่ในระบบแล้ว กรุณากรอกอีเมล์อื่น',
                 'password.required'                     => 'กรุณากรอกรหัสผ่าน',
-                'password.confirmed'                    => 'รหัสผ่านไม่ตรงกัน',
+                'password_confirmation.confirmed'       => 'รหัสผ่านไม่ตรงกัน',
                 'password_confirmation.required'        => 'กรุณากรอกยืนยันรหัสผ่าน',
             )
         );

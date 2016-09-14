@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
 Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
@@ -29,6 +27,7 @@ Route::get('/event/board/{eid}','EventController@eventBoardindex');
 Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
+
 Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
 Route::get('/checkAvailableUsername',function(){
   $username = Request::Input('username');
@@ -36,12 +35,13 @@ Route::get('/checkAvailableUsername',function(){
   $result = App\Account::where('username', $username)->first();
   if(isset($result)){
     return Response::json('1');
-  }else {
+  }
+  else {
     return Response::json('0');
   }
 });
+
 Route::group(['middleware' => ['web']], function (){
-  //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
   Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });
