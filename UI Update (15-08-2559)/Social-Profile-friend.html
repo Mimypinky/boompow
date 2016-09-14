@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    
+    <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <!--Import bootstrap.css
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--materialize javaScript-->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery-cookie.js"></script>
+
+    
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/intro.js"></script>
+    <script type="text/javascript" src="js/resizetext.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/introjs.css">
+    <script type="text/javascript">
+        $( document ).ready(function(){
+           $(".button-collapse2").sideNav();
+           $(".button-collapse").sideNav();
+       })
+   </script>
+
+   <script type="text/javascript">
+    $(document).ready(function () {
+        $(".button-collapse").sideNav();
+    })
+
+    $(document).ready(function () {
+        $('.modal-trigger').leanModal();
+        $('#whofollow').openModal();
+        $('#whofollow').closeModal();
+        $('#wholove').openModal();
+        $('#wholove').closeModal();
+    });
+
+
+</script>
+
+</head>
+
+
+<body style="background-color: #eceff1;">
+    <!--First Nav-->
+    <nav style="box-shadow: none;" id="main-nav">
+        <div class="nav-wrapper white">
+            <a href="member-NewHomePage.html" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
+                <i style="color: #263238" class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
+                <li>
+                 <nav class="white" style="box-shadow: none;" >
+                    <div class="nav-wrapper">
+                       <form>
+                          <div class="input-field">
+                             <input class="inputsearch" id="search" type="search" required placeholder="ค้นหาเพื่อนและกิจกรรม">
+                             <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+                         </div>
+                     </form>
+                 </div>
+             </nav>
+         </li>
+         
+     </ul>
+
+     <ul class="right hide-on-med-and-down">
+        
+        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="true" data-beloworigin="true" data-hover="true"><img class="mypropic left circle" src="img/pic.jpg">พรทิพย์ มีชัย</a></li>
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="sass.html"><i class="fa fa-users fa-lg left" aria-hidden="true"></i>สังคมของฉัน<span class="new badge">4</span></a></li>
+        
+    </ul>
+
+    <!--Slidenav mobile-->
+    <ul id="mobile-demo" class="side-nav" >
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+    <!--End Slidenav mobile-->
+</div>
+
+<!-- Dropdownhelp Structure -->
+<ul id="dropdownhelp" class="dropdown-content">
+    <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
+    <li><a href="#!">สมัครสมาชิก</a></li>
+    <li><a href="#!">เข้าสู่ระบบ</a></li>
+</ul>
+
+<!-- Dropdownprofile Structure -->
+<ul id="dropdownprofile" class="dropdown-content">
+    <li><a href="Social-Profile.html">ข้อมูลส่วนตัวของฉัน</a></li>
+    <li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>
+    <li><a href="#!">ออกจากระบบ</a></li>
+    
+</ul>
+
+<!--Second Nav-->
+<div class="second-nav nav-wrapper" style="background-color: #EE6E73;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+    <ul class="secnav hide-on-med-and-down center" >
+        
+        <li><a href="member-NewHomePage.html"><i class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+            <!--Slide nav menu
+            <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        -->
+        <li><a href="#"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        <li><a class="dropdown-button" href="all_catelog_recipe.html" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+        <li><a href="#"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+        <li><a href="#"><i class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+        <li><a href="#"><i class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+    </ul>
+
+    <!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="newsfeed.html"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
+        <li><a href="FriendList.html"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
+        <li><a href="Favorite.html"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
+        <li><a href="EventPage.html"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
+        <li><a href="AllChat.html"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
+        <li><a href="Notifiication.html"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+            <!--Drop
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Dropdown</a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="#!">First</a></li>
+                        <li><a href="#!">Second</a></li>
+                        <li><a href="#!">Third</a></li>
+                        <li><a href="#!">Fourth</a></li>
+                    </ul>
+                </div>
+                </li>
+            </ul>
+        </ul>-->
+        <!--End Slidenav -->
+    </div>
+
+    <!-- Dropdownhealth Structure -->
+    <ul id="dropdownfood" class="dropdown-content">
+        <li><a href="#">ของหวาน</a></li>
+        <li><a href="meal_recipe.html">ของคาว</a></li>
+    </ul>
+
+    <!-- Dropdownent Structure -->
+    <ul id="dropdownent" class="dropdown-content">
+        <li><a href="#">วิทยุ</a></li>
+        <li><a href="#!">ดูหนัง</a></li>
+        <li><a href="#!">ฟังเพลง</a></li>
+        <li><a href="#!">ธรรมมะ</a></li>
+    </ul>
+
+    <!-- Dropdownnews Structure -->
+    <ul id="dropdownnews" class="dropdown-content">
+        <li><a href="#">ข่าวบันเทิง</a></li>
+        <li><a href="#!">ข่าวกีฬา</a></li>
+        <li><a href="#!">ข่าวเศรษฐกิจ</a></li>
+        <li><a href="#!">ข่าวการเมือง</a></li>
+        
+    </ul>
+</nav>
+
+
+
+
+<!--Main-->
+<div class="container" style="width: 90%;">
+    <div class="row">
+        <div class="col s12" style="margin-top: 11%;">
+            <div class="row grey lighten-5" style="border-radius: 10px; border: 0.5px solid #eeeeee;">
+                <!--Pro pic-->
+                <div class="row">
+                    <div style="text-align: center;">
+                        <img class="pro-pic media-object dp img-circle" src="img/pic4.jpg" 
+                        >
+                    </div>
+                </div>
+                <!--End Pro pic-->
+
+                
+                <!--Pro detail-->
+                <div class="row">
+                    <div class="col s12">
+                        <div class="col s8 offset-s2 ">                                 
+                            <div id="profilehead2">
+                                <span style="margin-top: 22px;"></span>
+                                <div id="proname-friend">
+                                    <h5>สมัย สมร</h5>
+                                </div>
+                                <div id="prodetail">
+                                    <p>ว่างๆเหงา อยู่บ้านคนเดียว คุยได้จ้า</p>
+                                </div>
+                            </div>
+
+                            <!--Blue menu-->
+                            <div id="proheadbox">
+                                <div class="col s4">
+                                    <a href="#">
+                                        <div id="firstcmt">
+                                            <p style="line-height: 0px; color: white;">1000</p>
+                                            <span style="color: white;">โพสต์</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col s4">
+                                    <a href="#">
+                                        <div id="follow" style="height: 64.8px; background-color: #689f38; border-color: #5E9032;">
+                                            <i style="color: white; margin-top: 4px;" class="fa fa-user-plus fa-2x" aria-hidden="true"></i><br>
+                                            <span style="color: white;">ติดตามเพื่อนของฉัน</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col s4">
+                                    <a href="#">
+                                        <div id="like" style="height: 64.8px; background-color: #ffb300; border-color: #ffa000;">
+                                            <p style="line-height: 0px; color: white;">190 คน</p>
+                                            <span style="color: white;">กำลังติดตามอยู่</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--End Blue menu-->
+                        </div>    
+                    </div>
+                </div>
+                <!--Pro detail-->
+                <div class="row">
+                    <form>
+                        <div class="col s12">
+                            <!--Start PostBox-->
+                            <div class="col s10 offset-s2 ">
+                                <div class="row" style="margin-top: 28px; margin-bottom: -1px;">
+                                    <div class="col s9 m9" style="width: 80%">
+                                        
+                                        <div class="card white" style="margin-bottom: 30px;">
+                                            <ul class="tabs tab-set" style="background-color: #FFF4F5; color:#EE6E74">
+                                                <li class="tab col s3"><a class="active" href="#status"><i class="fa fa-pencil" aria-hidden="true"></i> เขียนเรื่องราวให้เพื่อน</a></li>
+                                                <li class="tab col s3"><a href="#picpost"><i class="fa fa-camera" aria-hidden="true"></i> แบ่งปันรูปภาพให้เพื่อน</a></li>
+                                            </ul>
+                                            <!--Start Status Post-->
+                                            <div id="status">
+                                                <div class="card-content black-text" style="margin-bottom: -4%;">
+                                                    <div class="row valign-wrapper">
+                                                        <div class="col s2">
+                                                            <img src="img/pic4.jpg" alt="" class="postbox-pic media-object dp img-circle imgthumb"> <!-- notice the "circle" class -->
+                                                        </div>
+                                                        <div class="col s10">
+                                                            <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-action">
+                                                    <a class="waves-effect waves-light btn"><i class="fa fa-bullhorn left" aria-hidden="true"></i>แบ่งปันเลย!</a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <!--End Status Post-->
+                                            <!--Start Pic Post-->
+                                            <div id="picpost">
+                                                <div class="card-content black-text" style="margin-bottom: -4%;">
+                                                    <div class="row valign-wrapper">
+                                                        <div class="col s2">
+                                                            <img src="img/pic4.jpg" alt="" class="postbox-pic2 media-object dp img-circle imgthumb"> <!-- notice the "circle" class -->
+                                                        </div>
+                                                        <div class="col s10">
+
+                                                            <div class="file-field input-field">
+                                                                <div class="input-field col s12">
+                                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                    <label style="font-size: 13pt;" for="textarea1">บอกอะไรเกี่ยวกับรูปภาพหน่อยสิ!</label>
+                                                                </div>
+                                                                <a class="cyan darken-2 waves-effect waves-light btn">เลือกรูปภาพ
+                                                                    <input type="file"><i class="fa fa-camera left" aria-hidden="true"></i></a>
+                                                                    <input class="file-path validate" type="text" id="myfile-path">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a class="waves-effect waves-light btn"><i class="fa fa-bullhorn left" aria-hidden="true"></i>แบ่งปันเลย!</a>
+                                                    </div>
+                                                </div>
+                                                <!--End Pic Post-->
+
+                                            </div>
+                                        </div>         
+                                        <!--End PostBox-->
+
+                                        <!--Start pin Status part-->
+                                        <div class="col s9 m9" style="width: 80%">
+                                            <div class="pin-border card white" data-step="1" data-intro="Ok, wasn't that fun?" data-position='right'>
+                                                <div  class="card-content black-text">
+                                                    <div class="row">
+                                                        
+                                                        <div class="col s2 push-s5" id="pin-post-friend">
+                                                            <i id="pin-icon" class="fa fa-thumb-tack fa-3x" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col s3">
+                                                            <img class="stpic-po media-object dp img-circle imgthumb" src="img/pic4.jpg" >
+                                                        </div>
+                                                        <div class="col s9" id="commenthead">
+                                                            <span id="namecomment">สมัย สมร</span>
+                                                            <p id="datecomment">ได้ปักเนื้อหาเมื่อ 21 เมษายน 2558, 22.01 น.
+                                                            </p>                                  
+                                                        </div>
+                                                        <div class="status-post col s12">
+                                                            <div class="row">
+                                                                <div class="col s12 m10">
+                                                                    <div class="card" style="margin-top: 13px;">
+                                                                        <div class="card-image">
+                                                                            <img src="img/healthy.jpg">
+                                                                        </div>
+                                                                        <div class="card-content">
+                                                                            <h5>Card Title</h5>
+                                                                            <p>I am a very simple card. I am good at containing small bits of information.
+                                                                                I am convenient because I require little markup to use effectively.</p>
+                                                                            </div>
+                                                                            <div class="card-action">
+                                                                                <a href="#">This is a link</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>          
+                                                    <div class="card-action">
+                                                        <div class="row">
+                                                            <div class="col s1 push-s1">
+                                                                <a href="#"><i class="likeicon fa fa-heart fa-3x" aria-hidden="true"></i></a>
+                                                                <span class="liketext">ถูกใจ</span>
+                                                            </div>
+                                                            <div class="col s2"></div>
+                                                            <div class="col s2 push-s1">
+                                                                <div id="likeboxam">
+                                                                    <p id="likeno">125+</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col s8" style="margin-left: -19px; margin-top: -16px;">
+                                                                <div class="input-field">
+                                                                   <div class="input-field col s12">
+                                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                    <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                                </div>
+                                                                <a style="left: 11px;" class="waves-effect waves-light btn">ตกลง</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                            </div>
+                                        </div>
+                                        <!--End pin Status part-->
+                                        <!--Start pic Status part-->
+                                        <div class="col s9 m9" style="width: 80%">
+                                            <div class="card white" data-step="1" data-intro="Ok, wasn't that fun?" data-position='right'>
+                                                <div  class="card-content black-text">
+                                                    
+                                                    <div class="row">
+                                                        <div class="col s3">
+                                                            <img class="stpic-po media-object dp img-circle imgthumb" src="img/pic4.jpg" >
+                                                        </div>
+                                                        <div class="col s9" id="commenthead">
+                                                            <span id="namecomment">สมัย สมร</span>
+                                                            <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                            </p>                                  
+                                                        </div>
+                                                        <div class="status-post col s12">
+                                                            <p>ความรักทำให้ตาบอด</p>
+                                                            <div class="card-image">
+                                                                <img class="materialboxed" src="img/love.jpg">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>          
+                                                <div class="card-action">
+                                                    <div class="row">
+                                                        <div class="col s1 push-s1">
+                                                            <a href="#"><i class="likeicon fa fa-heart fa-3x" aria-hidden="true"></i></a>
+                                                            <span class="liketext">ถูกใจ</span>
+                                                        </div>
+                                                        <div class="col s2"></div>
+                                                        <div class="col s2 push-s1">
+                                                            <div id="likeboxam">
+                                                                <p id="likeno">125+</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col s8" style="margin-left: -19px; margin-top: -16px;">
+                                                            <div class="input-field">
+                                                               <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                            </div>
+                                                            <a style="left: 11px;" class="waves-effect waves-light btn">ตกลง</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                    </div>
+                                    <!--End pic Status part-->
+
+                                    <!--Start Status part-->
+                                    <div class="col s9 m9" style="width: 80%">
+                                        <div class="card white" data-step="1" data-intro="Ok, wasn't that fun?" data-position='right'>
+                                            <div  class="card-content black-text">
+                                                <div class="row">
+                                                    <div class="col s3">
+                                                        <img class="stpic-po media-object dp img-circle imgthumb" src="img/pic4.jpg" >
+                                                    </div>
+                                                    <div class="col s9" id="commenthead">
+                                                        <span id="namecomment">สมัย สมร</span>
+                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                        </p>                                  
+                                                    </div>
+                                                    <div class="status-post col s12">
+                                                        <p>อากาศแจ่มใสเหมาะแก่การไปดิสนีย์แลนด์ หาเพื่อนร่วมทริปเม้นๆ</p>
+                                                    </div>
+                                                </div>
+                                            </div>          
+                                            <div class="card-action">
+                                                <div class="row">
+                                                    <div class="col s1 push-s1">
+                                                        <a href="#"><i class="likeicon fa fa-heart fa-3x" aria-hidden="true"></i></a>
+                                                        <span class="liketext">ถูกใจ</span>
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2 push-s1">
+                                                        <div id="likeboxam">
+                                                            <p id="likeno">125+</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s8" style="margin-left: -19px; margin-top: -16px;">
+                                                        <div class="input-field">
+                                                           <div class="input-field col s12">
+                                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                            <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                        </div>
+                                                        <a style="left: 11px;" class="waves-effect waves-light btn">ตกลง</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                                <!--End Status part-->
+                                <!--Start Status part2-->
+                                <div class="col s9 m9" style="width: 80%">
+                                    <div class="card white" data-step="1" data-intro="Ok, wasn't that fun?" data-position='right'>
+                                        <div  class="card-content black-text">
+                                            <div class="row">
+                                                <div class="col s3">
+                                                    <img class="stpic-po media-object dp img-circle imgthumb" src="img/pic4.jpg" >
+                                                </div>
+                                                <div class="col s9" id="commenthead">
+                                                    <span id="namecomment">สมัย สมร</span>
+                                                    <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                    </p>                                  
+                                                </div>
+                                                <div class="status-post col s12">
+                                                    <p>อากาศแจ่มใสเหมาะแก่การไปดิสนีย์แลนด์ หาเพื่อนร่วมทริปเม้นๆ</p>
+                                                </div>
+                                            </div>
+                                        </div>          
+                                        <div class="card-action">
+                                            <div class="row">
+                                                <div class="col s1 push-s1">
+                                                    <a href="#"><i class="likeicon fa fa-heart fa-3x" aria-hidden="true"></i></a>
+                                                    <span class="liketext">ถูกใจ</span>
+                                                </div>
+                                                <div class="col s2"></div>
+                                                <div class="col s2 push-s1">
+                                                    <div id="likeboxam">
+                                                        <p id="likeno">125+</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col s8" style="margin-left: -19px; margin-top: -16px;">
+                                                    <div class="input-field">
+                                                       <div class="input-field col s12">
+                                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                        <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                    </div>
+                                                    <a style="left: 11px;" class="waves-effect waves-light btn">ตกลง</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Start user comment-->
+                                    <div class="card-action" id="comment">
+                                        <ul class="collapsible" data-collapsible="expandable" style="margin-left: 47px; margin-right: 39px;">
+                                            <li>
+                                                <div class="collapsible-header active"><i class="fa fa-commenting" aria-hidden="true"></i>ความคิดเห็นจากเพื่อน 
+                                                    <span class="secondary-content"><i class="black-text fa fa-chevron-up" aria-hidden="true"></i></span>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <ul class="collection">
+                                                        <li class="collection-item avatar">
+                                                            <a href="Social-Profile-friend.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                <span class="title title-name">สมัย สมร</span></a> 
+                                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>               
+                                                            </li>
+                                                            <li class="collection-item avatar">
+                                                                <img src="img/pic5.jpg" alt="" class="circle">
+                                                                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--Stop user comment-->    
+                                    </div>
+                                </div>
+                                <!--End Status part2-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            
+
+            <!-- Modal Structure -->
+            <!--whofollow-->
+            <div id="whofollow" class="modal" style="width: 500px;">
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                        <img src="img/pic.jpg" alt="" class="circle">       
+                        <p>เจ๊สมร ดอนเจดีย์</p>
+                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="img/pic.jpg" alt="" class="circle">
+                        <p>พิชิต จิตมั่นคง </p>
+                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="img/pic.jpg" alt="" class="circle">
+                        <p>มาโนช ชงชม </p>
+                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                    </li>
+                </ul>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!--wholove-->
+            <div id="wholove" class="modal" style="width: 500px;">
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                        <img src="img/pic.jpg" alt="" class="circle">       
+                        <p>เจ๊สมร ดอนเจดีย์</p>
+                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                        
+
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="img/pic.jpg" alt="" class="circle">
+                        <p>พิชิต จิตมั่นคง </p>
+                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="img/pic.jpg" alt="" class="circle">
+                        <p>มาโนช ชงชม </p>
+                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                    </li>
+                </ul>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <!-- End Modal Structure -->
+
+
+
+            
+            
+
+
+            <!--Resize Button-->
+            <div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">        
+                <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><i class="large material-icons" >mode_edit</i></a>
+                <ul class="resizer">
+                    <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
+                        <img src="img/ismall.png" style="margin: 6px"></a></li>
+                        <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="img/ismall.png" style="margin: 10px; width: 15px"></a></li>
+                        <li id="small"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดเล็ก"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a></li>
+                    </ul>         
+                </div>
+                <!--Endd Resize Button-->
+
+                
+                <!--Footer-->
+                    
+            </body>
+
+
+
+
+
+
+            </html>
