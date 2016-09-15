@@ -32,12 +32,41 @@ class EventController extends Controller
             ->get();
         $joinEvent = JoinEvent::join('accounts','join_event.user_id','=','accounts.id')
         ->join('events','join_event.eve_id','=','events.id')
-        ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
+        ->select('events.*','join_event.*', 'accounts.first_name as fname','accounts.last_name as lname')
         ->where('user_id','=',$user)
         ->get();
 
+        $eiei =$joinEvent->toArray();
+        $joined = array();
+        foreach ($eiei as $key => $value) {
+          array_push($joined,$value['eve_id']);
+        }
 
-        return view('site.event',compact('title','event','myEvent','joinEvent'));
+
+        $party = Event::join('accounts','events.id','=','accounts.id')
+        ->join('join_event','events.id','=','join_event.eve_id')
+        ->select('accounts.first_name as fname','accounts.last_name as lname','events.id')
+        ->get();
+        $eieiei = $party->toArray();
+        $attend = array();
+        foreach($eieiei as $key =>$value){
+          array_push($attend,$value['id']);
+        }
+
+
+
+        for($i=1;$i<count($event);$i++){
+          $parties = JoinEvent::select('*')->where('eve_id','=',$i)->count();
+          dd($parties);
+        }
+        $ei = $parties->toArray();
+        $party=array();
+        foreach($ei as $key =>$value){
+          array_push($party,$value[$i]);
+        }
+        dd($party);
+
+        return view('site.event',compact('title','event','myEvent','joinEvent','joined','user'));
 
       }else {
         return view('site.home');
@@ -49,26 +78,38 @@ class EventController extends Controller
           $event->delete();
           return redirect('event');
     }
-    public function joinEvents($eid){
+    public function joinEvents(Request $req,$eid){
       $user =Auth::user()->id;
       $join = new JoinEvent();
       $join->eve_id = $req->eid;
       $join->user_id = $user;
+      $join->join_time = date("Y-m-d H:i:s");
       $join->save();
-    return redirect('event');
+      return redirect('event');
+    }
+    public function cancelEvents($eid){
+
+      $event = JoinEvent::find($eid);
+      $user = Auth::user()->id;
+      $event = JoinEvent::where([
+            ['eve_id', '=', $eid],
+            ['user_id', '=', $user]])->delete();
+      return redirect('event');
+
     }
 
-    public function editEvents($eid){
-      $event =Event::find($eid);
-      $event->description = $request['description'];
-      $event->start_time = $request['start_time'];
-      $event->finish_time = $request['finish_time'];
-      $event->start_date = $request['start_date'];
-      $event->finish_date = $request['finish_date'];
-      $event->location = $request['location'];
-      $event->contact = $request['contact'];
-      $event->title = $request['title'];
+    public function editEvents($eid,Request $req){
+      $event =Event::findOrFail($eid);
+      $event->description = $req['description'];
+      $event->start_time = $req['start_time'];
+      $event->finish_time = $req['finish_time'];
+      $event->start_date = $req['start_date'];
+      $event->finish_date = $req['finish_date'];
+      $event->location = $req['location'];
+      $event->contact = $req['contact'];
+      $event->title = $req['title'];
       $event->save();
+      return redirect('event');
     }
 
     /**
@@ -103,7 +144,13 @@ class EventController extends Controller
       $obj1->location = $request['location'];
       $obj1->contact = $request['contact'];
       $obj1->title = $request['title'];
+
       $obj1->save();
+      $join = new JoinEvent();
+      $join->eve_id = $obj1->id;
+      $join->user_id = Auth::user()->id;
+      $join->save();
+
       return redirect('event');
     }
 

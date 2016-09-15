@@ -1,5 +1,14 @@
 @extends('site.layout')
 @section('maincontent')
+<script>
+$(window).load(function() { // makes sure the whole site is loaded
+  $('#status').fadeOut(); // will first fade out the loading animation
+  $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+  $('body').delay(350).css({
+    'overflow': 'visible'
+  });
+})
+</script>
 <div class="row">
     <div class="hello">
     <center><h1 style="font-size: 36pt; text-shadow: 2px 2px #3A3737;" class="hello-content">{{$headtitle}}</h1></center>

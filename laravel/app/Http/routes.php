@@ -21,10 +21,11 @@ Route::get('/content',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
 Route::resource('event','EventController');
 Route::post('/event/create', 'EventController@store');
-Route::get('/event/remove/{eid}'.'EventController@deleteEvents');
-Route::get('/event/join/{eid}'.'EventController@joinEvents');
+Route::get('/event/remove/{eid}','EventController@deleteEvents');
+Route::get('/event/join/{eid}','EventController@joinEvents');
+Route::get('/event/cancel/{eid}','EventController@cancelEvents');
 Route::get('/event/board/{eid}','EventController@eventBoardindex');
-
+Route::post('boompow/event/edit/{eid}','EventController@editEvents');
 
 Route::get('/favourite','FavouriteController@index');
 
@@ -44,7 +45,7 @@ Route::get('/myprofile',function(){
   $title = '...s Profile';
   return view('social.myprofile',compact('title'));
 });
-<<<<<<< HEAD
+
 Route::get('/friends',function(){
   $title ='Boompow - My Friends';
   return view('social.friend',compact('title'));
@@ -57,5 +58,10 @@ Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
-=======
->>>>>>> a9173ea523067c748f52a2583539a6add991861b
+Route::get('/notification',function(){
+  $title ='Boompow - Notificate';
+  return view('social.noti',compact('title'));
+});
+Route::get('/upload',function(){
+  return view('social.ex_upload');
+});

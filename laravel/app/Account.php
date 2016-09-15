@@ -8,4 +8,5 @@ class Account extends Model
 {
     //
     protected $table = 'accounts';
+    
 }

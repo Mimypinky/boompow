@@ -69,7 +69,7 @@
                                     <div class="card-content black-text" style="margin-bottom: -4%;">
                                         <div class="row valign-wrapper">
                                             <div class="col s2 eve-cmtpic">
-                                                <img src="img/pic.jpg" alt="" class="postbox-pic2 media-object dp img-circle imgthumb"> <!-- notice the "circle" class -->
+                                                <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic2 media-object dp img-circle imgthumb"> <!-- notice the "circle" class -->
                                             </div>
                                             <div class="col s9">
 
