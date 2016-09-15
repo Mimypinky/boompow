@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
 Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
@@ -30,9 +28,21 @@ Route::post('boompow/event/edit/{eid}','EventController@editEvents');
 Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
+
 Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
+Route::get('/checkAvailableUsername',function(){
+  $username = Request::Input('username');
+
+  $result = App\Account::where('username', $username)->first();
+  if(isset($result)){
+    return Response::json('1');
+  }
+  else {
+    return Response::json('0');
+  }
+});
+
 Route::group(['middleware' => ['web']], function (){
-  //Route::get('/login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@login']);
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
   Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });
@@ -58,6 +68,7 @@ Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
+<<<<<<< HEAD
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
@@ -65,3 +76,5 @@ Route::get('/notification',function(){
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
+=======
+>>>>>>> 75fb32b51daafd790ab9343476cdb5a74d9606ee

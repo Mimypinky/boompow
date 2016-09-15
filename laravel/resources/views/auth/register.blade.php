@@ -1,6 +1,7 @@
 @extends('site.layout')
 @section('maincontent')
 
+
 <div class="container" style="width: 90%;">
 
     <div class="row" style="margin-top: 160px;">
@@ -13,27 +14,21 @@
                 <div class="section"></div>
                 <center>
                     <div class="row">
-                        <div class="col s3" style="margin-top: 19px;"><p style="margin-left: 40%;">ชื่อผู้ใช้</p></div>
+                        <div class="col s3" style="margin-top: 19px;"><p style="margin-left: 40%;font-size:16pt">ชื่อผู้ใช้</p></div>
                         <div class="col s6 ">
                             <form class="col s11">
-                                    <input type="text" class="validate" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ">
+                                    <input style="font-size:18pt;text-align:center" type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ" onchange="checkAvailableUsername()">
                             </form>
                         </div>
-                        <div class="col s3" style="margin-top: 19px;"><a style="margin-left: -30%;" class="blue darken-3 waves-effect waves-light btn">ตรวจสอบ</a></div>
+
                     </div>
                 </center>
-                <div class="section"></div>
-                <div id="alert" class="card green darken-1" style="box-shadow: none;">
-                    <div class="card-content white-text">
-                        <i class="left material-icons">verified_user</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> สามารถใช้ได้
-                    </div>
+                <div id="usernameAvailability" align='center'>
+                    <span style="font-size:16pt;color: #ffb74d;">กรุณากรอกชื่อผู้ใช้</span>
                 </div>
 
-                <div id="alert" class="card red darken-2" style="box-shadow: none;">
-                    <div class="card-content white-text">
-                        <i class="left material-icons">cancel</i>ชื่อผู้ใช้: <span>ยายละม้าย คล้ายจะเป็นลม</span> ไม่สามารถใช้ได้
-                    </div>
-                </div>
+                <div class="section"></div>
+
                 </li>
                 <li class="collection-item"><i class="left material-icons">perm_identity</i>
                 <p>ข้อมูลส่วนตัว</p>
@@ -41,50 +36,54 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td><div class="input-field">
-                                    <label for="icon_prefix">ชื่อ</label>
-                                    <input id="first_name" name="first_name" type="text" class="validate">
-                                </div></td>
-                                <td><div class="input-field">
-                                    <label for="icon_prefix">นามสกุล</label>
-                                    <input id="last_name" name="last_name" type="text" class="validate">
-                                </div></td>
+                                <td>
+                                  @if ($errors->has('first_name'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('first_name') }}</span>
+                                  @endif
+                                  <div class="input-field">
+
+                                    <input style="font-size:18pt;" id="first_name" name="first_name" type="text" class="validate" value="{{ old('first_name' )}}" placeholder="ชื่อ">
+                                </div>
+                                </td>
+
+                                <td>
+                                  @if ($errors->has('last_name'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('last_name') }}</span>
+                                  @endif
+                                  <div class="input-field">
+                                    <input style="font-size:18pt;" id="last_name" name="last_name" type="text" class="validate" value="{{ old('last_name' )}}" placeholder="นามสกุล">
+                                </div>
+
+                                </td>
                             </tr>
                             <tr>
-                                <td><p>
-                                    <span>เพศ: </span> &nbsp&nbsp
-                                    <input name="gender" type="radio" id="male" value="male" />
-                                    <label for="male" style="color: #424242 ;">ชาย</label>
-                                    &nbsp &nbsp &nbsp
-                                    <input name="gender" type="radio" id="female" value="female" />
-                                    <label for="female" style="color: #424242 ;">หญิง</label>
-                                </p></td>
                                 <td>
-                                  <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                    <input class="span2" size="16" type="text" value="12-02-2012" name="dob">
-                                    <span class="add-on"><i class="icon-th"></i></span>
-                                  </div>
-                                </td>
-                                <!--<td><p>
+                                  @if ($errors->has('gender'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('gender') }}</span>
+                                  @endif
+                                  <p>
+                                    <span>เพศ: </span> &nbsp&nbsp
+                                    <input style="font-size:18pt;" name="gender" type="radio" id="male" value="male" />
+                                    <label for="male" style="color: #424242;font-size:16pt">ชาย</label>
+                                    &nbsp &nbsp &nbsp
+                                    <input style="font-size:18pt;" name="gender" type="radio" id="female" value="female" />
+                                    <label for="female" style="color: #424242;font-size:16pt">หญิง</label>
+                                </p>
+                              </td>
+                                <td>
+                                  @if ($errors->has('dob'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('dob') }}</span>
+                                  @endif
+                                  <p>
                                     <span>วันเกิด: </span> &nbsp&nbsp
                                     <input type="date" class="datepicker" name="dob">
-                                </p></td>-->
+                                </p>
+                              </td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="section"></div>
-                    <div id="alert" class="card green darken-1" style="box-shadow: none;">
-                        <div class="card-content white-text">
-                            <i class="left material-icons">verified_user</i> กรอกข้อมูลเรียบร้อย
-                        </div>
-                    </div>
-
-                    <div id="alert" class="card red darken-2" style="box-shadow: none;">
-                        <div class="card-content white-text">
-                            <i class="left material-icons">cancel</i> กรุณากรอก <span>วันเกิด</span> ให้เรียบร้อย
-                        </div>
-                    </div>
 
                 </li>
                 <li class="collection-item"><i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
@@ -104,89 +103,116 @@
                                         </select>
                                     </div>
                                 </td>
+                                @if ($errors->has('first_name'))
+                                    <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('question') }}</span>
+                                @endif
                             </tr>
                             <tr>
-                                <td><div class="input-field">
+
+                                <td class="col s6">
+                                  @if ($errors->has('password'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
+                                  @endif
+                                  <div class="input-field">
                                     <label for="icon_prefix email-label">กรอกคำตอบของคุณ </label>
                                     <input id="answer" type="password" name="password" class="validate">
                                 </div></td>
-                                <td><div class="input-field">
+
+                                <td class="col s6">
+                                  @if ($errors->has('password_confirmation'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password_confirmation') }}</span>
+                                  @endif
+                                  <div class="input-field">
                                     <label for="icon_prefix email-label">กรอกคำตอบของคุณอีกครั้ง </label>
-                                    <input id="confirm-answer" type="password" class="validate">
+                                    <input id="confirm-answer" name="password_confirmation" type="password" class="validate">
                                 </div></td>
                             </tr>
                             <tr>
-                                <td><label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email"></td>
-                                <td><label for="icon-prefix" class="email-label">กรอกอีเมล์ของคุณ อีกครั้ง</label><input class="input-field" placeholder="เช่น this_is_email@mail.com" type="email"></td>
+                                <td colspan="1">
+                                  <label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label>
+                                  <input style="font-size:18pt;" class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email">
+                                </td>
+                                <td>
+                                  @if ($errors->has('email'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('email') }}</span>
+                                  @endif
+                                </td>
                             </tr>
                         </tbody>
                 </table>
 
                 <div class="section"></div>
-                    <div id="alert" class="card green darken-1" style="box-shadow: none;">
-                        <div class="card-content white-text">
-                            <i class="left material-icons">verified_user</i> กรอกข้อมูลเรียบร้อย
-                        </div>
-                    </div>
+                <div align="center">
 
-                    <div id="alert" class="card red darken-2" style="box-shadow: none;">
-                        <div class="card-content white-text">
-                            <i class="left material-icons">cancel</i> กรุณากรอก <span>อีเมล์</span> ให้ตรงกัน
-                        </div>
-                    </div>
+
+                </div>
                 </li>
-
                 <li class="collection-item" style="padding-bottom: 20px;">
                     <div class="section"></div>
                     <div align="center">
-                      <input type="submit" value="ยืนยันการเข้าร่วม">
+                      <span>
 
-                      <!--<button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" onclick="submitRegisterForm" name="action">ยืนยันการเข้าร่วม</button>
-                      <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>-->
+                          <label for="filled-in-box" style="font-size: 18px;">อ่านข้อตกลงในการให้บริการ </label>
+                          <a class="modal-trigger" href="#" style="font-size: 24px;">ที่นี่</a><br>
 
-                    <!--<a class="blue darken-3 btn waves-effect waves-light modal-trigger" href="#confirm-register">เข้าร่วม</a>
-                    <a class="btn waves-effect waves-light" href="">ยกเลิก</a>-->
+                      </span>
                     </div>
+                    <div class="section"></div>
+                    <div align="center">
+                        <input type="checkbox" class="filled-in" id="filled-in-box"/>
+                        <label for="filled-in-box">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
+                    </div>
+                    <div class="section">
+
+                    </div>
+                    <div align="center">
+                      <input type="submit" id="submit" class="blue darken-3 btn waves-effect waves-light" style="font-size: 18px; padding-top: 2px" value="ตกลง">
+
+                      <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
+                    </div>
+
                 </li>
 
 
 
             </ul>
             </form>
+
         </div>
 
     </div>
 
-    <!-- Confirm Register Modal Structure -->
-    <div id="confirm-register" class="modal" style="width: 480px; height: 360px">
-        <div class="modal-content">
-
-            <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
-            <h4 class="center">ยืนยันการเข้าร่วม</h4>
-            <div class="row">
-                <div class="input-field col s8 offset-s2">
-                    <span>คุณกำลังเข้าร่วมเป็นสมาชิกของ <a href="">Boompow </a> คุณแน่ใจหรือไม่?</span>
-                </div>
-            </div>
-            <div class="modal-footer" align="center">
-                <span>
-                    <label for="filled-in-box" style="font-size: 14px;">อ่านข้อตกลงในการให้บริการ </label>
-                    <a class="modal-trigger" href="#">ที่นี่</a><br>
-
-                </span>
-                <div class="section"></div>
-                <div align="center" style="margin-bottom: 10px;">
-                  <button style="float: none" class="blue darken-3 btn waves-effect waves-light" type="submit" onclick="submitRegisterForm" name="action">ยืนยันการเข้าร่วม</button>
-                  <button style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</button>
-
-
-                </div>
-
-            </div>
-
-    </div>
 
 </div>
+<script>
 
+  function checkAvailableUsername(){
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }
+    });
+
+    $(document).ready(function(){
+      var username = $('#username').val();
+      $.ajax({
+        type: 'GET',
+        dataType : '',
+        url: 'checkAvailableUsername',
+        data: {username: username},
+        success: function(data){
+          if (data==1) {
+            $("div#usernameAvailability").html("<div style='color: red;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว กรุณากรอกชื่อผู้ใช้อื่น</span></div>");
+          }
+          else {
+            $("div#usernameAvailability").html("<div style='color: green;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้สามารถใช้ได้</span></div>");
+
+          }
+        }
+      });
+    });
+  }
+
+</script>
 
 </div>

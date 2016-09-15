@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/secnav-scroll.css">
+    <link rel="stylesheet" type="text/css" href="css/profile-v2.css">
+
+
+    <!--Import bootstrap.css
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--materialize javaScript-->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery-cookie.js"></script>
+
+
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/intro.js"></script>
+    <script type="text/javascript" src="js/secnav-scroll.js"></script>
+    <script type="text/javascript" src="js/resizetext.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/introjs.css">
+
+    <script type="text/javascript">
+        $( document ).ready(function(){
+         $(".button-collapse2").sideNav();
+         $(".button-collapse").sideNav();
+     })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+        })
+
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+            
+        });
+    </script>
+
+</head>
+<body style="background-color: #ebeef1;">
+    <!--First Nav-->
+    <nav style="box-shadow: none;" id="main-nav">
+        <div class="nav-wrapper white">
+            <a href="#!" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 28px;">
+                <i style="color: #e53935" class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
+                <li>
+                    <nav class="white" style="box-shadow: none;" >
+                      <div class="nav-wrapper">
+                        <form>
+                          <div class="input-field">
+                            <input class="inputsearch" id="search" type="search" required placeholder="ค้นหาเพื่อนและกิจกรรม">
+                            <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </li>
+    </ul>
+
+    <ul class="right hide-on-med-and-down">
+        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>ข้อมูลส่วนตัว</a></li>
+        
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="sass.html"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span>สังคมของฉัน</a></li>
+
+        <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i><span class="mynoti">4</span>ข้อความ</a></li>
+    </ul>
+
+    <!--Slidenav mobile-->
+    <ul id="mobile-demo" class="side-nav" >
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">แก้ไขข้อมูลส่วนตัว</a></li>
+                <li><a href="#!">ออกจากระบบ</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">4</span></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">กระดานข่าว </a></li>
+                <li><a href="#!">เพื่อน</a></li>
+                <li><a href="#!">รายการโปรด</a></li>
+                <li><a href="#!">กิจกรรม <span class="new badge">4</span></a></li>
+                <li><a href="#!">ข้อความ <span class="new badge">4</span></a></li>
+                <li><a href="#!">แจ้งเตือน <span class="new badge">4</span></a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+
+        
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">สาระน่ารู้<i class="material-icons">library_books</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">หน้าแรก</a></li>
+                <li><a href="#!">ตำรับอาหาร</a></li>
+                <li><a href="#!">บันเทิง</a></li>
+                <li><a href="#!">ครัวเรือน</a></li>
+                <li><a href="#!">ห้องข่าว</a></li>
+                <li><a href="#!">สิทธิประโยชน์</a></li>
+                <li><a href="#!">งานประดิษฐ์</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </ul>
+    <!--End Slidenav mobile-->
+</div>
+<!--End First Nav-->
+
+<!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="newsfeed.html"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
+        <li><a href="FriendList.html"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
+        <li><a href="Favorite.html"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
+        <li><a href="EventPage.html"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
+        <li><a href="AllChat.html"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
+        <li><a href="Notifiication.html"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+    </ul>
+<!--End Slidenav -->
+
+
+<!--Second Nav-->
+<header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+    <ul class="secnav hide-on-med-and-down center">
+
+        <li><a href="#"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+            <!--Slide nav menu
+            <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        -->
+        <li><a href="#"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+        <li><a href="#"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+        <li><a href="#"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+        <li><a href="#"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+    </ul>
+
+    <!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Dropdown</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">First</a></li>
+                            <li><a href="#!">Second</a></li>
+                            <li><a href="#!">Third</a></li>
+                            <li><a href="#!">Fourth</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+        <!--End Slidenav -->
+    </header>
+    <!--End Second Nav-->
+</nav>
+
+<!-- Dropdownhelp Structure -->
+<ul id="dropdownhelp" class="dropdown-content">
+    <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
+    <li><a href="#!">สมัครสมาชิก</a></li>
+    <li><a href="#!">เข้าสู่ระบบ</a></li>
+</ul>
+<!--End Dropdownhelp Structure-->
+
+<!-- Dropdownprofile Structure -->
+<ul id="dropdownprofile" class="dropdown-content">
+    <li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>
+    <li><a href="#!">ออกจากระบบ</a></li>
+    
+</ul>
+
+<!-- Dropdownhealth Structure -->
+<ul id="dropdownfood" class="dropdown-content">
+    <li><a href="#">ของหวาน</a></li>
+    <li><a href="meal_recipe.html">ของคาว</a></li>
+</ul>
+
+<!-- Dropdownent Structure -->
+<ul id="dropdownent" class="dropdown-content">
+    <li><a href="#">วิทยุ</a></li>
+    <li><a href="#!">ดูหนัง</a></li>
+    <li><a href="#!">ฟังเพลง</a></li>
+    <li><a href="#!">ธรรมมะ</a></li>
+</ul>
+
+<!-- Dropdownnews Structure -->
+<ul id="dropdownnews" class="dropdown-content">
+    <li><a href="#">ข่าวบันเทิง</a></li>
+    <li><a href="#!">ข่าวกีฬา</a></li>
+    <li><a href="#!">ข่าวเศรษฐกิจ</a></li>
+    <li><a href="#!">ข่าวการเมือง</a></li>
+    
+</ul>
+</nav>
+
+
+
+
+
+<!--Main-->
+<div class="container" style="width: 90%;">
+    <div class="row">
+        <div class="col s12" style="margin-top: 12%;">
+            <div class="row">
+                <!--Pro pic-->
+
+                <div class="row">
+                    <div style="text-align: center;">
+                        <img class="pro-pic media-object dp img-circle" src="img/pic.jpg" 
+                        >
+
+                        <form action="#">
+                            <div class="file-field input-field">
+                                <span class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+                                <i class="cam-icon fa fa-camera"></i>
+                                <input type="file">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--End Pro pic-->
+                <!--Pro head-->
+                <div class="row">
+                    <div class="col s8 offset-s2 pro-detail">
+                        <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                        <div id="proname">
+                            <h2>พรทิพย์ มีชัย</h2>
+                        </div>
+                        <div id="prodetail">
+                            <p>อายุ 75 ปี บ้านอยู่สีลมซอยสี่ ชอบขี่ม้า ว่างๆชอบดื่มไฮเนเก้น</p>
+                        </div>
+                        <div style="font-size: 14pt; text-align: center;">
+                            <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a> 
+                            <span class="border-divi"></span>
+                            <span><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspโพสต์</span></span>
+                            <span class="border-divi"></span>
+                            <a href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspรูปภาพ</span></span></a> 
+                        </div>
+                    </div>
+                </div>
+                <!--End Pro head-->
+                <!--Update status-->
+                <div class="row" style="margin-top: 11%;">
+                    <div class="col s8 offset-s2 pro-upstatus">
+                        <div class="row" style="">
+                            <div class="col s12">
+                                <div class="card" style="box-shadow:none; background-color: transparent;">
+                                    <div class="card-content black-text" >
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
+                                             <span class="posbadge me badge">ฉัน</span>
+                                        </div>
+                                        <div class="input-field col s8 upsta-line">
+                                            <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea"></textarea>
+                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                                            <div class="card-action" style="border: none;">
+                                                <form action="#">
+                                                    <div class="file-field input-field">
+                                                        <div class="btn prouppic-btn black-text">
+                                                        <span style="font-size: 14pt;">
+                                                            <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
+                                                            <input type="file"></span>
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" type="text" id="myfile-path">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <a class="proupsta-btn waves-effect waves-light btn">
+                                                โพสต์</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end Update status-->
+                <!--timeline-->
+                <div class="row" style="margin-top: 11%;">
+                    <div class="col s8 offset-s2 pro-upstatus">
+                        <!--timeline mypost-->
+                        <div class="row" style="">
+                            <div class="col s12">
+                                <div class="card" style="box-shadow:none; background-color: transparent;">
+                                    <div class="card-content black-text" >
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <span class="posbadge me badge">ฉัน</span>
+                                              <!-- notice the "circle" class -->
+                                        </div>
+                                        <div class="input-field col s9 upsta-line">
+                                            <div class="col s12" id="commenthead">
+                                                <span id="namecomment">พรทิพย์ มีชัย
+                                                </span>
+                                                <div class="edit-cmt-sec">
+                                                    <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit" 
+                                                    style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                                                    <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1"><i class="fa fa-trash-o"></i> ลบ</a>
+                                                </div>
+
+                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                </p>                                  
+                                            </div>
+                                            <div class="status-post2 col s12">
+                                                <p>อากาศแจ่มใสเหมาะแก่การไปดิสนีย์แลนด์ หาเพื่อนร่วมทริปเม้นๆ</p>
+                                            </div>
+                                            <div class="card-action" style="border: none;">
+                                                <div class="row wholike-sec">
+                                                    <div class="col s1 like-section">
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+                                                        
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2">
+                                                        <div class="likecount">
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <div class="wholike">
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+                                                            
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+                                                            
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
+
+                                                            <span class="pic-wholike morelike">...</span>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                               <div class="divider"></div>
+                                               <div>
+                                                   <div class="row">
+                                                   <form>
+                                                       <div class="input-field cmt-coll-space">
+                                                            <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                            </div>
+                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                        </div>
+                                                    </form>
+                                                   </div>
+                                                   
+                                                   <div class="comment-section">
+                                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                            <li>
+                                                                <div class="collapsible-header cmt-coll-head active">
+                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                                </div>
+                                                          
+                                                                <div class="collapsible-body">
+                                                                    <ul class="col s12 collection cmt-box">
+                                                                    <li class="transper collection-item avatar">
+                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">สมัย สมร</span></a> 
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>               
+                                                                    </li>
+                                                                    <li class="transper collection-item avatar">
+                                                                        <img src="img/pic5.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+                                                                    </li>
+                                                                </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End timeline mypost-->
+                        <div class="section"></div>
+                        <!--timeline friend post-->
+                        <div class="row" style="">
+                            <div class="col s12">
+                                <div class="card" style="box-shadow:none; background-color: transparent;">
+                                    <div class="card-content black-text" >
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/pic2.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <span class="posbadge me badge f">เพื่อน</span>
+                                              <!-- notice the "circle" class -->
+                                        </div>
+                                        <div class="input-field col s9 upsta-line-f">
+                                            <div class="col s12" id="commenthead">
+                                                <span id="namecomment">สมัคร รักสนุกไม่คิดผูกพัน
+                                                </span>
+                                                <div class="edit-cmt-sec-f">
+                                                    
+                                                    <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;"><i class="fa fa-trash-o"></i> ลบ</a>
+                                                </div>
+
+                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                </p>                                  
+                                            </div>
+                                            <div class="status-post2 col s12">
+                                                <p>พรทิพย์จ้ะ ไปข้าวสารกันไหม</p>
+                                            </div>
+                                            <div class="card-action" style="border: none;">
+                                                <div class="row wholike-sec">
+                                                    <div class="col s1 like-section">
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+                                                        
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2">
+                                                        <div class="likecount">
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <div class="wholike">
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+                                                            
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+                                                            
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
+
+                                                            <span class="pic-wholike morelike">...</span>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                               <div class="divider"></div>
+                                               <div>
+                                                   <div class="row">
+                                                   <form>
+                                                       <div class="input-field cmt-coll-space">
+                                                            <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                            </div>
+                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                        </div>
+                                                    </form>
+                                                   </div>
+                                                   
+                                                   <div class="comment-section">
+                                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                            <li>
+                                                                <div class="collapsible-header cmt-coll-head active">
+                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                                </div>
+                                                          
+                                                                <div class="collapsible-body">
+                                                                    <ul class="col s12 collection cmt-box">
+                                                                <li class="transper collection-item avatar">
+                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">สมัย สมร</span></a> 
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>               
+                                                                    </li>
+                                                                    <li class="transper collection-item avatar">
+                                                                        <img src="img/pic5.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+                                                                    </li>
+                                                                </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End timeline friend post-->
+                        
+                        <!--timeline mypost pic-->
+                        <div class="row" style="">
+                            <div class="col s12">
+                                <div class="card" style="box-shadow:none; background-color: transparent;">
+                                    <div class="card-content black-text" >
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <span class="posbadge me badge">ฉัน</span>
+                                              <!-- notice the "circle" class -->
+                                        </div>
+                                        <div class="input-field col s9 upsta-line">
+                                            <div class="col s12" id="commenthead">
+                                                <span id="namecomment">พรทิพย์ มีชัย
+                                                </span>
+                                                <div class="edit-cmt-sec">
+                                                    <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger selected" href="#pic-edit" 
+                                                    style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                                                    <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1"><i class="fa fa-trash-o"></i> ลบ</a>
+                                                </div>
+
+                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                </p>                                  
+                                            </div>
+                                            <div class="status-post2 col s12">
+                                                <p>ความรักทำให้ตาบอด</p>
+                                                <div class="card-image">
+                                                    <img class="materialboxed" src="img/love.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="card-action" style="border: none;">
+                                                <div class="row wholike-sec">
+                                                    <div class="col s1 like-section">
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+                                                        
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2">
+                                                        <div class="likecount">
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <div class="wholike">
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+                                                            
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+                                                            
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
+
+                                                            <span class="pic-wholike morelike">...</span>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                               <div class="divider"></div>
+                                               <div>
+                                                   <div class="row">
+                                                   <form>
+                                                       <div class="input-field cmt-coll-space">
+                                                            <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                            </div>
+                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                        </div>
+                                                    </form>
+                                                   </div>
+                                                   
+                                                   <div class="comment-section">
+                                                       <ul class="cmt-coll collapsible" data-collapsible="accordion">
+                                                            <li>
+                                                                <div class="collapsible-header cmt-coll-head active"><p style="margin-left: -4%;">ยังไม่มีความคิดเห็น</p></div>
+                                                            </li>
+                                                        </ul>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End timeline mypost pic-->
+                        <!--timeline pin mypost-->
+                        <div class="row" style="">
+                            <div class="col s12">
+                                <div class="card" style="box-shadow:none; background-color: transparent;">
+                                    <div class="card-content black-text" >
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <span class="posbadge2 me badge pin">ปักหมุด</span>
+                                              <!-- notice the "circle" class -->
+                                        </div>
+                                        <div class="input-field col s9 upsta-line-pin">
+                                            <div class="col s12" id="commenthead">
+                                                <span id="namecomment">พรทิพย์ มีชัย
+                                                </span>
+                                                <i class="fa fa-thumb-tack fa-lg pinpost" aria-hidden="true"></i>
+                                                <div class="edit-cmt-sec-f">
+                                                    
+                                                    <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;"><i class="fa fa-trash-o"></i> ลบ</a>
+                                                </div>
+
+                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                </p>                                  
+                                            </div>
+                                            <div class="status-post2 col s12">
+                                                <div class="row">
+                                                    <div class="col s12 m11">
+                                                        <div class="card non-shadow" style="margin-top: 13px;">
+                                                            <div class="card-image">
+                                                                <img src="img/healthy.jpg">
+                                                            </div>
+                                                            <div class="card-content">
+                                                                <h5>Card Title</h5>
+                                                                <p>I am a very simple card. I am good at containing small bits of information.
+                                                                I am convenient because I require little markup to use effectively.</p>
+                                                            </div>
+                                                            <div class="card-action">
+                                                                <a href="#">This is a link</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="card-action" style="border: none;">
+                                                <div class="row wholike-sec">
+                                                    <div class="col s1 like-section">
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+                                                        
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2">
+                                                        <div class="likecount">
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <div class="wholike">
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+                                                            
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+                                                            
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
+
+                                                            <span class="pic-wholike morelike">...</span>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                               <div class="divider"></div>
+                                               <div>
+                                                   <div class="row">
+                                                   <form>
+                                                       <div class="input-field cmt-coll-space">
+                                                            <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                            </div>
+                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                        </div>
+                                                    </form>
+                                                   </div>
+                                                   
+                                                   <div class="comment-section">
+                                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                            <li>
+                                                                <div class="collapsible-header cmt-coll-head active">
+                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                                </div>
+                                                          
+                                                                <div class="collapsible-body">
+                                                                    <ul class="col s12 collection cmt-box">
+                                                                <li class="transper collection-item avatar">
+                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">สมัย สมร</span></a> 
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>               
+                                                                    </li>
+                                                                    <li class="transper collection-item avatar">
+                                                                        <img src="img/pic5.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+                                                                    </li>
+                                                                </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End timeline pin mypost-->
+                    </div>
+                </div>
+                <!--End timeline-->
+                
+                <!-- Modal Structure -->
+                    <!--whofriend-->
+                    <div id="whofriend" class="modal" style="width: 500px;">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>เพื่อนของฉัน</h4>
+                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            <li class="collection-item avatar transper">
+                                <img src="img/pic.jpg" alt="" class="circle">       
+                                <p>เจ๊สมร ดอนเจดีย์</p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                            </li>
+                            <li class="collection-item avatar transper">
+                                <img src="img/pic.jpg" alt="" class="circle">
+                                <p>พิชิต จิตมั่นคง </p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                            </li>
+                            <li class="collection-item avatar transper">
+                                <img src="img/pic.jpg" alt="" class="circle">
+                                <p>มาโนช ชงชม </p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--picstore-->
+                    <div id="picstore" class="modal pic-modal">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-picture-o fa-lg left" aria-hidden="true"></i><h4>รูปภาพของฉัน</h4>
+                            <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                        </ul>
+                        <div class="row pic-rspace">
+                            <div class="col s12 m7 l4 pic-col">
+                                <img src="img/bike.jpg" style="width:100%;">
+                                <div class="divider"></div>
+                                <div class="pic-edit-sec">
+                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
+                                <span class="border-divi2"></span>
+                                <a href="#"><span>ลบ</span></a>
+                                </div>
+                            </div>
+                            <div class="col s12 m7 l4 pic-col">
+                                <img src="img/wf.jpg" style="width:100%;">
+                                <div class="divider"></div>
+                                <div class="pic-edit-sec">
+                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
+                                <span class="border-divi2"></span>
+                                <a href="#"><span>ลบ</span></a>
+                                </div>
+                            </div>
+                            <div class="col s12 m7 l4 pic-col">
+                                <img src="img/cover.jpg" style="width:100%;">
+                                <div class="divider"></div>
+                                <div class="pic-edit-sec">
+                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
+                                <span class="border-divi2"></span>
+                                <a href="#"><span>ลบ</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pic-rspace">
+                            <div class="col s12 m7 l4 pic-col">
+                                <img src="img/bike.jpg" style="width:100%;">
+                                <div class="divider"></div>
+                                <div class="pic-edit-sec">
+                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
+                                <span class="border-divi2"></span>
+                                <a href="#"><span>ลบ</span></a>
+                                </div>
+                            </div>
+                            <div class="col s12 m7 l4 pic-col">
+                                <img src="img/wf.jpg" style="width:100%;">
+                                <div class="divider"></div>
+                                <div class="pic-edit-sec">
+                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
+                                <span class="border-divi2"></span>
+                                <a href="#"><span>ลบ</span></a>
+                                </div>
+                            </div>
+                            <div class="col s12 m7 l4 pic-col">
+                                <img src="img/cover.jpg" style="width:100%;">
+                                <div class="divider"></div>
+                                <div class="pic-edit-sec">
+                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
+                                <span class="border-divi2"></span>
+                                <a href="#"><span>ลบ</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--pic-edit-->
+                    <div id="pic-edit" class="modal" style="width: 500px;">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+                            <li class="transper collection-item avatar">
+                                <img src="img/pic5.jpg" alt="" class="circle">
+                                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                <div class="card-image">
+                                    <img width="300" src="img/love.jpg">
+                                </div>
+                                <form action="#">
+                                    <div class="file-field input-field">
+                                        <div class="btn edit-uppix-btn black-text">
+                                            <span style="font-size: 14pt;"><i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพใหม่</span>
+                                            <input type="file">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="edit-uppix-pathbtn file-path validate" type="text" placeholder="ยังไม่ได้เลือกไฟล์ใด">
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a> 
+                            </li> 
+                        </ul>
+                    </div>
+                    <!--post-edit-->
+                    <div id="post-edit" class="modal" style="width: 500px;">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+                            <li class="transper collection-item avatar">
+                                <img src="img/pic5.jpg" alt="" class="circle">
+                                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                <form action="#">
+                                    <div class="file-field input-field" style="margin-top: -5%;">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a> 
+                            </li> 
+                        </ul>
+                    </div>
+                    <!--profile-edit-->
+                    <div id="profile-edit" class="modal" style="width: 500px;">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขข้อมูลส่วนตัว</h4>
+                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+                            <li>
+                                <div class="row" style="margin-top: 5%;">
+                                    <form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                              <input id="name-pro" type="text" class="validate">
+                                              <label for="name-pro">ชื่อ</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                              <input id="detail-pro" type="text" class="validate">
+                                              <label for="detail-pro">อธิบายเกี่ยวกับคุณ</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a> 
+                            </li>
+                        </ul>
+                    </div>
+                    <!--wholike-->
+                    <div id="wholike" class="modal" style="width: 500px;">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
+                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            <li class="collection-item avatar transper">
+                                <img src="img/pic.jpg" alt="" class="circle">       
+                                <p>เจ๊สมร ดอนเจดีย์</p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                            </li>
+                            <li class="collection-item avatar transper">
+                                <img src="img/pic.jpg" alt="" class="circle">
+                                <p>พิชิต จิตมั่นคง </p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                            </li>
+                            <li class="collection-item avatar transper">
+                                <img src="img/pic.jpg" alt="" class="circle">
+                                <p>มาโนช ชงชม </p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Modal Structure -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+                       
+                           
+    
+
+    <!--Resize Button-->
+    <div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">        
+        <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><i class="large material-icons" >mode_edit</i></a>
+        <ul class="resizer">
+            <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
+            <img src="img/ismall.png" style="margin: 6px"></a></li>
+            <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="img/ismall.png" style="margin: 10px; width: 15px"></a></li>
+            <li id="small"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดเล็ก"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a></li>
+        </ul>         
+    </div>
+    <!--Endd Resize Button-->                  
+</body>
+</html>
