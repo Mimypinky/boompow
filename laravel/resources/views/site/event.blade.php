@@ -58,8 +58,9 @@ table{
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
               <span ><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
 
-
-                  <a href="#partiList1"class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
+<?php   $party3 = DB::table('join_event')->where('eve_id', $data->id)->count(); ?>
+@if($party)
+                  <a href="#partiList1"class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
 
 
                 <div id="partiList1" class="modal" style="width: 500px;">
