@@ -29,7 +29,7 @@ Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
 
-Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
+Route::resource('/register','Profile\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
 Route::get('/checkAvailableUsername',function(){
   $username = Request::Input('username');
 
@@ -51,9 +51,12 @@ Route::get('/newsfeed',function(){
     $title = 'newsfeed';
       return view('social.newsfeed',compact('title'));
 });
-Route::get('/myprofile',function(){
-  $title = '...s Profile';
-  return view('social.myprofile',compact('title'));
+
+Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
+
+Route::get('/profile-friend',function(){
+  $title ='Boompow - Friend profile';
+  return view('social.profile-friend',compact('title'));
 });
 
 Route::get('/friends',function(){
@@ -64,13 +67,6 @@ Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.chat',compact('title'));
 });
-<<<<<<< HEAD
-Route::get('/notification',function(){
-  $title ='Boompow - Notificate';
-  return view('social.noti',compact('title'));
-});
-=======
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
@@ -79,10 +75,3 @@ Route::get('/notification',function(){
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
-<<<<<<< HEAD
-=======
-
-Route::get('/testProfile', function(){
-  return view('social.test_profile');
-});
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa

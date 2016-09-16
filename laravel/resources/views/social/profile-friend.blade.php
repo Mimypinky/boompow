@@ -8,7 +8,7 @@
 
                 <div class="row">
                     <div style="text-align: center;">
-                        <img class="pro-pic media-object dp img-circle" src="img/pic.jpg"
+                        <img class="pro-pic media-object dp img-circle" src="img/pic4.jpg"
                         >
 
                         <form action="#">
@@ -26,12 +26,11 @@
                     <div class="col s8 offset-s2 pro-detail">
                         <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
-                            <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
+                            <h2>ยายละม้าย คล้ายจะเป็นลม</h2>
                         </div>
                         <div id="prodetail">
-                            <p>@foreach ($bio as $bio_text)
-                              {{ $bio_text }}<br />
-                              @endforeach
+                            <p>
+                              อิอิ รอแป๊ป
                             </p>
                         </div>
                         <div style="font-size: 14pt; text-align: center;">
@@ -52,7 +51,7 @@
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3" style="padding-left: 35px;">
-                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
+                                             <img src="img/pic4.jpg" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
                                              <span class="posbadge me badge">ฉัน</span>
                                         </div>
                                         <div class="input-field col s8 upsta-line">
@@ -91,7 +90,7 @@
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3" style="padding-left: 35px;">
-                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <img src="img/pic4.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge me badge">ฉัน</span>
                                               <!-- notice the "circle" class -->
                                         </div>
@@ -125,7 +124,7 @@
                                                     </div>
                                                     <div class="col s2">
                                                         <div class="wholike">
-                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic1.jpg"></a>
 
 
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
@@ -696,4 +695,3 @@
         </div>
     </div>
 </div>
-@stop

@@ -6,7 +6,7 @@
 
     <div class="row" style="margin-top: 160px;">
         <div class="col s12 m12 l10 offset-l1">
-          <form method="POST" action="{{ url('/register') }}">
+          <form method="POST" action="{{ url('/register') }}" id="registerForm">
             <ul class="collection with-header">
                 {{ csrf_field() }}
                 <li class="collection-header"><center><h4>สมัครสมาชิก</h4></center></li>
@@ -151,23 +151,20 @@
                     <div class="section"></div>
                     <div align="center">
                       <span>
-
-                          <label for="filled-in-box" style="font-size: 18px;">อ่านข้อตกลงในการให้บริการ </label>
+                          <label style="font-size: 18px;">อ่านข้อตกลงในการให้บริการ </label>
                           <a class="modal-trigger" href="#" style="font-size: 24px;">ที่นี่</a><br>
-
                       </span>
                     </div>
                     <div class="section"></div>
                     <div align="center">
-                        <input type="checkbox" class="filled-in" id="filled-in-box"/>
-                        <label for="filled-in-box">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
+                        <input type="checkbox" class="filled-in" id="confirmCheck"/>
+                        <label for="confirmCheck">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
                     </div>
                     <div class="section">
 
                     </div>
                     <div align="center">
-                      <input type="submit" id="submit" class="blue darken-3 btn waves-effect waves-light" style="font-size: 18px; padding-top: 2px" value="ตกลง">
-
+                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmCheck2()" disabled="true">ตกลง</button>
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
                     </div>
 
@@ -186,6 +183,11 @@
 </div>
 <script>
 
+
+
+  function submitRegister(){
+    document.getElementById("registerForm").submit();
+  }
   function checkAvailableUsername(){
     $.ajaxSetup({
       headers: {
