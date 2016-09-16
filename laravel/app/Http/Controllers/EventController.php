@@ -53,19 +53,6 @@ class EventController extends Controller
           array_push($attend,$value['id']);
         }
 
-
-
-        for($i=1;$i<count($event);$i++){
-          $parties = JoinEvent::select('*')->where('eve_id','=',$i)->count();
-          dd($parties);
-        }
-        $ei = $parties->toArray();
-        $party=array();
-        foreach($ei as $key =>$value){
-          array_push($party,$value[$i]);
-        }
-        dd($party);
-
         return view('site.event',compact('title','event','myEvent','joinEvent','joined','user'));
 
       }else {
@@ -145,7 +132,6 @@ class EventController extends Controller
       $obj1->location = $request['location'];
       $obj1->contact = $request['contact'];
       $obj1->title = $request['title'];
-
       $obj1->save();
       $join = new JoinEvent();
       $join->eve_id = $obj1->id;

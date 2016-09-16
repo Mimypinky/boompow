@@ -40,7 +40,7 @@ input[type=text]:focus:not([readonly]) + label,input[type=password]:focus:not([r
 }
 
 .email-label {
-   color: #EE6E74; 
+   color: #EE6E74;
 }
 
 input[type=text]:focus:not([readonly]),input[type=password]:focus:not([readonly]),
@@ -103,7 +103,7 @@ input[type="checkbox"].filled-in:checked + label:after {
 .mylogo{
 	width: 200px;
     margin-top: 7%;
-    margin-left: -18%;	
+    margin-left: -18%;
 }
 
 nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
@@ -129,7 +129,7 @@ nav ul a{
 }
 
 .imgthumb2{
-    
+
     width: 100px;
     height: 100px;
     margin-top: -15%;
@@ -171,7 +171,7 @@ nav ul a{
 }
 
 .imgresize{
-	
+
    	/*margin-left: -16px;*/
     /*margin-top: 15px;*/
     width: 100px;
@@ -198,8 +198,8 @@ nav ul a{
 
 
 #datecomment{
-    color: #bdbdbd; 
-    font-size: 12pt; 
+    color: #bdbdbd;
+    font-size: 12pt;
     line-height: 20px;
 }
 
@@ -228,7 +228,7 @@ nav ul a{
 }
 
 #comment{
-    margin-top: -30px; 
+    margin-top: -30px;
     background-color: #F9F9F9;
 }
 
@@ -238,13 +238,13 @@ nav ul a{
 }
 
 #cmttext{
-     
-    width: 310px; 
+
+    width: 310px;
     height: auto;
     margin-top: -10px;
     padding: 10px;
     margin-left: 9%;
-    
+
 }
 
 
@@ -283,22 +283,22 @@ nav ul a{
 }
 
 #profilehead{
-     
-    width: auto; 
-    height: auto; 
+
+    width: auto;
+    height: auto;
     margin-top: -19%;
-    border-radius: 10px; 
+    border-radius: 10px;
     border: 0.5px solid #eeeeee;
     background-image: url("../img/bgpro.png");
     background-size: cover;
     opacity: 20;
 }
 #profilehead2{
-     
-    width: auto; 
-    height: auto; 
+
+    width: auto;
+    height: auto;
     margin-top: -19%;
-    border-radius: 10px; 
+    border-radius: 10px;
     border: 0.5px solid #eeeeee;
     background-image: url("../img/probg2.jpg");
     background-size: cover;
@@ -390,9 +390,9 @@ a{
 }
 
 .iconposition{
-    line-height: 73px !important; 
+    line-height: 73px !important;
     margin-right: 7px !important;
-    
+
 }
 
 .inputsearch{
@@ -449,7 +449,7 @@ a{
 }
 
 .hello-content{
-    
+
     color: white;
     text-align: center;
     padding-top: 9%;
@@ -533,7 +533,7 @@ span.mynoti:after {
         width: 90%;
     }
     .tabs .tab a{
-        
+
     }
     .tabs .tab a:hover{
         color: #e0e0e0 ;
@@ -541,7 +541,7 @@ span.mynoti:after {
     .tabs  .indicator{
         background-color: #BC2C33 ;
     }
-        
+
     .collection-item{
         padding: 10px;
     }
@@ -574,7 +574,7 @@ span.mynoti:after {
 }
 
 #breadcrumbsContent {
-    background-color: #039be5;
+    background-color: #ee6e73;
 }
 
 .contentBox {
@@ -619,18 +619,18 @@ article img {
 .shortenNav {
     width: 85%;
     margin: auto;
-} 
+}
 
 }
 @media screen and (max-width: 600px) {
- 
+
 .shortenNav {
     display: none;
 }
 }
 .contentBtn {
-    position: relative; 
-    display: inline-block; 
+    position: relative;
+    display: inline-block;
     top: 14px
 }
 
@@ -646,7 +646,7 @@ article img {
 }
 
 /*ipad Horizontal */
-@media screen and (max-width: 1025px) {  
+@media screen and (max-width: 1025px) {
     .secnav{
         margin-left: 0.4% !important;
     }
@@ -669,7 +669,7 @@ article img {
     .pro-pic{
     width: 210px;
     height: 210px;
-    margin-top: 6% !important; 
+    margin-top: 6% !important;
     margin-bottom: -34px;
     }
     .postbox-pic2{
@@ -707,17 +707,17 @@ article img {
         right: 6.4% !important;
     }
 
-    
+
 
     .mylogo {
         width: 180px;
         margin-left: -23%;
         margin-top: 10%;
-    }   
+    }
 }
 
 /*ipad Vertical */
-@media screen and (max-width: 769px) {       
+@media screen and (max-width: 769px) {
     .likeicon{
         margin-left: -34px;
         color: #FF0045;
@@ -757,11 +757,11 @@ article img {
     .pro-pic{
     width: 210px;
     height: 210px;
-    margin-top: 6% !important; 
+    margin-top: 6% !important;
     margin-bottom: -34px;
     }
     .second-nav{
-    display: none;   
+    display: none;
     }
     .postbox-pic2 {
     margin-left: -12px !important;
@@ -771,7 +771,7 @@ article img {
     }
     .postbox-pic {
     margin-left: -12px !important;
-    
+
     width: 80px;
     height: 80px;
     }
@@ -817,16 +817,16 @@ article img {
         margin-top: 4px !important;
         color: black;
         font-size: 12pt;
-    }    
+    }
 }
 
 .post-area{
     width: 92% !important;
-     
-    
+
+
 }
 #post-section{
-    margin-left: -20.5%; 
+    margin-left: -20.5%;
     margin-top: -2%;
     margin-bottom: 1%;
 }
@@ -854,7 +854,7 @@ article img {
 }
 
 .post-section{
-    background-color: black; 
+    background-color: black;
     width: auto;
     height: 150px;
     margin-top: -1%;
@@ -1000,4 +1000,10 @@ article img {
     display: none;
     text-decoration: none;
 }
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
+    font-size: 1.2rem;
+}
 
+.collection .collection-item.avatar .title {
+    font-size: 14pt;
+}

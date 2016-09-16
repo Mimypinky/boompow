@@ -41,8 +41,8 @@ table{
 <div class="section"></div>
 <div class="container">
   <div class="row">
-    <div class="col s12 eventOption">
-      <ul class="tabs tab-set" style="background-color: #BC2C33;font-size:1.5em">
+    <div class="col s12 event-option">
+      <ul class="event-option tabs tab-set" style="background-color: #F16B6F;">
         <li class="tab"><a href="#allevent">กิจกรรมทั้งหมด</a></li>
         <li class="tab"><a href="#attendevent">กิจกรรมที่เข้าร่วม</a></li>
         <li class="tab"><a href="#myevent">กิจกรรมของฉัน</a></li>
@@ -51,17 +51,17 @@ table{
     </div>
     <!--Start tab-->
     <div id="allevent" class="col s12 ">
-      <ul class="collection" data-collapsible="accordion">
+      <ul class="collection event-border" data-collapsible="accordion">
         @foreach($event as $key => $data)
         <li class=" collection-item">
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-              <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
-                <?php
+              <span ><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
 
-                  <a href="partiList1"class="modal-trigger"><div class="chip" align="right"> ผู้เข้าร่วม</div></a>
-                
-                ?>
+
+                  <a href="#partiList1"class="modal-trigger"><div class="chip" align="right">7 ผู้เข้าร่วม</div></a>
+
+
                 <div id="partiList1" class="modal" style="width: 500px;">
                   <ul class="collection">
                     @for($i=0;$i<=6;$i++)
@@ -85,46 +85,76 @@ table{
                 <div class="col s4 center" >
                   <div class="card">
                     <div class="card-image">
-                      <img class=" materialboxed" src="img/love.jpg">
+                      <img class=" materialboxed" src="img/wf.jpg">
                     </div>
+                    @if (strcmp($data->status,"unavailable")==0)
+                    <!--เริ่มแสดง status (unavailable)-->
+                    <div class="card-content red darken-1" id="status_avai">
+                        <p class="ev-status">ปิดรับสมัคร</p>
+                    </div>
+                  @elseif(strcmp($data->status,"available")==0 )
+                  <div class="card-content light-green darken-1" id="status_unavai">
+                      <p class="ev-status">กำลังเปิดรับสมัคร</p>
                   </div>
-                  @if (strcmp($data->status,"unavailable")==0)
-                  <!--เริ่มแสดง status (unavailable)-->
-                 <div class="card-action card-panel red darken-4" id="event_status" >
-                  <p style="color: white;">ปิดรับสมัคร</p>
-                </div>
-                @elseif(strcmp($data->status,"available")==0 )
-                <div class="card-action card-panel  green darken-2" id="event_status" >
-                  <p style="color: white;">กำลังเปิดรับ</p>
-                </div>
-                @endif
-                @if(in_array($data->id,$joined) AND ($data->creator!=$user))
-                <div class="waves-effect waves-light btn-large  orange lighten-1" id="EventButton"  value="">เข้าร่วมแล้ว </div>
-                @elseif((in_array($data->id,$joined) AND ($data->creator==$user)))
-                <div class="waves-effect waves-light btn-large  orange lighten-1" id="EventButton" style="display:none;">เข้าร่วมแล้ว </div>
-                @else
-                <a class="waves-effect waves-light btn-large  modal-trigger " href="#join{{$key}}" id="EventButton"  value=""><i class="fa fa-plus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>เข้าร่วม </a>
+                  @if(in_array($data->id,$joined) AND ($data->creator!=$user))
+                  <div class="card-action  amber lighten-4">
+                      <ul class="event-menu ">
+                          <li class="event-item "><a  >
+                              <i class="material-icons left" aria-hidden="true">done</i>เข้าร่วมแล้ว</a></li>
+                                  <li class="event-item"><a href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>
+                      </ul>
+                  </div>
+                  @elseif(in_array($data->id,$joined) AND ($data->creator==$user))
+                  <div class="card-action light-green lighten-3">
+                      <ul class="event-menu ">
+                        <li class="event-item"><a href="{{url('event/board/'.$data->id)}}"><i class="fa fa-star left" aria-hidden="true"></i>กิจกรรมของคุณ</a></li>
+                      </ul>
+                  </div>
 
-                @endif
-                <div id="join{{$key}}" class="modal" style="width: 480px;">
-                  <div class="modal-content">
-                    <p>คุณต้องการเข้าร่วมกิจกรรม&nbsp;<b>{{$data->title}}</b>&nbsp;ใช่หรือไม่</p>
+                  @else
+                  <div class="card-action">
+                      <ul class="event-menu">
+                          <li class="event-item"><a href="#join{{$key}}" class="modal-trigger">
+                              <i class="fa fa-plus-square-o left" aria-hidden="true"></i>เข้าร่วม</a></li>
+                      </ul>
                   </div>
-                  <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                    <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect waves-light btn blue darken-4" style="margin-right: 5px;">ใช่</a>
+
+
+                  @endif
+                  @endif
+
                   </div>
-                </div>
-                @if($data->creator != $user)
+
+
+              <!--  @if($data->creator != $user)
                 <a class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
                 @else
                 <a class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรมของคุณ</a>
 
                 @endif
-
+-->
 
               </div>
+              <div id="join{{$key}}" class="modal" style="width: 500px;">
+                <div class="modal-content">
+                  <h4>ยืนยันการเข้าร่วมกิจกรรม <b>{{$data->title}}</b></h4>
+                  <p>คุณกำลังทำการเข้าร่วมกิจกรรมนี้</p>
+                  <p>ต้องการเข้าร่วมกิจกรรมนี้จริงๆใช่หรือไม่</p>
+                  <!--
+                  <p>คุณต้องการเข้าร่วมกิจกรรม&nbsp;<b>{{$data->title}}</b>&nbsp;ใช่หรือไม่</p>
+                -->
+                </div>
+                <div class="modal-footer">
+                  <div class="modal-footer">
+                      <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ไม่ ขอคิดดูก่อน</a>
+                      <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ฉันต้องการเข้าร่วม</a>
+                  </div>
+                  <!--<a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
+                  <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect waves-light btn blue darken-4" style="margin-right: 5px;">ใช่</a>
 
+
+              -->  </div>
+              </div>
               <div class="col s6" style="margin-left: 10px;">
                 <div class="row" class="col s12" id="event_detail">
                   <table >
@@ -179,12 +209,13 @@ table{
     </div>
 <!--กิจกรรมที่เข้าร่วมมมมม นะจ๊ะ-->
     <div id="attendevent" class="col s12">
-      <ul class="collection" data-collapsible="accordion">
+      <ul class="collection event-border" data-collapsible="accordion">
         @foreach($joinEvent as $key=> $join)
         <li class=" collection-item">
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-              <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$join->title}}<span></span>
+              <span><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>
+                &nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$join->title}}<span></span>
                 <a href="#partiList2" class="modal-trigger"><div class="chip" align="right"> ผู้เข้าร่วม</div></a>
 
                 <div id="partiList2" class="modal" style="width: 500px;">
@@ -211,25 +242,43 @@ table{
                   <div class="col s4 center" >
                       <div class="card">
                           <div class="card-image">
-                              <img class=" materialboxed" src="img/love.jpg">
+                              <img class=" materialboxed" src="{{url('img/wf.jpg')}}">
                           </div>
-                          <div class="card-action card-panel cyan accent-4" id="event_status" >
-                              <p style="color: white">วันนี้เป็นวันกิจกรรม!</p>
+                          <div class="card-content blue-grey darken-1">
+                              <p class="ev-status">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
                           </div>
+                          @if($join->event->creator == $user)
+                          <div class="card-action">
+                              <ul class="event-menu">
+
+                                  <li class="event-item">
+                                    <a href="{{url('event/board/'.$join->eve_id)}}"><i class="fa fa-star left" aria-hidden="true"></i>กิจกรรมของคุณ</a></li>
+
+                              </ul>
+                          </div>
+                         @else
+                          <div class="card-action">
+                              <ul class="event-menu">
+                                  <li class="event-item">
+                                  <a href="#cancel{{$key}}" class="modal-trigger"><i class="fa fa-minus-square-o left" aria-hidden="true"></i>ยกเลิกการเข้าร่วม</a></li>
+                                  <li class="event-item">
+                                    <a href="{{url('event/board/'.$join->eve_id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>
+
+                              </ul>
+                          </div>
+
+                          @endif
                       </div>
-                      @if($join->event->creator == $user)
-                      <a style=" height: 100%;display:none"class="waves-effect waves-light btn-large modal-trigger red darken-1 " href="#cancel{{$key}}" id="EventButton"  value=""><i class="fa fa-minus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>ยกเลิก</a>
-                          <a style=" height: 100%"class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรมของคุณ</a>
-                      @else
-                      <a style=" height: 100%"class="waves-effect waves-light btn-large modal-trigger red darken-1 " href="#cancel{{$key}}" id="EventButton"  value=""><i class="fa fa-minus-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>ยกเลิก</a>
-                          <a style=" height: 100%"class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
-                      @endif
+
 
                   </div>
 
                   <div id="cancel{{$key}}" class="modal" style="width: 480px;">
                       <div class="modal-content">
-                          <p>คุณต้องการยกเลิกการเข้าร่วมกิจกรรม&nbsp;<b>{{$join->title}}</b>&nbsp;ใช่หรือไม่</p>
+                        <h4>ยกเลิกการเข้าร่วมกิจกรรม <b>{{$join->title}}</b></h4>
+                        <p>คุณกำลังทำการยกเลิกการเข้าร่วมกิจกรรมนี้</p>
+                        <p>ต้องการยกเลิกจริงๆใช่หรือไม่</p>
+
                       </div>
                       <div class="modal-footer">
                           <a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
@@ -241,7 +290,6 @@ table{
                 <div class="row" class="col s12" id="event_detail">
                   <table >
                     <tr>
-
                       <td><p>ชื่อกิจกรรม</p></td>
                       <td><p>{{$join->title}}</p></td>
                     </tr>
@@ -280,7 +328,7 @@ table{
             </div>
           </div>
         </li>
-@endforeach
+          @endforeach
 
           </ul>
         </div>
@@ -289,16 +337,96 @@ table{
 
         <div id="myevent" class="col s12">
 
-          <ul class="collection">
-            <ul class="collapsible " data-collapsible="accordion">
+          <ul class="collection" style="margin-top: 17px;">
+            <ul class="collapsible " data-collapsible="accordion" style="margin-top: 0%;">
               <li>
-                <div class="collapsible-header" style="height: 50px;">
-                  <p style="font-size:16pt;color:#d32f2f;text-align: center" >
-                    <i class="fa fa-plus-circle" aria-hidden="true" ></i>เพิ่มกิจกรรม
-                  </p>
-                </div>
-                <div class="collapsible-body" style="padding: 15px;">
-                  <table style="width:1000px;">
+                <div class="collapsible-header add-ev-btn" >
+
+                    <i class="fa fa-plus-circle" aria-hidden="true" ></i>เพิ่มกิจกรรม</div>
+                <div class="collapsible-body add-ebody" >
+                  <div class="row">
+                     <form class="col s12" method="POST" action="{{url('event/create')}}">
+                       <div class="row">
+                         <div class="input-field col s12">
+                          <i class="material-icons prefix">event_note</i>
+                           <input placeholder="ตัวอย่าง: กิจกรรมปลูกป่า" name="title" id="event-name" type="text" class="validate" required>
+                           {{ csrf_field() }}
+                           <label for="event-name">ชื่อกิจกรรม</label>
+                         </div>
+                       </div>
+                       <div class="row">
+                         <div class="input-field col s12">
+                         <i class="material-icons prefix">location_on</i>
+                           <textarea placeholder="ตัวอย่าง: 11/2 ซ.สวยสุดในสอย ถนนพระราม32 เขตดุสิต" name="location" id="address" class="materialize-textarea" required></textarea>
+                           <label for="address">ที่อยู่จัดกิจกรรม</label>
+                         </div>
+                         </div>
+                         <div class="row">
+                             <div class="col s3 etime-col-res">
+                                 <p><i class="etime-icon material-icons left">schedule</i>เวลาจัดกิจกรรม</p>
+                             </div>
+                             <div class="input-field col s3 etime-col">
+                                <input placeholder="12:00 น."  id="event-name" name="start_time"type="time" class="validate" required>
+                            </div>
+                            <div class="col s1" style="width: 6%;">
+                                 <p>ถึง</p>
+                             </div>
+                             <div class="input-field col s3 etime-col">
+                                 <input placeholder="13:00 น." id="event-name" name="finish_time"type="time" class="validate" required>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="input-field col s12">
+                             <i class="material-icons prefix etime-icon">today</i>
+                               <input id="date" type="date" name="start_date" class="datepicker" required>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="input-field col s12">
+                             <i class="material-icons prefix etime-icon">today</i>
+                               <input id="date" type="date" name="finish_date"class="datepicker" required>
+                             </div>
+                         </div>
+                         <div class="row">
+                           <div class="input-field col s12">
+                               <i class="material-icons prefix">phone</i>
+                             <input placeholder="ตัวอย่าง: 081-2345678" name="contact" id="event-name" type="text" class="validate" required>
+
+                             <label for="event-name">เบอร์โทรติดต่อ</label>
+                           </div>
+
+                         <div class="row">
+                              <div class="col s3 etime-col-res">
+                                  <p><i class="etime-icon material-icons left">satellite</i>อัพโหลดรูปภาพ</p>
+                              </div>
+
+                              <div class="input-field col s3 epic-col">
+                                 <input type="file" name="pic" accept="image/*">
+                             </div>
+                         </div>
+                         <div class="row">
+                         <div class="input-field col s12" style="margin-top: 52px;">
+                         <i class="material-icons prefix">description</i>
+                           <textarea placeholder="ตัวอย่าง: ช่วยสอนหนังสือเด็ก" name="description" id="edetail" class="materialize-textarea" required></textarea>
+                           <label for="edetail">รายละเอียดกิจกรรม</label>
+                         </div>
+                         </div>
+                         <div class="row">
+                         <div class="input-field col s12">
+                          <i class="material-icons prefix">link</i>
+                           <input placeholder="ตัวอย่าง: www.facebook.com" name="url" id="url" type="text" class="validate">
+                           <label for="url">ลิงค์ภายนอก</label>
+                         </div>
+                       </div>
+                       <div class="row">
+                         <div class="col s6 offset-s8 btn-event">
+                           <button type="reset" class="waves-effect waves-light btn white black-text">ล้าง</button>
+                           <button class="waves-effect waves-light btn" type="submit"><i class="material-icons right" name="action">send</i>สร้างกิจกรรม</button>
+                         </div>
+                       </div>
+                     </form>
+                 </div>
+                <!--  <table style="width:1000px;">
                     <form method="POST" action="{{url('event/create')}}">
                       <tbody>
                         <tr>
@@ -371,12 +499,12 @@ table{
                         </tr>
                       </tbody>
                     </form>
-                  </table>
+                  </table>-->
                 </div>
               </li>
             </ul>
             @foreach($myEvent as $key => $mine)
-            <li class=" collection-item">
+            <li class=" collection-item event-border">
 <div class="row">
 
               <div class="row">
@@ -387,8 +515,7 @@ table{
                     <a href="#myevePartiList" class="modal-trigger">
                       <div class="chip" align="right">7 ผู้เข้าร่วม</div>
                       </a>
-                      <a style="float:right"class="waves-effect waves-light modal-trigger  " href="#edit{{$key}}" id="EventButton"  value="">
-                        <i class="fa fa-pencil-square-o left" aria-hidden="true" style="margin-right: 5px;"></i>แก้ไข </a>
+
                       </div>
 
                     <div id="myevePartiList" class="modal" style="width: 500px;">
@@ -430,110 +557,140 @@ table{
                     <div class="col s4 center" >
                       <div class="card">
                         <div class="card-image">
-                          <img class=" materialboxed" src="img/love.jpg">
+                          <img class=" materialboxed" src="img/wf.jpg">
                         </div>
-                        <div class="card-action card-panel yellow darken-4" id="event_status" >
-                          <p style="color: #fff;">กิจกรรมเริ่มพรุ่งนี้</p>
+                        <div class="card-content blue-grey darken-1">
+                            <p class="ev-status">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
+                        </div>
+                        <div class="card-action">
+                            <ul class="event-menu">
+                                <li class="event-item"><a href="#edit{{$key}}" class="modal-trigger"><i class="fa fa-pencil-square-o left" aria-hidden="true"></i>แก้ไข</a>
+                                </li>
+                                <li class="event-item"><a href="#eve-del{{$key}}" class="modal-trigger">
+                                    <i class="fa fa-minus-square-o left" aria-hidden="true"></i>ลบกิจกรรม</a>
+                                </li>
+                                <li class="event-item"><a href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>
+                            </ul>
                         </div>
 
                       </div>
 
-                      <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn-large red" href="#eve-del{{$key}}"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
+                    <!--  <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn-large red" href="#eve-del{{$key}}"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
                       <a style=" height: 100%;"class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
 
-
+-->
 
                     </div>
                     <!---ส่วนของ delete event-->
                     <div id="eve-del{{$key}}" class="modal" style="width: 480px;">
                       <div class="modal-content">
-                        <p>คุณต้องการลบกิจกรรม&nbsp;<b>{{$mine->title}}&nbsp;</b>ใช่หรือไม่</p>
+                          <h4>ลบกิจกรรม</h4>
+                          <p>คุณกำลังจะทำการลบการกิจกรรมนี้</p>
+                          <p>ต้องการลบกิจกรรมนี้จริงๆใช่หรือไม่</p>
                       </div>
                       <div class="modal-footer">
-                        <a  class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ไม่ ขอคิดดูก่อน</a>
+                            <a href="{{url('/event/remove/'.$mine->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ลบกิจกรรมนี้</a>
+                        </div>
+                        <!--<a  class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
                         <a href="{{url('/event/remove/'.$mine->id)}}" class=" modal-action waves-effect waves-light btn cyan lighten-1" style="margin-right: 5px;">ใช่</a>
-                      </div>
+                    -->  </div>
                     </div>
 
 
                     <!--ส่วนของ edit event-->
-                    <div id="edit{{$key}}" class="modal" style="width: 500px;height: 800px;">
-                      <div class="modal-content">
-                        <table>
-                          <form action="{{url('boompow/event/edit/'.$mine->id)}}" method="POST">
-                            <tbody>
-                              <tr>
-                                <td style="text-align: right;">
-                                  ชื่อกิจกรรม
-                                </td>
-                                <td><input placeholder="กรอกชื่อกิจกรรมของคุณ เช่น ชวนเพื่อนกินข้าวกลางวัน" id="event_name" type="text" class="validate" value="{{$mine->title}}" required></td>
+                    <div id="edit{{$key}}" class="modal" style="width: 650px;">
+                        <div class="modal-content">
+                            <h4>แก้ไขกิจกรรม</h4>
+                            <div class="row" style="margin-top: 40px;">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">event_note</i>
+                                            <input placeholder="ตัวอย่าง: กิจกรรมปลูกป่า" id="event-name" type="text" class="validate" value="{{$mine->title}}" required>
+                                            <label for="event-name">ชื่อกิจกรรม</label>
+                                        </div>
+                                    </div>
 
-                              </tr>
-                              <tr>
-                                <td style="text-align: right;">
-                                  สถานที่
-                                </td>
-                                <td><input placeholder="กรอกรายละเอียด เช่น สยามพารากอน ชั้น G" id="location" type="text" class="validate" required value="{{$mine->location}}"></td>
-                              </tr>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">location_on</i>
+                                            <textarea placeholder="ตัวอย่าง: 11/2 ซ.สวยสุดในสอย ถนนพระราม32 เขตดุสิต" id="address" class="materialize-textarea" value="{{$mine->location}}" required></textarea>
+                                            <label for="address">ที่อยู่จัดกิจกรรม</label>
+                                        </div>
+                                    </div>
 
-                              <tr>
-                                <td style="text-align: right;">
-                                  เวลาจัดกิจกรรม
-                                </td>
-                                <td>
-                                  <input id="stime" name="start_time" type="datetime" class="validate" width="50px" value="{{$mine->start_time}}" required>&nbsp;&nbsp;ถึง &nbsp;&nbsp;
-                                  <input id="stime" name="finish_time" type="datetime" class="validate" width="50px" value="{{$mine->finish_time}}" required>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td style="text-align: right;">
-                                  วันที่
-                                </td>
-                                <td><input id="sdate" name="start_date"type="datetime" class="validate" width="50px" value="{{$mine->start_date}}">&nbsp;&nbsp;ถึง &nbsp;&nbsp;
-                                  <input id="edate" name="finish_date" type="datetime" class="validate" width="50px" required value="{{$mine->finish_date}}"></td>
-                              </tr>
-                              <tr>
-                                <td style="text-align: right;">
-                                  เบอร์โทรศัพท์ในการติดต่อ
-                                </td>
-                                <td>
-                                  <input placeholder="เช่น 08x-xxx-xxxx" pattern="\d{3}-?\d{3}-?\d{4}" id="phonenumber" type="tel" maxlength="10" class="validate" value="{{$mine->contact}}" name="contact" required></td>
-                              </tr>
-                              <tr>
-                                <td style="text-align: right;">
-                                  รูปภาพ
-                                </td>
-                                <td> <input type="file" name="pic" accept="image/*"></td>
-                              </tr>
+                                    <div class="row">
+                                        <div class="col s3 etime-colm-res">
+                                            <p><i class="etime-icon material-icons left">schedule</i>เวลาจัดกิจกรรม</p>
+                                        </div>
 
-                              <tr>
-                                <td style="text-align: right;">
-                                  รายละเอียดกิจกรรม
-                                </td>
-                                <td>
-                                  <input placeholder=""id="desc" type="text" class="validate" value="{{$mine->description}}" name="description">
-                                </td>
-                              </tr>
+                                        <div class="input-field col s3 etime-colm">
+                                            <input placeholder="12:00 น." id="event-name" type="text" class="validate" value="{{$mine->start_time}}" required>
+                                        </div>
 
-                              <tr>
-                                <td colspan="2">
-                                  <button class="modal-action modal-close btn waves-effect waves-light right red" type="button" name="action">ยกเลิก
+                                        <div class="col s1">
+                                            <p>ถึง</p>
+                                        </div>
 
-                                  </button>
-                                  <button class="btn waves-effect waves-light right" type="submit" name="action" style="margin-right: 10px;">บันทึก
+                                        <div class="input-field col s3 etime-colm">
+                                            <input placeholder="13:00 น." id="event-name" type="text" class="validate" value="{{$mine->finish_time}}" required>
+                                        </div>
+                                    </div>
 
-                                  </button>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix etime-icon">today</i>
+                                            <input id="date" type="date" class="datepicker" value="{{$mine->start_date}}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix etime-icon">today</i>
+                                            <input id="date" type="date" class="datepicker" value="{{$mine->finish_date}}">
+                                        </div>
+                                    </div>
 
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">phone</i>
+                                            <textarea placeholder="ตัวอย่าง: 085-994-9230" id="tel" class="materialize-textarea" value="{{$mine->contact}}" required></textarea>
+                                            <label for="tel">เบอร์โทรศัพท์ติดต่อ</label>
+                                        </div>
+                                    </div>
 
+                                    <div class="row">
+                                        <div class="col s3 etime-colm-res">
+                                            <p><i class="etime-icon material-icons left">satellite</i>อัพโหลดรูปภาพ</p>
+                                        </div>
+                                        <div class="input-field col s3 epic-colm">
+                                            <input type="file" name="pic" accept="image/*">
+                                        </div>
+                                    </div>
 
-                                </td>
-                              </tr>
-                            </tbody>
-                          </form>
-                        </table>
+                                    <div class="row">
+                                        <div class="input-field col s12" style="margin-top: 52px;">
+                                            <i class="material-icons prefix">description</i>
+                                            <textarea placeholder="ตัวอย่าง: ช่วยสอนหนังสือเด็ก" id="edetail" class="materialize-textarea" value="{{$mine->description}}" required></textarea>
+                                            <label for="edetail">รายละเอียดกิจกรรม</label>
+                                        </div>
+                                    </div>
 
-                      </div>
-
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">link</i>
+                                            <input placeholder="ตัวอย่าง: www.facebook.com" id="url" type="text" class="validate">
+                                            <label for="url">ลิงค์ภายนอก</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ยกเลิกการแก้ไข</a>
+                            <a href="{{url('event/edit/'.$mine->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">บันทึกการแก้ไข</a>
+                        </div>
                     </div>
 
                     <div class="col s6" style="margin-left: 10px;">

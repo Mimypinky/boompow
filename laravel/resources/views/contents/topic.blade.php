@@ -35,22 +35,22 @@
 
         <div>
             <!--FullScreen-->
-            <a class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-side tooltipped"data-position="right" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light blue marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
+            <a href="{{url('content/')}}"class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-side tooltipped"data-position="right" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
+          <br>  <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
+            <br><a class="btn-floating waves-effect waves-light blue marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
 
 
-        <!--iPad-->
+        <!--iPad
             <a class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-ipad tooltipped"data-position="top" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
             <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-ipad tooltipped" data-position="top" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a class="btn-floating waves-effect waves-light blue marginShareBtn-ipad tooltipped" data-position="top" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
 
 
-        <!--Mobile-->
+
             <a class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-mobile tooltipped"data-position="top" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
             <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-mobile tooltipped" data-position="top" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a class="btn-floating waves-effect waves-light blue marginShareBtn-mobile tooltipped" data-position="top" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
-
+          -->
         </div>
 
 
@@ -82,4 +82,7 @@
 </div>
 
 </div>
+<a href="#" class="back-to-top waves-effect waves-light btn light-blue darken-3" style="display: inline;">
+<i class="material-icons left">keyboard_arrow_up</i>กลับขึ้นไปด้านบน</a>
+<script type="text/javascript" src="js/btt.js"></script>
 @stop

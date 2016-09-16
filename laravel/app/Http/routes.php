@@ -68,7 +68,7 @@ Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
-<<<<<<< HEAD
+
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
@@ -76,5 +76,3 @@ Route::get('/notification',function(){
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
-=======
->>>>>>> 75fb32b51daafd790ab9343476cdb5a74d9606ee

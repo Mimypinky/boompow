@@ -2,411 +2,515 @@
 @section('maincontent')
 
 <div class="row" id="act_part">
-
-
 <div class="container" >
-    <div class="row" style="margin-bottom: 0">
-        <div class="col s2">
-            <center><a href="/event"class="waves-effect waves-light btn cyan lighten-1 center"><i class="fa fa-arrow-left" aria-hidden="true" style="margin-right: 8px;"></i>กลับกิจกรรม</a>
-            </center>
-        </div>
-        <div class="col s10">
-            <div class="card" style="margin-top: 0">
-                <div class="card-image" >
-                    <img src="{{url('img/polygons.jpg')}}"  id="eve_img" >
-                    <span class="card-title">{{$eve_name->title}}</span>
-                </div>
-                <div class="card-content">
+  <div class="row" style="margin-bottom: 0">
+      <div class="col s10">
+          <div class="card pro-upstatus-feed event-head">
+              <div class="card-image" >
+                  <img src="{{url('img/polygons.jpg')}}"  id="eve_img" >
+                  <span class="card-title">
+                      <a href="/event" class="tooltipped back-btn blue darken-1 waves-effect waves-light btn right" style="margin-right: 10px;" data-position="bottom" data-delay="50" data-tooltip="กลับไปหน้ากิจกรรม"><i class="material-icons" style="font-size: 20pt;">arrow_back</i></a>
+                  </span>
+                  <span class="card-title event-name">{{$eve_name->title}}</span>
+
+              </div>
+              <div class="card-content">
                   @if($eve_name->creator == $user)
-                  <p>
-                  สร้างโดย &nbsp;&nbsp;<span class="" style=" margin-right: 10px;"><a>คุณ</a></span>
+                  <span style="font-size: 18pt;">สร้างโดย:&nbsp</span><a href="Social-Profile-v2.html" style="color: #0d47a1; font-size: 18pt !important;">คุณ</a>
+                      <a href="#eve-del" id="status_join" class="modal-trigger white-text noshadow waves-effect waves-light btn red right">
+                      <i class="fa fa-times"></i>&nbspลบกิจกรรม</a>
+                      <a class="white-text noshadow waves-effect waves-light btn red darken-3 right" style="margin-right: 10px;font-size: 14pt;">&nbspแก้ไขข้อมูลกิจกรรม</a>
+                      @else
+                      <span style="font-size: 18pt;">สร้างโดย:&nbsp</span><a href="Social-Profile-v2.html" style="color: #0d47a1; font-size: 18pt !important;">{{$eve_name->fname.' '.$eve_name->lname}}</a>
 
-                    <a id="status_join " href="{{url('/event/remove/'.$eve_name->id)}}"class="waves-effect waves-light btn  red " style="color: white;margin-left:36em;width:10em"><i class="fa fa-times"></i> ลบกิจกรรม</a>
-                  @else
-                    สร้างโดย <a href="Social-Profile.html" style="color: #0d47a1;">{{$eve_name->fname.' '.$eve_name->lname}}</a>
-                      <a id="status_join "class="waves-effect waves-light  btn-large quit " style="color: white;margin-left:36em;width:10em"><span> เข้าร่วมแล้ว</span></a></p>
-                  @endif
+                      <a href="#cancel" id="status_join" class="modal-trigger white-text noshadow waves-effect waves-light btn red right">
+                      <i class="fa fa-minus-square-o left" aria-hidden="true"></i>&nbspยกเลิกการเข้าร่วม</a>
+                      @endif
 
-
-
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="col s6 offset-s2">
-            <div class="row" id="eve_desc">
-                        <!--Start Post Box-->
-                       <div class="card white" style="margin-bottom: 19px; height: auto;">
-                                    <ul class="tabs tab-set" style="background-color: #FFF4F5;">
-                                        <li class="tab col s3"><a class="active" href="#status"><i class="fa fa-pencil" aria-hidden="true"></i> แบ่งปันเรื่องราว</a></li>
-                                        <li class="tab col s3"><a href="#picpost"><i class="fa fa-camera" aria-hidden="true"></i> แบ่งปันรูปภาพ</a></li>
-                                    </ul>
-                                    <!--Start Status Post-->
-                                    <div id="status">
-                                    <div class="card-content black-text" style="margin-bottom: -4%;">
-                                        <div class="row valign-wrapper">
-                                            <div class="col s2 eve-cmtpic">
-                                                <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic media-object dp img-circle imgthumb">
-                                            </div>
-                                            <div class="col s9">
-                                                <div class="input-field col s12">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label style="font-size: 13pt;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-action">
-                                        <a class="eve-shareBtn waves-effect waves-light btn"><i class="fa fa-bullhorn left" aria-hidden="true"></i>แบ่งปันเลย!</a>
-
-                                    </div>
-                                    </div>
-                                    <!--End Status Post-->
-                                    <!--Start Pic Post-->
-                                    <div id="picpost">
-                                    <div class="card-content black-text" style="margin-bottom: -4%;">
-                                        <div class="row valign-wrapper">
-                                            <div class="col s2 eve-cmtpic">
-                                                <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic2 media-object dp img-circle imgthumb"> <!-- notice the "circle" class -->
-                                            </div>
-                                            <div class="col s9">
-
-                                                <div class="file-field input-field">
-                                                    <div class="input-field col s12">
-                                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                        <label style="font-size: 13pt;" for="textarea1">บอกอะไรเกี่ยวกับรูปภาพหน่อยสิ!</label>
-                                                    </div>
-                                                    <a class="cyan darken-2 waves-effect waves-light btn">เลือกรูปภาพ
-                                                    <input type="file"><i class="fa fa-camera left" aria-hidden="true"></i></a>
-                                                    <input class="file-path validate" type="text" id="myfile-path">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-action">
-                                        <a class="eve-shareBtn waves-effect waves-light btn"><i class="fa fa-bullhorn left" aria-hidden="true"></i>แบ่งปันเลย!</a>
-                                    </div>
-                                    </div>
-                                    <!--End Pic Post-->
-                                </div>
-                                <!--End Post Box-->
-                                <!--Post-->
-                                        <div class="card white" data-step="1" data-intro="Ok, wasn't that fun?" data-position='right'>
-
-                                            <div class="card-content black-text">
-                                                <div class="row">
-                                                <div class="col s2 push-s10" style="margin-bottom:-14px; margin-top: -3px;">
-                                                    <a href=""><i class="fa fa-pencil-square-o fa-2x tooltipped" data-position="bottom" data-delay="50" data-tooltip="แก้ไข"></i></a>
-                                                </div>
-                                                <div class="col s2 push-s9" style="margin-bottom: -14px; margin-top: -3px;">
-                                                    <a href=""><i class="fa fa-times fa-2x tooltipped" data-position="bottom" data-delay="50" data-tooltip="ลบ"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col s3">
-                                                    <img class="eve-stpic-po media-object dp img-circle imgthumb" src="{{url('img/pic.jpg')}}" >
-                                                </div>
-                                                <div class="col s9" id="commenthead">
-                                                    <span class="eve-namecomment">พรทิพย์ มัชัย  <span class="badge admin">เจ้าของกิจกรรม</span></span>
-                                                    <p id="datecomment">21 เมษายน 2558, 22.01 น.
-                                                    </p>
-                                                </div>
-                                                <div class="eve-post status-post col s12">
-                                                    <p>ไปปลูกผักกันจ้า</p>
-                                                    <div class="card-image">
-                                                        <img class="materialboxed" src="{{url('img/garden.jpg')}}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                            <div class="card-action">
-                                                <div class="row">
-                                                <div class="col s1">
-                                                    <a href="#"><i class="eve-likeicon fa fa-heart fa-3x" aria-hidden="true"></i></a>
-                                                    <span class="eve-liketext">ถูกใจ</span>
-                                                </div>
-                                                <div class="col s2"></div>
-                                                <div class="col s2 push-s1">
-                                                    <div class="eve-likeboxam">
-                                                        <p id="eve-likeno">125+</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col s8 eve-comment">
-                                                    <div class="input-field">
-                                                        <div class="input-field col s12">
-                                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                            <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
-                                                        </div>
-                                                         <a style="left: 11px;" class="waves-effect waves-light btn">ตกลง</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            <!--End Post-->
-
-                                        <!--Post-->
-                                        <div class="card white" data-step="1" data-intro="Ok, wasn't that fun?" data-position='right'>
-
-                                            <div class="card-content black-text">
-                                                <div class="row">
-                                                <div class="col s2 push-s10" style="margin-bottom:-14px; margin-top: -3px;">
-                                                    <a href=""><i class="fa fa-pencil-square-o fa-2x tooltipped" data-position="bottom" data-delay="50" data-tooltip="แก้ไข"></i></a>
-                                                </div>
-                                                <div class="col s2 push-s9" style="margin-bottom: -14px; margin-top: -3px;">
-                                                    <a href=""><i class="fa fa-times fa-2x tooltipped" data-position="bottom" data-delay="50" data-tooltip="ลบ"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col s3">
-                                                    <img class="eve-stpic-po media-object dp img-circle imgthumb" src="{{url('img/pic.jpg')}}" >
-                                                </div>
-                                                <div class="col s9" id="commenthead">
-                                                    <span class="eve-namecomment">พรทิพย์ มัชัย <span class="badge admin">เจ้าของกิจกรรม</span></span>
-                                                    <p id="datecomment">21 เมษายน 2558, 22.01 น.
-                                                    </p>
-                                                </div>
-                                                <div class="eve-post status-post col s12">
-                                                    <p>อากาศแจ่มใสเหมาะแก่การไปดิสนีย์แลนด์ หาเพื่อนร่วมทริปเม้นๆ</p>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                            <div class="card-action">
-                                                <div class="row">
-                                                <div class="col s1">
-                                                    <a href="#"><i class="eve-likeicon fa fa-heart fa-3x" aria-hidden="true"></i></a>
-                                                    <span class="eve-liketext">ถูกใจ</span>
-                                                </div>
-                                                <div class="col s2"></div>
-                                                <div class="col s2 push-s1">
-                                                    <div class="eve-likeboxam">
-                                                        <p id="eve-likeno">125+</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col s8 eve-comment">
-                                                    <div class="input-field">
-                                                         <div class="input-field col s12">
-                                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                            <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
-                                                        </div>
-                                                         <a style="left: 11px;" class="waves-effect waves-light btn">ตกลง</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-
-
-
-
-                                    <!--Start Comment Post-->
-                                    <div class="card-action" id="comment">
-                                        <ul class="collapsible" data-collapsible="expandable">
-                                            <li>
-                                                <div class="collapsible-header active"><i class="fa fa-commenting" aria-hidden="true"></i>ความคิดเห็นจากเพื่อน
-                                                    <span class="secondary-content"><i class="black-text fa fa-chevron-up" aria-hidden="true"></i></span>
-                                                </div>
-                                                <div class="collapsible-body">
-                                                     <ul class="collection">
-                                                        <li class="collection-item avatar">
-                                                            <a href="Social-Profile-friend.html">
-                                                            <img src="{{url('img/pic4.jpg')}}" alt="" class="circle">
-                                                            <span class="title title-name">สมัย สมร <span class="badge attendee">ผู้ร่วมกิจกรรม</span></span></a>
-                                                            <p class="eve-align" id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                            <p class="space-cmt eve-align black-text">ไปด้วยคนจ้าทักมา <br></p>
-
-                                                        </li>
-                                                        <li class="collection-item avatar">
-                                                            <a href="Social-Profile.html">
-                                                            <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
-                                                            <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม <span class="badge attendee">ผู้ร่วมกิจกรรม</span></span></a>
-                                                            <p class="eve-align" id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                            <p class="space-cmt eve-align black-text">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
-
-                                                        </li>
-
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!--End Comment Post-->
-                                </div>
-                                <!--End Post-->
-
-                </div>
-            </div>
-        </div>
-        <div class="col s4">
-            <div class="row" id="eve_side">
-                <div class="collection " >
-                  <div class="collection-item">
-                  <a class="waves-effect waves-light modal-trigger " style="margin-left:17.05em;" href="#edit" id="EventButton"  >
-                    <i class="fa fa-pencil-square-o left" aria-hidden="true" style=""></i>แก้ไข </a></div>
-                    <div class="collection-item">
-                        <p><span style="color: #0d47a1;"><i class="fa fa-clock-o" aria-hidden="true" style="margin-right: 5px;"></i>วันที่: </span><span>{{$eve_name->start_date}}ถึง {{$eve_name->finish_date}} </span><br>&nbsp;&nbsp;&nbsp;เวลา 12.00 น.ถึง 16.00 น.</span>
-                        </p>
-
-                    </div>
-                    <div class="collection-item">
-                        <p><span style="color: #0d47a1;"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 5px;"></i>สถานที่: </span><span>{{$eve_name->location}}</span></p>
-
-                    </div>
-                    <div class="collection-item">
-                        <p><span style="color: #0d47a1;"><i class="fa fa-phone " aria-hidden="true" style="margin-right: 5px;"></i>เบอร์โทร: </span><span>{{$eve_name->contact}}</span></p>
-
-                    </div>
-
-                    <div class="collection-item">
-
-                        <h5><span style="color: #0d47a1;">เกี่ยวกับกิจกรรม</span></h5>
-                        <p>{{$eve_name->description}}</p>
-
-
-                    </div>
-                </div>
-                <div class="collection">
-                    <div class="collection-item">
-                        <h5><span style="color: #0d47a1;">เพื่อนร่วมกิจกรรม 7 คน</span></h5>
-                        <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
-                    </div>
-                    <div class="collection-item" id="eve_friend">
-                        <table style="height: 100%">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                   <img class ="partipic center circle"  src="{{url('img/evepic.jpg')}}">
-                                    </td>
-                                    <td>
-                                       <img class ="partipic center circle" src="{{url('img/evepic2.jpg')}}">
-                                    </td>
-                                    <td>
-                                       <img class ="partipic center circle" src="{{url('img/evepic3.png')}}">
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>
-                                   <img class ="partipic center circle"  src="img/evepic.jpg">
-                                    </td>
-                                    <td>
-                                       <img class ="partipic center circle" src="img/evepic2.jpg">
-                                    </td>
-                                    <td>
-                                       <img class ="partipic center circle" src="img/evepic3.png">
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!--allfriend-->
-            <div id="allfriend" class="modal" style="width: 500px;">
-                <ul class="collection">
-                    <li class="collection-item avatar">
-                        <img src="img/pic.jpg" alt="" class="circle">
-                        <p>เจ๊สมร ดอนเจดีย์</p>
-                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="img/pic.jpg" alt="" class="circle">
-                        <p>พิชิต จิตมั่นคง </p>
-                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="img/pic.jpg" alt="" class="circle">
-                        <p>มาโนช ชงชม </p>
-                        <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                    </li>
-                </ul>
-                <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
-            </div>
-<!---modal edit-->
-<div id="edit" class="modal" style="width: 500px;height: 800px;">
-  <div class="modal-content">
-    <table>
-      <form action="{{url('/event/edit/'.$eve_name->id)}}" method="post">
-        <tbody>
-          <tr>
-            <td style="text-align: right;">
-              ชื่อกิจกรรม
-            </td>
-            <td><input placeholder="กรอกชื่อกิจกรรมของคุณ เช่น ชวนเพื่อนกินข้าวกลางวัน" id="title" type="text" class="validate" value="{{$eve_name->title}}" required></td>
-          </tr>
-          <tr>
-            <td style="text-align: right;">
-              สถานที่
-            </td>
-            <td><input placeholder="กรอกรายละเอียด เช่น สยามพารากอน ชั้น G" id="location" type="text" class="validate" required value="{{$eve_name->location}}"></td>
-          </tr>
-
-          <tr>
-            <td style="text-align: right;">
-              เวลาจัดกิจกรรม
-            </td>
-            <td>
-              <input id="start_time" type="text" class="validate" width="50px" value="{{$eve_name->start_time}}" required>&nbsp;&nbsp;ถึง &nbsp;&nbsp;
-              <input id="end_time" type="text" class="validate" width="50px" value="{{$eve_name->finish_time}}" required>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: right;">
-              วันที่
-            </td>
-            <td><input id="start_date" type="date" class="validate" width="50px" value="{{$eve_name->start_date}}">&nbsp;&nbsp;ถึง &nbsp;&nbsp;
-              <input id="finish_date" type="date" class="validate" width="50px" required value="{{$eve_name->finish_date}}"></td>
-          </tr>
-          <tr>
-            <td style="text-align: right;">
-              เบอร์โทรศัพท์ในการติดต่อ
-            </td>
-            <td><input placeholder="เช่น 08x-xxx-xxxx" pattern="\d{3}-?\d{3}-?\d{4}" id="phonenumber" type="tel" maxlength="10" class="validate" value="{{$eve_name->contact}}" required></td>
-          </tr>
-          <tr>
-            <td style="text-align: right;">
-              รูปภาพ
-            </td>
-            <td> <input type="file" name="pic" accept="image/*"></td>
-          </tr>
-
-          <tr>
-            <td style="text-align: right;">
-              รายละเอียดกิจกรรม
-            </td>
-            <td>
-              <input placeholder=""id="desc" type="text" class="validate" value="{{$eve_name->description}}">
-            </td>
-          </tr>
-
-          <tr>
-            <td colspan="2">
-              <button class="modal-action modal-close btn waves-effect waves-light right red" type="button" name="action">ยกเลิก
-
-              </button>
-              <button class="btn waves-effect waves-light right" type="submit" name="action" style="margin-right: 10px;">บันทึก
-
-              </button>
-
-
-
-            </td>
-          </tr>
-        </tbody>
-      </form>
-    </table>
-
+              </div>
+          </div>
+      </div>
   </div>
 
+  <!--Start Post Box-->
+  <div class="col s8 pro-upstatus-feed">
+      <ul class="collection with-header f-modal">
+          <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square fa-3x left" aria-hidden="true"></i><h4>อัพเดตข่าวกิจกรรมของคุณ</h4>
+          </li>
+      </ul>
+      <div class="row" id="eve_desc">
+          <div class="row" style="">
+              <div class="col s12">
+                  <div class="card" style="box-shadow:none; background-color: transparent;">
+                      <div class="card-content black-text" >
+                          <div class="input-field col s3 img-position-res">
+                              <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
+                              <span class="posbadge-Ejoiner me badge Ejoiner">ผู้เข้าร่วม</span>
+                          </div>
+                          <div class="input-field col s8 upsta-line-Ejoiner">
+                              <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea"></textarea>
+                              <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                              <div class="card-action" style="border: none;">
+                                  <form action="#">
+                                      <div class="file-field input-field">
+                                          <div class="btn prouppic-btn black-text">
+                                              <span style="font-size: 14pt;">
+                                                  <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
+                                                  <input type="file"></span>
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                              <input class="file-path validate" type="text" id="myfile-path">
+                                          </div>
+                                      </div>
+                                  </form>
+                                  <a class="proupsta-btn waves-effect waves-light btn">โพสต์</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--End Post Box-->
+
+  <!--Start newsfeed section-->
+      <div class="col s8 pro-upstatus event-feed">
+      <ul class="collection with-header f-modal">
+          <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-rss-square fa-3x left" aria-hidden="true"></i><h4>ข่าวสารจากกิจกรรม</h4>
+          </li>
+      </ul>
+      <!--timeline mypost-->
+          <div class="row" style="">
+              <div class="col s12">
+                  <div class="card" style="box-shadow:none; background-color: transparent;">
+                      <div class="card-content black-text" >
+                          <div class="input-field col s3 img-position-res">
+                              <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
+                              <span class="posbadge-Ejoiner me badge Ejoiner">ผู้เข้าร่วม</span>
+                              <!-- notice the "circle" class -->
+                          </div>
+                          <div class="input-field col s9 upsta-line-Ejoiner">
+                              <div class="col s12" id="commenthead">
+                                  <span id="namecomment">พรทิพย์ มีชัย</span>
+                                  <div class="event-edit-btn">
+                                      <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit"
+                                      style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                                      <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1"><i class="fa fa-trash-o"></i> ลบ</a>
+                                  </div>
+                                  <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                              </div>
+                              <div class="status-post2 col s12">
+                                  <p>อากาศแจ่มใสเหมาะแก่การไปดิสนีย์แลนด์ หาเพื่อนร่วมทริปเม้นๆ</p>
+                              </div>
+                              <div class="card-action" style="border: none;">
+                                  <div class="row wholike-sec">
+                                      <div class="col s1 like-section">
+                                          <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="{{url('img/heart-like.png')}}"></a>
+
+                                      </div>
+                                      <div class="col s2"></div>
+                                      <div class="col s2">
+                                          <div class="likecount">
+                                              <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                          </div>
+                                      </div>
+                                      <div class="col s2">
+                                          <div class="wholike">
+                                              <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="{{url('img/pic4.jpg')}}">
+                                              </a>
+                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic5.jpg')}}"></a>
+                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic2.jpg')}}"></a>
+                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic3.jpg')}}"></a>
+                                              <span class="pic-wholike morelike">...</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="divider"></div>
+                                  <div>
+                                      <div class="row">
+                                          <form>
+                                              <div class="input-field cmt-coll-space">
+                                                  <div class="input-field col s12">
+                                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                      <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                  </div>
+                                                  <a class="comment-btn-event waves-effect waves-light btn">ตกลง</a>
+                                              </div>
+                                          </form>
+                                      </div>
+                                      <div class="comment-section">
+                                          <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                              <li>
+                                                  <div class="collapsible-header cmt-coll-head active">
+                                                  <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                  </div>
+
+                                                  <div class="collapsible-body">
+                                                      <ul class="col s12 collection cmt-box">
+                                                          <li class="transper collection-item avatar">
+                                                              <a href="Social-Profile-friend-v2.html"><img src="{{url('img/pic4.jpg')}}" alt="" class="circle joiner-status">
+                                                              <span class="title title-name">สมัย สมร</span></a>
+                                                              <span class="joiner-badge badge">ผู้เข้าร่วม</span>
+
+                                                              <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                              <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
+                                                          </li>
+                                                          <li class="transper collection-item avatar">
+                                                              <img src="{{url('img/pic5.jpg')}}" alt="" class="circle joiner-status">
+                                                              <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                              <span class="joiner-badge badge">ผู้เข้าร่วม</span>
+
+                                                              <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                              <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง<br></p>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!--End timeline mypost-->
+            <hr>
+          <!--timeline friend post-->
+          <div class="row" style="">
+              <div class="col s12">
+                  <div class="card" style="box-shadow:none; background-color: transparent;">
+                      <div class="card-content black-text" >
+                          <div class="input-field col s3 img-position-res">
+                              <img src="{{url('img/pic2.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
+                              <span class="posbadge-Eowner me badge Eowner">เจ้าของกิจกรรม</span>
+                              <!-- notice the "circle" class -->
+                          </div>
+                          <div class="input-field col s9 upsta-line-Eowner">
+                              <div class="col s12" id="commenthead">
+                                  <span id="namecomment">สมัคร รักสนุกไม่คิดผูกพัน
+                                  </span>
+                                  <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                              </div>
+                              <div class="status-post2 col s12">
+                                  <p>พรทิพย์จ้ะ ไปข้าวสารกันไหม</p>
+                              </div>
+                              <div class="card-action" style="border: none;">
+                                  <div class="row wholike-sec">
+                                      <div class="col s1 like-section">
+                                          <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="{{url('img/heart-like.png')}}"></a>
+                                      </div>
+                                      <div class="col s2"></div>
+                                      <div class="col s2">
+                                          <div class="likecount">
+                                              <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                          </div>
+                                      </div>
+                                      <div class="col s2">
+                                          <div class="wholike">
+                                              <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="{{url('img/pic4.jpg')}}"></a>
+
+
+                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic5.jpg')}}"></a>
+
+                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic2.jpg')}}"></a>
+
+                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic3.jpg')}}"></a>
+
+                                              <span class="pic-wholike morelike">...</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="divider"></div>
+                                  <div>
+                                      <div class="row">
+                                          <form>
+                                              <div class="input-field cmt-coll-space">
+                                                  <div class="input-field col s12">
+                                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                      <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                  </div>
+                                                  <a class="comment-btn-event waves-effect waves-light btn">ตกลง</a>
+                                              </div>
+                                          </form>
+                                      </div>
+
+                                      <div class="comment-section">
+                                          <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                              <li>
+                                                  <div class="collapsible-header cmt-coll-head active">
+                                                  <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                  </div>
+
+                                                  <div class="collapsible-body">
+                                                      <ul class="col s12 collection cmt-box">
+                                                          <li class="transper collection-item avatar">
+                                                              <a href="Social-Profile-friend-v2.html"><img src="{{url('img/pic.jpg')}}" alt="" class="circle joiner-owner">
+                                                              <span class="title title-name">พรทิพย์ มีชัย</span></a>
+                                                              <span class="joiner-badge badge">ผู้เข้าร่วม</span>
+                                                              <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                              <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
+                                                          </li>
+                                                          <li class="transper collection-item avatar">
+                                                              <img src="{{url('img/pic5.jpg')}}" alt="" class="circle joiner-status">
+                                                              <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                              <span class="joiner-badge badge">ผู้เข้าร่วม</span>
+                                                              <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                              <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--End timeline friend post-->
+            <hr>
+          <!--timeline mypost pic-->
+                      <div class="row" style="">
+                          <div class="col s12">
+                              <div class="card" style="box-shadow:none; background-color: transparent;">
+                                  <div class="card-content black-text" >
+                                      <div class="input-field col s3 img-position-res">
+                                           <img src="{{url('img/pic4.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                           <span class="posbadge-Ejoiner me badge Ejoiner">ผู้เข้าร่วม</span>
+                                            <!-- notice the "circle" class -->
+                                      </div>
+                                      <div class="input-field col s9 upsta-line-Ejoiner">
+                                          <div class="col s12" id="commenthead">
+                                              <span id="namecomment">สมัย สมร
+                                              </span>
+                                              <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                              </p>
+                                          </div>
+                                          <div class="status-post2 col s12">
+                                              <p>ความรักทำให้ตาบอด</p>
+                                              <div class="card-image">
+                                                  <img class="materialboxed" src="{{url('img/love.jpg')}}">
+                                              </div>
+                                          </div>
+                                          <div class="card-action" style="border: none;">
+                                              <div class="row wholike-sec">
+                                                  <div class="col s1 like-section">
+                                                      <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="{{url('img/heart-like.png')}}"></a>
+
+                                                  </div>
+                                                  <div class="col s2"></div>
+                                                  <div class="col s2">
+                                                      <div class="likecount">
+                                                          <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col s2">
+                                                      <div class="wholike">
+                                                          <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href="#"><img class="pic-wholike" src="{{url('img/pic4.jpg')}}"></a>
+
+
+                                                          <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic5.jpg')}}"></a>
+
+                                                          <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic2.jpg')}}"></a>
+
+                                                          <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic3.jpg')}}"></a>
+
+                                                          <span class="pic-wholike morelike">...</span>
+                                                      </div>
+                                                  </div>
+                                             </div>
+                                             <div class="divider"></div>
+                                             <div>
+                                                 <div class="row">
+                                                 <form>
+                                                     <div class="input-field cmt-coll-space">
+                                                          <div class="input-field col s12">
+                                                              <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                              <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                          </div>
+                                                          <a class="comment-btn-event waves-effect waves-light btn">ตกลง</a>
+                                                      </div>
+                                                  </form>
+                                                 </div>
+
+                                                 <div class="comment-section">
+                                                     <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                          <li>
+                                                              <div class="collapsible-header cmt-coll-head active"><p style="margin-left: -4%;">ยังไม่มีความคิดเห็น</p></div>
+                                                          </li>
+                                                      </ul>
+                                                 </div>
+                                             </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!--End timeline mypost pic-->
+
+      </div>
+      <!--End newsfeed section-->
+      <!--Start detail section-->
+  <div class="col s4">
+      <div class="row event-detail">
+          <div class="collection pro-upstatus-feed">
+              <div class="collection-item edetail-space">
+                  <div class="collection-item">
+                      <span class="i-event-det">
+                      <i class="fa fa-calendar left" aria-hidden="true"></i>วันที่</span>
+                      <div class="space"></div>
+                      <p>{{$eve_name->start_date}} ถึง{{$eve_name->finish_date}}</p>
+                  </div>
+                  <div class="collection-item">
+                      <span class="i-event-det">
+                      <i class="fa fa-clock-o left" aria-hidden="true"></i>เวลา</span>
+                      <div class="space"></div>
+                      <p>{{$eve_name->start_time}} น. ถึง {{$eve_name->finish_time}} น.</p>
+                  </div>
+                  <div class="collection-item">
+                      <span class="i-event-det">
+                      <i class="fa fa-map-marker left" aria-hidden="true"></i>สถานที่</span>
+                      <div class="space"></div>
+                      <p>{{$eve_name->location}}</p>
+                  </div>
+                  <div class="collection-item">
+                      <span class="i-event-det">
+                      <i class="fa fa-phone left" aria-hidden="true"></i>ติดต่อ</span>
+                      <div class="space"></div>
+                      <p>{{$eve_name->contact}}</p>
+                  </div>
+                  <div class="collection-item">
+                      <h5><span class="i-event-det">เกี่ยวกับกิจกรรม</span></h5>
+                      <p>{{$eve_name->description}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--End detail section-->
+  <!--Start whojoined section-->
+  <div class="col s4">
+      <div class="row joined-f">
+          <div class="collection pro-upstatus-feed">
+              <div class="collection-item">
+                  <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม 7 คน</span></h5>
+                  <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
+              </div>
+              <div class="collection-item" id="eve_friend">
+                      <div class="row joiner-pic-rspace">
+                          <div class="col s12 m7 l4 joiner-pic-col">
+                              <a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="แม้น ณ ซอยสี่"><img src="{{url('img/pic3.jpg')}}"></a>
+                          </div>
+
+                          <div class="col s12 m7 l4 joiner-pic-col">
+                              <a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร"><img src="{{url('img/pic4.jpg')}}"></a>
+                          </div>
+
+                          <div class="col s12 m7 l4 joiner-pic-col">
+                              <a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัคร รักสนุกไม่คิดผูกผัน"><img src="{{url('img/pic2.jpg')}}"></a>
+                          </div>
+                      </div>
+
+
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+  <!--End whojoined section-->
+
+
+  </div>
 </div>
+
+
+  <!--Modal Structure-->
+  <!--post-edit-->
+  <div id="post-edit" class="modal" style="width: 500px;">
+      <ul class="collection with-header f-modal">
+          <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+              <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+          <li class="transper collection-item avatar">
+              <img src="{{url('img/pic5.jpg')}}" alt="" class="circle">
+              <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+              <form action="#">
+                  <div class="file-field input-field" style="margin-top: -5%;">
+                      <div class="input-field col s12">
+                          <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
+                          </textarea>
+                      </div>
+                  </div>
+              </form>
+              <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
+          </li>
+      </ul>
+  </div>
+  <!--wholike-->
+  <div id="wholike" class="modal" style="width: 500px;">
+      <ul class="collection with-header f-modal">
+          <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
+              <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+          <li class="collection-item avatar transper">
+              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
+              <p>เจ๊สมร ดอนเจดีย์</p>
+              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+          </li>
+          <li class="collection-item avatar transper">
+              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
+              <p>พิชิต จิตมั่นคง </p>
+              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+          </li>
+          <li class="collection-item avatar transper">
+              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
+              <p>มาโนช ชงชม </p>
+              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+          </li>
+      </ul>
+  </div>
+  <!--allfriend-->
+  <div id="allfriend" class="modal" style="width: 500px;">
+      <ul class="collection with-header f-modal">
+          <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
+              <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
+          </li>
+          <li class="collection-item avatar transper">
+              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
+              <p>เจ๊สมร ดอนเจดีย์</p>
+              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+          </li>
+          <li class="collection-item avatar transper">
+              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
+              <p>พิชิต จิตมั่นคง </p>
+              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+          </li>
+          <li class="collection-item avatar transper">
+              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
+              <p>มาโนช ชงชม </p>
+              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+          </li>
+      </ul>
+  </div>
+  <!--cancelattend-->
+  <div id="cancelattend" class="modal" style="width: 500px;">
+      <div class="modal-content">
+          <h4>ยกเลิกการเข้าร่วมกิจกรรม</h4>
+          <p>คุณกำลังทำการยกเลิกการเข้าร่วมกิจกรรมนี้</p>
+          <p>ต้องการยกเลิกจริงๆใช่หรือไม่</p>
+      </div>
+      <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ไม่ อยู่กิจกรรมนี้ต่อ</a>
+          <a href="#!" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ยกเลิกการเข้าร่วม</a>
+      </div>
+  </div>
+  <!--End Modal Structure-->
 
 @stop
