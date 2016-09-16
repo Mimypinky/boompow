@@ -7,7 +7,11 @@
 	.cam-input{
 		margin-top: -4% !important;
     	margin-left: 1% !important;
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	}
 	#proname{
 		margin-top: 11% !important;
@@ -70,7 +74,11 @@
     	margin-left: -13px !important;
 	}
 	.likecount {
+<<<<<<< HEAD
     	margin-right: -14px !important;
+=======
+    	margin-right: -14px !important;	
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	}
 	.comment-btn-event {
     	left: 73% !important;
@@ -402,6 +410,7 @@
     display: block;
 }
 .wholike-det {
+<<<<<<< HEAD
 	background-color: #ebeef1;
     height: 40px;
     border-radius: 9px;
@@ -411,6 +420,17 @@
     font-size: 13pt;
     padding-left: 10%;
     width: 100%;
+=======
+	background-color: #ebeef1; 
+    height: 40px; 
+    border-radius: 9px; 
+    margin-top: -13%;
+    position: absolute;
+    padding: 10px; 
+    font-size: 13pt; 
+    padding-left: 10%; 
+    width: 100%; 
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
     float: left;
     margin-left: 10%;
     display: none;
@@ -436,7 +456,11 @@
     color: #ee6e74;
 }
 .add-ebody{
+<<<<<<< HEAD
 	padding: 4% 12% 20px 12%;
+=======
+	padding: 4% 12% 20px 12%; 
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	background-color: white;
 }
 .event-border{
@@ -494,7 +518,11 @@
 }
 .fav-icon-sec{
 	background-color: #eceff1;
+<<<<<<< HEAD
 	text-align: center;
+=======
+	text-align: center; 
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	padding-bottom: 44px !important;
 	padding-top: 4px !important;
 }
@@ -514,7 +542,11 @@
 }
 .link-col{
 	border-right: 1px solid #bdbdbd;
+<<<<<<< HEAD
 	padding-left: 25px;
+=======
+	padding-left: 25px; 
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 }
 
 .mf-send-msg{
@@ -572,7 +604,11 @@
 }
 .joiner-f-head{
 	color: #0d47a1;
+<<<<<<< HEAD
 }
+=======
+}	
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 .i-event-det{
 	color: #0d47a1;
 	font-size: 15pt;
@@ -730,7 +766,11 @@ span.badge.me.Eowner {
 .posbadge{
 	margin-top: 54%;
     margin-right: 26%;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 }
 .posbadge-feed{
 	margin-top: 56%;
@@ -889,7 +929,11 @@ span.badge.me {
 	background-size: cover;
 	margin-top: -10%;
 	background-color: #fbfbfb;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 }
 .pro-upstatus-feed{
 	border-radius: 10px; border: 1px solid  #dbdede;
@@ -954,4 +998,8 @@ span.badge.me {
 	border-right: 1px #8f9192 solid;
     margin-right: 15px;
     margin-left: 15px;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa

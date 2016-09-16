@@ -198,13 +198,18 @@ nav ul a{
 
 
 #datecomment{
+<<<<<<< HEAD
     color: #bdbdbd;
     font-size: 12pt;
+=======
+    color: #bdbdbd; 
+    font-size: 14pt; 
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
     line-height: 20px;
 }
 
 #namecomment{
-    font-size: 26px;
+    font-size: 20pt;
     color: #0d47a1 !important;
 }
 
@@ -315,7 +320,7 @@ a{
 
 #proname{
     text-align: center;
-    margin-top: 105px;
+    margin-top: 8%;
 }
 #proname-friend{
     text-align: center;
@@ -326,7 +331,7 @@ a{
     text-align: center;
     text-align: center;
     padding: 36px;
-    margin-top: -31px;
+    margin-top: -61px;
     margin-bottom: -10px;
 
 }
@@ -845,12 +850,13 @@ article img {
 }
 
 #myfile-path{
-    width: 35%;
+    width: 62%;
     height: 17px;
-    margin-top: 1%;
+    margin-top: -9px;
     border: 0px;
     background-color: transparent;
-    margin-left: 4%;
+    margin-left: 3%;
+    font-size: 12pt;
 }
 
 .post-section{
@@ -894,7 +900,7 @@ article img {
     color: #0d47a1;
 }
 .space-cmt{
-    margin-top: 2% !important;
+    margin-top: 6% !important;
 }
 
 #pin-post{
@@ -1004,6 +1010,17 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
     font-size: 1.2rem;
 }
 
+<<<<<<< HEAD
 .collection .collection-item.avatar .title {
     font-size: 14pt;
 }
+=======
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
+    font-size: 1.2rem;
+}
+
+.collection .collection-item.avatar .title {
+    font-size: 14pt;
+}
+
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa

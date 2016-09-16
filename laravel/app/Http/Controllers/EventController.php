@@ -52,9 +52,13 @@ class EventController extends Controller
         foreach($eieiei as $key =>$value){
           array_push($attend,$value['id']);
         }
+<<<<<<< HEAD
       
 
 
+=======
+        
+>>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
         return view('site.event',compact('title','event','myEvent','joinEvent','joined','user'));
 
       }else {
