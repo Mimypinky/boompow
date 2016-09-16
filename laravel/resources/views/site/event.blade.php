@@ -58,25 +58,45 @@ table{
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
               <span ><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
 
-<?php   $party3 = DB::table('join_event')->where('eve_id', $data->id)->count(); ?>
-@if($party)
-                  <a href="#partiList1"class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
+          <?php   $party3 = DB::table('join_event')->where('eve_id', $data->id)->count(); ?>
+          @if($party3==0)
+            <a href="#partiList0"class="modal-trigger"><div class="chip" align="right">ยังไม่มีผู้เข้าร่วม</div></a>
+
+                            <div id="partiList0" class="modal" style="width: 500px;">
+                              <ul class="collection">
+
+                                <li class="collection-item avatar">
+                                  <h4 class="center">ยังไม่มีผู้เข้าร่วม</h4>
+                                </li>
+
+                              </ul>
+                              <div class="modal-footer">
+                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
+                              </div>
+                            </div>
+          @else
+          <a href="#partiList1{{$key}}"class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
+
+                          <div id="partiList1{{$key}}" class="modal" style="width: 500px;">
+                            <ul class="collection">
+                              <?php $member = DB::table('join_event')->join('accounts','join_event.user_id','=','accounts.id')->where('eve_id','=',$data->id)->get(); ?>
+                            @foreach($member as $person)
+                              <li class="collection-item avatar">
+                                <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
+                                <p>{{$person->first_name.' '.$person->last_name}} </p>
+                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
+                              </li>
+
+                              @endforeach
+
+                            </ul>
+                            <div class="modal-footer">
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            </div>
+                          </div>
+          @endif
 
 
-                <div id="partiList1" class="modal" style="width: 500px;">
-                  <ul class="collection">
-                    @for($i=0;$i<=6;$i++)
-                    <li class="collection-item avatar">
-                      <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
-                      <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
-                    </li>
-                    @endfor
-                  </ul>
-                  <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                  </div>
-                </div>
               </div>
             </div>
 

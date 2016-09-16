@@ -52,12 +52,7 @@ class EventController extends Controller
         foreach($eieiei as $key =>$value){
           array_push($attend,$value['id']);
         }
-        for($i=1;$i<count($event);$i++){
-          $party = JoinEvent::select('*')->where('eve_id','=',$i)->count();
-          $party2 = JoinEvent::select('*')->where('eve_id','=',3);
-
-        }
-
+      
 
 
         return view('site.event',compact('title','event','myEvent','joinEvent','joined','user'));
