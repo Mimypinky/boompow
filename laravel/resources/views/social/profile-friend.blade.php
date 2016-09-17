@@ -58,20 +58,7 @@
                     <p> {{$msg}}</p>
                 </div>
                 @else
-
-                <!--
-                @foreach( $post as $p)
-                  {{$p->post_message}}
-                @endforach
-
-
-
-              -->
-
-
-
-
-
+                
                 <div class="row" style="margin-top: 11%;">
                     <div class="col s8 offset-s2 pro-upstatus">
                         <!--timeline mypost-->
@@ -487,7 +474,7 @@
                     </div>
                 </div>
                 <!--End timeline-->
-
+@endif
                 <!-- Modal Structure -->
                     <!--whofriend-->
                     <div id="whofriend" class="modal" style="width: 500px;">
@@ -678,7 +665,7 @@
                             </li>
                         </ul>
                     </div>
-                @endif
+
 
                     <!-- End Modal Structure -->
 
