@@ -26,8 +26,16 @@
                     <div class="col s8 offset-s2 pro-detail">
                         <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
-                            <h2>ยายละม้าย คล้ายจะเป็นลม</h2>
+                            <h2>{{$account->first_name}}  {{$account->last_name}}</h2>
                         </div>
+                        @if(! isset($post))
+                          <form action='{{url('Pending')}}' method='post'>
+                            {{ csrf_field() }}
+                            <input type='hidden' value='{{$account->id}}' name='aid'>
+                            <input type='submit' value='Add'>
+
+                          </form>
+                        @endif
                         <div id="prodetail">
                             <p>
                               อิอิ รอแป๊ป
@@ -43,45 +51,27 @@
                     </div>
                 </div>
                 <!--End Pro head-->
-                <!--Update status-->
-                <div class="row" style="margin-top: 11%;">
-                    <div class="col s8 offset-s2 pro-upstatus">
-                        <div class="row" style="">
-                            <div class="col s12">
-                                <div class="card" style="box-shadow:none; background-color: transparent;">
-                                    <div class="card-content black-text" >
-                                        <div class="input-field col s3" style="padding-left: 35px;">
-                                             <img src="img/pic4.jpg" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
-                                             <span class="posbadge me badge">ฉัน</span>
-                                        </div>
-                                        <div class="input-field col s8 upsta-line">
-                                            <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea"></textarea>
-                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
-                                            <div class="card-action" style="border: none;">
-                                                <form action="#">
-                                                    <div class="file-field input-field">
-                                                        <div class="btn prouppic-btn black-text">
-                                                        <span style="font-size: 14pt;">
-                                                            <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
-                                                            <input type="file"></span>
-                                                        </div>
-                                                        <div class="file-path-wrapper">
-                                                            <input class="file-path validate" type="text" id="myfile-path">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <a class="proupsta-btn waves-effect waves-light btn">
-                                                โพสต์</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end Update status-->
+
                 <!--timeline-->
+                @if(! isset($post))
+                <div id="prodetail">
+                    <p> {{$msg}}</p>
+                </div>
+                @else
+
+                <!--
+                @foreach( $post as $p)
+                  {{$p->post_message}}
+                @endforach
+
+
+
+              -->
+
+
+
+
+
                 <div class="row" style="margin-top: 11%;">
                     <div class="col s8 offset-s2 pro-upstatus">
                         <!--timeline mypost-->
@@ -688,6 +678,8 @@
                             </li>
                         </ul>
                     </div>
+                @endif
+
                     <!-- End Modal Structure -->
 
 

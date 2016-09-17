@@ -53,12 +53,12 @@ Route::get('/newsfeed',function(){
 });
 
 Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
-
+Route::post('/Pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){
   $title ='Boompow - Friend profile';
   return view('social.profile-friend',compact('title'));
 });
-
+Route::get('/friend/{fid}' , 'FriendController@viewFriend');
 Route::get('/friends',function(){
   $title ='Boompow - My Friends';
   return view('social.friend',compact('title'));
@@ -67,11 +67,13 @@ Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.chat',compact('title'));
 });
-
+Route::get('FriendReq' , 'FriendController@viewFriendRequest');
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
+
+Route::post('/acceptFriend', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });

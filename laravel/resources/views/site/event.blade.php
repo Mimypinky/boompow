@@ -56,7 +56,6 @@ table{
         <li class=" collection-item">
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-<<<<<<< HEAD
               <span ><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
 
           <?php   $party3 = DB::table('join_event')->where('eve_id', $data->id)->count(); ?>
@@ -96,11 +95,8 @@ table{
                             </div>
                           </div>
           @endif
-
-
-=======
               <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
-                
+
 
                 <a href="partiList1"class="modal-trigger"><div class="chip" align="right"> ผู้เข้าร่วม</div></a>
 
