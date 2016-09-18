@@ -15,16 +15,15 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/newsfeed.css')}}">
-    <!--<link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss2.css')}}">-->
-
+  <!--  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss2.css')}}">
+-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">
-
+  <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
 
     <!--Import bootstrap.css
 
@@ -59,6 +58,9 @@
       $(document).ready(function() {
      $('select').material_select();
    });
+   function goBack() {
+       window.history.back();
+   }
  </script>
 
  <style>
@@ -85,9 +87,9 @@
   <body style="background-color: #eceff1;">
     <nav style="box-shadow: none;" id="main-nav">
         <div class="nav-wrapper white">
-            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="{{url('img/logo_boom2.png')}}"></a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse">
-                <i style="color: #263238" class="material-icons">menu</i>
+            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 28px;">
+                <i style="color: #e53935" class="material-icons">menu</i>
             </a>
             <ul class="left hide-on-med-and-down">
                 <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
@@ -103,10 +105,9 @@
                 </div>
             </nav>
         </li>
-
     </ul>
 
-    <ul class="right hide-on-med-and-down">
+  <ul class="right hide-on-med-and-down">
       @if(Auth::guest())
 
           <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
@@ -114,21 +115,21 @@
           <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
 
       @else
-      <li><a href="{{url('FriendReq')}}"><button type="button" name="button" >Request</button></a></li>
+      <li><a href="{{url('FriendReq')}}" style="display:none;"><button type="button" name="button" >Request</button></a></li>
 
-<<<<<<< HEAD
 
-      
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="{{url('/myprofile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
-
-=======
       <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
->>>>>>> 8133193e6c6d838016f2a198dcea236308a33ee2
 
-      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="{{url('/newsfeed')}}"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span>สังคมของฉัน</a></li>
 
-      <li><a class="navlink" href="{{url('/chat')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i><span class="mynoti">4</span>ข้อความ</a></li>
+      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'>
+        <a class="button-collapse2 navlink" data-activates="slide-out" href="{{url('/newsfeed')}}">
+          <i style="margin-top: 6px;" class="material-icons left">people</i>
+        <span class="mynoti noti-right">4</span><span class="rps-bar">สังคมของฉัน</span>
+      </a>
+    </li>
 
+    <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+      <span class="mynoti">4</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
       @endif
@@ -144,7 +145,7 @@
             <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#!">แก้ไขข้อมูลส่วนตัว</a></li>
+                <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
                 <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
               </ul>
             </div>
@@ -157,17 +158,13 @@
             <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">4</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="/newsfeed">กระดานข่าว </a></li>
-                <li><a href="/friends">เพื่อน</a></li>
+                <li><a href="{{url('/newsfeed')}}">กระดานข่าว </a></li>
+                <li><a href="{{url('/friends')}}">เพื่อน</a></li>
 
-                <li><a href="/favourite">รายการโปรด</a></li>
-                <li><a href="/event">กิจกรรม <span class="new badge">4</span></a></li>
-
-                <li><a href="#!">รายการโปรด</a></li>
+                <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-
-                <li><a href="/chat">ข้อความ <span class="new badge">4</span></a></li>
-                <li><a href="/notificate">แจ้งเตือน <span class="new badge">4</span></a></li>
+                <li><a href="{{url('/chat')}}">ข้อความ <span class="new badge">4</span></a></li>
+                <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">4</span></a></li>
               </ul>
             </div>
           </li>
@@ -200,15 +197,22 @@
 
     <!-- Dropdownhelp Structure -->
     <ul id="dropdownhelp" class="dropdown-content">
-    <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
+      <ul id="dropdownhelp" class="dropdown-content">
+          <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
+          <li><a href="#!">สมัครสมาชิก</a></li>
+          <li><a href="#!">เข้าสู่ระบบ</a></li>
+      </ul>
+
+
     <!-- ถ้าอยู่หน้าไหนให้ไปตามหน้านั้น-->
     </ul>
 
     <ul id="dropdownprofile" class="dropdown-content">
-        <li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>
+        <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
         <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
 
     </ul>
+    <!--slidenav-->
     <ul id="slide-out" class="side-nav">
         <li><a href="{{url('/newsfeed')}}"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
@@ -219,21 +223,24 @@
     </ul>
 
     <!--Second Nav-->
-      <header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
-          <ul class="secnav hide-on-med-and-down center">
+    <header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+        <ul class="secnav hide-on-med-and-down center">
 
-              <li><a href="/"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
-                  <!--Slide nav menu
-                  <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
-              -->
-              <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
-              <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
-              <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
-              <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
-              <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
-              <li><a href="{{url('content/elder_promotion')}}"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
-              <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
-          </ul>
+            <li><a href="/"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+                <!--Slide nav menu
+                <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+            -->
+            <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+            <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+            <li><a class="dropdown-button" href="{{url('content/entertainment')}}" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
+              <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+            <li><a href="{{url('content/family')}}"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+            <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+            <li><a href="{{url('content/elder_promotion')}}"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+            <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+        </ul>
+        </header>
+
 
             <!--Slide nav menu
             <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
@@ -242,24 +249,7 @@
     </ul>
 
     <!--Slidenav -->
-    <ul id="slide-out" class="side-nav">
-        <li><a href="#!">First Sidebar Link</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li>
-        <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
-                <li>
-                    <a class="collapsible-header">Dropdown</a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#!">First</a></li>
-                            <li><a href="#!">Second</a></li>
-                            <li><a href="#!">Third</a></li>
-                            <li><a href="#!">Fourth</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </ul>
+
         <!--End Slidenav -->
     </div>
     </nav>
@@ -285,15 +275,9 @@
         <li><a href="{{url('content/politics_news')}}">ข่าวการเมือง</a></li>
 
     </ul>
-</header>
+
     </nav>
-<!--<header>
-  <div class="row">
-      <div class="hello">
-          <center><h1 style="font-size: 36pt; text-shadow: 2px 2px #3A3737;" class="hello-content">{{'ชื่อcontent'}}</h1></center>
-      </div>
-  </div>
-</header>-->
+
 <section id="main">
 
 @yield('maincontent')
@@ -333,39 +317,64 @@
             </form>
         </div>
     </div>
-    <div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">
-        <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><i class="large material-icons" >mode_edit</i></a>
-        <ul class="resizer">
-            <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
-                <img src="{{url('img/ismall.png')}}" style="margin: 6px"></a></li>
-                <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง">
-                  <img src="{{url('img/ismall.png')}}" style="margin: 10px; width: 15px"></a></li>
-                <li id="small"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดเล็ก"
-                  ><img src="{{url('img/ismall.png')}}" style="margin: 12px; width: 11px"></a></li>
+
+
+
+
+
+
+        <!-- FOOTER PART SINCE HERE!!!!!-->
+        <!--Resize Button-->
+        <div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">
+            <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><img src="{{url('img/retext-icon.png')}}" width="35" style="padding-top: 7px;"></a>
+            <ul class="resizer">
+                <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
+                    <img src="img/ismall.png" style="margin: 8px"></a>
+                </li>
+                <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="img/ismall.png" style="margin: 11px; width: 14px"></a>
+                </li>
+                <li id="normal"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรปกติ"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a>
+                </li>
             </ul>
         </div>
-<footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text for-footer">Senior Project</h5>
-        <p class="grey-text text-lighten-4 for-footer">งานนี้เป็นส่วนหนึ่งของวิชา INT450 IT Project</p>
-    </div>
-    <div class="col l6 s12">
-        <h5 class="white-text for-footer">ติดต่อเรา</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3 for-footer" href="#!">กุนนี่ คอนพานี</a></li>
-          <li><a class="grey-text text-lighten-3 for-footer" href="#!">สุนิสา อินดัสทรี่</a></li>
-      </ul>
-  </div>
-</div>
-</div>
-<div class="footer-copyright">
-<div class="container">
-© 2016 Copyright SIT KMUTT IT#19
-<a class="grey-text text-lighten-4 right" href="#!"></a>
-</div>
-</div>
-</footer>
+        <!--Endd Resize Button-->
+
+        <!--Back btn-->
+        <div class="fixed-action-btn goback-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left'>
+            <a class="btn-floating btn-large tooltipped" data-position="right" data-delay="50" data-tooltip="กลับ"
+            onclick="goBack()"><i class="material-icons">chevron_left</i></a>
+        </div>
+        <!--End Back btn-->
+
+        <!--Footer-->
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text for-footer">Senior Project</h5>
+                        <p class="grey-text text-lighten-4 for-footer">งานนี้เป็นส่วนหนึ่งของวิชา INT450 IT Project</p>
+                    </div>
+                    <div class="col l6 s12">
+                        <h5 class="white-text for-footer">ติดต่อเรา</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3 for-footer" href="#!">กุนนี่ คอนพานี</a></li>
+                            <li><a class="grey-text text-lighten-3 for-footer" href="#!">สุนิสา อินดัสทรี่</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Copyright SIT KMUTT IT#19
+                    <a class="grey-text text-lighten-4 right" href="#!"></a>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#" class="back-to-top waves-effect waves-light tooltipped" style="display: inline;" data-position="left" data-delay="50" data-tooltip="กลับขึ้นไปด้านบน">
+            <i class="material-icons left back-icon">keyboard_arrow_up</i></a>
+
+        <!--UP BUTTON JS-->
+        <script type="text/javascript" src="js/btt.js"></script>
   </body>
 </html>

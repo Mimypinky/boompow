@@ -3,17 +3,17 @@
 <div class="container" style="width: 90%; margin-top: 160px;min-height: 600px;">
   <div class="row">
  <div class="col s12">
-   <ul class="tabs" style="overflow: hidden;">
-     <li class="tab col s3"><a class="active" href="#allNotify"><span>แจ้งเตือนทั้งหมด <span class="new badge">7</span></a></li>
-     <li class="tab col s3"><a href="#friendNotify">เพื่อน <span class="new badge">1</span></a></li>
-     <li class="tab col s3"><a href="#chatNotify">ข้อความ <span class="new badge">2</span></a></li>
-     <li class="tab col s3"><a href="#eventNotify">กิจกรรม <span class="new badge">1</span></a></li>
-     <li class="tab col s3"><a href="#statusNotify">สถานะ <span class="new badge">3</span></a></li>
+   <ul class="tabs nt-tabhead">
+     <li class="tab col s3"><a class="active nt-tabfont" href="#allNotify"><span>แจ้งเตือนทั้งหมด <span class="new badge">7</span></a></li>
+     <li class="tab col s3"><a href="#friendNotify" class="nt-tabfont">เพื่อน <span class="new badge">1</span></a></li>
+     <li class="tab col s3"><a href="#chatNotify" class="nt-tabfont">ข้อความ <span class="new badge">2</span></a></li>
+     <li class="tab col s3"><a href="#eventNotify" class="nt-tabfont">กิจกรรม <span class="new badge">1</span></a></li>
+     <li class="tab col s3"><a href="#statusNotify" class="nt-tabfont">สถานะ <span class="new badge">3</span></a></li>
    </ul>
  </div>
 
 
- <div id="allNotify" class="col s12">
+ <div id="allNotify" class="col s12 nt-collection">
    <div class="collection">
      <a href="AllChat.html" class="collection-item">
        <div class="row">
@@ -112,7 +112,7 @@
 
 
  </div>
- <div id="friendNotify" class="col s8 offset-s1">
+ <div id="friendNotify" class="col s8 offset-s1 nt-collection">
    <div class="collection">
      <a href="#!" class="collection-item">
        <div class="row">
@@ -130,7 +130,7 @@
 
    </div>
  </div>
- <div id="chatNotify" class="col s8 offset-s2">
+ <div id="chatNotify" class="col s8 offset-s2 nt-collection">
    <div class="collection">
      <a href="AllChat.html" class="collection-item">
        <div class="row">
@@ -160,7 +160,7 @@
      </a>
    </div>
  </div>
- <div id="eventNotify" class="col s8 offset-s3">
+ <div id="eventNotify" class="col s8 offset-s3 nt-collection">
    <div class="collection">
      <a href="#!" class="collection-item">
        <div class="row">
@@ -178,7 +178,7 @@
 
    </div>
  </div>
- <div id="statusNotify" class="col s8 offset-s4">
+ <div id="statusNotify" class="col s8 offset-s4 nt-collection">
    <div class="collection">
      <a href="#!" class="collection-item">
        <div class="row">

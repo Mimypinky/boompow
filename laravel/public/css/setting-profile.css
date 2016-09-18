@@ -1,0 +1,77 @@
+/*ipad Horizontal */
+@media screen and (max-width: 1025px){
+	.sp-des-head{
+		margin-left: -10px !important;
+	}
+	.sp-pic-edit{
+		margin-top: -1% !important;
+	}
+	.sp-caption1{
+		margin-left: 20px !important;
+	}
+	.sp-caption2{
+		margin-left: 40px !important;
+	}
+	
+}
+/*ipad Vertical */
+@media screen and (max-width: 769px) {
+	.sp-des-head{
+		margin-left: -48px !important;
+	}
+	.sp-pic-edit{
+		width: 150px !important;
+    	height: 150px !important;
+    	margin-top: -2% !important;
+    	margin-bottom: -34px !important;
+    	margin-left: -69px !important;
+	}
+	
+	.sp-caption1{
+		margin-left: -15px !important;
+	}
+	.sp-caption2{
+		margin-left: -20px !important;
+	}
+}
+.sp-caption1{
+	margin-left: 45px;
+	font-size: 18pt;
+}
+.sp-caption2{
+	margin-left: 95px;
+	font-size: 18pt;
+}
+.sp-cam-input {
+    border-radius: 50px;
+    background-color: white;
+    margin-top: -29%;
+    float: left;
+    position: absolute;
+    left: 54%;
+    background-color: #ebeef1;
+}
+.sp-pic-edit{
+	width: 210px;
+    height: 210px;
+    margin-top: 2%;
+    margin-left: -29%;
+}
+.sp-des-head{
+	margin-left: -29px;
+	color: #8a8888;
+}
+.sp-head{
+	background-color: white;
+	margin-top: -1%;
+}
+.sp-item{
+	margin-top: 3% !important;
+}
+.dropdown-content li>a, .dropdown-content li>span{
+	font-size: 14pt;
+}
+.select-wrapper input.select-dropdown{
+	font-size: 1.3rem;
+}
+

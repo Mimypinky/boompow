@@ -13,10 +13,11 @@ body {
   font-family: 'sukhumvitregular', sans-serif;
 
 }
-
-a{
-  font-size: 18px !important;
+label{
+  font-size: 14pt !important;
 }
+
+
 /*ใช้เฉพาะหัวข้อ
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Taviraj', sans-serif;
