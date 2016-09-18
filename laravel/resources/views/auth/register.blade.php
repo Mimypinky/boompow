@@ -95,11 +95,11 @@
                                     <div class="input-field">
                                         <select name="question">
                                             <option value="0" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                            <option value="1">สัตว์เลี้ยงตัวแรกของคุณชื่ออะไร?</option>
-                                            <option value="2">สีโปรดของคุณ คือสีอะไร?</option>
-                                            <option value="3">อาหารไทยที่คุณชอบมากที่สุด คืออะไร?</option>
-                                            <option value="4">เครื่องดื่มยี่ห้อโปรดของคุณ คืออะไร?</option>
-                                            <option value="5">แฟนคนแรกของคุณ ชื่ออะไร?</option>
+                                          @foreach($questions as $question)
+
+                                            <option value="{{$question->id}}">{{$question->question}}?</option>
+
+                                            @endforeach
                                         </select>
                                     </div>
                                 </td>

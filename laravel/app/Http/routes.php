@@ -70,10 +70,7 @@ Route::get('/chat',function(){
 
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 //Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
-Route::get('/notification',function(){
-  $title ='Boompow - Notificate';
-  return view('social.noti',compact('title'));
-});
+
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){

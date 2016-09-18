@@ -3,7 +3,7 @@
 @section('maincontent')
 <div id="wrapperHeader">
     <div class="img-cover">
-        <img src="{{url('img/health3.jpg')}}">
+        <img src="{{url('img/'.$headtitle->pic)}}">
     </div>
 
     <div id="header">

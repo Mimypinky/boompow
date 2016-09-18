@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Account;
 use App\Friends;
@@ -36,19 +36,21 @@ public function sendFriendRequest(Request $req){
     $title='Friend Request';
     $status = 'pending';
     $accounts = DB::table('friends')
-            ->join('accounts', 'accounts.id', '=', 'friends.to_user_id')
-            ->where([['action_user_id',$user],['status','pending']])
-            ->select('accounts.*' , 'friends.to_user_id')->get();
-        //  dd($accounts);
+            ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
+            ->where([['to_user_id',$user],['status','pending']])
+            ->select('accounts.*' , 'friends.from_user_id')->get();
+
     return view('social.noti',compact('accounts','user','title'));
   }
-public function acceptFriend(Request $req){
-  $id = $req->input('rid');
+
+public function acceptFriend($rid){
+
   $user=Auth::user()->id;
-  $fr = Friends::where([['from_user_id',$user],['to_user_id',$id]]);
+  $fr = Friends::where([['from_user_id',$user],['to_user_id',$rid]]);
   $fr->status = 'accepted';
+  //dd($fr);
   $fr->save();
-  return redirect()->intended('social.noti');
+  return redirect('social.noti');
 
 
 }

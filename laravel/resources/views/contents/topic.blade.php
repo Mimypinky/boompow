@@ -88,7 +88,6 @@
 </div>
 
 </div>
-<a href="#" class="back-to-top waves-effect waves-light btn light-blue darken-3" style="display: inline;">
-<i class="material-icons left">keyboard_arrow_up</i>กลับขึ้นไปด้านบน</a>
+
 <script type="text/javascript" src="js/btt.js"></script>
 @stop
