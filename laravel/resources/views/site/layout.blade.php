@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
 
     <!--Import bootstrap.css
@@ -87,7 +88,7 @@
   <body style="background-color: #eceff1;">
     <nav style="box-shadow: none;" id="main-nav">
         <div class="nav-wrapper white">
-            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="{{url('img/logo_boom2.png')}}"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 28px;">
                 <i style="color: #e53935" class="material-icons">menu</i>
             </a>
@@ -115,14 +116,14 @@
           <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
 
       @else
-      <li><a href="{{url('FriendReq')}}" style="display:none;"><button type="button" name="button" >Request</button></a></li>
+
 
 
       <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
 
 
       <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'>
-        <a class="button-collapse2 navlink" data-activates="slide-out" href="{{url('/newsfeed')}}">
+        <a class="button-collapse2 navlink" data-activates="slide-out" >
           <i style="margin-top: 6px;" class="material-icons left">people</i>
         <span class="mynoti noti-right">4</span><span class="rps-bar">สังคมของฉัน</span>
       </a>
@@ -234,7 +235,7 @@
             <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
             <li><a class="dropdown-button" href="{{url('content/entertainment')}}" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
               <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
-            <li><a href="{{url('content/family')}}"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+            <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
             <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
             <li><a href="{{url('content/elder_promotion')}}"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
             <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>

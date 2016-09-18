@@ -68,13 +68,14 @@ Route::get('/chat',function(){
   return view('social.chat',compact('title'));
 });
 
-Route::get('FriendReq' , 'FriendController@viewFriendRequest');
-
+Route::get('/notification' , 'FriendController@viewFriendRequest');
+//Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
-Route::post('/acceptFriend', 'FriendController@acceptFriend');
+Route::get('/notification' , 'FriendController@viewFriendRequest');
+Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });

@@ -1,11 +1,17 @@
 @extends('site.layout')
 
 @section('maincontent')
-<div class="row">
-    <div class="recipe-cover">
-        <center><h1 style="font-size: 36pt; text-shadow: 2px 2px #3A3737;" class="hello-content">{{ $headtitle->category_title_th}}</h1></center>
+<div id="wrapperHeader">
+    <div class="img-cover">
+        <img src="{{url('img/health3.jpg')}}">
+    </div>
+
+    <div id="header">
+        <span>{{ $headtitle->category_title_th}}</span>
+
     </div>
 </div>
+
 <div class="container" style="width: 90%;">
 
   <div class="row">

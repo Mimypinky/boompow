@@ -4,11 +4,14 @@
   <div class="row">
  <div class="col s12">
    <ul class="tabs nt-tabhead">
-     <li class="tab col s3"><a class="active nt-tabfont" href="#allNotify"><span>แจ้งเตือนทั้งหมด <span class="new badge">7</span></a></li>
-     <li class="tab col s3"><a href="#friendNotify" class="nt-tabfont">เพื่อน <span class="new badge">1</span></a></li>
-     <li class="tab col s3"><a href="#chatNotify" class="nt-tabfont">ข้อความ <span class="new badge">2</span></a></li>
-     <li class="tab col s3"><a href="#eventNotify" class="nt-tabfont">กิจกรรม <span class="new badge">1</span></a></li>
-     <li class="tab col s3"><a href="#statusNotify" class="nt-tabfont">สถานะ <span class="new badge">3</span></a></li>
+     <li class="tab col s3"><a class="active nt-tabfont" href="#allNotify"><span>แจ้งเตือนทั้งหมด <span class="noti-badge new badge">7</span></a></li>
+     <?php
+     $user = Auth::user()->id;
+     $freq = DB::table('friends')->where([['from_user_id',$user],['status','=','pending']])->count() ?>
+     <li class="tab col s3"><a href="#friendNotify" class="nt-tabfont">เพื่อน <span class="noti-badge new badge">{{$freq}}</span></a></li>
+     <li class="tab col s3"><a href="#chatNotify" class="nt-tabfont">ข้อความ <span class="noti-badge new badge">2</span></a></li>
+     <li class="tab col s3"><a href="#eventNotify" class="nt-tabfont">กิจกรรม <span class="noti-badge new badge">1</span></a></li>
+     <li class="tab col s3"><a href="#statusNotify" class="nt-tabfont">สถานะ <span class="noti-badge new badge">3</span></a></li>
    </ul>
  </div>
 
@@ -114,20 +117,25 @@
  </div>
  <div id="friendNotify" class="col s8 offset-s1 nt-collection">
    <div class="collection">
-     <a href="#!" class="collection-item">
+    @foreach($accounts as $key=>$person)
+ <div href="{{$key}}" class="collection-item">
        <div class="row">
+
          <div class="col col-thumbnail">
            <img class="who circle" src="img/mim_tn.jpg">
          </div>
          <div class="col s9 m10 l10">
-           <span>สุนิสา, สมมะเขือ และเพื่อนอีก 9 คน</span> <span class="description">ได้ติดตามคุณแล้ว</span>
+           <span style="color:#26a69a">{{$person->first_name.' '.$person->last_name}}</span> <span class="description">ได้ส่งคำขอเป็นเพื่อน</span>
+            <a href="{{url('acceptFriend/'.$person->id)}}"class="btn waves-effects waves-light right"  >ยอมรับคำขอ</a>
          </div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">person_add</i> <span class="time"> 7 ชั่วโมงที่แล้ว</span>
+
          </div>
        </div>
-     </a>
+       </div>
 
+     @endforeach
    </div>
  </div>
  <div id="chatNotify" class="col s8 offset-s2 nt-collection">

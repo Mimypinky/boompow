@@ -8,7 +8,7 @@
 
                 <div class="row">
                     <div style="text-align: center;">
-                        <img class="pro-pic media-object dp img-circle" src="img/pic4.jpg"
+                        <img class="pro-pic media-object dp img-circle" src="{{url('img/pic4.jpg')}}"
                         >
 
                         <form action="#">
@@ -28,19 +28,51 @@
                         <div id="proname">
                             <h2>{{$account->first_name}}  {{$account->last_name}}</h2>
                         </div>
-                        @if(! isset($post))
-                          <form action='{{url('Pending')}}' method='post'>
-                            {{ csrf_field() }}
-                            <input type='hidden' value='{{$account->id}}' name='aid'>
-                            <input type='submit' value='Add'>
 
-                          </form>
-                        @endif
                         <div id="prodetail">
                             <p>
                               อิอิ รอแป๊ป
                             </p>
                         </div>
+                        <?php
+                        $fid = $account->id;
+                        $myId = Auth::user()->id;
+                        $isPending = DB::table('friends')->where('from_user_id' , $fid)
+                        ->where('to_user_id' , $myId)->where('status' , 'pending')->count(); ?>
+
+                        @if(! isset($post))
+
+                        <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
+                          <form action='{{url('Pending')}}' method='post'>
+                            {{ csrf_field() }}
+                        <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+
+
+                        <form action='{{url('Pending')}}' method='post'>
+                          {{ csrf_field() }}
+                          <input type='hidden' value='{{$account->id}}' name='aid'>
+                        <!--  <input type='submit' value='Add'>
+
+                      href="{{url('FriendReq')}}"-->
+
+                        </form>
+
+                      </div>
+                      @if($isPending=='pending')
+
+                      <div class="center"  id="pending" style="margin-bottom:1.5em;margin-top:-3.5em">
+
+                      <a class="btn orange waves-effect waves-light " href="{{url('cancelRequest')}}" >ส่งคำขอเป็นเพื่อนแล้ว</a>
+
+                      </div>
+                      @endif
+                        @else
+                        <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
+
+                        <a class="btn orange waves-effect waves-light " href="{{url('unfriend')}}" >เพื่อน</a>
+
+                        </div>
+                        @endif
                         <div style="font-size: 14pt; text-align: center;">
                             <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a>
                             <span class="border-divi"></span>
@@ -58,7 +90,7 @@
                     <p> {{$msg}}</p>
                 </div>
                 @else
-                
+
                 <div class="row" style="margin-top: 11%;">
                     <div class="col s8 offset-s2 pro-upstatus">
                         <!--timeline mypost-->
@@ -67,7 +99,7 @@
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3" style="padding-left: 35px;">
-                                             <img src="img/pic4.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <img src="{{url('img/pic4.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge me badge">ฉัน</span>
                                               <!-- notice the "circle" class -->
                                         </div>
@@ -90,7 +122,7 @@
                                             <div class="card-action" style="border: none;">
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
-                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="{{url('img/heart-like.png')}}"></a>
 
                                                     </div>
                                                     <div class="col s2"></div>
@@ -101,14 +133,14 @@
                                                     </div>
                                                     <div class="col s2">
                                                         <div class="wholike">
-                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic1.jpg"></a>
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="{{url('img/pic1.jpg')}}"></a>
 
 
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic5.jpg')}}"></a>
 
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic2.jpg')}}"></a>
 
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic3.jpg')}}"></a>
 
                                                             <span class="pic-wholike morelike">...</span>
                                                         </div>
@@ -138,13 +170,13 @@
                                                                 <div class="collapsible-body">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
-                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                    <a href="Social-Profile-friend-v2.html"><img src="{{url('img/pic4.jpg')}}" alt="" class="circle">
                                                                         <span class="title title-name">สมัย สมร</span></a>
                                                                         <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
                                                                         <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
                                                                     </li>
                                                                     <li class="transper collection-item avatar">
-                                                                        <img src="img/pic5.jpg" alt="" class="circle">
+                                                                        <img src="{{url('img/pic5.jpg')}}" alt="" class="circle">
                                                                         <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
                                                                         <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
                                                                         <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
