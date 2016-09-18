@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::post('/event/edit/{eid}','EventController@editEvents');
 
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
@@ -17,13 +18,12 @@ Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
 Route::get('/content',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
-Route::resource('event','EventController');
+//Route::resource('event','EventController');
 Route::post('/event/create', 'EventController@store');
 Route::get('/event/remove/{eid}','EventController@deleteEvents');
 Route::get('/event/join/{eid}','EventController@joinEvents');
 Route::get('/event/cancel/{eid}','EventController@cancelEvents');
 Route::get('/event/board/{eid}','EventController@eventBoardindex');
-Route::post('boompow/event/edit/{eid}','EventController@editEvents');
 
 Route::get('/favourite','FavouriteController@index');
 
@@ -64,13 +64,12 @@ Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.chat',compact('title'));
 });
-<<<<<<< HEAD
+
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
-=======
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
+
 
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
@@ -79,10 +78,8 @@ Route::get('/notification',function(){
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
-<<<<<<< HEAD
-=======
+
 
 Route::get('/testProfile', function(){
   return view('social.test_profile');
 });
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa

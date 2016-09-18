@@ -12,9 +12,9 @@ class JoinEvent extends Model
     {
         return $this->belongsTo('App\Event', 'eve_id');
     }
-    public function account()
+    public function accounts()
     {
-        return $this->belongsTo('App\Account', 'user_id');
+        return $this->hasMany('App\JoinEvent', 'eve_id', 'eve_id');
     }
-    
+
 }

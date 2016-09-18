@@ -35,6 +35,9 @@ class EventController extends Controller
         ->select('events.*','join_event.*', 'accounts.first_name as fname','accounts.last_name as lname')
         ->where('user_id','=',$user)
         ->get();
+        $joinEvent2 = JoinEvent::where('user_id', $user)->get();
+
+
 
         $eiei =$joinEvent->toArray();
         $joined = array();
@@ -52,13 +55,7 @@ class EventController extends Controller
         foreach($eieiei as $key =>$value){
           array_push($attend,$value['id']);
         }
-<<<<<<< HEAD
-      
 
-
-=======
-        
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
         return view('site.event',compact('title','event','myEvent','joinEvent','joined','user'));
 
       }else {
@@ -92,8 +89,8 @@ class EventController extends Controller
 
     }
 
-    public function editEvents($eid,Request $req){
-      $event =Event::findOrFail($eid);
+    public function editEvents(Request $req,$eid){
+      $event =Event::find($eid);
       $event->description = $req['description'];
       $event->start_time = $req['start_time'];
       $event->finish_time = $req['finish_time'];
