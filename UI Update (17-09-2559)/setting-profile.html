@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/secnav-scroll.css">
+    <link rel="stylesheet" type="text/css" href="css/profile-v2.css">
+    <link rel="stylesheet" type="text/css" href="css/setting-profile.css">
+    <link rel="stylesheet" type="text/css" href="css/overlay-hover.css">
+
+
+    <!--Import bootstrap.css
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--materialize javaScript-->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery-cookie.js"></script>
+    
+
+
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/intro.js"></script>
+    <script type="text/javascript" src="js/secnav-scroll.js"></script>
+    <script type="text/javascript" src="js/resizetext.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/introjs.css">
+
+    <script type="text/javascript">
+        $( document ).ready(function(){
+            $(".button-collapse2").sideNav();
+            $(".button-collapse").sideNav();
+        })
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+            
+        });
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+
+
+</head>
+<body style="background-color: #eceff1;">
+    <!--First Nav-->
+    <nav style="box-shadow: none;" id="main-nav">
+        <div class="nav-wrapper white">
+            <a href="#!" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 28px;">
+                <i style="color: #e53935" class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
+                <li>
+                    <nav class="white" style="box-shadow: none;" >
+                      <div class="nav-wrapper">
+                        <form>
+                          <div class="input-field">
+                            <input class="inputsearch" id="search" type="search" required placeholder="ค้นหาเพื่อนและกิจกรรม">
+                            <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </li>
+    </ul>
+
+    <ul class="right hide-on-med-and-down">
+        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>ข้อมูลส่วนตัว</a></li>
+        
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="sass.html"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span>สังคมของฉัน</a></li>
+
+        <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i><span class="mynoti">4</span>ข้อความ</a></li>
+    </ul>
+
+    <!--Slidenav mobile-->
+    <ul id="mobile-demo" class="side-nav" >
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">แก้ไขข้อมูลส่วนตัว</a></li>
+                <li><a href="#!">ออกจากระบบ</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">4</span></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">กระดานข่าว </a></li>
+                <li><a href="#!">เพื่อน</a></li>
+                <li><a href="#!">รายการโปรด</a></li>
+                <li><a href="#!">กิจกรรม <span class="new badge">4</span></a></li>
+                <li><a href="#!">ข้อความ <span class="new badge">4</span></a></li>
+                <li><a href="#!">แจ้งเตือน <span class="new badge">4</span></a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+
+        
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">สาระน่ารู้<i class="material-icons">library_books</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">หน้าแรก</a></li>
+                <li><a href="#!">ตำรับอาหาร</a></li>
+                <li><a href="#!">บันเทิง</a></li>
+                <li><a href="#!">ครัวเรือน</a></li>
+                <li><a href="#!">ห้องข่าว</a></li>
+                <li><a href="#!">สิทธิประโยชน์</a></li>
+                <li><a href="#!">งานประดิษฐ์</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </ul>
+    <!--End Slidenav mobile-->
+</div>
+<!--End First Nav-->
+
+<!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="newsfeed.html"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
+        <li><a href="FriendList.html"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
+        <li><a href="Favorite.html"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
+        <li><a href="EventPage.html"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
+        <li><a href="AllChat.html"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
+        <li><a href="Notifiication.html"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+    </ul>
+<!--End Slidenav -->
+
+
+<!--Second Nav-->
+<header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+    <ul class="secnav hide-on-med-and-down center">
+
+        <li><a href="#"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+            <!--Slide nav menu
+            <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        -->
+        <li><a href="#"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+        <li><a href="#"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+        <li><a href="#"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+        <li><a href="#"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+    </ul>
+
+    <!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Dropdown</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">First</a></li>
+                            <li><a href="#!">Second</a></li>
+                            <li><a href="#!">Third</a></li>
+                            <li><a href="#!">Fourth</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+        <!--End Slidenav -->
+    </header>
+    <!--End Second Nav-->
+</nav>
+
+<!-- Dropdownhelp Structure -->
+<ul id="dropdownhelp" class="dropdown-content">
+    <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
+    <li><a href="#!">สมัครสมาชิก</a></li>
+    <li><a href="#!">เข้าสู่ระบบ</a></li>
+</ul>
+<!--End Dropdownhelp Structure-->
+
+<!-- Dropdownprofile Structure -->
+<ul id="dropdownprofile" class="dropdown-content">
+    <li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>
+    <li><a href="#!">ออกจากระบบ</a></li>
+    
+</ul>
+
+<!-- Dropdownhealth Structure -->
+<ul id="dropdownfood" class="dropdown-content">
+    <li><a href="#">ของหวาน</a></li>
+    <li><a href="meal_recipe.html">ของคาว</a></li>
+</ul>
+
+<!-- Dropdownent Structure -->
+<ul id="dropdownent" class="dropdown-content">
+    <li><a href="#">วิทยุ</a></li>
+    <li><a href="#!">ดูหนัง</a></li>
+    <li><a href="#!">ฟังเพลง</a></li>
+    <li><a href="#!">ธรรมมะ</a></li>
+</ul>
+
+<!-- Dropdownnews Structure -->
+<ul id="dropdownnews" class="dropdown-content">
+    <li><a href="#">ข่าวบันเทิง</a></li>
+    <li><a href="#!">ข่าวกีฬา</a></li>
+    <li><a href="#!">ข่าวเศรษฐกิจ</a></li>
+    <li><a href="#!">ข่าวการเมือง</a></li>
+    
+</ul>
+</nav>
+
+<!--Main-->
+<div class="container" style="width: 90%; margin-top: 160px;min-height: 600px;"> 
+    <div class="row">
+        <ul class="collection with-header pro-upstatus-feed">
+            <li class="collection-header myfriend-head">
+                <div class="row mf-row">
+                    <div class="col s1"><img src="img/proset.png" width="50"></div>
+                    <div class="col s5"><h4 class="mf-col">ตั้งค่าข้อมูลส่วนตัว</h4></div>
+
+                </div> 
+                <div class="row">
+                    <div class="col s8 offset-s1">
+                        <div class="sp-des-head">
+                            <p>คุณสามารถตั้งค่า หรือแก้ไขข้อมูลส่วนตัวของคุณได้ที่หน้านี้</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="collection-item" style="background-color: #fbfbfb;">
+                <div class="row">
+                    <div class="col s10 offset-s1">
+                        <ul class="collection with-header sp-head">
+                            <li class="collection-header"><h4>ข้อมูลส่วนตัว</h4></li>
+                            <li class="collection-item sp-item">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                          <input id="first_name" type="text" class="validate" value="พรทิพย์">
+                                          <label for="first_name">ชื่อ</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                          <input id="last_name" type="text" class="validate" value="มีชัย">
+                                          <label for="last_name">นามสกุล</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="describe" class="materialize-textarea">อายุ75ปีจะจ้า
+                                            </textarea>
+                                            <label for="describe">อธิบายเกี่ยวกับตัวคุณ</label>
+                                        </div>
+                                        
+                                    </div>
+                                </form> 
+                            </li>
+                        </ul>
+
+                        <ul class="collection with-header sp-head">
+                            <li class="collection-header"><h5>ภาพประจำตัว</h5></li>
+                            <li class="collection-item sp-item">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s4 offset-s1">
+                                        <span class="sp-caption1">เปลี่ยนภาพ</span>
+                                            <div style="text-align: center;">
+                                                <img class="sp-pic-edit media-object dp img-circle" src="img/pic.jpg">
+                                                <form action="#">
+                                                    <div class="file-field input-field">
+                                                        <span class="sp-cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+                                                        <i class="cam-icon fa fa-camera"></i>
+                                                        <input type="file">
+                                                    </div>
+                                                </form>
+                                            </div> 
+                                        </div>
+                                        <div class="input-field col s6">
+                                        
+                                            <span class="sp-caption2">เลือกภาพประจำตัวที่มีให้</span>
+                                        
+                                            <div class="row joiner-pic-rspace">
+                                                <div class="col s12 m7 l4 joiner-pic-col">
+                                                    <a href="#"><img src="img/pic3.jpg"></a>  
+                                                </div>
+
+                                                <div class="col s12 m7 l4 joiner-pic-col">
+                                                    <a href="#"><img src="img/pic4.jpg"></a>
+                                                </div>
+
+                                                <div class="col s12 m7 l4 joiner-pic-col">
+                                                    <a href="#"><img src="img/pic2.jpg"></a> 
+                                                </div>
+                                            </div>
+                                            <div class="row joiner-pic-rspace">
+                                                <div class="col s12 m7 l4 joiner-pic-col">
+                                                    <a href="#"><img src="img/pic3.jpg"></a>  
+                                                </div>
+
+                                                <div class="col s12 m7 l4 joiner-pic-col">
+                                                    <a href="#"><img src="img/pic4.jpg"></a>
+                                                </div>
+
+                                                <div class="col s12 m7 l4 joiner-pic-col">
+                                                    <a href="#"><img src="img/pic2.jpg"></a> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </li>
+                        </ul>
+
+                        <ul class="collection with-header sp-head">
+                            <li class="collection-header"><h4>แก้ไขอีเมล์</h4></li>
+                            <li class="collection-item sp-item">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="email" type="email" class="validate" placeholder="ตัวอย่าง: kun-s@hotmail.com">
+                                            <label for="email" data-error="wrong" data-success="right">กรอกอีเมล์ของคุณ</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="email" type="email" class="validate" placeholder="ตัวอย่าง: kun-s@hotmail.com">
+                                            <label for="email" data-error="wrong" data-success="right">กรอกอีเมล์ของคุณอีกครั้ง</label>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </li>
+                        </ul>
+
+                        <ul class="collection with-header sp-head">
+                            <li class="collection-item sp-item" style="margin-bottom: 25px;">
+                                <div align="center">
+                                    <a class="green btn waves-effect waves-light" href="">บันทึก</a>
+                                    <a class="btn waves-effect waves-light black-text white" href="">ยกเลิก</a>
+                                </div>
+                            </li>
+                        </ul> 
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+      
+
+    
+
+
+
+
+
+
+
+<!--Resize Button-->
+<div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">        
+    <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><i class="large material-icons" >mode_edit</i></a>
+    <ul class="resizer">
+        <li id="large">
+            <a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่"><img src="img/ismall.png" style="margin: 6px"></a>
+        </li>
+        <li id="medium">
+            <a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"><img src="img/ismall.png" style="margin: 10px; width: 15px"></a>
+        </li>
+        <li id="small">
+            <a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดเล็ก"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a>
+        </li>
+    </ul>         
+</div>
+<!--Endd Resize Button-->
+
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text for-footer">Senior Project</h5>
+                <p class="grey-text text-lighten-4 for-footer">งานนี้เป็นส่วนหนึ่งของวิชา INT450 IT Project</p>
+            </div>
+            <div class="col l6 s12">
+                <h5 class="white-text for-footer">ติดต่อเรา</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3 for-footer" href="#!">กุนนี่ คอนพานี</a></li>
+                    <li><a class="grey-text text-lighten-3 for-footer" href="#!">สุนิสา อินดัสทรี่</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2016 Copyright SIT KMUTT IT#19
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

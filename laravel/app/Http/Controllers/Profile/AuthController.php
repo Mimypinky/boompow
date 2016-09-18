@@ -31,7 +31,7 @@ class AuthController extends Controller
     {
         //
         $title = 'สมัครสมาชิก';
-        return view('auth.register',compact('title'));
+        return view('auth.register',compact('title','bio'));
 
     }
 
@@ -78,12 +78,6 @@ class AuthController extends Controller
 
       $username = $request['username'];
       $password = $request['password'];
-      $query = DB::table('accounts')->select('id')->where('username', $request['username'])->first();
-      $qfname = DB::table('accounts')->select('first_name')->where('username', $request['username'])->first();
-      $qlname = DB::table('accounts')->select('last_name')->where('username', $request['username'])->first();
-      $accid = $query->id;
-      $fname = $qfname->first_name;
-      $lname = $qlname->last_name;
       $remember = Input::has('remember')? true : false;
       if(\Auth::attempt(['username' => $username, 'password' => $password], $remember)){
 
@@ -104,8 +98,8 @@ class AuthController extends Controller
                 'gender'                                => 'required',
                 'dob'                                   => 'required',
                 'question'                              => 'required|not_in:0',
-                'password'                              => 'required|min:4|max:15',
-                'password_confirmation'                 => 'required|min:4|max:15|confirmed',
+                'password'                              => 'required|min:4|max:15|confirmed',
+                'password_confirmation'                 => 'required|min:4|max:15',
                 'email'                                 => 'required|email|max:100|unique:profiles,email',
             ),
             array(
@@ -123,12 +117,18 @@ class AuthController extends Controller
                 'email.email'                           => 'รูปแบบอีเมล์ไม่ถูก ตัวอย่าง abc@boompow.com',
                 'email.unique'                          => 'อีเมล์นี้มีอยู่ในระบบแล้ว กรุณากรอกอีเมล์อื่น',
                 'password.required'                     => 'กรุณากรอกรหัสผ่าน',
-                'password_confirmation.confirmed'       => 'รหัสผ่านไม่ตรงกัน',
+                'password.confirmed'                    => 'รหัสผ่านไม่ตรงกัน',
                 'password_confirmation.required'        => 'กรุณากรอกยืนยันรหัสผ่าน',
             )
         );
 
-        if ($validator->passes()) {
+        if ($validator->fails()) {
+          echo 'unsuccess';
+          return redirect()->intended('/register')->withErrors($validator)
+          ->withInput(Input::except('password'))
+          ->withInput(Input::except('password_confirmation'))
+          ->withInput();
+        }else{
           $data = $request['question'];
           $query = DB::table('questpass')->select('id')->where('id', $request['question'])->first();
           $obj1 = new Profile();
@@ -151,19 +151,10 @@ class AuthController extends Controller
 
           echo 'success';
           return redirect()->intended('/');
-        }else{
-
-            return redirect()->intended('/register')->withErrors($validator)
-                    ->withInput(Input::except('password'))
-                    ->withInput(Input::except('password_confirmation'))
-                    ->withInput();
         }
 
 
     }
-
-
-
 
     /**
      * Display the specified resource.

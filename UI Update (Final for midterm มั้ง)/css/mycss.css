@@ -1,0 +1,1164 @@
+
+p{
+    font-size: 15pt;
+}
+span{
+    font-size: 15pt;
+}
+h1{
+    font-size: 26pt;
+}
+h2{
+    font-size: 24pt;
+}
+h3{
+    font-size: 22pt;
+}
+h4{
+    font-size: 20pt;
+}
+h5{
+    font-size: 18pt;
+}
+thead{
+    font-size: 16pt;
+}
+td{
+    font-size: 15pt;
+}
+
+h5.for-footer {
+    font-size: 14pt;
+}
+p.for-footer {
+    font-size: 10pt;
+}
+a.for-footer {
+    font-size: 10pt;
+}
+a{
+  font-size: 15pt !important;
+}
+
+/*Override from Materialize*/
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #EE6E74;
+}
+
+input[type=text]:focus:not([readonly]) + label,input[type=password]:focus:not([readonly]) + label,textarea.materialize-text:focus:not([readonly]) + label {
+  color: #EE6E74;
+}
+
+.email-label {
+   color: #EE6E74; 
+}
+
+input[type=text]:focus:not([readonly]),input[type=password]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]),input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=email]:focus:not([readonly]) {
+  border-bottom: 1px solid #EE6E74;
+  box-shadow: 0 1px 0 0 #EE6E74;
+}
+
+input[type="radio"]:checked+label:after {
+    background-color: #EE6E74;
+    border-bottom: 1px solid #EE6E74;
+    border: 2px solid #EE6E74;
+}
+
+.input-field .prefix.active {
+  color: #EE6E74;
+}
+
+input[type="checkbox"].filled-in:checked + label:after {
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #EE6E74;
+  background-color: #EE6E74;
+  z-index: 0;
+}
+#main-nav div ul li a span{
+    font-size: 18px !important;
+}
+.goback-btn{
+    position: fixed; 
+    left:2%;
+    width:5%;
+}
+.goback-btn .btn-floating:hover{
+    background-color: #6d7188;
+}
+.goback-btn a{
+    background-color: #3d4052;
+}
+.parallax img {
+  display: inherit;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.second-nav ul li a{
+    font-size: 18px !important;
+}
+#main-nav div ul li a{
+    font-size: 18px !important;
+
+}
+.second-nav ul a:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+.secnav .dropdown-content{
+    margin-top: -5px;
+}
+
+#secnav-icon{
+    line-height: 2.7;
+}
+
+.myred-font {
+    color: #EE6E74;
+}
+/*end */
+
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #EE6E73;
+}
+
+.navlink{
+    color: #212121;
+}
+
+.mylogo{
+	width: 200px;
+    margin-top: 7%;
+    margin-left: -2%;	
+}
+
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
+	height: 70px;
+    line-height: 70px;
+}
+
+nav ul a{
+	color: #fff;
+}
+
+.media{
+    /*box-shadow:0px 0px 4px -2px #000;*/
+    margin: 20px 0;
+    padding:30px;
+}
+.dp{
+    border:5px solid #eee;
+    transition: all 0.2s ease-in-out;
+}
+.dp:hover{
+    border:2px solid #eee;
+}
+
+.imgthumb2{
+    
+    width: 100px;
+    height: 100px;
+    margin-top: -15%;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.helper-btn{
+	margin-top: 13px;
+    margin-left: 65px;
+    margin-bottom: 10px;
+}
+
+.imgthumb{
+    width: 92px;
+    height: 92px;
+    margin-right: -22px;
+}
+
+.userbox{
+    padding: 14px;
+    color: black;
+    line-height: 0px;
+    margin-top: -25px;
+}
+
+.username {
+    padding: 11px;
+    color: black;
+    line-height: 0px;
+    margin-top: -11px;
+}
+
+
+.imgresize{
+	
+   	/*margin-left: -16px;*/
+    /*margin-top: 15px;*/
+    width: 100px;
+    height: 100px;
+    /*padding: 18px;*/
+    border:2px solid #eee;
+}
+
+.sidecontent{
+	margin-left: -50px;
+    margin-top: -14px;
+    padding: 41px;
+}
+
+.contentlogo{
+	width: 70px;
+	margin: 14px;
+}
+
+#mysearch.input-field input[type="search"]{
+    line-height: normal;
+}
+
+
+
+#datecomment{
+    color: #bdbdbd; 
+    font-size: 14pt; 
+    line-height: 20px;
+}
+
+#namecomment{
+    font-size: 20pt;
+    color: #0d47a1 !important;
+}
+
+#commenthead{
+    margin-top: -2px;
+}
+
+#likeboxam{
+    background-color: #eeeeee;
+    width: 49px;
+    height: 45px;
+    margin-left: -14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+#likeno{
+    padding-left: 8px;
+    margin-top: 9px;
+
+}
+
+#comment{
+    margin-top: -30px; 
+    background-color: #F9F9F9;
+}
+
+#cmtpic{
+    width: 70px;
+    height: 70px;
+}
+
+#cmttext{
+     
+    width: 310px; 
+    height: auto;
+    margin-top: -10px;
+    padding: 10px;
+    margin-left: 9%;
+    
+}
+
+
+#firstcmt{
+    background-color: #00b8d4;
+    width: auto;
+    height: 60px auto;
+    margin-bottom: -40px;
+    margin-top: 10px;
+    margin-left: -10px;
+    margin-right: -12px;
+    border: 3px solid #07AEC7;
+    text-align: center;
+}
+#follow{
+    background-color: #00b8d4;
+    width: auto;
+    height: 60px auto;
+    margin-bottom: -40px;
+    margin-top: 10px;
+    margin-left: -13px;
+    margin-right: -23px;
+    border: 3px solid #07AEC7;
+    text-align: center;
+}
+#like{
+    background-color: #00b8d4;
+    width: auto;
+    height: 60px auto;
+    margin-bottom: -40px;
+    margin-top: 10px;
+    margin-left: -3px;
+    margin-right: -10px;
+    border: 3px solid #07AEC7;
+    text-align: center;
+}
+
+#profilehead{
+     
+    width: auto; 
+    height: auto; 
+    margin-top: -19%;
+    border-radius: 10px; 
+    border: 0.5px solid #eeeeee;
+    background-image: url("../img/bgpro.png");
+    background-size: cover;
+    opacity: 20;
+}
+#profilehead2{
+     
+    width: auto; 
+    height: auto; 
+    margin-top: -19%;
+    border-radius: 10px; 
+    border: 0.5px solid #eeeeee;
+    background-image: url("../img/probg2.jpg");
+    background-size: cover;
+    opacity: 20;
+}
+a{
+    color: black;
+}
+
+#proheadbox{
+    margin-top: -14px;
+    margin-bottom: 50px;
+}
+
+#proname{
+    text-align: center;
+    margin-top: 8%;
+}
+#proname-friend{
+    text-align: center;
+    margin-top: 142px;
+}
+
+#prodetail{
+    text-align: center;
+    text-align: center;
+    padding: 36px;
+    margin-top: -61px;
+    margin-bottom: -10px;
+
+}
+
+#twonav{
+    margin-top: 70px;
+    margin-bottom: -106px;
+    z-index: 9
+    border-bottom: 2px solid #ECEBEB;
+}
+
+#mybadges{
+    width: 50px;
+    height: 20px;
+    background-color: #00b8d4;
+    padding: 2px 12px 2px 11px;
+    color: white;
+    border: 1px solid #07AEC7;
+    border-radius: 4px;
+}
+
+
+
+#mytap{
+    flex-grow: 1;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: .8px;
+    width: 15%;
+    min-width: 80px;
+}
+
+#tabtab{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 48px;
+    background-color: #fff;
+    margin: 0 auto;
+    width: 100%;
+    white-space: nowrap;
+
+}
+
+.searchstyle{
+    padding: 6px;
+    width: 158px;
+    height: auto;
+    border-radius: 0px;
+}
+
+.iconposition{
+    line-height: 73px !important; 
+    margin-right: 7px !important;
+    
+}
+
+.inputsearch{
+    background-color: transparent !important;
+    padding-top: 22px !important;
+    color: #212121 !important;
+    width: 191px !important;
+    border-radius: 0px !important;
+
+}
+
+.myicon{
+    width: 28px;
+    margin-top: 16px;
+
+}
+.mypropic{
+    width: 50px;
+    margin-top: 13px;
+    margin-right: 12px;
+
+}
+#activities{
+    background-image: url("../img/activities.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    margin-top: 10%;
+}
+.hello{
+    background-image: url("../img/health3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    margin-top: 10%;
+}
+.recipe-cover{
+    background-image: url("../img/food.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    margin-top: 10%;
+}
+.meal{
+    background-image: url("../img/meal.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.hello-content{
+    
+    color: white;
+    text-align: center;
+    padding-top: 9%;
+}
+span.badge{
+    padding-top: 3px;
+}
+
+span.badge.new {
+  background-color: #EE6E73;
+  font-size: 1rem;
+}
+
+span.badge.new:after {
+    content: " ใหม่";
+}
+
+span.mynoti:after {
+    content: "";
+}
+
+.noti-right{
+    right: 230px !important;
+}
+
+
+.mynoti{
+    font-size: 13px;
+    color: #FFFFFF;
+    background: #ff7761;
+    width: 22px;
+    height: 22px;
+    border-radius: 68%;
+    -webkit-border-radius: 68%;
+    -moz-border-radius: 68%;
+    -o-border-radius: 68%;
+    position: absolute;
+    top: 11px;
+    right: 73px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#main-nav{
+    position: fixed;
+     z-index: 999;
+    top: 0;
+    box-shadow: none;
+}
+.secnav{
+    background-color: #EE6E73;
+    z-index: -99;
+    height: 60px;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    
+}
+
+#dropdownhelp{
+    z-index: 10000;
+}
+#dropdownprofile{
+    z-index: 10000;
+}
+.sidenav {
+    color: #000;
+}
+ #sidenav-overlay{
+    z-index: 9;
+    }
+    .collection p{
+        margin: 0;
+        padding: 0;
+    }
+    td{
+        padding: 5px 5px;
+
+    }
+    .sidecontent .disabled{
+        background-color: orange !important;
+        color: white!important;
+        box-shadow: inset 0 0 10px #000000;
+    }
+    #slide-out{
+        z-index: 19999;
+    }
+    .container{
+        width: 90%;
+    }
+    .tabs .tab a{
+        
+    }
+    .tabs .tab a:hover{
+        color: #e0e0e0 ;
+    }
+    .tabs  .indicator{
+        background-color: #BC2C33 ;
+    }
+        
+    .collection-item{
+        padding: 10px;
+    }
+
+.btn {
+    background-color: #BC2C33;
+}
+
+.btn:hover {
+    background-color: #EE6E74;
+}
+
+/*status post*/
+.status-post{
+        padding-left: 26.5% !important;
+        margin-top: -4%;
+}
+
+
+/*For Content */
+.ContentBG {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.headContent {
+    padding-left: 2%;
+
+}
+
+#breadcrumbsContent {
+    background-color: #039be5;
+}
+
+.contentBox {
+    padding-left: 2em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/*For Chat*/
+article time {
+    display: block;
+    font-size: 12px;
+    color: #969898;
+}
+
+article p {
+    font-size: 14px;
+}
+
+.who{
+    font-size: 16px;
+    color: #60C2BF;
+}
+
+.messPreveiew {
+    font-size: 14px;
+    color: #969898;
+    margin-left: 35px;
+}
+
+article span {
+    font-size: 14px;
+    color: black;
+}
+
+article img {
+    width: 35px;
+    height: 35px;
+    margin-left: -10px;
+}
+
+@media screen and (min-width: 992px) {
+.shortenNav {
+    width: 85%;
+    margin: auto;
+} 
+
+}
+@media screen and (max-width: 600px) {
+ 
+.shortenNav {
+    display: none;
+}
+}
+.contentBtn {
+    position: relative; 
+    display: inline-block; 
+    top: 14px
+}
+
+/*CSS 29-04-59*/
+.likeicon{
+    margin-left: -15%;
+    color: #FF0045;"
+}
+
+.liketext{
+   line-height: 0;
+   font-size: 13pt;
+}
+@media screen and (max-width: 1175px) {
+    .rps-bar{
+        display: none;
+    }
+    .mynoti{
+        right: 18px;
+    }
+    .noti-right {
+        right: 92px !important;
+    }
+}
+
+@media screen and (max-width: 989px) {
+    .second-nav{
+        display: none;
+    }
+}
+@media screen and (min-width: 993px) {
+    .marginShareBtn-side {
+        top: 20px; 
+        margin-left: 40%;
+        margin-top: 8px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .marginShareBtn-side {
+        top: 20px;
+        margin: 1px;
+    }
+}
+@media screen and (max-width: 992px) and (min-width: 601px) {
+    .marginShareBtn-side {
+        top: 20px;
+        margin: 3px;
+    }
+}
+/*ipad Horizontal */
+@media screen and (max-width: 1025px) {
+
+    .rps-bar{
+        display: none;
+    }
+    .mynoti{
+        right: 18px;
+    }
+    .noti-right {
+        right: 92px !important;
+    }  
+    .secnav{
+        margin-left: -1.6% !important;
+    }
+    .likeicon{
+        margin-left: -20px;
+    }
+    .liketext{
+        margin-left: -15px;
+    }
+    #likeboxam{
+        margin-left: -20px;
+        width: 47px;
+    }
+    .status-post{
+        margin-top: -6%;
+    }
+    .stpic-po{
+    margin-left: 30px !important;
+    }
+    .pro-pic{
+    width: 210px;
+    height: 210px;
+    margin-top: 6% !important; 
+    margin-bottom: -34px;
+    }
+    .postbox-pic2{
+    margin-left: -1px !important;
+    margin-top: -44px !important;
+    }
+    .postbox-pic{
+    margin-left: -1px !important;
+    }
+    .eve-stpic-po {
+    margin-left: 7px !important;
+    }
+    .eve-likeicon{
+    margin-left: 0px !important;
+    color: #FF0045;
+    }
+    .eve-liketext{
+        line-height: 0;
+        font-size: 13pt;
+        margin-left: 5px !important;
+    }
+    .eve-likeboxam{
+        background-color: #eeeeee;
+        width: 49px;
+        height: 45px;
+        margin-left: -26px !important;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+
+    }
+    
+    .mylogo {
+        width: 180px;
+        
+        margin-top: 10%;
+    }   
+}
+
+/*ipad Vertical */
+@media screen and (max-width: 769px) {
+    .rps-bar{
+        display: none;
+    }
+    .mynoti{
+        right: 18px;
+    }
+    .noti-right {
+        right: 92px !important;
+    }       
+    .likeicon{
+        margin-left: -34px;
+        color: #FF0045;
+        font-size: 30px;
+    }
+    .liketext{
+        line-height: 0;
+        font-size: 12pt;
+        margin-left: -35px;
+    }
+    #likeboxam {
+        background-color: #eeeeee;
+        width: 43px;
+        height: 43px;
+        margin-left: -33px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+    }
+    #likeno {
+        padding-left: 6px;
+        margin-top: 9px;
+    }
+    .postbutton{
+        margin-top: 11.4%;
+        margin-left: -50%;
+    }
+    .post-area{
+        width: 324px;
+        height: 100px;
+    }
+    .status-post{
+        margin-top: -8%;
+    }
+    .stpic-po{
+    margin-left: 0px !important;
+    }
+    .pro-pic{
+    width: 210px;
+    height: 210px;
+    margin-top: 6% !important; 
+    margin-bottom: -34px;
+    }
+    .second-nav{
+    display: none;   
+    }
+    .postbox-pic2 {
+    margin-left: -12px !important;
+    margin-top: -44px !important;
+    width: 80px;
+    height: 80px;
+    }
+    .postbox-pic {
+    margin-left: -12px !important;
+    
+    width: 80px;
+    height: 80px;
+    }
+
+    .fav-func{
+        padding-right: 0px !important;
+    }
+    .eve-stpic-po {
+    margin-left: -6px !important;
+    width: 80px;
+    height: 80px;
+    }
+    .eve-namecomment {
+    font-size: 16pt !important;
+    color: #0d47a1 !important;
+    }
+    .eve-post{
+        margin-left: 5px !important;
+    }
+    .eve-likeicon{
+    margin-left: 0px !important;
+    color: #FF0045;
+    font-size: 24pt;
+    margin-top: 4px;
+    }
+    .eve-liketext{
+        line-height: 0;
+        font-size: 13pt;
+        margin-left: -2px !important;
+    }
+    .eve-likeboxam{
+        background-color: #eeeeee;
+        width: 35px !important;
+        height: 35px !important;
+        margin-left: -19px !important;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        margin-top: 6px !important;
+
+    }
+    #eve-likeno{
+        padding-left: 1px !important;
+        margin-top: 4px !important;
+        color: black;
+        font-size: 12pt;
+    }    
+}
+span.badge.b-space {
+    position: unset;
+}
+.post-area{
+    width: 92% !important;
+     
+    
+}
+#post-section{
+    margin-left: -20.5%; 
+    margin-top: -2%;
+    margin-bottom: 1%;
+}
+.share-sign{
+    width: 271px;
+    height: 36px;
+    background-color: #8EDBE6;
+    padding-left: 8px;
+    margin-top: -20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    padding-top: -4px;
+    padding-top: -33px;
+    line-height: 1;
+    border: 2px solid #7ED0DC;
+}
+
+#myfile-path{
+    width: 62%;
+    height: 17px;
+    margin-top: -9px;
+    border: 0px;
+    background-color: transparent;
+    margin-left: 3%;
+    font-size: 12pt;
+}
+
+.post-section{
+    background-color: black; 
+    width: auto;
+    height: 150px;
+    margin-top: -1%;
+}
+
+.tab-set{
+    overflow: hidden;
+
+}
+
+.tab-color{
+    color: black;
+}
+
+.pic-com{
+    margin-left: 20%;
+}
+
+.stpic-po{
+    margin-left: 60px;
+}
+.postbox-pic{
+    margin-left: 17px ;
+}
+.postbox-pic2{
+    margin-left: 17px;
+    margin-top: -44px;
+}
+
+.pro-pic{
+    width: 210px;
+    height: 210px;
+    margin-top: 2%;
+}
+.title-name{
+    font-size: 17pt !important;
+    color: #0d47a1;
+}
+.space-cmt{
+    margin-top: 6% !important;
+}
+
+#pin-post{
+    margin-bottom: -14px;
+    margin-top: -46px;
+    margin-left: -30%;
+}
+#pin-post-friend{
+    margin-bottom: -14px;
+    margin-top: -46px;
+    margin-left: 6%;
+}
+#pin-icon{
+    color: #f44336;
+}
+
+
+.pin-border{
+    border: 3px solid #e57373;
+    border-radius: 5px;
+}
+.fav-head{
+    margin-top: 16%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 63px;
+}
+
+.fav-func{
+    margin-top: 20px;
+    height: 20px;
+    margin-left: -4px;
+}
+
+.card-con-space{
+    margin-top: 44px !important;
+}
+
+.eve-stpic-po {
+    margin-left: 20px;
+}
+
+.eve-namecomment{
+    font-size: 26px;
+    color: #0d47a1 !important;
+}
+.eve-likeicon{
+    margin-left: 16px;
+    color: #FF0045;
+}
+.eve-liketext{
+    line-height: 0;
+    font-size: 13pt;
+    margin-left: 21px;
+}
+.eve-likeboxam{
+    background-color: #eeeeee;
+    width: 49px;
+    height: 45px;
+    margin-left: -22px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+
+}
+.eve-comment{
+    margin-left: -7px !important;
+    margin-top: -16px;
+}
+#eve-likeno{
+    padding-left: 1px;
+    margin-top: 9px;
+    color: black;
+
+}
+.eve-cmtpic{
+    margin-left: 8px !important;
+}
+.eve-shareBtn
+{
+    margin-left: 28px !important;
+}
+
+#eve-postCmt{
+    text-align: left;
+    color: black;
+}
+.eve-align{
+    text-align: left !important;
+}
+.breadcrumb{
+    color: #525263;
+}
+.breadcrumb:last-child span{
+    color: #f5f5f5 !important;
+    font-size: 18pt !important;
+    border: 4px double #f5f5f5;
+    padding-right: 22px;
+    background-color: #ee6e73;
+    padding-left: 25px;
+    padding-top: 6px;
+}
+.breadcrumb:before{
+    color: #525263;
+}
+
+.mybc{
+   width: 100%;
+    /* margin-left: 12px; */
+    background-color: #f9f9f9;
+    box-shadow: none;
+    /* border-radius: 25px; */
+    height: 80px;
+    margin-top: -7px;
+    margin-bottom: 23px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-top: 6px;
+    
+}
+.back-icon{
+    font-size: 30pt;
+    color: #f5f5f5;
+    background-color: #3d4052;
+    border-radius: 50%;
+}
+
+.back-to-top {
+    margin: 0;
+    position: fixed;
+    bottom: 30px;
+    right: 95px;
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+}
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
+    font-size: 1.2rem;
+}
+
+.collection .collection-item.avatar .title {
+    font-size: 14pt;
+}
+
+.nt-tabhead{
+    overflow: hidden;
+    width: 100%;
+    padding-top: 13px;
+    padding-bottom: 25px;
+    height: 70px;
+    border-radius: 11px 11px 0px 0px;
+}
+.nt-tabfont{
+    font-size: 15pt !important;
+}
+.nt-tabhead.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 6px;
+    background-color: #AF4034;
+    will-change: left, right;
+}
+.nt-collection{
+    margin-top: -8px;
+}
+

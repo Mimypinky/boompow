@@ -29,7 +29,7 @@ Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
 
-Route::resource('/register','Profile\AuthController',[ 'except' => ['destroy','edit']]);
+Route::resource('/register','Profile\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
 Route::get('/checkAvailableUsername',function(){
   $username = Request::Input('username');
 
@@ -51,11 +51,14 @@ Route::get('/newsfeed',function(){
     $title = 'newsfeed';
       return view('social.newsfeed',compact('title'));
 });
-Route::get('/myprofile',function(){
-  $title = '...s Profile';
-  return view('social.myprofile',compact('title'));
-});
 
+Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
+Route::post('/Pending' , 'FriendController@sendFriendRequest');
+Route::get('/profile-friend',function(){
+  $title ='Boompow - Friend profile';
+  return view('social.profile-friend',compact('title'));
+});
+Route::get('/friend/{fid}' , 'FriendController@viewFriend');
 Route::get('/friends',function(){
   $title ='Boompow - My Friends';
   return view('social.friend',compact('title'));
@@ -64,22 +67,29 @@ Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.chat',compact('title'));
 });
+<<<<<<< HEAD
 
+=======
+Route::get('FriendReq' , 'FriendController@viewFriendRequest');
+>>>>>>> 8133193e6c6d838016f2a198dcea236308a33ee2
 Route::get('/notification',function(){
   $title ='Boompow - Notificate';
   return view('social.noti',compact('title'));
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8133193e6c6d838016f2a198dcea236308a33ee2
 
-Route::get('/notification',function(){
-  $title ='Boompow - Notificate';
-  return view('social.noti',compact('title'));
-});
+Route::post('/acceptFriend', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
+<<<<<<< HEAD
 
 
 Route::get('/testProfile', function(){
   return view('social.test_profile');
 });
+=======
+>>>>>>> 8133193e6c6d838016f2a198dcea236308a33ee2

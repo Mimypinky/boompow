@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/secnav-scroll.css">
+    <link rel="stylesheet" type="text/css" href="css/profile-v2.css">
+    <link rel="stylesheet" type="text/css" href="css/cover-head.css">
+    
+
+
+    <!--Import bootstrap.css
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--materialize javaScript-->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery-cookie.js"></script>
+    
+
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/intro.js"></script>
+    <script type="text/javascript" src="js/secnav-scroll.js"></script>
+    <script type="text/javascript" src="js/resizetext.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/introjs.css">
+
+
+    <script type="text/javascript">
+        $( document ).ready(function(){
+            $(".button-collapse2").sideNav();
+            $(".button-collapse").sideNav();
+        })
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+            
+        });
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+
+</head>
+<body style="background-color: #eceff1;">
+    <!--First Nav-->
+    <nav style="box-shadow: none;" id="main-nav">
+        <div class="nav-wrapper white">
+            <a href="#!" class="brand-logo center"><img class="mylogo" src="img/logo_boom2.png"></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 28px;">
+                <i style="color: #e53935" class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down">
+                <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
+                <li>
+                    <nav class="white" style="box-shadow: none;" >
+                      <div class="nav-wrapper">
+                        <form>
+                          <div class="input-field">
+                            <input class="inputsearch" id="search" type="search" required placeholder="ค้นหาเพื่อนและกิจกรรม">
+                            <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </li>
+    </ul>
+
+    <ul class="right hide-on-med-and-down">
+        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i><span class="rps-bar">ข้อมูลส่วนตัว</span></a></li>
+        
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="sass.html"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span><span class="rps-bar">สังคมของฉัน</span></a></li>
+
+        <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i><span class="mynoti">4</span><span class="rps-bar">ข้อความ</span></a></li>
+    </ul>
+
+    <!--Slidenav mobile-->
+    <ul id="mobile-demo" class="side-nav" >
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">ตั้งค่าข้อมูลส่วนตัว</a></li>
+                <li><a href="#!">ออกจากระบบ</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">4</span></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">กระดานข่าว </a></li>
+                <li><a href="#!">เพื่อน</a></li>
+                <li><a href="#!">รายการโปรด</a></li>
+                <li><a href="#!">กิจกรรม <span class="new badge">4</span></a></li>
+                <li><a href="#!">ข้อความ <span class="new badge">4</span></a></li>
+                <li><a href="#!">แจ้งเตือน <span class="new badge">4</span></a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+
+        
+
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">สาระน่ารู้<i class="material-icons">library_books</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">หน้าแรก</a></li>
+                <li><a href="#!">ตำรับอาหาร</a></li>
+                <li><a href="#!">บันเทิง</a></li>
+                <li><a href="#!">ครัวเรือน</a></li>
+                <li><a href="#!">ห้องข่าว</a></li>
+                <li><a href="#!">สิทธิประโยชน์</a></li>
+                <li><a href="#!">งานประดิษฐ์</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </ul>
+    <!--End Slidenav mobile-->
+</div>
+<!--End First Nav-->
+
+<!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="newsfeed.html"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
+        <li><a href="FriendList.html"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
+        <li><a href="Favorite.html"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
+        <li><a href="EventPage.html"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
+        <li><a href="AllChat.html"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
+        <li><a href="Notifiication.html"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+    </ul>
+<!--End Slidenav -->
+
+
+<!--Second Nav-->
+<header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+    <ul class="secnav hide-on-med-and-down center">
+
+        <li><a href="#"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+            <!--Slide nav menu
+            <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        -->
+        <li><a href="#"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+        <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+        <li><a href="#"><img class="myicon left" src="img/fam.png">ครัวเรือน</a></li>
+        <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+        <li><a href="#"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
+        <li><a href="#"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+    </ul>
+
+    <!--Slidenav -->
+    <ul id="slide-out" class="side-nav">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Dropdown</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">First</a></li>
+                            <li><a href="#!">Second</a></li>
+                            <li><a href="#!">Third</a></li>
+                            <li><a href="#!">Fourth</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+        <!--End Slidenav -->
+    </header>
+    <!--End Second Nav-->
+</nav>
+
+<!-- Dropdownhelp Structure -->
+<ul id="dropdownhelp" class="dropdown-content">
+    <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
+    <li><a href="#!">สมัครสมาชิก</a></li>
+    <li><a href="#!">เข้าสู่ระบบ</a></li>
+</ul>
+<!--End Dropdownhelp Structure-->
+
+<!-- Dropdownprofile Structure -->
+<ul id="dropdownprofile" class="dropdown-content">
+    <li><a href="#">ตั้งค่าข้อมูลส่วนตัว</a></li>
+    <li><a href="#!">ออกจากระบบ</a></li>
+    
+</ul>
+
+<!-- Dropdownhealth Structure -->
+<ul id="dropdownfood" class="dropdown-content">
+    <li><a href="#">ของหวาน</a></li>
+    <li><a href="meal_recipe.html">ของคาว</a></li>
+</ul>
+
+<!-- Dropdownent Structure -->
+<ul id="dropdownent" class="dropdown-content">
+    <li><a href="#">วิทยุ</a></li>
+    <li><a href="#!">ดูหนัง</a></li>
+    <li><a href="#!">ฟังเพลง</a></li>
+    <li><a href="#!">ธรรมมะ</a></li>
+</ul>
+
+<!-- Dropdownnews Structure -->
+<ul id="dropdownnews" class="dropdown-content">
+    <li><a href="#">ข่าวบันเทิง</a></li>
+    <li><a href="#!">ข่าวกีฬา</a></li>
+    <li><a href="#!">ข่าวเศรษฐกิจ</a></li>
+    <li><a href="#!">ข่าวการเมือง</a></li>
+    
+</ul>
+</nav>
+
+
+<!--Main-->
+<div id="wrapperHeader">
+    <div class="img-cover">
+        <img src="img/meal.jpg">
+    </div>
+    
+    <div id="header">
+        <span>ของคาว</span>
+        <p>เคล็ดลับการทำอาหารคาวสุดอร่อย</p>
+    </div>
+</div>
+
+<nav class="mybc">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a href="all_catelog_recipe.html" class="breadcrumb">ตำรับอาหาร</a>
+            <a href="meal_recipe.html" class="breadcrumb">ของคาว</a>
+            <a href="meal_recipe.html" class="breadcrumb"><span>ข้าวมันไก่สุดอร่อยโคตรๆ...</span></a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="width: 90%;">
+    
+
+<!--Content Section-->
+<div class="section"></div>
+<div class="">
+    <div class="row">
+    	<!-- Share Button -->
+    	<div class="col s6 m4 l1 offset-m8 offset-s6">
+
+        <div>
+            <!--FullScreen-->
+            <a class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped"data-position="right" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
+            <a class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
+            <a class="btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
+            
+        </div>
+    	
+
+		</div>
+
+        <div class="col s12 l10 m10 offset-m1 ContentBG">
+
+          <h2 class="headContent">วิธีทำข้าวมันไก่ สูตรสลาตันไขมันสลาย</h2>
+          <div class="divider"></div>
+          <div class="section"></div>
+          <div class="row">
+            <img class="col s10 m10 l10 offset-l1 offset-m1 offset-s1" src="img/Chick.jpg">
+        </div>
+        <div class="row">
+            <div class="col s10 m10 l10 offset-l1 offset-m1 offset-s1">
+                <div class="section shortenNav"></div>
+                <p>
+                    ข้าวมันไก่ อาหารจานเดียวที่ใครหลายคนโปรดปรานจนลองทำกินเอง แต่ก็มักจะเจอปัญหาหุงข้าวไม่อร่อย เนื้อไก่ไม่นุ่ม หรือไม่ก็น้ำจิ้มไม่แซ่บ วันนี้เรามีวิธีทำข้าวมันไก่แบบง่าย ๆ เพียงแค่สูตรเดียวจะช่วยให้คุณทำข้าวมันไก่กินเองที่บ้านได้แบบผ่านฉลุย ที่พ่วงมากับวิธีปรุงน้ำจิ้มข้าวมันไก่รสเด็ด แถมยังเคล็ดลับในการทำข้าวมันไก่อีกมากมายจาก คุณมันแกวกะแห้วหมู สมาชิกเว็บไซต์พันทิปดอทคอม ถ้าพร้อมแล้วก็ลองมาดูวิธีทำข้าวมันไก่สูตรเด็ดสูตรนี้กันเลย
+                </p>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col s10 m8 l8 offset-l2 offset-m2 offset-s1">
+                <h3>ส่วนผสมน้ำต้มไก่</h3>
+                <table>
+                    <thead>
+                      <tr>
+                          <th data-field="id">ส่วนผม</th>
+                          <th data-field="name">ปริมาณ</th>
+                          
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr><td>ผักกาดขาว</td><td>1 หัว</td></tr>
+                    <tr><td>กระเทียม</td>
+                        <td>3–4 หัว</td></tr>
+                        <tr><td>รากผักชี</td><td>5–6 ราก</td></tr>
+                        <tr><td>ขิงแก่หั่นเป็นแว่นบาง</td><td>5–6 แว่น</td></tr>
+                        <tr><td>ขิงทุบ</td><td>เล็กน้อย</td></tr>
+                        <tr><td>พริกไทยขาวทุบหยาบ</td><td>20–30 เม็ด</td></tr>
+                        <tr><td>เกลือสมุทร</td><td>1-2 ช้อนโต๊ะ</td></tr>
+                        <tr><td>น้ำตาลกรวด</td><td>1/2 ช้อนโต๊ะ</td></tr>
+                        <tr><td>ซีอิ๊วขาว</td><td>2–3 ช้อนโต๊ะ</td></tr>
+                        <tr><td>น้ำมันพืช</td><td>1/2 ช้อนโต๊ะ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s10 m10 l10 offset-l1 offset-m1 offset-s1">                   
+                <p><b>วิธีทำ</b></p>
+                <p>
+                    1. ใส่ส่วนผสมทั้งหมดลงในหม้อ (ควรใส่น้ำเผื่อไว้หน่อยกันน้ำแห้งเกินไป) นำขึ้นตั้งไฟแรง (ไม่ต้องปิดฝา) ต้มให้เดือดนานอย่างน้อย 30 นาที
+                </p>
+                <p>
+                    2. พอครบเวลาใส่ไก่ลงไปจนหมด (ถ้าหม้อใบเล็กเกินจะเอาผักกาดขาวออกให้หมดก่อนก็ได้) พอใส่ไก่ชิ้นสุดท้ายลงไป ให้ลดไฟอ่อนลง จากนั้นต้มไปเรื่อย ๆ จนกว่าจะเดือด หมั่นช้อนฟองอากาศทิ้ง    
+                </p>
+                <p>หมายเหตุ : ควรจับเวลาให้ดี ถ้าต้มนานไปไก่จะสุกเกินไม่อร่อย ถ้าไก่ดิบไปก็กินไม่ได้ (คือกระดูกมีเลือด เนื้อส่วนที่ติดกระดูกเหนียวเลาะไม่ออก) ปกติจะใช้เวลาในการต้มประมาณ 1 ชั่วโมงนับจากใส่ไก่ลงไป หมั่นตักฟองทิ้งไปบ้าง จากนั้นก็ปล่อยให้ไฟรุมๆไปเรื่อยๆ</p>
+            </div>   
+        </div>
+
+        <div class="row">
+        <div class="col s10 m8 l8 offset-l2 offset-m2 offset-s1">
+                <h3>ส่วนผสมน้ำจิ้ม</h3>
+                <table>
+                    <thead>
+                      <tr>
+                          <th data-field="id">ส่วนผม</th>
+                          <th data-field="name">ปริมาณ</th>
+                          
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr><td>เต้าเจี้ยว</td><td>6 ช้อนโต๊ะ</td></tr>
+                    <tr><td>น้ำตาลทราย</td><td>1 ช้อนโต๊ะ</td></tr>
+                    <tr><td>ขิงแก่สับละเอียด</td><td>3 ช้อนโต๊ะ</td></tr>
+                    <tr><td>ขิงแก่ ตำแหลก</td><td>1 ช้อนโต๊ะ</td></tr>
+                    <tr><td>พริกขี้หนูสดเขียว-แดงซอย</td><td>2 ช้อนโต๊ะ</td></tr>
+                    <tr><td>น้ำส้มพริกดองแบบปั่น</td><td>2 ช้อนโต๊ะ</td></tr>
+                    <tr><td>ซีอิ๊วหวานสูตร 1</td><td>1 ช้อนโต๊ะ</td></tr>
+                    <tr><td>มะนาว</td><td>1 ซีก</td></tr>
+                </tbody>     
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 m10 l10 offset-l1 offset-m1 offset-s1">                   
+            <p><b>วิธีทำ</b></p>
+            <p>
+                1. ใส่เต้าเจี้ยวลงในถ้วย (ควรชิมก่อนด้วยว่า เต้าเจี้ยวที่เราซื้อมามีความเค็มมากน้อยแค่ไหน บางยี่ห้อก็เค็มจัด บางยี่ห้อก็มีติดหวานเล็ก ๆ ปริมาณส่วนผสมมาก-น้อย ลดลงตามส่วนนะครับ)
+            </p>
+            <p>
+                2. ใส่น้ำตาลทราย ใส่ขิงแก่ตำแหลกและขิงแก่สับละเอียด (ขิงแก่ตำแหลกนี่สำคัญนะครับ ตำให้แหลกเลย นำน้ำขิงในครกใส่ไปด้วย เวลาผสมกันเป็นน้ำจิ้มแล้วจะได้มีรสและกลิ่นขิงแทรกอยู่อย่างทั่วถึง) ใส่พริกขี้หนูเขียว-แดงซอย (ถ้าชอบเผ็ดก็เอาส่วนหนึ่งไปปั่นหรือตำให้แหลกก่อนเลยแล้วค่อยเอามาใส่) ใส่น้ำส้มพริกดอง (ที่เหลือมาจากการกินข้าวขาหมู เย็นตาโฟ หรือก๋วยเตี๋ยวเรือก็ได้) บีบน้ำมะนาวใส่ลงไป (เพื่อเอากลิ่น)
+            </p>
+            <p>
+                3. ซีอิ๊วหวาน (ถ้าไม่ต้องการให้สีเข้มมากก็ลดเหลือ 1/2 ช้อนโต๊ะ แนะนำให้ใช้สูตร 1 นะครับ พวกง่วนเชียงฝาสีครีมก็ดี ไม่ควรใช้น้ำตาลโมลาส หรือซีอิ๊วหวานสูตร 5 ได้สีเข้มก็จริง แต่เดี๋ยวจะทำให้เสียรส เสียกลิ่น)คนผสมให้ละลายเข้ากัน ชิมรสตามชอบ (ไม่ต้องใส่น้ำซุปลงไปให้เจือจาง แต่ถ้าเห็นว่าข้นมากเพราะใส่ขิงมากไปก็เติมน้ำซุปลงไปสัก 1 ช้อนโต๊ะ)
+
+
+
+            </p>
+            <p>หมายเหตุ : ชิมให้ถูกปาก ถ้าอ่อนเค็มให้เพิ่มเต้าเจี้ยว ถ้าอ่อนหวานให้เพิ่มน้ำตาลทราย (ระวังนะครับ ถ้าคน ๆ น้ำตาลยังไม่ละลายดี ชิมแล้วจะยังไม่ออกหวาน พอละลายแล้วเดี๋ยวหวานเกินไปนะ) ถ้าอ่อนเปรี้ยวให้เพิ่มน้ำส้มพริกปั่นลงไป (ไม่เพิ่มมะนาวนะครับ) ส่วนชอบเผ็ดมากน้อยก็ปรับสัดส่วนของพริกขี้หนูเสียแต่ทีแรกเลย</p>
+        </div>   
+    </div>
+    <div class="row">
+        <div class="col s10 m10 l10 offset-l1 offset-m1 offset-s1">                   
+            <p>ข้าวมันไก่กับน้ำจิ้มจานนี้น่ากินสุด ๆ วิธีทำก็ไม่ได้ยากอย่างที่คิด แบบนี้ลองนำไปทำกินกันในครอบครัวดูนะคะ คุ้มเกินคุ้ม !</p>
+
+            <p>ขอขอบคุณข้อมูลและภาพประกอบจาก 
+                คุณมันแกวกะแห้วหมู สมาชิกเว็บไซต์พันทิปดอทคอม</p>
+            </div>   
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="section"></div>      
+</div>
+
+</div>
+<div class="row">
+
+</div>
+</div>
+
+<!--Main-->
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal" style="width: 480px;">
+    <div class="modal-content" >
+        <form action="check-login.php" method="post" id="loginform" name="loginform">
+            <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
+            <h4 class="center">เข้าสู่ระบบ</h4>
+            <div class="row">
+                <div class="input-field col s8 offset-s2">
+                    <input id="username" type="text" class="validate" name="username" placeholder="ชื่อเข้าใช้งาน"> 
+                </div>
+
+                <div class="input-field col s8 offset-s2">
+                    <input id="password" type="password" class="validate" name="password" placeholder="รหัสผ่าน"> 
+                </div>
+            </div>
+
+
+            <div class="modal-footer" align="center">
+                <span>
+                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                    <label for="filled-in-box">ให้ฉันอยู่ในระบบต่อไป</label>
+                    หรือ <a href="#">ลืมรหัสผ่าน</a></span>      
+                </div>
+                <div align="center" style="margin-bottom: 10px"> 
+                    <button class="btn waves-effect waves-light" type="submit" name="action">ลงชื่อเข้าใช้</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+<!--Resize Button-->
+<div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">        
+    <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><img src="img/retext-icon.png" width="35" style="padding-top: 7px;"></a>
+    <ul class="resizer">
+        <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
+            <img src="img/ismall.png" style="margin: 8px"></a>
+        </li>
+        <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="img/ismall.png" style="margin: 11px; width: 14px"></a>
+        </li>
+        <li id="normal"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรปกติ"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a>
+        </li>
+    </ul>         
+</div>
+<!--Endd Resize Button-->
+
+<!--Back btn-->
+<div class="fixed-action-btn goback-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left'>        
+    <a class="btn-floating btn-large tooltipped" data-position="right" data-delay="50" data-tooltip="กลับ"
+    onclick="goBack()" ><i class="material-icons">chevron_left</i></a>         
+</div>
+<!--End Back btn-->
+
+    
+    <!--Footer-->
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text for-footer">Senior Project</h5>
+                <p class="grey-text text-lighten-4 for-footer">งานนี้เป็นส่วนหนึ่งของวิชา INT450 IT Project</p>
+              </div>
+              <div class="col l6 s12">
+                <h5 class="white-text for-footer">ติดต่อเรา</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3 for-footer" href="#!">กุนนี่ คอนพานี</a></li>
+                  <li><a class="grey-text text-lighten-3 for-footer" href="#!">สุนิสา อินดัสทรี่</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Copyright SIT KMUTT IT#19
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+          </div>
+        </footer>
+
+        <a href="#" class="back-to-top waves-effect waves-light tooltipped" style="display: inline;" data-position="left" data-delay="50" data-tooltip="กลับขึ้นไปด้านบน">
+            <i class="material-icons left back-icon">keyboard_arrow_up</i>
+        </a>
+
+        <script type="text/javascript" src="js/btt.js"></script>
+        
+</body>
+</html>
