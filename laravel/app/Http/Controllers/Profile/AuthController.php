@@ -30,7 +30,11 @@ class AuthController extends Controller
     public function index()
     {
         //
+<<<<<<< HEAD
+        $questions = Question::all();
+=======
           $questions = Question::all();
+>>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
         $title = 'สมัครสมาชิก';
         return view('auth.register',compact('title','bio','questions'));
 

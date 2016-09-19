@@ -94,14 +94,37 @@
                                 <td colspan="2">
                                     <div class="input-field">
                                         <select name="question">
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+                                          <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
+
+                                          @foreach($questions as $question)
+                                            <option value="{{$question->id}}">{{$question->question}}?</option>
+                                          @endforeach
+=======
+<<<<<<< HEAD
+>>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
                                             <option value="0" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
                                           @foreach($questions as $question)
 
                                             <option value="{{$question->id}}">{{$question->question}}?</option>
 
                                             @endforeach
+<<<<<<< HEAD
 
+=======
+=======
+                                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
+                                            <option value="1">สัตว์เลี้ยงตัวแรกของคุณชื่ออะไร?</option>
+                                            <option value="2">สีโปรดของคุณ คือสีอะไร?</option>
+                                            <option value="3">อาหารไทยที่คุณชอบมากที่สุด คืออะไร?</option>
+                                            <option value="4">เครื่องดื่มยี่ห้อโปรดของคุณ คืออะไร?</option>
+                                            <option value="5">แฟนคนแรกของคุณ ชื่ออะไร?</option>
+>>>>>>> 9060938f5737cba36ada8eb68e12d82414216885
+>>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
+>>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
                                         </select>
                                     </div>
                                 </td>
@@ -166,7 +189,7 @@
 
                     </div>
                     <div align="center">
-                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmCheck2()" >ตกลง</button>
+                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmChk()" >ตกลง</button>
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
                     </div>
 
@@ -216,7 +239,6 @@
       });
     });
   }
-
 </script>
 
 </div>

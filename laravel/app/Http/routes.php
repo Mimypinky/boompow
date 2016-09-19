@@ -68,9 +68,16 @@ Route::get('/chat',function(){
   return view('social.chat',compact('title'));
 });
 
+<<<<<<< HEAD
 
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 //Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
+=======
+//Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
 
 
 
@@ -78,7 +85,13 @@ Route::post('/acceptFriend', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> 9060938f5737cba36ada8eb68e12d82414216885
+>>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
+>>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
