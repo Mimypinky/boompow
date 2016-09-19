@@ -20,11 +20,21 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
+<<<<<<< HEAD
+
+  <!--  <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">-->
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat-v2.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
+=======
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
+>>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
 
 
     <!--Import bootstrap.css
@@ -166,7 +176,7 @@
           </li>
         </ul>
 
-        <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+        <li><a href="{{url('/chat')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
 
 
 
@@ -213,9 +223,9 @@
         <li><a href="{{url('/newsfeed')}}"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
-        <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
-        <li><a href="{{url('/chat')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
-        <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+        <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
+        <li><a href="{{url('/chat')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
+        <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
     <!--Second Nav-->

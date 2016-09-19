@@ -42,7 +42,8 @@
                         <?php
                         $user = Auth::user()->id;
                         $friend =$account->id;
-                        $status=DB::table('friends')->select('status')->where([['from_user_id',$user],['to_user_id',$friend]]) ?>
+                        $status=DB::table('friends')->select('status')->where([['from_user_id',$user],['to_user_id',$friend]])->first();
+                        ?>
                         @if(! isset($post))
 
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
@@ -59,6 +60,10 @@
 
                       </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
 

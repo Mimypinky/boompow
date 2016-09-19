@@ -19,25 +19,18 @@ $(document).ready(function () {
 });
 </script>
 
-<style>
-table{
-    margin-left: 3em;
-  }
-</style>
-<style type="text/css">
-
-@media screen and (max-width: 1025px) {
-
-  .secnav{
-    margin-left: 1%;
-  }
-
-}
 
 
-</style>
-<div id="activities" >
-  <center><h1 style="font-size: 36pt; text-shadow: 2px 2px #3A3737;" class="hello-content">{{$title}}</h1></center>
+
+<div id="wrapperHeader">
+    <div class="img-cover">
+        <img src="{{url('img/activities.jpg')}}">
+    </div>
+
+    <div id="header">
+        <span>{{$title}}</span>
+        <p>ติดตามข่าวสารใหม่ๆได้ที่ BOOMPOW</p>
+    </div>
 </div>
 <div class="section"></div>
 <div class="container">
