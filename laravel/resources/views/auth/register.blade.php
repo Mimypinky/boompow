@@ -94,7 +94,7 @@
                                 <td colspan="2">
                                     <div class="input-field">
                                         <select name="question">
-                                            <option value="0" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
+                                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
                                             <option value="1">สัตว์เลี้ยงตัวแรกของคุณชื่ออะไร?</option>
                                             <option value="2">สีโปรดของคุณ คือสีอะไร?</option>
                                             <option value="3">อาหารไทยที่คุณชอบมากที่สุด คืออะไร?</option>
@@ -164,7 +164,7 @@
 
                     </div>
                     <div align="center">
-                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmCheck2()" disabled="true">ตกลง</button>
+                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmCheck2()" >ตกลง</button>
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
                     </div>
 

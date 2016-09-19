@@ -97,31 +97,7 @@ table{
                             </div>
                           </div>
           @endif
-<<<<<<< HEAD
 
-=======
-              <a href="event_activity_owner.html"><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
-
-
-                <a href="partiList1"class="modal-trigger"><div class="chip" align="right"> ผู้เข้าร่วม</div></a>
-
-
-                <div id="partiList1" class="modal" style="width: 500px;">
-                  <ul class="collection">
-                    @for($i=0;$i<=6;$i++)
-                    <li class="collection-item avatar">
-                      <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
-                      <p>First Line </p>
-                      <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
-                    </li>
-                    @endfor
-                  </ul>
-                  <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                  </div>
-                </div>
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
->>>>>>> 8133193e6c6d838016f2a198dcea236308a33ee2
               </div>
             </div>
 

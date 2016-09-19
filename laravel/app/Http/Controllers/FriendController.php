@@ -32,24 +32,34 @@ public function sendFriendRequest(Request $req){
 
   public function viewFriendRequest(){
     //$pending = Friend::where('to_user_id' , Auth::user()->id->get();
-    $accounts = DB::table('friends')
-            ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
-            ->where('to_user_id' , Auth::user()->id)
-            ->where('status' , 'pending')
-            ->select('accounts.username' , 'friends.id')->get();
+    if(Auth::check()){
+      $accounts = DB::table('friends')
+              ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
+              ->where('to_user_id' , Auth::user()->id)
+              ->where('status' , 'pending')
+              ->select('accounts.username' , 'friends.id')->get();
 
-    return view('social.view_friend_request')->with('accounts' , $accounts);
+      return view('social.view_friend_request')->with('accounts' , $accounts);
+    }else{
+      echo 'Please login ..';
+      return redirect()->intended('/');
+    }
+
 
   }
-public function acceptFriend(Request $req){
-  $id = $req->input('rid');
-  $fr = Friends::find($id);
-  $fr->status = 'accepted';
-  $fr->save();
-  return redirect()->intended('FriendReq');
+  public function acceptFriend(Request $req){
+    if(Auth::check()){
+      $id = $req->input('rid');
+      $fr = Friends::find($id);
+      $fr->status = 'accepted';
+      $fr->save();
+      return redirect()->intended('FriendReq');
+    }else {
+      echo 'Please login ..';
+      return redirect()->intended('/');
+    }
 
-
-}
+  }
 
     public function viewFriend($fid){
       $title = 'ชั่วคราว';
