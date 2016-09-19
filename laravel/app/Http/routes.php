@@ -68,23 +68,7 @@ Route::get('/chat',function(){
   return view('social.chat',compact('title'));
 });
 
-<<<<<<< HEAD
-Route::get('FriendReq' , 'FriendController@viewFriendRequest');
-=======
-Route::get('/notification' , 'FriendController@viewFriendRequest');
 //Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
->>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
-Route::get('/notification',function(){
-  $title ='Boompow - Notificate';
-  return view('social.noti',compact('title'));
-});
-<<<<<<< HEAD
-
-Route::post('/acceptFriend', 'FriendController@acceptFriend');
-Route::get('/upload',function(){
-  return view('social.ex_upload');
-});
-=======
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
@@ -97,4 +81,3 @@ Route::get('/setting', function(){
   $title= 'Boompow';
   return view('social.setting_profile',compact('title'));
 });
->>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9

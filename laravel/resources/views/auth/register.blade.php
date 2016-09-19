@@ -94,12 +94,11 @@
                                 <td colspan="2">
                                     <div class="input-field">
                                         <select name="question">
-                                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                            <option value="1">สัตว์เลี้ยงตัวแรกของคุณชื่ออะไร?</option>
-                                            <option value="2">สีโปรดของคุณ คือสีอะไร?</option>
-                                            <option value="3">อาหารไทยที่คุณชอบมากที่สุด คืออะไร?</option>
-                                            <option value="4">เครื่องดื่มยี่ห้อโปรดของคุณ คืออะไร?</option>
-                                            <option value="5">แฟนคนแรกของคุณ ชื่ออะไร?</option>
+                                          <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
+
+                                          @foreach($questions as $question)
+                                            <option value="{{$question->id}}">{{$question->question}}?</option>
+                                          @endforeach
                                         </select>
                                     </div>
                                 </td>
@@ -164,7 +163,7 @@
 
                     </div>
                     <div align="center">
-                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmCheck2()" >ตกลง</button>
+                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmChk()" >ตกลง</button>
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
                     </div>
 
@@ -214,7 +213,6 @@
       });
     });
   }
-
 </script>
 
 </div>
