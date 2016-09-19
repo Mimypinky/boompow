@@ -120,12 +120,12 @@
       <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'>
         <a class="button-collapse2 navlink" data-activates="slide-out" >
           <i style="margin-top: 6px;" class="material-icons left">people</i>
-        <span class="mynoti noti-right">4</span><span class="rps-bar">สังคมของฉัน</span>
+        <span class="mynoti noti-right">7</span><span class="rps-bar">สังคมของฉัน</span>
       </a>
     </li>
 
     <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
-      <span class="mynoti">4</span><span class="rps-bar">ข้อความ</span></a></li>
+      <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
       @endif
@@ -151,7 +151,7 @@
 
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">4</span></a>
+            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">7</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="{{url('/newsfeed')}}">กระดานข่าว </a></li>
@@ -159,8 +159,8 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-                <li><a href="{{url('/chat')}}">ข้อความ <span class="new badge">4</span></a></li>
-                <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">4</span></a></li>
+                <li><a href="{{url('/chat')}}">ข้อความ <span class="new badge">2</span></a></li>
+                <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
           </li>
@@ -227,11 +227,11 @@
                 <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
             -->
             <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
-            <li><a href="all_catelog_recipe.html" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร</a></li>
+            <li><a href="" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร<img src="{{url('img/arrow_drop.png')}}" ></a></li>
             <li><a class="dropdown-button" href="{{url('content/entertainment')}}" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
-              <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง</a></li>
+              <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง<img src="{{url('img/arrow_drop.png')}}" ></a></li>
             <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
-            <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว</a></li>
+            <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว<img src="{{url('img/arrow_drop.png')}}" ></a></li>
             <li><a href="{{url('content/elder_promotion')}}"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
             <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
         </ul>
@@ -325,11 +325,11 @@
             <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><img src="{{url('img/retext-icon.png')}}" width="35" style="padding-top: 7px;"></a>
             <ul class="resizer">
                 <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
-                    <img src="img/ismall.png" style="margin: 8px"></a>
+                    <img src="{{url('img/ismall.png')}}" style="margin: 8px"></a>
                 </li>
-                <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="img/ismall.png" style="margin: 11px; width: 14px"></a>
+                <li id="medium"><a class="medium btn-floating blue tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดกลาง"> <img src="{{url('img/ismall.png')}}" style="margin: 11px; width: 14px"></a>
                 </li>
-                <li id="normal"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรปกติ"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a>
+                <li id="normal"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรปกติ"><img src="{{url('img/ismall.png')}}" style="margin: 12px; width: 11px"></a>
                 </li>
             </ul>
         </div>

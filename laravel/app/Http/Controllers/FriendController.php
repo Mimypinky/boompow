@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Account;
 use App\Friends;
@@ -58,6 +58,7 @@ public function sendFriendRequest(Request $req){
     }else {
       echo 'Please login ..';
       return redirect()->intended('/');
+<<<<<<< HEAD
     }*/
     if(Auth::check()){
         $user = Auth::user()->id;
@@ -77,11 +78,29 @@ public function sendFriendRequest(Request $req){
 
 /*public function acceptFriend(Request $req){
   $id = $req->input('rid');
+=======
+    }
+=======
+    $user = Auth::user()->id;
+    $title='Friend Request';
+    $status = 'pending';
+    $accounts = DB::table('friends')
+            ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
+            ->where([['to_user_id',$user],['status','pending']])
+            ->select('accounts.*' , 'friends.from_user_id')->get();
+
+    return view('social.noti',compact('accounts','user','title'));
+  }
+
+public function acceptFriend($rid){
+
+>>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
   $user=Auth::user()->id;
-  $fr = Friends::where([['from_user_id',$user],['to_user_id',$id]]);
+  $fr = Friends::where([['from_user_id',$user],['to_user_id',$rid]]);
   $fr->status = 'accepted';
+  //dd($fr);
   $fr->save();
-  return redirect()->intended('social.noti');
+  return redirect('social.noti');
 
 
 }*/

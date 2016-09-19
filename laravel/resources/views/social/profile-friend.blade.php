@@ -39,7 +39,10 @@
                         $myId = Auth::user()->id;
                         $isPending = DB::table('friends')->where('from_user_id' , $fid)
                         ->where('to_user_id' , $myId)->where('status' , 'pending')->count(); ?>
-
+                        <?php
+                        $user = Auth::user()->id;
+                        $friend =$account->id;
+                        $status=DB::table('friends')->select('status')->where([['from_user_id',$user],['to_user_id',$friend]]) ?>
                         @if(! isset($post))
 
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
@@ -47,9 +50,6 @@
                             {{ csrf_field() }}
                         <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
 
-
-                        <form action='{{url('Pending')}}' method='post'>
-                          {{ csrf_field() }}
                           <input type='hidden' value='{{$account->id}}' name='aid'>
                         <!--  <input type='submit' value='Add'>
 
@@ -58,14 +58,14 @@
                         </form>
 
                       </div>
-                      @if($isPending=='pending')
 
+                      @elseif(strcmp($status,'pending'))
                       <div class="center"  id="pending" style="margin-bottom:1.5em;margin-top:-3.5em">
 
                       <a class="btn orange waves-effect waves-light " href="{{url('cancelRequest')}}" >ส่งคำขอเป็นเพื่อนแล้ว</a>
 
                       </div>
-                      @endif
+
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
 

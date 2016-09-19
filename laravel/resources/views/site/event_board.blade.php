@@ -7,7 +7,7 @@
       <div class="col s10">
           <div class="card pro-upstatus-feed event-head">
               <div class="card-image" >
-                  <img src="{{url('img/polygons.jpg')}}"  id="eve_img" >
+                  <img src="{{url('img/polygons.jpg')}}" style="height:30em" id="eve_img" >
                   <span class="card-title">
                       <a href="/event" class="tooltipped back-btn blue darken-1 waves-effect waves-light btn right" style="margin-right: 10px;" data-position="bottom" data-delay="50" data-tooltip="กลับไปหน้ากิจกรรม"><i class="material-icons" style="font-size: 20pt;">arrow_back</i></a>
                   </span>
