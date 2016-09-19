@@ -20,11 +20,19 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
+<<<<<<< HEAD
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">
+
+=======
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
+>>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
 
     <!--Import bootstrap.css
 
@@ -53,9 +61,9 @@
          $('#loginform').closeModal();
      });
      $('.datepicker').pickadate({
-    selectMonths: true,
-    selectYears: 15
-  });
+       selectMonths: true,
+       selectYears: 15
+     });
       $(document).ready(function() {
      $('select').material_select();
    });
@@ -110,15 +118,16 @@
 
   <ul class="right hide-on-med-and-down">
       @if(Auth::guest())
-
           <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
           <strong>สมัครสมาชิก</strong></a></li>
           <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
-
       @else
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
       <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
 
 
