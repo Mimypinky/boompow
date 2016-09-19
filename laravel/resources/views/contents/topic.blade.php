@@ -1,13 +1,15 @@
 @extends('site.layout')
 @section('maincontent')
-<div class="row">
-    <div class="hello">
-        <center><h1 style="font-size: 36pt; text-shadow: 2px 2px #3A3737;" class="hello-content">{{ $headtitle->category_title_th}}</h1></center>
+<div id="wrapperHeader">
+    <div class="img-cover">
+        <img src="{{url('img/health3.jpg')}}">
+    </div>
+
+    <div id="header">
+        <span>{{ $headtitle->category_title_th}}</span>
+
     </div>
 </div>
-
-
-
 
 <div class="container" style="width: 90%;">
     <div class="section shortenNav"></div>
@@ -15,12 +17,16 @@
         <nav class="shortenNav">
             <div class="nav-wrapper" id="breadcrumbsContent">
               @foreach($article as $data)
-              <div class="col s12" style="padding-left: 2em;">
-                <a href="{{ url('content/'.$headtitle->category_title) }}" class="breadcrumb">{{$headtitle->category_title_th}}</a>
+              <nav class="mybc" style="background-color: #EE6E74">
+                  <div class="nav-wrapper">
+                      <div class="col s12">
 
-                <a href="{{ url('content/'.$headtitle->category_title.'/'.$data->id) }}" class="breadcrumb">{{$data->content_title}}</a>
+                          <a href="{{ url('content/'.$headtitle->category_title) }}" class="breadcrumb">{{ $headtitle->category_title_th}}</a>
+                            <a href="{{ url('content/'.$headtitle->category_title.'/'.$data->id) }}" class="breadcrumb">{{$data->content_title}}</a>
+                      </div>
+                  </div>
+              </nav>
 
-            </div>
           @endforeach
         </div>
     </nav>

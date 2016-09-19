@@ -1,8 +1,9 @@
-body{
-    font-family: 'Mitr', sans-serif;
-}
+
 p{
-    font-size: 14pt;
+    font-size: 15pt;
+}
+span{
+    font-size: 15pt;
 }
 h1{
     font-size: 26pt;
@@ -19,6 +20,12 @@ h4{
 h5{
     font-size: 18pt;
 }
+thead{
+    font-size: 16pt;
+}
+td{
+    font-size: 15pt;
+}
 
 h5.for-footer {
     font-size: 14pt;
@@ -29,7 +36,12 @@ p.for-footer {
 a.for-footer {
     font-size: 10pt;
 }
-
+a{
+  font-size: 15pt !important;
+}
+span.badge.noti-badge{
+  position: unset;
+}
 /*Override from Materialize*/
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #EE6E74;
@@ -68,7 +80,20 @@ input[type="checkbox"].filled-in:checked + label:after {
   background-color: #EE6E74;
   z-index: 0;
 }
-
+#main-nav div ul li a span{
+    font-size: 18px !important;
+}
+.goback-btn{
+    position: fixed;
+    left:2%;
+    width:5%;
+}
+.goback-btn .btn-floating:hover{
+    background-color: #6d7188;
+}
+.goback-btn a{
+    background-color: #3d4052;
+}
 .parallax img {
   display: inherit;
   position: absolute;
@@ -82,8 +107,22 @@ input[type="checkbox"].filled-in:checked + label:after {
           transform: translateX(-50%);
 }
 
+.second-nav ul li a{
+    font-size: 18px !important;
+}
+#main-nav div ul li a{
+    font-size: 18px !important;
+
+}
+.second-nav ul a:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+.secnav .dropdown-content{
+    margin-top: -5px;
+}
+
 #secnav-icon{
-    line-height: 2.3;
+    line-height: 2.7;
 }
 
 .myred-font {
@@ -103,7 +142,7 @@ input[type="checkbox"].filled-in:checked + label:after {
 .mylogo{
 	width: 200px;
     margin-top: 7%;
-    margin-left: -18%;
+    margin-left: -2%;
 }
 
 nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
@@ -165,10 +204,6 @@ nav ul a{
     margin-top: -11px;
 }
 
-.test{
-	background-color: black;
-	border:5px solid #ccc;
-}
 
 .imgresize{
 
@@ -198,13 +233,8 @@ nav ul a{
 
 
 #datecomment{
-<<<<<<< HEAD
     color: #bdbdbd;
-    font-size: 12pt;
-=======
-    color: #bdbdbd; 
-    font-size: 14pt; 
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
+    font-size: 14pt;
     line-height: 20px;
 }
 
@@ -411,7 +441,7 @@ a{
 
 .myicon{
     width: 28px;
-    margin-top: 14px;
+    margin-top: 16px;
 
 }
 .mypropic{
@@ -459,9 +489,13 @@ a{
     text-align: center;
     padding-top: 9%;
 }
+span.badge{
+    padding-top: 3px;
+}
 
 span.badge.new {
   background-color: #EE6E73;
+  font-size: 1rem;
 }
 
 span.badge.new:after {
@@ -473,7 +507,7 @@ span.mynoti:after {
 }
 
 .noti-right{
-    right: 5.4% !important;
+    right: 230px !important;
 }
 
 
@@ -488,8 +522,8 @@ span.mynoti:after {
     -moz-border-radius: 68%;
     -o-border-radius: 68%;
     position: absolute;
-    top: 19%;
-    right: 17.6%;
+    top: 11px;
+    right: 73px;
     line-height: 25px;
     letter-spacing: 1px;
     text-align: center;
@@ -502,8 +536,22 @@ span.mynoti:after {
     box-shadow: none;
 }
 .secnav{
-    margin-left: 11% !important;
-    line-height: 3.3;
+    background-color: #EE6E73;
+    z-index: -99;
+    height: 60px;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+
 }
 
 #dropdownhelp{
@@ -579,7 +627,7 @@ span.mynoti:after {
 }
 
 #breadcrumbsContent {
-    background-color: #ee6e73;
+    background-color: #039be5;
 }
 
 .contentBox {
@@ -649,11 +697,56 @@ article img {
    line-height: 0;
    font-size: 13pt;
 }
+@media screen and (max-width: 1175px) {
+    .rps-bar{
+        display: none;
+    }
+    .mynoti{
+        right: 18px;
+    }
+    .noti-right {
+        right: 92px !important;
+    }
+}
 
+@media screen and (max-width: 989px) {
+    .second-nav{
+        display: none;
+    }
+}
+@media screen and (min-width: 993px) {
+    .marginShareBtn-side {
+        top: 20px;
+        margin-left: 40%;
+        margin-top: 8px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .marginShareBtn-side {
+        top: 20px;
+        margin: 1px;
+    }
+}
+@media screen and (max-width: 992px) and (min-width: 601px) {
+    .marginShareBtn-side {
+        top: 20px;
+        margin: 3px;
+    }
+}
 /*ipad Horizontal */
 @media screen and (max-width: 1025px) {
+
+    .rps-bar{
+        display: none;
+    }
+    .mynoti{
+        right: 18px;
+    }
+    .noti-right {
+        right: 92px !important;
+    }
     .secnav{
-        margin-left: 0.4% !important;
+        margin-left: -1.6% !important;
     }
     .likeicon{
         margin-left: -20px;
@@ -705,24 +798,25 @@ article img {
         border-radius: 5px;
 
     }
-    .mynoti{
-        right: 22%;
-    }
-    .noti-right{
-        right: 6.4% !important;
-    }
-
-
 
     .mylogo {
         width: 180px;
-        margin-left: -23%;
+
         margin-top: 10%;
     }
 }
 
 /*ipad Vertical */
 @media screen and (max-width: 769px) {
+    .rps-bar{
+        display: none;
+    }
+    .mynoti{
+        right: 18px;
+    }
+    .noti-right {
+        right: 92px !important;
+    }
     .likeicon{
         margin-left: -34px;
         color: #FF0045;
@@ -824,7 +918,9 @@ article img {
         font-size: 12pt;
     }
 }
-
+span.badge.b-space {
+    position: unset;
+}
 .post-area{
     width: 92% !important;
 
@@ -991,10 +1087,41 @@ article img {
 .eve-align{
     text-align: left !important;
 }
+.breadcrumb{
+    color: #525263;
+}
+.breadcrumb:last-child span{
+    color: #f5f5f5 !important;
+    font-size: 18pt !important;
+    border: 4px double #f5f5f5;
+    padding-right: 22px;
+    background-color: #ee6e73;
+    padding-left: 25px;
+    padding-top: 6px;
+}
+.breadcrumb:before{
+    color: #525263;
+}
 
 .mybc{
-    width: 98%;
-    margin-left: 12px;
+   width: 100%;
+    /* margin-left: 12px; */
+    background-color: #f9f9f9;
+    box-shadow: none;
+    /* border-radius: 25px; */
+    height: 80px;
+    margin-top: -7px;
+    margin-bottom: 23px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-top: 6px;
+
+}
+.back-icon{
+    font-size: 30pt;
+    color: #f5f5f5;
+    background-color: #3d4052;
+    border-radius: 50%;
 }
 
 .back-to-top {
@@ -1006,15 +1133,7 @@ article img {
     display: none;
     text-decoration: none;
 }
-input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
-    font-size: 1.2rem;
-}
 
-<<<<<<< HEAD
-.collection .collection-item.avatar .title {
-    font-size: 14pt;
-}
-=======
 input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
     font-size: 1.2rem;
 }
@@ -1023,4 +1142,24 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
     font-size: 14pt;
 }
 
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
+.nt-tabhead{
+    overflow: hidden;
+    width: 100%;
+    padding-top: 13px;
+    padding-bottom: 25px;
+    height: 70px;
+    border-radius: 11px 11px 0px 0px;
+}
+.nt-tabfont{
+    font-size: 15pt !important;
+}
+.nt-tabhead.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 6px;
+    background-color: #AF4034;
+    will-change: left, right;
+}
+.nt-collection{
+    margin-top: -8px;
+}

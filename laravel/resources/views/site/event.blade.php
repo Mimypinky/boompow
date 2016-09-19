@@ -1,5 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
+<link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">
 <script type="text/javascript">
 $(document).ready(function () {
   $(".button-collapse").sideNav();
@@ -731,7 +732,7 @@ table{
                         <div class="modal-footer">
                             <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ยกเลิกการแก้ไข</a>
                             <!-- <a href="{{url('event/edit/'.$mine->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">บันทึกการแก้ไข</a> -->
-                            <a class="modal-action waves-effect btn-flat green white-text" type="submit" name="action">บันทึกการแก้ไข</a>
+                            <button class="modal-action waves-effect btn-flat green white-text" type="submit" name="action">บันทึกการแก้ไข</button>
                         </div>
                           </form>
                     </div>

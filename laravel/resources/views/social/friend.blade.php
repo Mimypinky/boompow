@@ -5,7 +5,7 @@
         <ul class="collection with-header pro-upstatus-feed">
             <li class="collection-header myfriend-head">
                 <div class="row mf-row">
-                    <div class="col s1"><img src="img/friends.png" width="50"></div>
+                    <div class="col s1"><img src="{{url('img/friends.png')}}" width="50"></div>
                     <div class="col s5"><h4 class="mf-col">เพื่อนของฉัน</h4></div>
                 </div>
             </li>
@@ -27,7 +27,7 @@
 
                             </li>
                             <li class="collection-item avatar f-left">
-                                <img src="img/pic2.jpg" alt="" class="circle myfriend-img">
+                                <img src="{{url('img/pic2.jpg')}}" alt="" class="circle myfriend-img">
                                 <span class="title f-title">สมัคร รักสนุกไม่คิดผูกกพัน</span><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
                                 <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
@@ -38,7 +38,7 @@
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
                             </li>
                             <li class="collection-item avatar f-left">
-                                <img src="img/pic3.jpg" alt="" class="circle myfriend-img">
+                                <img src="{{url('img/pic3.jpg')}}" alt="" class="circle myfriend-img">
                                 <span class="title f-title">ละมุน ละม่อม</span><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
                                 <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
@@ -54,7 +54,7 @@
                     <div class="col s6">
                         <ul class="collection">
                             <li class="collection-item avatar f-left">
-                                <img src="img/pic4.jpg" alt="" class="circle myfriend-img">
+                                <img src="{{url('img/pic4.jpg')}}" alt="" class="circle myfriend-img">
                                 <span class="title f-title">สมัย สมร</span><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
                                 <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
@@ -65,7 +65,7 @@
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
                             </li>
                             <li class="collection-item avatar f-left">
-                                <img src="img/pic5.jpg" alt="" class="circle myfriend-img">
+                                <img src="{{url('img/pic5.jpg')}}" alt="" class="circle myfriend-img">
                                 <span class="title f-title">ยายละม้าย คล้ายจะเป็นลม</span><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
                                 <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
@@ -76,7 +76,7 @@
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
                             </li>
                             <li class="collection-item avatar f-left">
-                                <img src="img/wf.jpg" alt="" class="circle myfriend-img">
+                                <img src="{{url('img/wf.jpg')}}" alt="" class="circle myfriend-img">
                                 <span class="title f-title">น้ำตก ลาบหมู</span><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
                                 <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">

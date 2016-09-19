@@ -9,7 +9,7 @@
 
     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
 
-    
+
     <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/mycss.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -41,7 +41,7 @@
         })
         $(document).ready(function () {
             $('.modal-trigger').leanModal();
-            
+
         });
         function goBack() {
             window.history.back();
@@ -75,11 +75,19 @@
     </ul>
 
     <ul class="right hide-on-med-and-down">
-        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i><span class="rps-bar">ข้อมูลส่วนตัว</span></a></li>
-        
-        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="button-collapse2 navlink" data-activates="slide-out" href="sass.html"><i style="margin-top: 6px;" class="material-icons left">people</i><span class="mynoti noti-right">4</span><span class="rps-bar">สังคมของฉัน</span></a></li>
+        <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="Social-Profile.html" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
+          <i style="margin-top: 6px;" class="material-icons left">person</i>
+          <span class="rps-bar">ข้อมูลส่วนตัว</span></a></li>
 
-        <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i><span class="mynoti">4</span><span class="rps-bar">ข้อความ</span></a></li>
+        <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'>
+          <a class="button-collapse2 navlink" data-activates="slide-out" href="{{url('/newsfeed')}}">
+            <i style="margin-top: 6px;" class="material-icons left">people</i>
+          <span class="mynoti noti-right">4</span><span class="rps-bar">สังคมของฉัน</span>
+        </a>
+      </li>
+
+        <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+          <span class="mynoti">4</span><span class="rps-bar">ข้อความ</span></a></li>
     </ul>
 
     <!--Slidenav mobile-->
@@ -96,7 +104,7 @@
             </div>
           </li>
         </ul>
-        
+
 
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -116,7 +124,7 @@
 
         <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
 
-        
+
 
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -167,27 +175,6 @@
         <li><a href="#"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>
         <li><a href="#"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
     </ul>
-
-    <!--Slidenav -->
-    <ul id="slide-out" class="side-nav">
-        <li><a href="#!">First Sidebar Link</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li>
-        <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
-                <li>
-                    <a class="collapsible-header">Dropdown</a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="#!">First</a></li>
-                            <li><a href="#!">Second</a></li>
-                            <li><a href="#!">Third</a></li>
-                            <li><a href="#!">Fourth</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </ul>
-        <!--End Slidenav -->
     </header>
     <!--End Second Nav-->
 </nav>
@@ -204,7 +191,7 @@
 <ul id="dropdownprofile" class="dropdown-content">
     <li><a href="#">ตั้งค่าข้อมูลส่วนตัว</a></li>
     <li><a href="#!">ออกจากระบบ</a></li>
-    
+
 </ul>
 
 <!-- Dropdownhealth Structure -->
@@ -227,7 +214,7 @@
     <li><a href="#!">ข่าวกีฬา</a></li>
     <li><a href="#!">ข่าวเศรษฐกิจ</a></li>
     <li><a href="#!">ข่าวการเมือง</a></li>
-    
+
 </ul>
 </nav>
 
@@ -242,7 +229,7 @@
 
 <!-- FOOTER PART SINCE HERE!!!!!-->
 <!--Resize Button-->
-<div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">        
+<div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">
     <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><img src="img/retext-icon.png" width="35" style="padding-top: 7px;"></a>
     <ul class="resizer">
         <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
@@ -252,17 +239,17 @@
         </li>
         <li id="normal"><a class="large btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="ตัวอักษรปกติ"><img src="img/ismall.png" style="margin: 12px; width: 11px"></a>
         </li>
-    </ul>         
+    </ul>
 </div>
 <!--Endd Resize Button-->
 
 <!--Back btn-->
-<div class="fixed-action-btn goback-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left'>        
-    <a class="btn-floating btn-large tooltipped" data-position="right" data-delay="50" data-tooltip="กลับ" 
-    onclick="goBack()"><i class="material-icons">chevron_left</i></a>         
+<div class="fixed-action-btn goback-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left'>
+    <a class="btn-floating btn-large tooltipped" data-position="right" data-delay="50" data-tooltip="กลับ"
+    onclick="goBack()"><i class="material-icons">chevron_left</i></a>
 </div>
 <!--End Back btn-->
-    
+
 <!--Footer-->
 <footer class="page-footer">
     <div class="container">
