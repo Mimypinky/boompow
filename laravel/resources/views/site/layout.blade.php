@@ -20,19 +20,14 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">
 
-=======
-  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
+  <!--  <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">-->
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
->>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
+
 
     <!--Import bootstrap.css
 
@@ -123,11 +118,6 @@
           <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
       @else
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
       <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
 
 
@@ -180,7 +170,7 @@
           </li>
         </ul>
 
-        <li><a href="#"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+        <li><a href="{{url('/chat')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
 
 
 
@@ -227,9 +217,9 @@
         <li><a href="{{url('/newsfeed')}}"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
-        <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">4</span></a></li>
-        <li><a href="{{url('/chat')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">4</span></a></li>
-        <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">4</span></a></li>
+        <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
+        <li><a href="{{url('/chat')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
+        <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
     <!--Second Nav-->

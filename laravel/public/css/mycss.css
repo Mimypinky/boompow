@@ -39,9 +39,7 @@ a.for-footer {
 a{
   font-size: 15pt !important;
 }
-span.badge.noti-badge{
-  position: unset;
-}
+
 /*Override from Materialize*/
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #EE6E74;

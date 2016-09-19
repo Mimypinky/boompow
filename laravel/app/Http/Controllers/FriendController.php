@@ -32,15 +32,15 @@ public function sendFriendRequest(Request $req){
 
   public function viewFriendRequest(){
     //$pending = Friend::where('to_user_id' , Auth::user()->id->get();
-<<<<<<< HEAD
+    $title = 'Friends Request';
     if(Auth::check()){
       $accounts = DB::table('friends')
               ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
               ->where('to_user_id' , Auth::user()->id)
               ->where('status' , 'pending')
-              ->select('accounts.username' , 'friends.id')->get();
+              ->select('accounts.*' , 'friends.*')->get();
 
-      return view('social.view_friend_request')->with('accounts' , $accounts);
+      return view('social.noti')->with('accounts' , $accounts)->with('title',$title);
     }else{
       echo 'Please login ..';
       return redirect()->intended('/');
@@ -54,12 +54,13 @@ public function sendFriendRequest(Request $req){
       $fr = Friends::find($id);
       $fr->status = 'accepted';
       $fr->save();
-      return redirect()->intended('FriendReq');
+      return redirect()->intended('social.noti');
     }else {
       echo 'Please login ..';
       return redirect()->intended('/');
-    }
-=======
+    }}
+
+/*if(Auth::check()){
     $user = Auth::user()->id;
     $title='Friend Request';
     $status = 'pending';
@@ -69,20 +70,14 @@ public function sendFriendRequest(Request $req){
             ->select('accounts.*' , 'friends.from_user_id')->get();
 
     return view('social.noti',compact('accounts','user','title'));
-  }
-
-public function acceptFriend($rid){
-
-  $user=Auth::user()->id;
-  $fr = Friends::where([['from_user_id',$user],['to_user_id',$rid]]);
-  $fr->status = 'accepted';
-  //dd($fr);
-  $fr->save();
-  return redirect('social.noti');
+  }  else {
+      echo 'Please login ..';
+      return redirect()->intended('/');
+    }}*/
 
 
-}
-public function cancelRequest(Request $req){
+
+/*public function cancelRequest(Request $req){
   $id = $req->input('aid');
   $user=Auth::user()->id;
   $friend = Friends::find($id);
@@ -92,9 +87,9 @@ public function cancelRequest(Request $req){
 
   return redirect()->intended('FriendReq');
 
->>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
 
-  }
+
+}*/
 
     public function viewFriend($fid){
 

@@ -30,13 +30,14 @@ $(window).load(function() { // makes sure the whole site is loaded
                   <div class="card-image">
                       <img src="{{url('img/healthy.jpg')}}">
                   </div>
-                  <div class="card-content" style="height:200px;background-color:eecc6;">
+                  <div class="card-content" style="background-color:eecc6;">
                       <h5 >{{$data->content_title}}</h5>
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
-                  <div class="card-action">
-                      <a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}">เพิ่มเติม</a>
-                </div>
+                  <div class="card-action" style="background-color: #ee6e73;">
+                      <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
+                  </div>
+                
               </div>
           </div>
           @endforeach

@@ -42,7 +42,8 @@
                         <?php
                         $user = Auth::user()->id;
                         $friend =$account->id;
-                        $status=DB::table('friends')->select('status')->where([['from_user_id',$user],['to_user_id',$friend]]) ?>
+                        $status=DB::table('friends')->select('status')->where([['from_user_id',$user],['to_user_id',$friend]])->first();
+                        ?>
                         @if(! isset($post))
 
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
@@ -59,12 +60,6 @@
 
                       </div>
 
-                      @elseif(strcmp($status,'pending'))
-                      <div class="center"  id="pending" style="margin-bottom:1.5em;margin-top:-3.5em">
-
-                      <a class="btn orange waves-effect waves-light " href="{{url('cancelRequest')}}" >ส่งคำขอเป็นเพื่อนแล้ว</a>
-
-                      </div>
 
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
