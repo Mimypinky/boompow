@@ -59,13 +59,6 @@
 
                       </div>
 
-                      @elseif(strcmp($status,'pending'))
-                      <div class="center"  id="pending" style="margin-bottom:1.5em;margin-top:-3.5em">
-
-                      <a class="btn orange waves-effect waves-light " href="{{url('cancelRequest')}}" >ส่งคำขอเป็นเพื่อนแล้ว</a>
-
-                      </div>
-
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
 

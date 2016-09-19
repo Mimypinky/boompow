@@ -67,7 +67,7 @@ public function sendFriendRequest(Request $req){
         $accounts = DB::table('friends')
                 ->join('accounts', 'accounts.id', '=', 'friends.to_user_id')
                 ->where([['action_user_id',$user],['status','pending']])
-                ->select('accounts.*' , 'friends.to_user_id')->get();
+                ->select('accounts.*' , 'friends.*')->get();
             //  dd($accounts);
         return view('social.noti',compact('accounts','user','title'));
       }else {

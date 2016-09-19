@@ -69,25 +69,7 @@ Route::get('/chat',function(){
 });
 
 //Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> 482d3ddc42ee5199fda264626ac1b63d490a04f9
-Route::get('/notification',function(){
-  $title ='Boompow - Notificate';
-  return view('social.noti',compact('title'));
-});
-<<<<<<< HEAD
-
-Route::post('/acceptFriend', 'FriendController@acceptFriend');
-Route::get('/upload',function(){
-  return view('social.ex_upload');
-});
-=======
->>>>>>> 9060938f5737cba36ada8eb68e12d82414216885
->>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
