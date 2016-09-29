@@ -10,27 +10,19 @@
 
     </div>
 </div>
+@foreach($article as $data)
+<nav class="mybc content-bc">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a href="all_catelog_recipe.html" class="breadcrumb">ตำรับอาหาร</a>
+            <a class="breadcrumb">{{$headtitle->category_title_th}}</a>
+            <a class="breadcrumb"><span>{{$data->content_title}}</span></a>
+        </div>
+    </div>
+</nav>
+@endforeach
 
 <div class="container" style="width: 90%;">
-    <div class="section shortenNav"></div>
-    <div>
-        <nav class="shortenNav">
-            <div class="nav-wrapper" id="breadcrumbsContent">
-              @foreach($article as $data)
-              <nav class="mybc" style="background-color: #EE6E74">
-                  <div class="nav-wrapper">
-                      <div class="col s12">
-
-                          <a href="{{ url('content/'.$headtitle->category_title) }}" class="breadcrumb">{{ $headtitle->category_title_th}}</a>
-                            <a href="{{ url('content/'.$headtitle->category_title.'/'.$data->id) }}" class="breadcrumb">{{$data->content_title}}</a>
-                      </div>
-                  </div>
-              </nav>
-
-          @endforeach
-        </div>
-    </nav>
-</div>
 
 <!--Content Section-->
 <div class="section"></div>
@@ -41,9 +33,11 @@
 
         <div>
             <!--FullScreen-->
-            <a href="{{url('content/')}}"class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-side tooltipped"data-position="right" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
-          <br>  <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
-            <br><a class="btn-floating waves-effect waves-light blue marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
+            <a class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
+            <a class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
+            <a class="btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
+            
+        
 
 
         <!--iPad

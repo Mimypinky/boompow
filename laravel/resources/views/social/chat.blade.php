@@ -257,7 +257,7 @@
 
    <!--Chat-->
    <div class="col m8 l9">
-     <div class="chat" style="margin-bottom: 29%;">
+     <div class="chat">
        <div class="chat-header clearfix white">
          <div class="chat-about">
            <div class="chat-with">

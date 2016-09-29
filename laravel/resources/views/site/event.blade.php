@@ -49,35 +49,35 @@ $(document).ready(function () {
         @foreach($event as $key => $data)
         <li class=" collection-item">
           <div class="row">
-            <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
-              <span ><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$data->title}}<span></span>
+            <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -25px; padding-left: 3%;">
+              <span ><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 20pt">{{$data->title}}<span></span>
 
           <?php   $party3 = DB::table('join_event')->where('eve_id', $data->id)->count(); ?>
           @if($party3==0)
-            <a href="#partiList0"class="modal-trigger"><div class="chip" align="right">ยังไม่มีผู้เข้าร่วม</div></a>
+            <a href="#partiList0" class="modal-trigger"><div class="chip" align="right">ยังไม่มีผู้เข้าร่วม</div></a>
 
                             <div id="partiList0" class="modal" style="width: 500px;">
-                              <ul class="collection">
+                              <ul class="collection with-header f-modal">
 
-                                <li class="collection-item avatar">
+                                <li class="collection-header transper">
                                   <h4>ยังไม่มีผู้เข้าร่วม</h4>
+                                  <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
                                 </li>
-
-
-
                               </ul>
-                              <div class="modal-footer">
-                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                              </div>
+                              
                             </div>
           @else
-          <a href="#partiList1"class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
+          <a href="#partiList1{{$key}}" class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
 
-                          <div id="partiList1" class="modal" style="width: 500px;">
-                            <ul class="collection">
-                              <?php $member = DB::table('join_event')->join('accounts','join_event.user_id','=','accounts.id')->where('eve_id','=',$data->id)->get(); ?>
+                          <div id="partiList1{{$key}}" class="modal" style="width: 500px;">
+                          <ul class="collection with-header f-modal">
+                          <li class="collection-header transper">
+                            <i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
+                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
+                          </li>
+                          <?php $member = DB::table('join_event')->join('accounts','join_event.user_id','=','accounts.id')->where('eve_id','=',$data->id)->get(); ?>
                             @foreach($member as $person)
-                              <li class="collection-item avatar">
+                            <li class="collection-item avatar transper">
                                 <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
                                 <p>{{$person->first_name.' '.$person->last_name}} </p>
                                 <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
@@ -85,10 +85,9 @@ $(document).ready(function () {
 
                               @endforeach
 
+                            
                             </ul>
-                            <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            </div>
+                            
                           </div>
           @endif
 
@@ -98,7 +97,7 @@ $(document).ready(function () {
             <div  style="margin-top: 20px background-color:#eeeeee;">
 
               <div class="row" style="padding: 20px;">
-                <div class="col s4 center" >
+                <div class="col s4 center event-card" >
                   <div class="card">
                     <div class="card-image">
                       <img class=" materialboxed" src="img/wf.jpg">
@@ -113,7 +112,7 @@ $(document).ready(function () {
                       <p class="ev-status">กำลังเปิดรับสมัคร</p>
                   </div>
                   @if(in_array($data->id,$joined) AND ($data->creator!=$user))
-                  <div class="card-action  amber lighten-4">
+                  <div class="card-action">
                       <ul class="event-menu ">
                           <li class="event-item "><a  >
                               <i class="material-icons left" aria-hidden="true">done</i>เข้าร่วมแล้ว</a></li>
@@ -121,7 +120,7 @@ $(document).ready(function () {
                       </ul>
                   </div>
                   @elseif(in_array($data->id,$joined) AND ($data->creator==$user))
-                  <div class="card-action light-green lighten-3">
+                  <div class="card-action">
                       <ul class="event-menu ">
                         <li class="event-item"><a href="{{url('event/board/'.$data->id)}}"><i class="fa fa-star left" aria-hidden="true"></i>กิจกรรมของคุณ</a></li>
                       </ul>
@@ -191,12 +190,12 @@ $(document).ready(function () {
                     </tr>
                     <tr>
                       <td><p>เริ่มวันที่ </p></td>
-                      <td><p>{{$data->start_date}}ถึง วันที่ {{$data->finish_date}}</p></td>
+                      <td><p>{{$data->start_date}} ถึง {{$data->finish_date}}</p></td>
 
                     </tr>
                     <tr>
                       <td><p>เวลา</p></td>
-                      <td><p>{{$data->start_time}}ถึง{{$data->finish_time}}</p></td>
+                      <td><p>{{$data->start_time}} ถึง {{$data->finish_time}}</p></td>
                     </tr>
                     <tr>
                       <td><p>เบอร์ติดต่อ</p></td>
@@ -229,9 +228,9 @@ $(document).ready(function () {
         @foreach($joinEvent as $key=> $join)
         <li class=" collection-item">
           <div class="row">
-            <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -10px;">
+            <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -25px; padding-left: 3%;">
               <span><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>
-                &nbsp;&nbsp;&nbsp;<span style="font-size: 16pt">{{$join->title}}<span></span>
+                &nbsp;&nbsp;&nbsp;<span style="font-size: 20pt">{{$join->title}}<span></span>
                 <?php $mem_join =$join->accounts->count();
 
                       ?>
@@ -257,22 +256,23 @@ $(document).ready(function () {
                 </div>
 
           @else
-<a href="#joinparti{{$key}}" class="modal-trigger"><div class="chip" align="right">{{ $mem_join}} ที่เข้าร่วม</div></a>
+          <a href="#joinparti{{$key}}" class="modal-trigger"><div class="chip" align="right">{{ $mem_join}} ที่เข้าร่วม</div></a>
           <div id="joinparti{{$key}}" class="modal" style="width: 500px;">
-            <ul class="collection">
-@foreach($join->accounts as $account)
-              <li class="collection-item avatar">
+          <ul class="collection with-header f-modal">
+            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
+                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
+            </li>
+
+            @foreach($join->accounts as $account)
+              <li class="collection-item avatar transper">
                 <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
                 <p>{{$account->first_name.' '.$account->last_name}}</p>
                 <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
               </li>
 
-@endforeach
+            @endforeach
 
             </ul>
-            <div class="modal-footer">
-              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-            </div>
           </div>
           @endif
               </div>
@@ -280,7 +280,7 @@ $(document).ready(function () {
 
             <div  style="margin-top: 20px background-color:#eeeeee;">
               <div class="row" style="padding: 20px;">
-                  <div class="col s4 center" >
+                  <div class="col s4 center event-card" >
                       <div class="card">
                           <div class="card-image">
                               <img class=" materialboxed" src="{{url('img/wf.jpg')}}">
@@ -344,12 +344,12 @@ $(document).ready(function () {
                     </tr>
                     <tr>
                       <td><p>เริ่มวันที่ </p></td>
-                      <td><p>{{$join->start_date}}ถึง วันที่ {{$join->finish_date}}</p></td>
+                      <td><p>{{$join->start_date}} ถึง {{$join->finish_date}}</p></td>
 
                     </tr>
                     <tr>
                       <td><p>เวลา</p></td>
-                      <td><p>{{$join->start_time}}ถึง{{$join->finish_time}}</p></td>
+                      <td><p>{{$join->start_time}} ถึง {{$join->finish_time}}</p></td>
                     </tr>
                     <tr>
                       <td><p>เบอร์ติดต่อ</p></td>
@@ -400,6 +400,14 @@ $(document).ready(function () {
                          </div>
                        </div>
                        <div class="row">
+                         <div class="input-field col s4">
+                          <i class="material-icons prefix">people</i>
+                           <input name="amount-attend" id="amount-attend" type="number" class="validate" value="2" required>
+                           {{ csrf_field() }}
+                           <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
+                         </div>
+                       </div>
+                       <div class="row">
                          <div class="input-field col s12">
                          <i class="material-icons prefix">location_on</i>
                            <textarea placeholder="ตัวอย่าง: 11/2 ซ.สวยสุดในสอย ถนนพระราม32 เขตดุสิต" name="location" id="address" class="materialize-textarea" required></textarea>
@@ -421,25 +429,28 @@ $(document).ready(function () {
                              </div>
                          </div>
                          <div class="row">
-                             <div class="input-field col s12">
-                             <i class="material-icons prefix etime-icon">today</i>
-                               <input id="date" type="date" name="start_date" class="datepicker" required>
+                             <div class="col s3 etime-col-res">
+                                 <p><i class="material-icons prefix etime-icon">today</i>&nbsp&nbspวันที่จัดกิจกรรม</p>
+                             </div>
+                             <div class="input-field col s3 etime-col">
+                                <input id="date" type="date" name="start_date" class="datepicker" required>
+                            </div>
+                            <div class="col s1" style="width: 6%;">
+                                 <p>ถึง</p>
+                             </div>
+                             <div class="input-field col s3 etime-col">
+                                 <input id="date" type="date" name="finish_date" class="datepicker" required>
                              </div>
                          </div>
+                    
                          <div class="row">
-                             <div class="input-field col s12">
-                             <i class="material-icons prefix etime-icon">today</i>
-                               <input id="date" type="date" name="finish_date"class="datepicker" required>
-                             </div>
-                         </div>
-                         <div class="row">
-                           <div class="input-field col s12">
+                           <div class="input-field col s12" style="margin-top: 32px;">
                                <i class="material-icons prefix">phone</i>
                              <input placeholder="ตัวอย่าง: 081-2345678" name="contact" id="event-name" type="text" class="validate" required>
 
                              <label for="event-name">เบอร์โทรติดต่อ</label>
                            </div>
-</div>
+                          </div>
                          <div class="row">
                               <div class="col s3 etime-col-res">
                                   <p><i class="etime-icon material-icons left">satellite</i>อัพโหลดรูปภาพ</p>
@@ -464,7 +475,7 @@ $(document).ready(function () {
                                </div>
                              </div>
                              <div class="row">
-                               <div class="col s6 offset-s8 btn-event">
+                               <div class="col s12 offset-s8 btn-event">
                                  <button type="reset" class="waves-effect waves-light btn white black-text">ล้าง</button>
                                  <button class="waves-effect waves-light btn" type="submit"><i class="material-icons right" name="action">send</i>สร้างกิจกรรม</button>
                                </div>
@@ -482,9 +493,9 @@ $(document).ready(function () {
 <div class="row">
 
               <div class="row">
-                <div class="col s12" style="margin-top: 10px; margin-bottom: -10px;">
+                <div class="col s12" style="margin-top: 10px; margin-bottom: -25px; padding-left: 3%;">
                   <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;
-                  <span style="font-size: 16pt">{{$mine->title}}
+                  <span style="font-size: 20pt">{{$mine->title}}
                     <?php $m_name = DB::table('join_event')->join('accounts','join_event.user_id','=','accounts.id')->where('eve_id','=',$mine->id)->get(); ?>
 <?php $m = DB::table('join_event')->where('eve_id',$mine->id)->count(); ?>
                     <a href="#myevePartiList{{$key}}" class="modal-trigger">
@@ -496,19 +507,17 @@ $(document).ready(function () {
                       @foreach($m_name as $per)
                     <div id="myevePartiList{{$key}}" class="modal" style="width: 500px;">
 
-                      <ul class="collection">
-                        <li class="collection-item avatar">
-                          <img src="img/f1.jpg" alt="" class="circle">
-
-                          <p>{{$per->first_name.' '.$per->last_name}}</p>
-
-                          <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;ติดตาม</a>
+                      <ul class="collection with-header f-modal">
+                        <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
+                        <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
                         </li>
+                        <li class="collection-item avatar transper">
+                          <img src="img/pic.jpg" alt="" class="circle">       
+                          <p>{{$per->first_name.' '.$per->last_name}}</p>
+                          <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                        </li>
+                        
                       </ul>
-
-                      <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times" aria-hidden="true"></i></a>
-                      </div>
                     </div>
                     @endforeach
                   </div>
@@ -517,7 +526,7 @@ $(document).ready(function () {
 
                 <div  >
                   <div class="row" >
-                    <div class="col s4 center" >
+                    <div class="col s4 center event-card" >
                       <div class="card">
                         <div class="card-image">
                           <img class=" materialboxed" src="img/wf.jpg">
@@ -566,7 +575,7 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
-                            <div class="row" >
+                            <div class="row" style="margin-top: 37px;">
                                 <form class="col s12" action="{{url('/event/edit/'.$mine->id)}}" method="post">
                                     <input type="hidden" name="_method" value="POST">
                                     {!! csrf_field() !!}
@@ -579,6 +588,14 @@ $(document).ready(function () {
 
                                         </div>
                                     </div>
+                                    <div class="row">
+                                     <div class="input-field col s4">
+                                      <i class="material-icons prefix">people</i>
+                                       <input name="amount-attend" id="amount-attend" type="number" class="validate" value="2" required>
+                                       {{ csrf_field() }}
+                                       <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
+                                     </div>
+                                   </div>
 
 
                                     <div class="row">
@@ -609,6 +626,24 @@ $(document).ready(function () {
                                     </div>
 
                                     <div class="row">
+                                        <div class="col s3 etime-colm-res">
+                                            <p><i class="material-icons prefix etime-icon">today</i>&nbsp&nbsp วันที่จัดกิจกรรม</p>
+                                        </div>
+
+                                        <div class="input-field col s3 etime-colm">
+                                            <input id="date" type="date" class="datepicker" value="{{$mine->start_date}}">
+                                        </div>
+
+                                        <div class="col s1">
+                                            <p>ถึง</p>
+                                        </div>
+
+                                        <div class="input-field col s3 etime-colm">
+                                            <input id="date" type="date" class="datepicker" value="{{$mine->finish_date}}">
+                                        </div>
+                                    </div>
+<!--
+                                    <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix etime-icon">today</i>
                                             <input id="date" type="date" class="datepicker" value="{{$mine->start_date}}">
@@ -619,12 +654,12 @@ $(document).ready(function () {
                                             <i class="material-icons prefix etime-icon">today</i>
                                             <input id="date" type="date" class="datepicker" value="{{$mine->finish_date}}">
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">phone</i>
-                                            <textarea placeholder="ตัวอย่าง: 085-994-9230" id="tel" class="materialize-textarea"  required>{{$mine->contact}}</textarea>
+                                            <input type="text" placeholder="ตัวอย่าง: 085-994-9230" value="{{$mine->contact}}" id="tel" required></input>
                                             <label for="tel">เบอร์โทรศัพท์ติดต่อ</label>
                                         </div>
                                     </div>
@@ -633,7 +668,7 @@ $(document).ready(function () {
                                         <div class="col s3 etime-colm-res">
                                             <p><i class="etime-icon material-icons left">satellite</i>อัพโหลดรูปภาพ</p>
                                         </div>
-                                        <div class="input-field col s3 epic-colm">
+                                        <div class="input-field col s3 epic-colm" style="    margin-top: -3px;">
                                             <input type="file" name="pic" accept="image/*">
                                         </div>
                                     </div>
@@ -655,23 +690,23 @@ $(document).ready(function () {
                                     </div>
 
                             </div>
-
+                            <!--
                             <div class="switch">
                                 <label for="url">การรับสมัคร</label>
                                 <p>
-        <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-        <label for="test5">เปิดรับอยู่</label>
-      </p>
-      <p>
-<input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-<label for="test5">เปิดรับอยู่</label>
-</p>
-
+                                  <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+                                  <label for="test5">เปิดรับอยู่</label>
+                                </p>
+                                <p>
+                                  <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+                                  <label for="test5">เปิดรับอยู่</label>
+                                </p>
                             </div>
+                            -->
 
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ยกเลิกการแก้ไข</a>
+                            <button href="#!" class=" modal-action modal-close waves-effect btn-flat">ยกเลิกการแก้ไข</button>
                             <!-- <a href="{{url('event/edit/'.$mine->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">บันทึกการแก้ไข</a> -->
                             <button class="modal-action waves-effect btn-flat green white-text" type="submit" name="action">บันทึกการแก้ไข</button>
                         </div>
@@ -697,12 +732,12 @@ $(document).ready(function () {
 
                           <tr>
                             <td><p>เริ่มวันที่ </p></td>
-                            <td><p>{{$mine->start_date}}ถึง วันที่ {{$mine->finish_date}}</p></td>
+                            <td><p>{{$mine->start_date}} ถึง {{$mine->finish_date}}</p></td>
 
                           </tr>
                           <tr>
                             <td><p>เวลา</p></td>
-                            <td><p>{{$mine->start_time}}ถึง{{$mine->finish_time}}</p></td>
+                            <td><p>{{$mine->start_time}} ถึง {{$mine->finish_time}}</p></td>
                           </tr>
                           <tr>
                             <td><p>เบอร์ติดต่อ</p></td>

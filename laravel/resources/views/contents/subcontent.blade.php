@@ -12,19 +12,19 @@
     </div>
 </div>
 
+<nav class="mybc">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a href="#" class="breadcrumb">ตำรับอาหาร</a>
+            <a class="breadcrumb"><span>{{ $headtitle->category_title_th}}</span></a>
+        </div>
+    </div>
+</nav>
+
 <div class="container" style="width: 90%;">
 
   <div class="row">
       <div class="col s12">
-        <nav class="mybc" style="background-color: #EE6E74">
-            <div class="nav-wrapper">
-                <div class="col s12">
-
-                    <a href="#!" class="breadcrumb">{{ $headtitle->category_title_th}}</a>
-
-                </div>
-            </div>
-        </nav>
 
         @foreach($content as $data)
           <div class="col s4 m4">
@@ -36,15 +36,10 @@
                       <h5 >{{$data->content_title}}</h5>
                       <div><p class="wordwrap">{{$data->description}}</p></div>
                   </div>
-                  <div class="card-action">
-
-                    <a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}">เพิ่มเติม</a>
-
-
-
-
+                  <div class="card-action" style="background-color: #ee6e73;">
+                      <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
                   </div>
-
+                  
               </div>
           </div>
 @endforeach
