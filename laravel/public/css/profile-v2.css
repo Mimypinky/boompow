@@ -7,11 +7,7 @@
 	.cam-input{
 		margin-top: -4% !important;
     	margin-left: 1% !important;
-<<<<<<< HEAD
-
-=======
 		
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	}
 	#proname{
 		margin-top: 11% !important;
@@ -29,8 +25,8 @@
     	margin-right: 19% !important;
 	}
 	.edit-cmt-sec{
-		margin-top: -18% !important;
-		margin-left: 28% !important;
+		margin-top: -16% !important;
+		margin-left: 24% !important;
 	}
 	.suggestF-sec {
     	margin-top: -42.4% !important;
@@ -74,11 +70,7 @@
     	margin-left: -13px !important;
 	}
 	.likecount {
-<<<<<<< HEAD
-    	margin-right: -14px !important;
-=======
     	margin-right: -14px !important;	
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	}
 	.comment-btn-event {
     	left: 73% !important;
@@ -136,6 +128,18 @@
 	}
 	.pin-icon{
 		padding-left: 10px !important;
+	}
+	span.badge.joiner-badge{
+		display: none !important;
+	}
+	span.owner-badge{
+		display: none !important;
+	}
+	.joiner-status{
+		border: 3px #43a047 solid !important;
+	}
+	.joiner-owner{
+		border: 3px #c62828 solid !important;
 	}
 
 
@@ -354,9 +358,7 @@
 	span.owner-badge{
 		display: none !important;
 	}
-	.joiner-status{
-		border: 3px #43a047 solid !important;
-	}
+	
 	.joiner-status{
 		border: 3px #43a047 solid !important;
 	}
@@ -401,6 +403,12 @@
 	.etime-col-res{
 		width: 32% !important;
 	}
+	.btn-event{
+		margin-left: 51% !important;
+	}
+	.event-option{
+		margin-top: -10px !important;
+	}
 
 
 }
@@ -410,17 +418,6 @@
     display: block;
 }
 .wholike-det {
-<<<<<<< HEAD
-	background-color: #ebeef1;
-    height: 40px;
-    border-radius: 9px;
-    margin-top: -13%;
-    position: absolute;
-    padding: 10px;
-    font-size: 13pt;
-    padding-left: 10%;
-    width: 100%;
-=======
 	background-color: #ebeef1; 
     height: 40px; 
     border-radius: 9px; 
@@ -430,7 +427,6 @@
     font-size: 13pt; 
     padding-left: 10%; 
     width: 100%; 
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
     float: left;
     margin-left: 10%;
     display: none;
@@ -456,11 +452,7 @@
     color: #ee6e74;
 }
 .add-ebody{
-<<<<<<< HEAD
-	padding: 4% 12% 20px 12%;
-=======
 	padding: 4% 12% 20px 12%; 
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	background-color: white;
 }
 .event-border{
@@ -518,17 +510,11 @@
 }
 .fav-icon-sec{
 	background-color: #eceff1;
-<<<<<<< HEAD
-	text-align: center;
-=======
 	text-align: center; 
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 	padding-bottom: 44px !important;
 	padding-top: 4px !important;
 }
-.pin-icon-color{
-	color: #ef6c00 !important;
-}
+
 .pin-col{
 	border-right: 1px solid #bdbdbd;
 	padding-left: 25px;
@@ -538,15 +524,11 @@
 }
 
 .link-icon-color{
-	color: #0277bd !important;
+	color: #455a64 !important;
 }
 .link-col{
 	border-right: 1px solid #bdbdbd;
-<<<<<<< HEAD
-	padding-left: 25px;
-=======
 	padding-left: 25px; 
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 }
 
 .mf-send-msg{
@@ -604,11 +586,7 @@
 }
 .joiner-f-head{
 	color: #0d47a1;
-<<<<<<< HEAD
-}
-=======
 }	
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 .i-event-det{
 	color: #0d47a1;
 	font-size: 15pt;
@@ -646,6 +624,17 @@
     width: 50px;
     border-radius: 50%;
 }*/
+.rg-col{
+	margin-left: -4% !important;
+    margin-top: 13px !important;
+}
+.rg-head{
+	padding-top: 25px !important;
+	padding-bottom: 25px !important;
+}
+.rg-item{
+	padding-top: 30px !important;
+}
 .space{
 	margin-top: 4%;
 }
@@ -694,8 +683,9 @@ span.badge.me.Eowner {
 }
 .event-detail{
 	margin-left: 2px !important;
-    margin-top: -124%;
+    margin-top: -448px;
 }
+
 .event-feed{
 	margin-top: 1% !important;
 }
@@ -761,16 +751,12 @@ span.badge.me.Eowner {
 	position: absolute;
     margin-top: -12%;
     float: right;
-    margin-left: 42%;
+    margin-left: 39%;
 }
 .posbadge{
 	margin-top: 54%;
     margin-right: 26%;
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 }
 .posbadge-feed{
 	margin-top: 56%;
@@ -929,11 +915,7 @@ span.badge.me {
 	background-size: cover;
 	margin-top: -10%;
 	background-color: #fbfbfb;
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
 }
 .pro-upstatus-feed{
 	border-radius: 10px; border: 1px solid  #dbdede;
@@ -998,8 +980,4 @@ span.badge.me {
 	border-right: 1px #8f9192 solid;
     margin-right: 15px;
     margin-left: 15px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a99b0ad1fc4222d7b4645df4b81900771bca0daa
