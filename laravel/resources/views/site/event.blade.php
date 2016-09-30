@@ -567,7 +567,7 @@ $(document).ready(function () {
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
                             <div class="row" >
-                                <form class="col s12" action="{{url('/event/edit/'.$mine->id)}}" method="post">
+                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
                                     <input type="hidden" name="_method" value="POST">
                                     {!! csrf_field() !!}
 
@@ -656,18 +656,18 @@ $(document).ready(function () {
 
                             </div>
 
-                            <div class="switch">
-                                <label for="url">การรับสมัคร</label>
-                                <p>
+                                <!--    <div class="switch">
+                                        <label for="url">การรับสมัคร</label>
+                                        <p>
+                <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+                <label for="test5">เปิดรับอยู่</label>
+              </p>
+              <p>
         <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
         <label for="test5">เปิดรับอยู่</label>
-      </p>
-      <p>
-<input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-<label for="test5">เปิดรับอยู่</label>
-</p>
+        </p>
 
-                            </div>
+      </div>--->
 
                         </div>
                         <div class="modal-footer">

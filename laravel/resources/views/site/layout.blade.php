@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
-<<<<<<< HEAD
+
 
   <!--  <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">-->
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat-v2.css')}}">
@@ -28,13 +28,7 @@
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
-=======
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
+
 
 
     <!--Import bootstrap.css

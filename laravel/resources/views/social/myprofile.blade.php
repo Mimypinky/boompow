@@ -8,16 +8,8 @@
 
                 <div class="row">
                     <div style="text-align: center;">
-                        <img class="pro-pic media-object dp img-circle" src="img/pic.jpg"
-                        >
+                        <img class="pro-pic media-object dp img-circle" src="img/uploads/avatars/{{$info->avatar}}">
 
-                        <form action="#">
-                            <div class="file-field input-field">
-                                <span class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-                                <i class="cam-icon fa fa-camera"></i>
-                                <input type="file">
-                            </div>
-                        </form>
                     </div>
                 </div>
                 <!--End Pro pic-->
@@ -29,9 +21,9 @@
                             <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
                         </div>
                         <div id="prodetail">
-                            <p>@foreach ($bio as $bio_text)
-                              {{ $bio_text }}<br />
-                              @endforeach
+                            <p>
+                              {{$info->bio}}<br />
+
                             </p>
                         </div>
                         <div style="font-size: 14pt; text-align: center;">
@@ -648,22 +640,52 @@
 
                             <li>
                                 <div class="row" style="margin-top: 5%;">
-                                    <form class="col s12">
+
+                                        <div class="row">
+                                          <div style="text-align: center;">
+                                              <img class="pro-pic media-object dp img-circle" id="avatar"style="width:150px;height:150px;" src="img/uploads/avatars/{{$info->avatar}}">
+
+                                          </div>
+                                          <form enctype="multipart/form-data" action="/profile" id="updateInfo"  methos="post">
+                                              <div class="file-field input-field">
+                                                  <span class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+                                                  <i class="cam-icon fa fa-camera" ></i>
+                                                  <input type="file" id="files" name="avatar" class="inputFile">
+                                                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                                              </div>
+                                              <script>
+                                              document.getElementById("files").onchange = function () {
+                                                  var reader = new FileReader();
+
+                                                  reader.onload = function (e) {
+                                                      // get loaded data and render thumbnail.
+                                                      document.getElementById("avatar").src = e.target.result;
+                                                  };
+
+                                                  // read the image file as a data URL.
+                                                  reader.readAsDataURL(this.files[0]);
+                                              };
+                                              </script>
+
+                                        </div>
+
                                         <div class="row">
                                             <div class="input-field col s12">
-                                              <input id="name-pro" type="text" class="validate">
-                                              <label for="name-pro">ชื่อ</label>
+                                              <input id="name-pro" type="text" class="validate" value="{{$user->first_name.'  '.$user->last_name}}">
+                                              <label for="name-pro"></label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                              <input id="detail-pro" type="text" class="validate">
-                                              <label for="detail-pro">อธิบายเกี่ยวกับคุณ</label>
+                                              <input id="detail-pro" type="text" class="validate" value="{{$info->bio}}">
+                                              <label for="detail-pro"></label>
                                             </div>
                                         </div>
+                                        <button type="submit" name="action" class="waves-effect waves-light btn right">ตกลง</button>
                                     </form>
                                 </div>
-                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
+
                             </li>
                         </ul>
                     </div>

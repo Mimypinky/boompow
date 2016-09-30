@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::post('/event/edit/{eid}','EventController@editEvents');
+Route::post('/event/{eid}/edit','EventController@editEvent');
 
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
@@ -29,6 +29,10 @@ Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
 
+Route::get('/register/step2',function(){
+    $title ='Register';
+    return view('auth/register_p2',compact('title'));
+});
 Route::resource('/register','Profile\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
 Route::get('/checkAvailableUsername',function(){
   $username = Request::Input('username');
@@ -53,6 +57,7 @@ Route::get('/newsfeed',function(){
 });
 
 Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
+Route::post('/profile','Profile\ProfileController@UpdateAvatar');
 Route::post('/Pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){
   $title ='Boompow - Friend profile';
@@ -68,35 +73,12 @@ Route::get('/chat',function(){
   return view('social.chat',compact('title'));
 });
 
-<<<<<<< HEAD
-//Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
-
-=======
-<<<<<<< HEAD
-
-Route::get('/notification' , 'FriendController@viewFriendRequest');
-//Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
-=======
-//Route::get('cancelRequest' , 'FriendController@viewFriendRequest');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
-
-
-
 Route::post('/acceptFriend', 'FriendController@acceptFriend');
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> 9060938f5737cba36ada8eb68e12d82414216885
->>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
+
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){

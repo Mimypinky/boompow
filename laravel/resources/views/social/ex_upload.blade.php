@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <style>
-    .gallery {margin-bottom:10px;}
-.gallery img{width:100%;}
+
     </style>
   </head>
   <body>
@@ -28,13 +27,11 @@
         <div class="panel-body">
             <div class="dataTable_wrapper">
                 <div class="row">
-                @if($images)
-                    @foreach($images as $img)
+
                     <div class="col-xs-3 gallery">
-                        <img src="{{asset('images/uploads/'.$img->image_name)}}" />
+                        <img src="img/pic2.jpg" />
                     </div>
-                    @endforeach
-                @endif
+
                 </div>
 
             </div>

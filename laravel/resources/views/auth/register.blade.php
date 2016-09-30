@@ -94,42 +94,15 @@
                                 <td colspan="2">
                                     <div class="input-field">
                                         <select name="question">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
-                                          <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                          @foreach($questions as $question)
-                                            <option value="{{$question->id}}">{{$question->question}}?</option>
-                                          @endforeach
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
-                                            <option value="0" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
+
+                                            <option  disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
                                           @foreach($questions as $question)
 
                                             <option value="{{$question->id}}">{{$question->question}}?</option>
 
                                             @endforeach
-<<<<<<< HEAD
 
-=======
-=======
-                                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                            <option value="1">สัตว์เลี้ยงตัวแรกของคุณชื่ออะไร?</option>
-                                            <option value="2">สีโปรดของคุณ คือสีอะไร?</option>
-                                            <option value="3">อาหารไทยที่คุณชอบมากที่สุด คืออะไร?</option>
-                                            <option value="4">เครื่องดื่มยี่ห้อโปรดของคุณ คืออะไร?</option>
-                                            <option value="5">แฟนคนแรกของคุณ ชื่ออะไร?</option>
->>>>>>> 9060938f5737cba36ada8eb68e12d82414216885
->>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
                                         </select>
                                     </div>
                                 </td>
@@ -182,7 +155,7 @@
                     <div align="center">
                       <span>
                           <label style="font-size: 18px;">อ่านข้อตกลงในการให้บริการ </label>
-                          <a class="modal-trigger" href="#" style="font-size: 24px;">ที่นี่</a><br>
+                          <a class="modal-trigger" href="#termofuse" style="font-size: 24px;">ที่นี่</a><br>
                       </span>
                     </div>
                     <div class="section"></div>
@@ -204,6 +177,15 @@
 
             </ul>
             </form>
+            <div id="termofuse" class="modal" >
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
         </div>
 

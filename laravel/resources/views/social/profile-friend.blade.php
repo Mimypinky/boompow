@@ -60,10 +60,7 @@
 
                       </div>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
 
