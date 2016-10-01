@@ -49,7 +49,7 @@
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
                           <form action='{{url('Pending')}}' method='post'>
                             {{ csrf_field() }}
-                        <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+                            <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
 
                           <input type='hidden' value='{{$account->id}}' name='aid'>
                         <!--  <input type='submit' value='Add'>
@@ -59,11 +59,6 @@
                         </form>
 
                       </div>
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
 
@@ -704,3 +699,18 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+  $("#click-button").on('click', firstClick)
+
+  function firstClick() {
+    alert("First Clicked");
+    $("#click-button").off('click').on('click', secondClick)
+  }
+
+  function secondClick() {
+    alert("Second Clicked");
+    $("#click-button").off('click').on('click', firstClick)
+  }
+</script>

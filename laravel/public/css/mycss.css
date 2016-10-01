@@ -1161,3 +1161,44 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 .nt-collection{
     margin-top: -8px;
 }
+
+/*By Non 24 Sep 2016*/
+.picker__wrap{
+  width: 200%;
+}
+.picker__weekday-display{
+  font-size: 2rem;
+  background-color: #BC2C33;
+}
+.picker__select--month, .picker__select--year{
+  font-size: 16pt;
+}
+button.btn-flat.picker__clear {
+  font-size: 18pt;
+}
+button.btn-flat.picker__close {
+  font-size: 18pt;
+}
+button.btn-flat.picker__today {
+  font-size: 18pt;
+}
+.picker__day-display {
+  font-size: 3rem;
+}
+.picker__weekday{
+  font-size: 1.5rem;
+}
+div.picker__day {
+  font-size: 20pt;
+}
+.picker__date-display{
+  background-color: #BC2C33 ;
+}
+.picker--focused .picker__day--selected{
+  background-color: #BC2C33;
+  font-weight: bold;
+}
+
+.select-wrapper input.select-dropdown{
+  color: #EE6E74;
+}

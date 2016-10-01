@@ -6,9 +6,12 @@
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import jQuery UI css-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <!--Import materialize.css-->
 
     <link type="text/css" rel="stylesheet" href="{{URL::asset('materialize/css/materialize.min.css')}}"  media="screen,projection"/>
+
 
 
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
@@ -17,10 +20,11 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/newsfeed.css')}}">
   <!--  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss2.css')}}">
 -->
+    <!--<link rel="stylesheet" type="text/css" href="{{url::asset('css/pickerDate/default.date.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url::asset('css/pickerDate/default.css')}}">-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
-<<<<<<< HEAD
 
   <!--  <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">-->
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat-v2.css')}}">
@@ -28,14 +32,6 @@
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
-=======
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/notificationcss.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
-
 
     <!--Import bootstrap.css
 
@@ -45,12 +41,14 @@
     <!--materialize javaScript-->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
 
+    <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
+    <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
 
   <script type="text/javascript">
@@ -64,12 +62,30 @@
          $('#loginform').closeModal();
      });
      $('.datepicker').pickadate({
+       selectYears: true,
        selectMonths: true,
-       selectYears: 15
+       labelMonthNext: 'เดือนถัดไป',
+       labelMonthPrev: 'เดือนก่อนหน้า',
+       labelMonthSelect: 'เลือกเดือน',
+       labelYearSelect: 'เลือกปี',
+       monthsFull: [ 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม' ],
+       monthsShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+       weekdaysFull: [ 'วันอาทิตย์', 'วันจันทร์', 'วันอังคาร', 'วันพุธ', 'วันพฤหัสบดี', 'วันศุกร์', 'วันเสาร์' ],
+       weekdaysShort: [ 'อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.' ],
+       weekdaysLetter: [ 'อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.' ],
+       today: 'วันนี้',
+       clear: 'ล้าง',
+       close: 'ปิด',
+       format: 'dddd dd mmmm yyyy',
+       formatSubmit: 'yyyy-mm-dd',
+       hiddenName: true,
+       min: [1930,1,01],
+       max: [2001,12,01],
+       selectYears: 65,
      });
-      $(document).ready(function() {
-     $('select').material_select();
-   });
+     $(document).ready(function() {
+       $('select').material_select();
+     });
    function goBack() {
        window.history.back();
    }
@@ -134,7 +150,7 @@
       </a>
     </li>
 
-    <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+    <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -169,14 +185,14 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-                <li><a href="{{url('/chat')}}">ข้อความ <span class="new badge">2</span></a></li>
+                <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
           </li>
         </ul>
 
-        <li><a href="{{url('/chat')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
+        <li><a href="{{url('/message_box')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
 
 
 
@@ -224,7 +240,7 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-        <li><a href="{{url('/chat')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
+        <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
@@ -309,8 +325,14 @@
                     <label for="icon_prefix">รหัสผ่าน</label>
                 </div>
             </div>
-
-
+            <br>
+            @if ($errors->has('username'))
+                <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('username') }}</span>
+            @endif
+            <br>
+            @if ($errors->has('[password]'))
+                <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
+            @endif
             <div class="modal-footer" align="center">
                 <span>
                     <input type="checkbox" class="filled-in" id="filled-in-box" name="remember"/>

@@ -10,7 +10,9 @@
             <ul class="collection with-header">
                 {{ csrf_field() }}
                 <li class="collection-header"><center><h4>สมัครสมาชิก</h4></center></li>
-                <li class="collection-item"><i class="left material-icons">verified_user</i><p>ตรวจสอบชื่อผู้ใช้</p>
+                <li class="collection-item">
+                  <br>
+                  <i class="left material-icons">verified_user</i><p>ตรวจสอบชื่อผู้ใช้</p>
                 <div class="section"></div>
                 <center>
                     <div class="row">
@@ -30,37 +32,41 @@
                 <div class="section"></div>
 
                 </li>
-                <li class="collection-item"><i class="left material-icons">perm_identity</i>
+                <li class="collection-item">
+                  <br><i class="left material-icons">perm_identity</i>
                 <p>ข้อมูลส่วนตัว</p>
                 <div class="section"></div>
                     <table>
                         <tbody>
                             <tr>
-                                <td>
-                                  @if ($errors->has('first_name'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('first_name') }}</span>
-                                  @endif
+                                <td class="col s8">
+
                                   <div class="input-field">
 
                                     <input style="font-size:18pt;" id="first_name" name="first_name" type="text" class="validate" value="{{ old('first_name' )}}" placeholder="ชื่อ">
                                 </div>
-                                </td>
-
-                                <td>
-                                  @if ($errors->has('last_name'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('last_name') }}</span>
+                              </td>
+                                <td class="col s4">
+                                  <br>
+                                  @if ($errors->has('first_name'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('first_name') }}</span>
                                   @endif
+                              </td>
+                                <td class="col s8">
                                   <div class="input-field">
                                     <input style="font-size:18pt;" id="last_name" name="last_name" type="text" class="validate" value="{{ old('last_name' )}}" placeholder="นามสกุล">
                                 </div>
-
+                                </td>
+                                <td class="col s4">
+                                  <br>
+                                  @if ($errors->has('last_name'))
+                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('last_name') }}</span>
+                                  @endif
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                  @if ($errors->has('gender'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('gender') }}</span>
-                                  @endif
+                                <td class="col s8">
+                                  <br>
                                   <p>
                                     <span>เพศ: </span> &nbsp&nbsp
                                     <input style="font-size:18pt;" name="gender" type="radio" id="male" value="male" />
@@ -70,14 +76,25 @@
                                     <label for="female" style="color: #424242;font-size:16pt">หญิง</label>
                                 </p>
                               </td>
-                                <td>
-                                  @if ($errors->has('dob'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('dob') }}</span>
-                                  @endif
+                              <td class="col s4">
+                                <br>
+                                @if ($errors->has('gender'))
+                                    <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('gender') }}</span>
+                                @endif
+                              </td>
+                                <td class="col s8">
+                                  <br>
                                   <p>
                                     <span>วันเกิด: </span> &nbsp&nbsp
-                                    <input type="date" class="datepicker" name="dob">
+                                    <input type="date" class="datepicker" name="dob" style="td{font-size:20pt}">
+                                    <!--<input type="date" name="dob" value="1941-08-07">-->
                                 </p>
+                              </td>
+                              <td class="col s4">
+                                <br><br>
+                                @if ($errors->has('dob'))
+                                    <span style='font-size: 16pt;text-align: center;color: red;bottom: 0px'>{{ $errors->first('dob') }}</span>
+                                @endif
                               </td>
                             </tr>
                         </tbody>
@@ -86,90 +103,73 @@
                     <div class="section"></div>
 
                 </li>
-                <li class="collection-item"><i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
-                <div class="section"></div>
+                <li class="collection-item">
+                  <br>
+                  <i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
+                <br>
                 <table>
-                    <tbody>
-                            <tr >
-                                <td colspan="2">
-                                    <div class="input-field">
-                                        <select name="question">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+                  <tbody>
+                    <tr>
+                      <td class="col s8">
+                        <label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label>
+                        <input style="font-size:18pt;" class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email">
+                      </td>
+                      <td class="col s4">
+                        <br>
+                        @if ($errors->has('email'))
+                        <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('email') }}</span>
+                        @endif
+                      </td>
+                    </tr>
+                    <tr >
+                      <td class="col s8">
+                        <div class="input-field">
+                          <select name="question">
+                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
+                            @foreach($questions as $question)
+                            <option value="{{$question->id}}">{{$question->question}}?</option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </td>
+                      <td class="col s4">
+                        <br>
+                        @if ($errors->has('question'))
+                        <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('question') }}</span>
+                        @endif
+                      </td>
+                    </tr>
+                    <tr>
 
-=======
-<<<<<<< HEAD
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
-                                          <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                          @foreach($questions as $question)
-                                            <option value="{{$question->id}}">{{$question->question}}?</option>
-                                          @endforeach
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
-                                            <option value="0" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                          @foreach($questions as $question)
+                      <td class="col s8">
 
-                                            <option value="{{$question->id}}">{{$question->question}}?</option>
+                        <div class="input-field">
+                          <label for="icon_prefix email-label">กรอกคำตอบของคุณ </label>
+                          <input id="answer" type="password" name="password" class="validate">
+                        </div></td>
+                        <td class="col s4">
+                          <br>
+                          @if ($errors->has('password'))
+                          <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
+                          @endif
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="col s8">
+                          <div class="input-field">
+                            <label for="icon_prefix email-label">กรอกคำตอบของคุณอีกครั้ง </label>
+                            <input id="confirm-answer" name="password_confirmation" type="password" class="validate">
+                          </div></td>
+                          <td class="col s4">
+                            <br>
+                            @if ($errors->has('password_confirmation'))
+                            <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password_confirmation') }}</span>
+                            @endif
+                          </td>
+                        </tr>
 
-                                            @endforeach
-<<<<<<< HEAD
-
-=======
-=======
-                                            <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                            <option value="1">สัตว์เลี้ยงตัวแรกของคุณชื่ออะไร?</option>
-                                            <option value="2">สีโปรดของคุณ คือสีอะไร?</option>
-                                            <option value="3">อาหารไทยที่คุณชอบมากที่สุด คืออะไร?</option>
-                                            <option value="4">เครื่องดื่มยี่ห้อโปรดของคุณ คืออะไร?</option>
-                                            <option value="5">แฟนคนแรกของคุณ ชื่ออะไร?</option>
->>>>>>> 9060938f5737cba36ada8eb68e12d82414216885
->>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
->>>>>>> 6fe1b8d2525c1a85da9b53c8d8b1884bd81c9fe9
->>>>>>> 5c73a5f0b3198f22085968f4160042cb8ae1ad84
-                                        </select>
-                                    </div>
-                                </td>
-                                @if ($errors->has('first_name'))
-                                    <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('question') }}</span>
-                                @endif
-                            </tr>
-                            <tr>
-
-                                <td class="col s6">
-                                  @if ($errors->has('password'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
-                                  @endif
-                                  <div class="input-field">
-                                    <label for="icon_prefix email-label">กรอกคำตอบของคุณ </label>
-                                    <input id="answer" type="password" name="password" class="validate">
-                                </div></td>
-
-                                <td class="col s6">
-                                  @if ($errors->has('password_confirmation'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password_confirmation') }}</span>
-                                  @endif
-                                  <div class="input-field">
-                                    <label for="icon_prefix email-label">กรอกคำตอบของคุณอีกครั้ง </label>
-                                    <input id="confirm-answer" name="password_confirmation" type="password" class="validate">
-                                </div></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">
-                                  <label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label>
-                                  <input style="font-size:18pt;" class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email">
-                                </td>
-                                <td>
-                                  @if ($errors->has('email'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('email') }}</span>
-                                  @endif
-                                </td>
-                            </tr>
-                        </tbody>
-                </table>
+                      </tbody>
+                    </table>
 
                 <div class="section"></div>
                 <div align="center">
@@ -236,9 +236,12 @@
           if (data==1) {
             $("div#usernameAvailability").html("<div style='color: red;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว กรุณากรอกชื่อผู้ใช้อื่น</span></div>");
           }
-          else {
+          else if(data==0){
             $("div#usernameAvailability").html("<div style='color: green;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้สามารถใช้ได้</span></div>");
 
+          }
+          else {
+            $("div#usernameAvailability").html("<div style='color: green;'><span style='font-size: 16pt'>"+"กรุณากรอกชื่อผู้ใช้</span></div>");
           }
         }
       });
