@@ -59,6 +59,11 @@
                         </form>
 
                       </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
                         @else
                         <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
 

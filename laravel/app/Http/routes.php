@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::post('/event/edit/{eid}','EventController@editEvents');
+Route::post('/event/{eid}/edit','EventController@editEvent');
 
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
@@ -29,6 +29,10 @@ Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
 
+Route::get('/register/step2',function(){
+    $title ='Register';
+    return view('auth/register_p2',compact('title'));
+});
 Route::resource('/register','Profile\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
 Route::get('/checkAvailableUsername',function(){
   $username = Request::Input('username');
@@ -53,6 +57,7 @@ Route::get('/newsfeed',function(){
 });
 
 Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
+Route::post('/profile','Profile\ProfileController@UpdateAvatar');
 Route::post('/Pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){
   $title ='Boompow - Friend profile';
@@ -71,6 +76,15 @@ Route::get('/message_box','ChatController@index');
 Route::post('/sendMessage','ChatController@sendMessage');
 Route::get('/retrieveChatMessages','ChatController@retrieveChatMessages');
 
+<<<<<<< HEAD
+=======
+Route::post('/acceptFriend', 'FriendController@acceptFriend');
+Route::get('/upload',function(){
+  return view('social.ex_upload');
+});
+
+
+>>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){

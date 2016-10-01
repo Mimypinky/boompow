@@ -13,9 +13,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function UpdateAvatar(Request $req);
+    {
+
+    }
     public function index()
     {
-        //
+        return view('myprofile',array('user'=>Auth::user()));
     }
 
     /**
