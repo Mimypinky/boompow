@@ -76,15 +76,6 @@ Route::get('/message_box','ChatController@index');
 Route::post('/sendMessage','ChatController@sendMessage');
 Route::get('/retrieveChatMessages','ChatController@retrieveChatMessages');
 
-<<<<<<< HEAD
-=======
-Route::post('/acceptFriend', 'FriendController@acceptFriend');
-Route::get('/upload',function(){
-  return view('social.ex_upload');
-});
-
-
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
 Route::get('/upload',function(){

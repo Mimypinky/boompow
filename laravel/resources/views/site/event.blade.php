@@ -64,7 +64,7 @@ $(document).ready(function () {
                                   <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
                                 </li>
                               </ul>
-                              
+
                             </div>
           @else
           <a href="#partiList1{{$key}}" class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
@@ -85,9 +85,9 @@ $(document).ready(function () {
 
                               @endforeach
 
-                            
+
                             </ul>
-                            
+
                           </div>
           @endif
 
@@ -442,7 +442,7 @@ $(document).ready(function () {
                                  <input id="date" type="date" name="finish_date" class="datepicker" required>
                              </div>
                          </div>
-                    
+
                          <div class="row">
                            <div class="input-field col s12" style="margin-top: 32px;">
                                <i class="material-icons prefix">phone</i>
@@ -512,11 +512,11 @@ $(document).ready(function () {
                         <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
                         </li>
                         <li class="collection-item avatar transper">
-                          <img src="img/pic.jpg" alt="" class="circle">       
+                          <img src="img/pic.jpg" alt="" class="circle">
                           <p>{{$per->first_name.' '.$per->last_name}}</p>
                           <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                         </li>
-                        
+
                       </ul>
                     </div>
                     @endforeach
@@ -575,13 +575,8 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
-<<<<<<< HEAD
                             <div class="row" >
                                 <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
-=======
-                            <div class="row" style="margin-top: 37px;">
-                                <form class="col s12" action="{{url('/event/edit/'.$mine->id)}}" method="post">
->>>>>>> eb558b453a093842f4ccd575b7d0ecefa4e6f43e
                                     <input type="hidden" name="_method" value="POST">
                                     {!! csrf_field() !!}
 
@@ -695,7 +690,6 @@ $(document).ready(function () {
                                     </div>
 
                             </div>
-<<<<<<< HEAD
 
                                 <!--    <div class="switch">
                                         <label for="url">การรับสมัคร</label>
@@ -709,21 +703,8 @@ $(document).ready(function () {
         </p>
 
       </div>--->
-=======
-                            <!--
-                            <div class="switch">
-                                <label for="url">การรับสมัคร</label>
-                                <p>
-                                  <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-                                  <label for="test5">เปิดรับอยู่</label>
-                                </p>
-                                <p>
-                                  <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-                                  <label for="test5">เปิดรับอยู่</label>
-                                </p>
-                            </div>
-                            -->
->>>>>>> eb558b453a093842f4ccd575b7d0ecefa4e6f43e
+                    
+
 
                         </div>
                         <div class="modal-footer">

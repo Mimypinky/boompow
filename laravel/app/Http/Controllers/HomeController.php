@@ -51,9 +51,5 @@ class HomeController extends Controller
       $headtitle= Category::select('category.*')->where('category_title','=',$cateid)->first();
       $article = Content::select('contents.*')->where('contents.id','=',$topicid)->get();
         return view('contents.topic',compact('content','headtitle','article','title'));
-<<<<<<< HEAD
-=======
-
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
     }
 }

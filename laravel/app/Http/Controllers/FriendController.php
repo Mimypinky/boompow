@@ -41,11 +41,6 @@ public function sendFriendRequest(Request $req){
               ->where('to_user_id' , Auth::user()->id)
               ->where('status' , 'pending')
               ->select('accounts.*' , 'friends.*')->get();
-<<<<<<< HEAD
-=======
-
-
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
       return view('social.noti')->with('accounts' , $accounts)->with('title',$title);
 
     }else{
@@ -99,7 +94,7 @@ public function sendFriendRequest(Request $req){
       return redirect()->intended('/');
     }}*/
 
-<<<<<<< HEAD
+
 public function cancelRequest(Request $req){
   $id = $req->input('aid');
   $user=Auth::user()->id;
@@ -111,7 +106,6 @@ public function cancelRequest(Request $req){
   return redirect()->intended('FriendReq');
 
 }
-=======
 
 
 
@@ -127,7 +121,6 @@ public function cancelRequest(Request $req){
 
 
 */
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
 
     public function viewFriend($fid){
 

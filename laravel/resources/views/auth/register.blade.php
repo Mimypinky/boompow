@@ -108,7 +108,6 @@
                   <i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
                 <br>
                 <table>
-<<<<<<< HEAD
                   <tbody>
                     <tr>
                       <td class="col s8">
@@ -171,64 +170,7 @@
 
                       </tbody>
                     </table>
-=======
-                    <tbody>
-                            <tr >
-                                <td colspan="2">
-                                    <div class="input-field">
-                                        <select name="question">
-
-
-                                            <option  disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
-                                          @foreach($questions as $question)
-
-                                            <option value="{{$question->id}}">{{$question->question}}?</option>
-
-                                            @endforeach
-
-                                        </select>
-                                    </div>
-                                </td>
-                                @if ($errors->has('first_name'))
-                                    <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('question') }}</span>
-                                @endif
-                            </tr>
-                            <tr>
-
-                                <td class="col s6">
-                                  @if ($errors->has('password'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
-                                  @endif
-                                  <div class="input-field">
-                                    <label for="icon_prefix email-label">กรอกคำตอบของคุณ </label>
-                                    <input id="answer" type="password" name="password" class="validate">
-                                </div></td>
-
-                                <td class="col s6">
-                                  @if ($errors->has('password_confirmation'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password_confirmation') }}</span>
-                                  @endif
-                                  <div class="input-field">
-                                    <label for="icon_prefix email-label">กรอกคำตอบของคุณอีกครั้ง </label>
-                                    <input id="confirm-answer" name="password_confirmation" type="password" class="validate">
-                                </div></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">
-                                  <label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label>
-                                  <input style="font-size:18pt;" class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email">
-                                </td>
-                                <td>
-                                  @if ($errors->has('email'))
-                                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('email') }}</span>
-                                  @endif
-                                </td>
-                            </tr>
-                        </tbody>
-                </table>
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
-
-                <div class="section"></div>
+                  <div class="section"></div>
                 <div align="center">
 
 

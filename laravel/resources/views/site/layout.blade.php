@@ -20,15 +20,10 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/newsfeed.css')}}">
   <!--  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/mycss2.css')}}">
 -->
-    <!--<link rel="stylesheet" type="text/css" href="{{url::asset('css/pickerDate/default.date.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url::asset('css/pickerDate/default.css')}}">-->
+
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/friend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/secnav-scroll.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/profile-v2.css')}}">
-<<<<<<< HEAD
-=======
 
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
 
   <!--  <link rel="stylesheet" type="text/css" href="{{url::asset('css/event.css')}}">-->
   <link rel="stylesheet" type="text/css" href="{{URL::asset('css/chat-v2.css')}}">
@@ -36,11 +31,7 @@
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
-<<<<<<< HEAD
-=======
 
-
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
 
     <!--Import bootstrap.css
 
@@ -98,6 +89,10 @@
    function goBack() {
        window.history.back();
    }
+   $(document).ready(function(){
+   $('ul.tabs').tabs();
+});
+
  </script>
 
  <style>
@@ -186,7 +181,7 @@
           </div>
         </nav>
       </li>
-    
+
 
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -211,11 +206,7 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-<<<<<<< HEAD
                 <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
-=======
-                
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
@@ -308,11 +299,7 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-<<<<<<< HEAD
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
-=======
-        
->>>>>>> fe8b8751cfd4253062424e8cf51f1064bdc2c470
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
