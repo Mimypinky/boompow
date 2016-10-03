@@ -9,10 +9,10 @@
    <div class="col m4 l3 ">
      <div class="row chatOption">
        <div class="col s12" style="background: #eceff1;">
-         <ul class="tabs tab-set" >
-           <li class="tab col s3"><a class="active" href="#friendList">เพื่อนของฉัน</a></li>
-           <li class="tab col s3"><a class="" href="#recentMessage">ข้อความใหม่<span class="new badge b-space">4</span></a></li>
-         </ul>
+         <ul class="tabs">
+        <li class="tab col s3"><a href="#friendList">Test 1</a></li>
+        <li class="tab col s3"><a class="active" href="#recentMessage">Test 2</a></li>
+        </ul>
 
        </div>
        <div id="friendList" class="col s12">
@@ -329,4 +329,10 @@
 
        <!--End Sticker List-->
      </div>
+
+     <script type="text/javascript">
+     $(document).ready(function(){
+  $('ul.tabs').tabs();
+});
+     </script>
      @stop

@@ -37,10 +37,12 @@ $(window).load(function() { // makes sure the whole site is loaded
                   <div class="card-action" style="background-color: #ee6e73;">
                       <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
                   </div>
-                
+
               </div>
           </div>
           @endforeach
+
+          {!! $content->render() !!}
       </div>
 
   </div>

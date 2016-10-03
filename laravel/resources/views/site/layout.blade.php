@@ -40,7 +40,7 @@
 
     <!--materialize javaScript-->
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
@@ -48,7 +48,6 @@
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
 
   <script type="text/javascript">
@@ -89,9 +88,6 @@
    function goBack() {
        window.history.back();
    }
-   $(document).ready(function(){
-   $('ul.tabs').tabs();
-});
 
  </script>
 
