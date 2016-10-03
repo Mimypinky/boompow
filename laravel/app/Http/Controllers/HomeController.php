@@ -29,7 +29,7 @@ class HomeController extends Controller
           $title =  'Boompow';
           $headtitle = 'รวมสาระน่ารู้';
           $content = Content::join('category','contents.cate_id','=','category.id')
-          ->select('category.*','contents.*')->paginate(9);
+          ->select('category.*','contents.*')->paginate(12);
           return view('site.home',compact('headtitle','title','content'));
     }
     public function showContent(Request $req)

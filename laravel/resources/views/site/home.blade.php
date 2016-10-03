@@ -23,6 +23,9 @@ $(window).load(function() { // makes sure the whole site is loaded
 
   <div class="row">
       <div class="col s12">
+        <div class="center">
+          {!! (new Landish\Pagination\Materialize($content))->render() !!}
+        </div>
 
         @foreach($content as $data)
           <div class="col s4 m4">
@@ -41,8 +44,10 @@ $(window).load(function() { // makes sure the whole site is loaded
               </div>
           </div>
           @endforeach
+          <div class="center">
+            {!! (new Landish\Pagination\Materialize($content))->render() !!}
+          </div>
 
-          {!! $content->render() !!}
       </div>
 
   </div>
