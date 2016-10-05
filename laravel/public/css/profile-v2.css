@@ -20,10 +20,7 @@
 		margin-right: 39% !important;
     	margin-top: -15.7% !important;
 	}
-	.posbadge {
-    	margin-top: 70% !important;
-    	margin-right: 19% !important;
-	}
+	
 	.edit-cmt-sec{
 		margin-top: -16% !important;
 		margin-left: 24% !important;
@@ -32,8 +29,7 @@
     	margin-top: -42.4% !important;
 	}
 	.posbadge {
-    	margin-top: 70% !important;
-    	margin-right: 20% !important;
+    	margin-left: 22% !important;
 	}
 	.posbadge2 {
     	margin-top: 70% !important;
@@ -57,14 +53,7 @@
     	margin-top: -11% !important;
     	margin-left: 2px !important;
 	}
-	.posbadge-Ejoiner {
-    	margin-top: 74% !important;
-    	margin-right: 25% !important;
-	}
-	.posbadge-Eowner {
-    	margin-top: 73% !important;
-    	margin-right: 9% !important;
-	}
+	
 	.cmt-coll-space{
 		width: 400px !important;
     	margin-left: -13px !important;
@@ -141,11 +130,44 @@
 	.joiner-owner{
 		border: 3px #c62828 solid !important;
 	}
+	.w-edit{
+		margin-top: -17% !important;
+		margin-left: 25% !important;
+	}
+	.w-edit-f{
+		margin-top: -17% !important;
+    	margin-left: 67% !important;
+	}
 
 
 }
 /*ipad Vertical */
 @media screen and (max-width: 769px) {
+	.cmt-detail{
+		width: 300px !important;
+	}
+	.cmt-btn-pro{
+		left: 78% !important;
+    	margin-top: -35% !important;
+    	padding-left: 13px !important;
+    	padding-right: 12px !important;
+	}
+	.w-cmt{
+		width: 362px !important;
+    	margin-left: -13px !important;
+	}
+	.w-edit{
+		margin-top: -19% !important;
+    	margin-left: 38%! important;
+	}
+	.w-edit-f{
+		margin-left: 73% !important;
+    	margin-top: -21% !important;
+	}
+	.w-profile{
+		width: 80% !important;
+    	margin-left: 11% !important;
+	}
 	.cam-input{
 		margin-top: -6% !important;
     	margin-left: 3% !important;
@@ -191,8 +213,7 @@
 		width: 300px !important;
 	}
 	.posbadge {
-    	margin-top: 84% !important;
-    	margin-right: 6% !important;
+    	margin-left: 7% !important;
 	}
 	.edit-cmt-sec{
 		margin-top: -23% !important;
@@ -248,16 +269,17 @@
     	margin-top: -459px !important;
 	}
 	.posbadge-Ejoiner {
-    	margin-top: 88% !important;
-    	margin-right: 4% !important;
+		margin-left: 9% !important;
+    	font-size: 1.3rem !important;
+    	width: 78px !important;	
 	}
 	.posbadge-Eowner {
-    	margin-top: 87% !important;
-    	margin-right: -7% !important;
     	padding: 8px !important;
     	font-size: 10pt !important;
     	padding-bottom: 1px !important;
     	padding-top: 5px !important;
+    	width: 76px !important;
+    	font-size: 1.3rem !important;
 	}
 	.cmt-coll-space {
     	width: 278px !important;
@@ -431,6 +453,23 @@
     margin-left: 10%;
     display: none;
 }*/
+.cmt-btn-pro{
+	left: 74%;
+    margin-top: -29%;
+    box-shadow: none;
+}
+.w-edit-f{
+	position: absolute;
+    margin-top: -14%;
+    float: right;
+    margin-left: 74%;
+}
+.w-edit{
+	position: absolute;
+    margin-top: -12%;
+    float: none;
+    margin-left: 39%;
+}
 .epic-colm {
     margin-top: 16px;
 }
@@ -642,7 +681,7 @@
 	position: absolute;
     margin-top: -15%;
     float: right;
-    margin-left: 39%;
+    margin-left: 37%;
 }
 span.owner-badge{
 	font-size: 11pt;
@@ -669,13 +708,53 @@ span.badge.me.Eowner {
 .upsta-line-Ejoiner {
     border-left: 7px solid #43a047;
 }
-.posbadge-Ejoiner {
-    margin-top: 56%;
-    margin-right: 30%;
+span.badge.posbadge-Ejoiner {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #ee6e73;
+    border-radius: 2px;
+    position: relative;
+    float: none;
+    padding: 4px 9px 0px 8px;
+    margin-left: 25%;
+    width: 88px;
+    background-color: #43a047;
 }
-.posbadge-Eowner {
-    margin-top: 56%;
-    margin-right: 18%;
+span.badge.posbadge-Eowner {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #ee6e73;
+    border-radius: 2px;
+    position: relative;
+    float: none;
+    padding: 4px 9px 0px 8px;
+    margin-left: 8%;
+    width: 135px;
+    background-color: #c62828;
 }
 .joined-f{
 	margin-top: -8%;
@@ -754,8 +833,8 @@ span.badge.me.Eowner {
     margin-left: 39%;
 }
 .posbadge{
-	margin-top: 54%;
-    margin-right: 26%;
+	/*margin-top: 54%;
+    margin-right: 26%;*/
 	
 }
 .posbadge-feed{
@@ -788,12 +867,36 @@ span.badge.me.pin {
 	background-color: #ef6c00;
 }
 span.badge.me {
-    font-weight: 300;
-    font-size: 1.2rem;
+    /*font-weight: 300;
+    font-size: 1.4rem;
     color: #fff;
     background-color: #ee6e73;
     border-radius: 2px;
-    padding-top: 6px;
+    position: relative;
+    float: none;
+    padding: 4px 9px 0px 8px;
+    margin-left: 57px;*/
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #ee6e73;
+    border-radius: 2px;
+    position: relative;
+    float: none;
+    padding: 4px 9px 0px 8px;
+    margin-left: 28%;
+    width: 79px;
 }
 .transper{
 	background-color: transparent !important;

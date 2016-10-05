@@ -554,7 +554,7 @@ $(document).ready(function () {
 
                     </div>
                     <!---ส่วนของ delete event-->
-                    <div id="eve-del{{$key}}" class="modal" style="width: 480px;">
+                    <div id="eve-del{{$key}}" class="modal" style="width: 480px; overflow: hidden;">
                       <div class="modal-content">
                           <h4>ลบกิจกรรม</h4>
                           <p>คุณกำลังจะทำการลบการกิจกรรมนี้</p>

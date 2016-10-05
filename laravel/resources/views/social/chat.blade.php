@@ -9,9 +9,9 @@
    <div class="col m4 l3 ">
      <div class="row chatOption">
        <div class="col s12" style="background: #eceff1;">
-         <ul class="tabs">
-        <li class="tab col s3"><a href="#friendList">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#recentMessage">Test 2</a></li>
+         <ul class="tabs" style="overflow: hidden;">
+        <li class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
+        <li class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
         </ul>
 
        </div>
@@ -23,9 +23,7 @@
                  <img class="circle" src="img/mim_tn.jpg"/>
                  <div class="about">
                    <div class="name">สุนิสา ปานหิบ</div>
-                   <div class="status">
-                     <i class="fa fa-circle online"></i> ออนไลน์
-                   </div>
+                   
                  </div>
                </li>
 
@@ -33,9 +31,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">สุธีร์ แก้วตาหวาน</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -43,9 +39,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สอง</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -53,9 +47,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สาม</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -63,9 +55,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สี่</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -73,9 +63,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่ห้า</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -83,9 +71,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่หก</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -93,9 +79,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่เจ็ด</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -103,9 +87,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่แปด</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -113,9 +95,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่เก้า</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -123,9 +103,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สิบ</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
            </ul>
@@ -140,9 +118,7 @@
                  <img class="circle" src="img/mim_tn.jpg"/>
                  <div class="about">
                    <div class="name">สุนิสา ปานหิบ (4)</div>
-                   <div class="status">
-                     <i class="fa fa-circle online"></i> ออนไลน์
-                   </div>
+                   
                  </div>
                </li>
 
@@ -150,9 +126,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">สุธีร์ แก้วตาหวาน (88)</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -160,9 +134,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สอง</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -170,9 +142,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สาม</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -180,9 +150,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สี่</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -190,9 +158,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่ห้า</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -200,9 +166,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่หก</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -210,9 +174,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่เจ็ด</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -220,9 +182,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่แปด</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -230,9 +190,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่เก้า</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
+                 
                </div>
              </li>
 
@@ -240,9 +198,7 @@
                <img class="circle" src="img/ball_tn.jpg"/>
                <div class="about">
                  <div class="name">กล้วย ใบที่สิบ</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
+                 
                </div>
              </li>
            </ul>
@@ -270,7 +226,7 @@
            <li class="clearfix">
              <div class="message-data align-right">
                <span class="message-data-time" >วันนี้ 10:10น.</span> &nbsp; &nbsp;
-               <span class="message-data-name" >พรทิพย์</span> <i class="fa fa-circle me"></i>
+               <span class="message-data-name" >พรทิพย์</span>
 
              </div>
              <div class="message other-message float-right">
@@ -280,7 +236,7 @@
 
            <li>
              <div class="message-data">
-               <span class="message-data-name"><i class="fa fa-circle online"></i> สุนิสา</span>
+               <span class="message-data-name">สุนิสา</span>
                <span class="message-data-time">วันนี้ 10:12น.</span>
              </div>
              <div class="message my-message">
@@ -291,7 +247,7 @@
            <li class="clearfix">
              <div class="message-data align-right">
                <span class="message-data-time" >วันนี้ 10:14น.</span> &nbsp; &nbsp;
-               <span class="message-data-name" >พรทิพย์</span> <i class="fa fa-circle me"></i>
+               <span class="message-data-name" >พรทิพย์</span>
 
              </div>
              <div class="message other-message float-right">
@@ -301,7 +257,7 @@
 
            <li>
              <div class="message-data">
-               <span class="message-data-name"><i class="fa fa-circle online"></i> สุนิสา</span>
+               <span class="message-data-name">สุนิสา</span>
                <span class="message-data-time">วันนี้ 10:20น.</span>
              </div>
              <div class="message my-message">
