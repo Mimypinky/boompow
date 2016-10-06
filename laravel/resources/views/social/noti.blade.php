@@ -126,7 +126,7 @@
     @foreach($accounts as $key=>$person)
  <div href="{{$key}}" class="collection-item">
        <div class="row">
-{{$var}}
+
          <div class="col col-thumbnail">
            <img class="who circle" src="img/mim_tn.jpg">
          </div>

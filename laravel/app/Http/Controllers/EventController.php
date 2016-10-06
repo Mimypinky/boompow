@@ -135,7 +135,7 @@ class EventController extends Controller
       $obj1->location = $request['location'];
       $obj1->contact = $request['contact'];
       $obj1->title = $request['title'];
-
+      $obj1->max_amount = $request['max_amount'];
       $obj1->save();
       $join = new JoinEvent();
       $join->eve_id = $obj1->id;

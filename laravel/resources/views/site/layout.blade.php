@@ -33,7 +33,6 @@
 
     <!--Import bootstrap.css
 
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!--materialize javaScript-->
@@ -128,7 +127,7 @@
       </a>
     </li>
 
-    <li><a class="navlink" href="#"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+    <li><a class="navlink" href="{{url('/chat')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -155,7 +154,7 @@
           </div>
         </nav>
       </li>
-    
+
 
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -180,7 +179,7 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-                
+
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
@@ -273,7 +272,7 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-        
+
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 

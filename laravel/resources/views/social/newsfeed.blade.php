@@ -33,23 +33,25 @@
                                              <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
                                         </div>
                                         <div class="input-field col s8 upsta-line">
-                                            <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea"></textarea>
+                                          <form action="/newsfeed" method="post">
+                                            <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea" name=""></textarea>
                                             <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
                                             <div class="card-action" style="border: none;">
-                                                <form action="#">
+
                                                     <div class="file-field input-field">
                                                         <div class="btn prouppic-btn black-text">
                                                         <span style="font-size: 14pt;">
                                                             <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
-                                                            <input type="file"></span>
+                                                            <input type="file" name="uploadImage"></span>
                                                         </div>
                                                         <div class="file-path-wrapper">
                                                             <input class="file-path validate" type="text" id="myfile-path">
                                                         </div>
                                                     </div>
+                                                    <button type="submit" name="action" class="proupsta-btn waves-effect waves-light btn">
+                                                    โพสต์</button>
                                                 </form>
-                                                <a class="proupsta-btn waves-effect waves-light btn">
-                                                โพสต์</a>
+
                                             </div>
                                         </div>
                                     </div>

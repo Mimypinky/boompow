@@ -44,27 +44,47 @@
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3" style="padding-left: 35px;">
-                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
+                                             <img src="img/uploads/avatars/{{$info->avatar}}" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
                                              <span class="posbadge me badge">ฉัน</span>
                                         </div>
                                         <div class="input-field col s8 upsta-line">
-                                            <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea"></textarea>
+                                          <form action="/post" method="post">
+                                            <textarea style="margin-left: 20px;" id="textarea1" name="post_message" class="materialize-textarea"></textarea>
+
                                             <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
                                             <div class="card-action" style="border: none;">
-                                                <form action="#">
+
                                                     <div class="file-field input-field">
                                                         <div class="btn prouppic-btn black-text">
                                                         <span style="font-size: 14pt;">
                                                             <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
-                                                            <input type="file"></span>
+                                                            <input type="file" name="files" id="uploadImage"></span>
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                         </div>
                                                         <div class="file-path-wrapper">
                                                             <input class="file-path validate" type="text" id="myfile-path">
                                                         </div>
+                                                        <div id="show_pic_box">
+                                                          <img  id="show_pic" style="width:50%"/>
+                                                          <script>
+                                                          document.getElementById("uploadImage").onchange = function () {
+                                                              var reader = new FileReader();
+
+                                                              reader.onload = function (e) {
+                                                                  // get loaded data and render thumbnail.
+                                                                  document.getElementById("show_pic").src = e.target.result;
+                                                              };
+
+                                                              // read the image file as a data URL.
+                                                              reader.readAsDataURL(this.files[0]);
+                                                          };
+                                                          </script>
+                                                        </div>
                                                     </div>
+                                                    <button name="action" type="submit" class="proupsta-btn waves-effect waves-light btn">
+                                                    โพสต์</button>
                                                 </form>
-                                                <a class="proupsta-btn waves-effect waves-light btn">
-                                                โพสต์</a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -78,18 +98,28 @@
                 <div class="row" style="margin-top: 11%;">
                     <div class="col s8 offset-s2 pro-upstatus">
                         <!--timeline mypost-->
-                        <div class="row" style="">
+                        @foreach($posts as $post)
+                        <div class="row" >
                             <div class="col s12">
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
+
+                                      @if($user->id==$post->user_id)
                                         <div class="input-field col s3" style="padding-left: 35px;">
-                                             <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <img src="img/uploads/avatars/{{$info->avatar}}" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge me badge">ฉัน</span>
                                               <!-- notice the "circle" class -->
                                         </div>
+                                        @else
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/uploads/avatars/" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <span class="posbadge me badge f">เพื่อน</span>
+                                              <!-- notice the "circle" class -->
+                                        </div>
+                                        @endif
                                         <div class="input-field col s9 upsta-line">
                                             <div class="col s12" id="commenthead">
-                                                <span id="namecomment">พรทิพย์ มีชัย
+                                                <span id="namecomment">{{$user->first_name}}  {{$user->last_name}}
                                                 </span>
                                                 <div class="edit-cmt-sec">
                                                     <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit"
@@ -97,49 +127,59 @@
                                                     <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1"><i class="fa fa-trash-o"></i> ลบ</a>
                                                 </div>
 
-                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                <p id="datecomment">{{$post->created_at}}
                                                 </p>
                                             </div>
                                             <div class="status-post2 col s12">
-                                                <p>อากาศแจ่มใสเหมาะแก่การไปดิสนีย์แลนด์ หาเพื่อนร่วมทริปเม้นๆ</p>
+                                                <p>{{$post->post_message}}</p>
+
+                                                @if($post->image!=null)
+                                                <div class="card-image">
+                                                    <img class="materialboxed " src="img/uploads/posts/{{$post->image}}" style="width:60%">
+                                                </div>
+                                                @endif
                                             </div>
                                             <div class="card-action" style="border: none;">
+                                              <?php $count_likes = DB::table('likes')->where('post_id','=',$post->id)->count();
+                                                  $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
+                                                  ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->get();
+
+                                                      ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
-                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="{{url('img/heart-like.png')}}"></a>
 
                                                     </div>
                                                     <div class="col s2"></div>
                                                     <div class="col s2">
                                                         <div class="likecount">
-                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
                                                         </div>
                                                     </div>
                                                     <div class="col s2">
                                                         <div class="wholike">
-                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
 
+                                                          @foreach($likes as $like)
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+                                                              @endforeach
 
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
-
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
-
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
-
-                                                            <span class="pic-wholike morelike">...</span>
                                                         </div>
                                                     </div>
                                                </div>
+
+
                                                <div class="divider"></div>
                                                <div>
                                                    <div class="row">
-                                                   <form>
+                                                   <form action="{{url('/comment/'.$post->id)}}" method="post">
                                                        <div class="input-field cmt-coll-space">
                                                             <div class="input-field col s12">
-                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+                                                                  <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                            <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
                                                         </div>
                                                     </form>
                                                    </div>
@@ -148,25 +188,25 @@
                                                        <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
                                                             <li>
                                                                 <div class="collapsible-header cmt-coll-head active">
-                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
-
+                                                                <?php $comments = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
+                                                                ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
+                                                                ->where('post_id',$post->id)->get()?>
+                                                                @foreach($comments as $comment)
                                                                 <div class="collapsible-body">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
-                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
-                                                                        <span class="title title-name">สมัย สมร</span></a>
-                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
+                                                                    <a href="{{url('/friend/$comment->id')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
+                                                                        <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+                                                                        <p id="datecomment">{{$comment->created_at}}</p>
+                                                                        <p class="space-cmt">{{$comment->message}}<br></p>
+
                                                                     </li>
-                                                                    <li class="transper collection-item avatar">
-                                                                        <img src="img/pic5.jpg" alt="" class="circle">
-                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
-                                                                    </li>
+
                                                                 </ul>
                                                                 </div>
+                                                                @endforeach
                                                             </li>
                                                         </ul>
                                                    </div>
@@ -178,8 +218,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End timeline mypost-->
                         <div class="section"></div>
+
+                        @endforeach
+                        <!--End timeline mypost-->
+
+
                         <!--timeline friend post-->
                         <div class="row" style="">
                             <div class="col s12">
@@ -282,7 +326,7 @@
                         </div>
                         <!--End timeline friend post-->
 
-                        <!--timeline mypost pic-->
+                        <!--timeline mypost pic
                         <div class="row" style="">
                             <div class="col s12">
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
@@ -290,7 +334,7 @@
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge me badge">ฉัน</span>
-                                              <!-- notice the "circle" class -->
+
                                         </div>
                                         <div class="input-field col s9 upsta-line">
                                             <div class="col s12" id="commenthead">
@@ -367,8 +411,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End timeline mypost pic-->
-                        <!--timeline pin mypost-->
+                      End timeline mypost pic-->
+                        <!--timeline pin mypost
                         <div class="row" style="">
                             <div class="col s12">
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
@@ -376,7 +420,7 @@
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge2 me badge pin">ปักหมุด</span>
-                                              <!-- notice the "circle" class -->
+
                                         </div>
                                         <div class="input-field col s9 upsta-line-pin">
                                             <div class="col s12" id="commenthead">
@@ -486,7 +530,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End timeline pin mypost-->
+                        End timeline pin mypost-->
                     </div>
                 </div>
                 <!--End timeline-->
@@ -646,7 +690,7 @@
                                               <img class="pro-pic media-object dp img-circle" id="avatar"style="width:150px;height:150px;" src="img/uploads/avatars/{{$info->avatar}}">
 
                                           </div>
-                                          <form enctype="multipart/form-data" action="/profile" id="updateInfo"  methos="post">
+                                          <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
                                                   <span class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
                                                   <i class="cam-icon fa fa-camera" ></i>
@@ -672,13 +716,19 @@
 
                                         <div class="row">
                                             <div class="input-field col s12">
-                                              <input id="name-pro" type="text" class="validate" value="{{$user->first_name.'  '.$user->last_name}}">
+                                              <input id="name-pro" type="text" class="validate" name="first_name" value="{{$user->first_name}}">
                                               <label for="name-pro"></label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                              <input id="detail-pro" type="text" class="validate" value="{{$info->bio}}">
+                                              <input id="name-pro" type="text" class="validate" name="last_name" value="{{$user->last_name}}">
+                                              <label for="name-pro"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                              <input id="detail-pro" type="text" class="validate" name="bio" value="{{$info->bio}}">
                                               <label for="detail-pro"></label>
                                             </div>
                                         </div>

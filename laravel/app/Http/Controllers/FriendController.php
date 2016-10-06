@@ -134,23 +134,18 @@ public function sendFriendRequest(Request $req){
 
       echo $isFriend1;
       echo $isFriend2;
-
-
       if($isFriend1 == 0 && $isFriend2 == 0){
-
-
         return view('social.profile-friend')->with('title' , $title)
         ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
 
 
       }else{
-        $post = Post::where('user_id' , $fid)->get();
-        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('post' , $post);
+        $posts = Post::join('accounts','posts.user_id','=','accounts.id')
+        ->join('profiles','accounts.profile_id','=','profiles.id')
+        ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar')
+        ->get();
+        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts);
 
       }
-
-
-
-
     }
 }

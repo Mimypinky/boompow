@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $table = 'posts';
+    public $timestamp = true;
     public function account()
     {
         return $this->belongsTo('App\Account', 'user_id');

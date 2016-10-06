@@ -64,7 +64,7 @@ $(document).ready(function () {
                                   <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
                                 </li>
                               </ul>
-                              
+
                             </div>
           @else
           <a href="#partiList1{{$key}}" class="modal-trigger"><div class="chip" align="right">{{$party3}} ผู้เข้าร่วม</div></a>
@@ -85,9 +85,9 @@ $(document).ready(function () {
 
                               @endforeach
 
-                            
+
                             </ul>
-                            
+
                           </div>
           @endif
 
@@ -402,8 +402,8 @@ $(document).ready(function () {
                        <div class="row">
                          <div class="input-field col s4">
                           <i class="material-icons prefix">people</i>
-                           <input name="amount-attend" id="amount-attend" type="number" class="validate" value="2" required>
-                           {{ csrf_field() }}
+                           <input name="max_amount" id="amount-attend" type="number" class="validate" min="1" max="50" value="10" required>
+                           
                            <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
                          </div>
                        </div>
@@ -442,7 +442,7 @@ $(document).ready(function () {
                                  <input id="date" type="date" name="finish_date" class="datepicker" required>
                              </div>
                          </div>
-                    
+
                          <div class="row">
                            <div class="input-field col s12" style="margin-top: 32px;">
                                <i class="material-icons prefix">phone</i>
@@ -512,11 +512,11 @@ $(document).ready(function () {
                         <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
                         </li>
                         <li class="collection-item avatar transper">
-                          <img src="img/pic.jpg" alt="" class="circle">       
+                          <img src="img/pic.jpg" alt="" class="circle">
                           <p>{{$per->first_name.' '.$per->last_name}}</p>
                           <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                         </li>
-                        
+
                       </ul>
                     </div>
                     @endforeach
@@ -546,6 +546,49 @@ $(document).ready(function () {
                         </div>
 
                       </div>
+                    </div>
+
+                    <div class="col s6" style="margin-left: 10px;">
+
+                      <div class="row" class="col s12" id="event_detail">
+                        <table cellpadding="5px">
+                          <tr >
+                            <td ><p>ชื่อกิจกรรม</p></td>
+                            <td ><p>{{$mine->title}}</p></td>
+                          </tr>
+                          <tr>
+                            <td ><p>โดย</p></td>
+                            <td><p>{{$mine->fname.'  '.$mine->lname}}</p></td>
+                          </tr>
+                          <tr>
+                            <td><p>สถานที่</p></td>
+                            <td><p>{{$mine->location}}</p></td>
+                          </tr>
+
+                          <tr>
+                            <td><p>เริ่มวันที่ </p></td>
+                            <td><p>{{$mine->start_date}} ถึง {{$mine->finish_date}}</p></td>
+
+                          </tr>
+                          <tr>
+                            <td><p>เวลา</p></td>
+                            <td><p>{{$mine->start_time}} ถึง {{$mine->finish_time}}</p></td>
+                          </tr>
+                          <tr>
+                            <td><p>เบอร์ติดต่อ</p></td>
+                            <td><p>{{$mine->contact}}</p></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><p>{{$mine->description}}</p></td>
+                          </tr>
+                        </table>
+
+                      </div>
+
+                    </div>
 
                     <!--  <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn-large red" href="#eve-del{{$key}}"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
                       <a style=" height: 100%;"class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
@@ -575,13 +618,12 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
-<<<<<<< HEAD
+
                             <div class="row" >
                                 <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
-=======
-                            <div class="row" style="margin-top: 37px;">
-                                <form class="col s12" action="{{url('/event/edit/'.$mine->id)}}" method="post">
->>>>>>> eb558b453a093842f4ccd575b7d0ecefa4e6f43e
+
+
+
                                     <input type="hidden" name="_method" value="POST">
                                     {!! csrf_field() !!}
 
@@ -597,7 +639,7 @@ $(document).ready(function () {
                                      <div class="input-field col s4">
                                       <i class="material-icons prefix">people</i>
                                        <input name="amount-attend" id="amount-attend" type="number" class="validate" value="2" required>
-                                       {{ csrf_field() }}
+
                                        <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
                                      </div>
                                    </div>
@@ -647,19 +689,7 @@ $(document).ready(function () {
                                             <input id="date" type="date" class="datepicker" value="{{$mine->finish_date}}">
                                         </div>
                                     </div>
-<!--
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix etime-icon">today</i>
-                                            <input id="date" type="date" class="datepicker" value="{{$mine->start_date}}">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix etime-icon">today</i>
-                                            <input id="date" type="date" class="datepicker" value="{{$mine->finish_date}}">
-                                        </div>
-                                    </div>-->
+
 
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -695,35 +725,7 @@ $(document).ready(function () {
                                     </div>
 
                             </div>
-<<<<<<< HEAD
 
-                                <!--    <div class="switch">
-                                        <label for="url">การรับสมัคร</label>
-                                        <p>
-                <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-                <label for="test5">เปิดรับอยู่</label>
-              </p>
-              <p>
-        <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-        <label for="test5">เปิดรับอยู่</label>
-        </p>
-
-      </div>--->
-=======
-                            <!--
-                            <div class="switch">
-                                <label for="url">การรับสมัคร</label>
-                                <p>
-                                  <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-                                  <label for="test5">เปิดรับอยู่</label>
-                                </p>
-                                <p>
-                                  <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-                                  <label for="test5">เปิดรับอยู่</label>
-                                </p>
-                            </div>
-                            -->
->>>>>>> eb558b453a093842f4ccd575b7d0ecefa4e6f43e
 
                         </div>
                         <div class="modal-footer">
@@ -734,51 +736,12 @@ $(document).ready(function () {
                           </form>
                     </div>
 
-                    <div class="col s6" style="margin-left: 10px;">
 
-                      <div class="row" class="col s12" id="event_detail">
-                        <table cellpadding="5px">
-                          <tr >
-                            <td ><p>ชื่อกิจกรรม</p></td>
-                            <td ><p>{{$mine->title}}</p></td>
-                          </tr>
-                          <tr>
-                            <td ><p>โดย</p></td>
-                            <td><p>{{$mine->fname.'  '.$mine->lname}}</p></td>
-                          </tr>
-                          <tr>
-                            <td><p>สถานที่</p></td>
-                            <td><p>{{$mine->location}}</p></td>
-                          </tr>
-
-                          <tr>
-                            <td><p>เริ่มวันที่ </p></td>
-                            <td><p>{{$mine->start_date}} ถึง {{$mine->finish_date}}</p></td>
-
-                          </tr>
-                          <tr>
-                            <td><p>เวลา</p></td>
-                            <td><p>{{$mine->start_time}} ถึง {{$mine->finish_time}}</p></td>
-                          </tr>
-                          <tr>
-                            <td><p>เบอร์ติดต่อ</p></td>
-                            <td><p>{{$mine->contact}}</p></td>
-                          </tr>
-                          <tr>
-                            <td colspan="2"><h5>รายละเอียดกิจกรรม</h5></td>
-                          </tr>
-                          <tr>
-                            <td colspan="2"><p>{{$mine->description}}</p></td>
-                          </tr>
-                        </table>
-
-                      </div>
-
-                    </div>
                   </div>
+                    @endforeach
                 </div>
               </li>
-              @endforeach
+
             </ul>
 
             @stop
