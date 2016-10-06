@@ -597,7 +597,7 @@ $(document).ready(function () {
 
                     </div>
                     <!---ส่วนของ delete event-->
-                    <div id="eve-del{{$key}}" class="modal" style="width: 480px;">
+                    <div id="eve-del{{$key}}" class="modal" style="width: 480px; overflow: hidden;">
                       <div class="modal-content">
                           <h4>ลบกิจกรรม</h4>
                           <p>คุณกำลังจะทำการลบการกิจกรรมนี้</p>
@@ -618,12 +618,17 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
+<<<<<<< HEAD
 
                             <div class="row" >
                                 <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
 
 
 
+=======
+                            <div class="row" >
+                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                     <input type="hidden" name="_method" value="POST">
                                     {!! csrf_field() !!}
 
@@ -726,6 +731,23 @@ $(document).ready(function () {
 
                             </div>
 
+<<<<<<< HEAD
+=======
+                                <!--    <div class="switch">
+                                        <label for="url">การรับสมัคร</label>
+                                        <p>
+                <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+                <label for="test5">เปิดรับอยู่</label>
+              </p>
+              <p>
+        <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+        <label for="test5">เปิดรับอยู่</label>
+        </p>
+
+      </div>--->
+                    
+
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
 
                         </div>
                         <div class="modal-footer">

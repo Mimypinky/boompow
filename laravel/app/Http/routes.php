@@ -79,12 +79,9 @@ Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.chat',compact('title'));
 });
-
-Route::post('/acceptFriend', 'FriendController@acceptFriend');
-Route::get('/upload',function(){
-  return view('social.ex_upload');
-});
-
+Route::get('/message_box','ChatController@index');
+Route::post('/sendMessage','ChatController@sendMessage');
+Route::get('/retrieveChatMessages','ChatController@retrieveChatMessages');
 
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');

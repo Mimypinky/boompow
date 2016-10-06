@@ -15,7 +15,7 @@
                 <!--End Pro pic-->
                 <!--Pro head-->
                 <div class="row">
-                    <div class="col s8 offset-s2 pro-detail">
+                    <div class="col s8 offset-s2 pro-detail w-profile">
                         <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
                             <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
@@ -38,7 +38,7 @@
                 <!--End Pro head-->
                 <!--Update status-->
                 <div class="row" style="margin-top: 11%;">
-                    <div class="col s8 offset-s2 pro-upstatus">
+                    <div class="col s8 offset-s2 pro-upstatus w-profile">
                         <div class="row" style="">
                             <div class="col s12">
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
@@ -96,7 +96,7 @@
                 <!--end Update status-->
                 <!--timeline-->
                 <div class="row" style="margin-top: 11%;">
-                    <div class="col s8 offset-s2 pro-upstatus">
+                    <div class="col s8 offset-s2 pro-upstatus w-profile">
                         <!--timeline mypost-->
                         @foreach($posts as $post)
                         <div class="row" >
@@ -121,7 +121,7 @@
                                             <div class="col s12" id="commenthead">
                                                 <span id="namecomment">{{$user->first_name}}  {{$user->last_name}}
                                                 </span>
-                                                <div class="edit-cmt-sec">
+                                                <div class="w-edit">
                                                     <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit"
                                                     style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                                                     <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1"><i class="fa fa-trash-o"></i> ลบ</a>
@@ -172,20 +172,29 @@
                                                <div class="divider"></div>
                                                <div>
                                                    <div class="row">
+<<<<<<< HEAD
                                                    <form action="{{url('/comment/'.$post->id)}}" method="post">
                                                        <div class="input-field cmt-coll-space">
+=======
+                                                   <form>
+                                                       <div class="input-field w-cmt">
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                                             <div class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
+<<<<<<< HEAD
                                                             <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+=======
+                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                                         </div>
                                                     </form>
                                                    </div>
 
                                                    <div class="comment-section">
-                                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                       <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
                                                             <li>
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
@@ -196,12 +205,26 @@
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body">
                                                                     <ul class="col s12 collection cmt-box">
+<<<<<<< HEAD
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/$comment->id')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
 
+=======
+                                                                    <li class="transper collection-item avatar cmt-detail">
+                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">สมัย สมร</span></a>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
+                                                                    </li>
+                                                                    <li class="transper collection-item avatar cmt-detail">
+                                                                        <img src="img/pic5.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                                                     </li>
 
                                                                 </ul>
@@ -238,7 +261,7 @@
                                             <div class="col s12" id="commenthead">
                                                 <span id="namecomment">สมัคร รักสนุกไม่คิดผูกพัน
                                                 </span>
-                                                <div class="edit-cmt-sec-f">
+                                                <div class="w-edit-f">
 
                                                     <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;"><i class="fa fa-trash-o"></i> ลบ</a>
                                                 </div>
@@ -280,18 +303,18 @@
                                                <div>
                                                    <div class="row">
                                                    <form>
-                                                       <div class="input-field cmt-coll-space">
+                                                       <div class="input-field w-cmt">
                                                             <div class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea"></textarea>
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
                                                         </div>
                                                     </form>
                                                    </div>
 
                                                    <div class="comment-section">
-                                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                       <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
                                                             <li>
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
@@ -299,13 +322,13 @@
 
                                                                 <div class="collapsible-body">
                                                                     <ul class="col s12 collection cmt-box">
-                                                                <li class="transper collection-item avatar">
+                                                                <li class="transper collection-item avatar cmt-detail">
                                                                     <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
                                                                         <span class="title title-name">สมัย สมร</span></a>
                                                                         <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
                                                                         <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
                                                                     </li>
-                                                                    <li class="transper collection-item avatar">
+                                                                    <li class="transper collection-item avatar cmt-detail">
                                                                         <img src="img/pic5.jpg" alt="" class="circle">
                                                                         <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
                                                                         <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
@@ -340,7 +363,7 @@
                                             <div class="col s12" id="commenthead">
                                                 <span id="namecomment">พรทิพย์ มีชัย
                                                 </span>
-                                                <div class="edit-cmt-sec">
+                                                <div class="w-edit">
                                                     <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger selected" href="#pic-edit"
                                                     style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                                                     <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1"><i class="fa fa-trash-o"></i> ลบ</a>
@@ -386,12 +409,12 @@
                                                <div>
                                                    <div class="row">
                                                    <form>
-                                                       <div class="input-field cmt-coll-space">
+                                                       <div class="input-field w-cmt">
                                                             <div class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea"></textarea>
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
                                                         </div>
                                                     </form>
                                                    </div>
@@ -419,15 +442,20 @@
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+<<<<<<< HEAD
                                              <span class="posbadge2 me badge pin">ปักหมุด</span>
 
+=======
+                                             <span class="posbadge me badge pin">ปักหมุด</span>
+                                              <!-- notice the "circle" class -->
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                         </div>
                                         <div class="input-field col s9 upsta-line-pin">
                                             <div class="col s12" id="commenthead">
                                                 <span id="namecomment">พรทิพย์ มีชัย
                                                 </span>
                                                 <i class="fa fa-thumb-tack fa-lg pinpost" aria-hidden="true"></i>
-                                                <div class="edit-cmt-sec-f">
+                                                <div class="w-edit-f">
 
                                                     <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;"><i class="fa fa-trash-o"></i> ลบ</a>
                                                 </div>
@@ -486,18 +514,18 @@
                                                <div>
                                                    <div class="row">
                                                    <form>
-                                                       <div class="input-field cmt-coll-space">
+                                                       <div class="input-field w-cmt">
                                                             <div class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea"></textarea>
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-                                                            <a class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
+                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
                                                         </div>
                                                     </form>
                                                    </div>
 
                                                    <div class="comment-section">
-                                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
+                                                       <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
                                                             <li>
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
@@ -505,13 +533,13 @@
 
                                                                 <div class="collapsible-body">
                                                                     <ul class="col s12 collection cmt-box">
-                                                                <li class="transper collection-item avatar">
+                                                                <li class="transper collection-item avatar cmt-detail">
                                                                     <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
                                                                         <span class="title title-name">สมัย สมร</span></a>
                                                                         <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
                                                                         <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
                                                                     </li>
-                                                                    <li class="transper collection-item avatar">
+                                                                    <li class="transper collection-item avatar cmt-detail">
                                                                         <img src="img/pic5.jpg" alt="" class="circle">
                                                                         <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
                                                                         <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
@@ -562,64 +590,72 @@
                     <div id="picstore" class="modal pic-modal">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-picture-o fa-lg left" aria-hidden="true"></i><h4>รูปภาพของฉัน</h4>
-                            <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div><br>
+                            <p style="color: #8a8787;">คุณสามารถแก้ไขภาพ เปลี่ยนคำบรรยายภาพ หรือลบรูปภาพได้ในส่วนนี้</p>
+                            </li>
                         </ul>
                         <div class="row pic-rspace">
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/bike.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/bike.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/wf.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/wf.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/cover.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/cover.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row pic-rspace">
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/bike.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/bike.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/wf.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/wf.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/cover.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/cover.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                         </div>

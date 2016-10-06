@@ -114,7 +114,7 @@
                         <div class="card-content black-text" >
                             <div class="input-field col s3 img-position-res">
                                 <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
-                                <span class="posbadge-feed me badge">ฉัน</span>
+                                <span class="posbadge me badge">ฉัน</span>
                                 <!-- notice the "circle" class -->
                             </div>
                             <div class="input-field col s9 upsta-line">
@@ -207,7 +207,7 @@
                         <div class="card-content black-text" >
                             <div class="input-field col s3 img-position-res">
                                 <img src="img/pic2.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
-                                <span class="posbadge-feed me badge f">เพื่อน</span>
+                                <span class="posbadge me badge f">เพื่อน</span>
                                 <!-- notice the "circle" class -->
                             </div>
                             <div class="input-field col s9 upsta-line-f">
@@ -300,7 +300,7 @@
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3 img-position-res">
                                              <img src="img/pic4.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
-                                             <span class="posbadge-feed me badge f">เพื่อน</span>
+                                             <span class="posbadge me badge f">เพื่อน</span>
                                               <!-- notice the "circle" class -->
                                         </div>
                                         <div class="input-field col s9 upsta-line-f">
@@ -379,7 +379,7 @@
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3 img-position-res">
                                              <img src="img/pic4.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
-                                             <span class="posbadge2-feed posbadge me badge pin">ปักหมุด</span>
+                                             <span class="posbadge me badge pin">ปักหมุด</span>
                                               <!-- notice the "circle" class -->
                                         </div>
                                         <div class="input-field col s9 upsta-line-pin">

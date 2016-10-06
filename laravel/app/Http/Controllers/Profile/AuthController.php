@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Account;
 use App\Profile;
 use App\Question;
+use App\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
@@ -68,26 +69,28 @@ class AuthController extends Controller
     public function handleLogin(Request $request){
 
       $validator = Validator::make(Input::all(),array(
-        'username'                              => 'required|unique:accounts,username',
-        'password'                              => 'required|min:4|max:15',
+        'username'                              => 'required',
+        'password'                              => 'required|min:3|max:15|confirmed',
 
       ),
       array(
         'username.required'                     => 'กรุณากรอกชื่อผู้ใช้',
-        'username.unique'                       => 'ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว กรุณากรอกชื่อผู้ใช้อื่น',
         'password.required'                     => 'กรุณากรอกรหัสผ่าน',
+        'password.confirmed'                    => 'รหัสผ่านไม่ถูกต้อง',
       ));
 
       $username = $request['username'];
       $password = $request['password'];
       $remember = Input::has('remember')? true : false;
-      if(\Auth::attempt(['username' => $username, 'password' => $password], $remember)){
 
+      if(Auth::attempt(['username' => $username, 'password' => $password], $remember)){
         return redirect()->intended('/');
       }
+
+      else{
         return back()->withInput();
       }
-
+    }
     public function checkAvailableUsername(Request $request){
     }
 
@@ -151,7 +154,8 @@ class AuthController extends Controller
           $obj2->remember_token;
           $obj2->save();
 
-          echo 'success';
+          Auth::loginUsingId($id, true);
+          echo 'ลงชื่อเข้าใช้ในระบบแล้ว..';
           return redirect()->intended('/');
         }
 

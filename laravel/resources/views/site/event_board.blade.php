@@ -45,7 +45,7 @@
                       <div class="card-content black-text" >
                           <div class="input-field col s3 img-position-res">
                               <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
-                              <span class="posbadge-Ejoiner me badge Ejoiner">ผู้เข้าร่วม</span>
+                              <span class="posbadge-Ejoiner badge">ผู้เข้าร่วม</span>
                           </div>
                           <div class="input-field col s8 upsta-line-Ejoiner">
                               <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea"></textarea>
@@ -87,7 +87,7 @@
                       <div class="card-content black-text" >
                           <div class="input-field col s3 img-position-res">
                               <img src="{{url('img/pic.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
-                              <span class="posbadge-Ejoiner me badge Ejoiner">ผู้เข้าร่วม</span>
+                              <span class="posbadge-Ejoiner badge">ผู้เข้าร่วม</span>
                               <!-- notice the "circle" class -->
                           </div>
                           <div class="input-field col s9 upsta-line-Ejoiner">
@@ -186,7 +186,7 @@
                       <div class="card-content black-text" >
                           <div class="input-field col s3 img-position-res">
                               <img src="{{url('img/pic2.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
-                              <span class="posbadge-Eowner me badge Eowner">เจ้าของกิจกรรม</span>
+                              <span class="posbadge-Eowner badge">เจ้าของกิจกรรม</span>
                               <!-- notice the "circle" class -->
                           </div>
                           <div class="input-field col s9 upsta-line-Eowner">
@@ -282,7 +282,7 @@
                                   <div class="card-content black-text" >
                                       <div class="input-field col s3 img-position-res">
                                            <img src="{{url('img/pic4.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
-                                           <span class="posbadge-Ejoiner me badge Ejoiner">ผู้เข้าร่วม</span>
+                                           <span class="posbadge-Ejoiner badge">ผู้เข้าร่วม</span>
                                             <!-- notice the "circle" class -->
                                       </div>
                                       <div class="input-field col s9 upsta-line-Ejoiner">

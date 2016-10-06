@@ -23,8 +23,12 @@ $(window).load(function() { // makes sure the whole site is loaded
 
   <div class="row">
       <div class="col s12">
+        <div class="center">
+          {!! (new Landish\Pagination\Materialize($content))->render() !!}
+        </div>
 
         @foreach($content as $data)
+        <!--
           <div class="col s4 m4">
               <div class="card">
                   <div class="card-image">
@@ -37,10 +41,29 @@ $(window).load(function() { // makes sure the whole site is loaded
                   <div class="card-action" style="background-color: #ee6e73;">
                       <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
                   </div>
-                
+
+              </div>
+          </div>-->
+
+          <div class="col s12 m4">
+              <div class="card">
+                  <div class="card-image">
+                      <img src="{{url('img/healthy.jpg')}}">
+                  </div>
+                  <div class="card-content">
+                      <h5>{{$data->content_title}}</h5>
+                      <p class="wordwrap">{{$data->description}}</p>
+                  </div>
+                  <div class="card-action" style="background-color: #ee6e73;">
+                      <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
+                  </div>
               </div>
           </div>
           @endforeach
+          <div class="center">
+            {!! (new Landish\Pagination\Materialize($content))->render() !!}
+          </div>
+
       </div>
 
   </div>
