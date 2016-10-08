@@ -49,9 +49,14 @@
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
                           <form action='{{url('Pending')}}' method='post'>
                             {{ csrf_field() }}
+                          
+                            @if($is != 'pending')
+                              <input type='hidden' value='{{$account->id}}' name='aid'>
                             <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+                            @else
+                            <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
+                              @endif
 
-                          <input type='hidden' value='{{$account->id}}' name='aid'>
                         <!--  <input type='submit' value='Add'>
 
                       href="{{url('FriendReq')}}"-->

@@ -59,78 +59,6 @@
 
                </div>
              </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สอง</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สาม</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สี่</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่ห้า</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่หก</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่เจ็ด</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่แปด</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่เก้า</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สิบ</div>
-
-               </div>
-             </li>
            </ul>
          </div>
        </div>
@@ -146,14 +74,18 @@
        <div class="chat-header clearfix white">
          <div class="chat-about">
            <div class="chat-with">
-               <span><i class="fa fa-comment left i-color" aria-hidden="true"></i>สุนิสา ปานหิบ</span>
+               <span><i class="fa fa-comment left i-color" aria-hidden="true"></i>{{ $friendAccount->first_name}} {{$friendAccount->last_name}}</span>
            </div>
          </div>
        </div> <!-- end chat-header -->
-
+       <input type="hidden" id="userId1" value="{{$friendAccount->id}}">
+        <input type="hidden" id="userId2" value="{{$myAccount->id}}">
+        <input type="hidden" id="username1" value="{{$friendAccount->first_name}}">
+         <input type="hidden" id="username2" value="{{$myAccount->first_name}}">
        <div class="chat-history">
-         <ul>
-           <!--<li class="clearfix">
+         <ul id="chatul">
+           <!--
+           <li class="clearfix">
              <div class="message-data align-right">
                <span class="message-data-time" >วันนี้ 10:10น.</span> &nbsp; &nbsp;
                <span class="message-data-name" >พรทิพย์</span>
@@ -193,9 +125,9 @@
              <div class="message my-message">
                <p>แต่ละประเทศจะเข้าสู่สังคมผู้สูงอายุแตกต่างกันไปตามสภาพแวดล้อมของแต่ละประเทศ เช่น ความเจริญเติบโตทางเศรษฐกิจ การพัฒนาทางด้านการแพทย์ การโภชนาอาหาร</p>
              </div>
-           </li>-->
+           </li>
 
-
+-->
          </ul>
 
        </div> <!-- end chat-history -->
@@ -203,11 +135,11 @@
        <div class="chat-message clearfix" style="">
          <div class="input-field col s12">
 
-           <textarea id="textarea1" class="materialize-textarea"></textarea>
-           <label for="textarea1">เขียนข้อความของคุณที่นี่</label>
+           <textarea id="chat-text" class="materialize-textarea"></textarea>
+           <label for="chat-text">เขียนข้อความของคุณที่นี่</label>
          </div>
 
-         <a class="waves-effect waves-light btn sendmsg-btn"><i class="material-icons right">send</i> ส่งข้อความ</a></div></div>
+         <a id='sendmsg' class="waves-effect waves-light btn sendmsg-btn"><i class="material-icons right">send</i> ส่งข้อความ</a></div></div>
        </div>
        <!--End Chat-->
 
@@ -215,10 +147,88 @@
 
        <!--End Sticker List-->
      </div>
-
+     <script type="text/javascript" src="{{ URL::asset('js/firebase.js')}}"></script>
      <script type="text/javascript">
      $(document).ready(function(){
   $('ul.tabs').tabs();
 });
+     </script>
+     <script>
+     $(function () {
+         var input = $('#chat-text');
+         var btn = $('#sendmsg');
+         var ul = $('#chatul');
+         var id1 = $('#userId1');
+         var id2 = $('#userId2');
+         var firebaseUrl = 'https://boompow-8ed97.firebaseio.com/';
+         var uid = parseInt(id1.val());
+         var uid2 = parseInt(id2.val());
+         if (uid > uid2){
+             var uid3 = uid;
+             uid = uid2;
+             uid2 = uid3;
+         }
+
+        var Connection = new Firebase(firebaseUrl).child(uid+'chatwith'+uid2);
+        queryChat();
+
+
+
+
+        btn.click(function(){
+              var text = input.val();
+              var sender = $('#username2').val();
+              var reciever = $('#username1').val();
+              input.val('');
+             var msg = {
+                sender : sender ,
+                message : text,
+                reciever : reciever,
+                time : 'send at '+new Date()
+             };
+             Connection.push(msg);
+
+        });
+        function queryChat(){
+            Connection.on('value' , function(snapshot){
+                var msg = snapshot.val();
+                console.log(msg);
+               ul.empty();
+              $.each(msg , function(index , c){
+                    addToChatBox(c);
+                });
+           });
+
+        }
+
+           function addToChatBox(text) {
+             var li ='';
+             var msg = text.sender;
+             if(msg==($('#username1').val())){
+               li = '<li><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
+                   '<span class="message-data-time">'+text.time+'</span>'+
+                 '</div>'+
+                 '<div class="message my-message">'+
+                   '<p>'+text.message+'</p>'+
+                 '</div>'+
+               '</li>' ;
+
+          }else{
+            li = '<li class="clearfix">'+
+              '<div class="message-data align-right">'+
+                '<span class="message-data-time" >'+text.time+'</span> &nbsp; &nbsp;'+
+                '<span class="message-data-name" >'+text.sender+'</span>'+
+
+              '</div>'+
+              '<div class="message other-message float-right">'+
+                '<p>'+text.message+'</p>'+
+              '</div>'+
+            '</li>' ;
+          }
+            ul.append(li);
+}
+
+      });
+
      </script>
      @stop

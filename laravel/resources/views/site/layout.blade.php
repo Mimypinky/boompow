@@ -39,13 +39,12 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
+    <!--script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script-->
     <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/firebase.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
 
 
@@ -120,7 +119,7 @@
             </a>
             <ul class="left hide-on-med-and-down">
                 <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
-               
+
                 <li>
                     <nav class="white" style="box-shadow: none;" >
                       <div class="nav-wrapper">
@@ -149,12 +148,7 @@
         <span class="mynoti noti-right">7</span><span class="rps-bar">สังคมของฉัน</span>
       </a>
     </li>
-
-<<<<<<< HEAD
-    <li><a class="navlink" href="{{url('/chat')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
-=======
     <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -206,11 +200,7 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-<<<<<<< HEAD
-
-=======
                 <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
@@ -283,7 +273,7 @@
           <li><a href="#!">เข้าสู่ระบบ</a></li>
       </ul>
     <!-- ถ้าอยู่หน้าไหนให้ไปตามหน้านั้น-->
-    
+
 
     <ul id="dropdownprofile" class="dropdown-content">
         <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
@@ -300,11 +290,7 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-<<<<<<< HEAD
-
-=======
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
@@ -468,6 +454,6 @@
             <i class="material-icons left back-icon">keyboard_arrow_up</i></a>
 
         <!--UP BUTTON JS-->
-        <script type="text/javascript" src="js/btt.js"></script>
+        <script type="text/javascript" src="{{URL::asset('js/btt.js')}}"></script>
   </body>
 </html>

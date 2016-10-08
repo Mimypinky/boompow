@@ -26,8 +26,8 @@ public function sendFriendRequest(Request $req){
 
           )
         );
-
-        return  redirect()->intended('friend/'.$fid);
+        $frId = Account::find($fid);
+        return  redirect()->intended('friend/'.$frId->username);
 }
 
   public function viewFriendRequest(){
@@ -41,6 +41,8 @@ public function sendFriendRequest(Request $req){
               ->where('to_user_id' , Auth::user()->id)
               ->where('status' , 'pending')
               ->select('accounts.*' , 'friends.*')->get();
+
+
       return view('social.noti')->with('accounts' , $accounts)->with('title',$title);
 
     }else{
@@ -121,9 +123,25 @@ public function cancelRequest(Request $req){
 
 
 */
+public function delPending($username){
+  $id = Account::where('username' , $username)->first();
+  $fid =  $id->id;
+  $account = Account::find($fid);
+  $title = $account->first_name.'  '.$account->last_name;
+  $myId = Auth::user()->id;
+  $d1 = Friends::where('from_user_id' , $myId)
+  ->where('to_user_id' , $fid)->where('status' , 'pending')->delete();
+   $d2 = Friends::where('from_user_id' , $fid)
+  ->where('to_user_id' , $myId)->where('status' , 'pending')->delete();
 
-    public function viewFriend($fid){
 
+  return redirect()->intended('friend/'.$username);
+}
+
+    public function viewFriend($username){
+
+      $id = Account::where('username' , $username)->first();
+      $fid =  $id->id;
       $account = Account::find($fid);
       $title = $account->first_name.'  '.$account->last_name;
       $myId = Auth::user()->id;
@@ -132,17 +150,21 @@ public function cancelRequest(Request $req){
       $isFriend2 = Friends::where('from_user_id' , $fid)
       ->where('to_user_id' , $myId)->where('status' , 'accepted')->count();
       $status = Friends::select('status')->where([['from_user_id','=',$fid],['to_user_id','=',$myId]])->first();
-<<<<<<< HEAD
-
-      echo $isFriend1;
-      echo $isFriend2;
-=======
-      //echo $isFriend1;
-      //echo $isFriend2;
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
       if($isFriend1 == 0 && $isFriend2 == 0){
-        return view('social.profile-friend')->with('title' , $title)
-        ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
+        $ip = '';
+        $isPending1 = Friends::where('from_user_id' , $myId)
+        ->where('to_user_id' , $fid)->where('status' , 'pending')->count();
+        $isPending2 = Friends::where('from_user_id' , $fid)
+        ->where('to_user_id' , $myId)->where('status' , 'pending')->count();
+
+      if($isPending1 != 0 || $isPending2 != 0){
+      //  echo $isPending1;
+      //  echo $isPending2;
+          $ip= 'pending';
+        }
+        
+      return view('social.profile-friend')->with('title' , $title)
+        ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('is' , $ip);
       }else{
         $posts = Post::join('accounts','posts.user_id','=','accounts.id')
         ->join('profiles','accounts.profile_id','=','profiles.id')

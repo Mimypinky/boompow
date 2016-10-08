@@ -403,7 +403,7 @@ $(document).ready(function () {
                          <div class="input-field col s4">
                           <i class="material-icons prefix">people</i>
                            <input name="max_amount" id="amount-attend" type="number" class="validate" min="1" max="50" value="10" required>
-                           
+
                            <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
                          </div>
                        </div>
@@ -618,17 +618,8 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
-<<<<<<< HEAD
-
                             <div class="row" >
                                 <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
-
-
-
-=======
-                            <div class="row" >
-                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                     <input type="hidden" name="_method" value="POST">
                                     {!! csrf_field() !!}
 
@@ -731,8 +722,6 @@ $(document).ready(function () {
 
                             </div>
 
-<<<<<<< HEAD
-=======
                                 <!--    <div class="switch">
                                         <label for="url">การรับสมัคร</label>
                                         <p>
@@ -745,9 +734,6 @@ $(document).ready(function () {
         </p>
 
       </div>--->
-                    
-
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
 
                         </div>
                         <div class="modal-footer">

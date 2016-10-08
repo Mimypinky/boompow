@@ -172,23 +172,15 @@
                                                <div class="divider"></div>
                                                <div>
                                                    <div class="row">
-<<<<<<< HEAD
                                                    <form action="{{url('/comment/'.$post->id)}}" method="post">
                                                        <div class="input-field cmt-coll-space">
-=======
-                                                   <form>
-                                                       <div class="input-field w-cmt">
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
+
                                                             <div class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-<<<<<<< HEAD
                                                             <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
-=======
-                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                                         </div>
                                                     </form>
                                                    </div>
@@ -205,26 +197,11 @@
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body">
                                                                     <ul class="col s12 collection cmt-box">
-<<<<<<< HEAD
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/$comment->id')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
-
-=======
-                                                                    <li class="transper collection-item avatar cmt-detail">
-                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
-                                                                        <span class="title title-name">สมัย สมร</span></a>
-                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
-                                                                    </li>
-                                                                    <li class="transper collection-item avatar cmt-detail">
-                                                                        <img src="img/pic5.jpg" alt="" class="circle">
-                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                                                     </li>
 
                                                                 </ul>
@@ -442,13 +419,8 @@
                                     <div class="card-content black-text" >
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/pic.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
-<<<<<<< HEAD
-                                             <span class="posbadge2 me badge pin">ปักหมุด</span>
-
-=======
                                              <span class="posbadge me badge pin">ปักหมุด</span>
                                               <!-- notice the "circle" class -->
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                                         </div>
                                         <div class="input-field col s9 upsta-line-pin">
                                             <div class="col s12" id="commenthead">

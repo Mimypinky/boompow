@@ -70,15 +70,20 @@ Route::get('/profile-friend',function(){
   $title ='Boompow - Friend profile';
   return view('social.profile-friend',compact('title'));
 });
-Route::get('/friend/{fid}' , 'FriendController@viewFriend');
+Route::get('/friend/{username}' , 'FriendController@viewFriend');
 Route::get('/friends',function(){
   $title ='Boompow - My Friends';
   return view('social.friend',compact('title'));
 });
+
+Route::get('/dP/{username}', 'FriendController@delPending');
+
+
 Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.mockup_chat',compact('title'));
 });
+route::get('chatHistory/{accid}','ChatController@testChat');
 Route::get('/message_box','ChatController@index');
 Route::post('/sendMessage','ChatController@sendMessage');
 Route::get('/retrieveChatMessages','ChatController@retrieveChatMessages');
