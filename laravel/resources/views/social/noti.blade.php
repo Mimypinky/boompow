@@ -32,6 +32,7 @@
          <div class="col s9 m10 l10">
            <span>กี๋ ก๋า</span> <span class="description"> ได้ส่งคำขอถึงคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">person_add</i> <span class="time"> 3 นาทีที่แล้ว</span>
          </div>
@@ -45,6 +46,7 @@
          <div class="col s9 m10 l10">
            <span>สุธีร์ แก้วตาหวาน และเพื่อนอีก 7,890 คน</span> <span class="description">ได้ถูกใจสถานะของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="fa fa-heart fa-lg"></i><span class="time"> 32 นาทีที่แล้ว</span>
          </div>
@@ -58,6 +60,7 @@
          <div class="col s9 m10 l10">
            <span>สุนิสา ปานหิบ และเพื่อนอีก 3 คน</span> <span class="description">ได้แสดงความคิดบนสถานะของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="material-icons left">insert_comment</i> <span class="time"> 44 นาทีที่แล้ว</span>
          </div>
@@ -71,6 +74,7 @@
          <div class="col s9 m10 l10">
            <span>สุธีร์ แก้วตาหวาน และ สุนิสา ปานหิบ</span> <span class="description">ได้เข้าร่วมกิจกรรมของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="material-icons left">insert_invitation</i><span class="time"> 56 นาทีที่แล้ว</span>
          </div>
@@ -84,6 +88,7 @@
          <div class="col s9 m10 l10">
            <span>สุธีร์ แก้วตาหวาน</span> <span class="description">ส่ง 88 ข้อความถึงคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">chat_bubble</i><span class="time"> 4 ชั่วโมงที่แล้ว</span>
          </div>
@@ -97,6 +102,7 @@
          <div class="col s9 m10 l10">
            <span>JJ JJ</span> <span class="description">ส่ง 88 ข้อความถึงคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">chat_bubble</i><span class="time"> 4 ชั่วโมงที่แล้ว</span>
          </div>
@@ -110,6 +116,7 @@
          <div class="col s9 m10 l10">
            <span>สุนิสา และเพื่อนอีก 190,890 คน</span> <span class="description">ได้ถูกใจสถานะของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="fa fa-heart fa-lg"></i><span class="time"> 51 นาทีที่แล้ว</span>
          </div>
@@ -126,7 +133,7 @@
     @foreach($accounts as $key=>$person)
  <div href="{{$key}}" class="collection-item">
        <div class="row">
-{{$var}}
+
          <div class="col col-thumbnail">
            <img class="who circle" src="img/mim_tn.jpg">
          </div>
@@ -135,6 +142,7 @@
             <a href="{{url('acceptFriend/'.$person->id)}}"class="btn waves-effects  waves-light teal lighten-2 right "  >ยอมรับคำขอ</a><br/><br/>
             <a href="{{url('declineFriend/'.$person->id)}}"class="btn waves-effects waves-light  red lighten-1 right" style="margin-right:1em" >ลบคำขอ</a>
          </div>
+         <div class="section"></div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">person_add</i> <span class="time"> 7 ชั่วโมงที่แล้ว</span>
 
@@ -155,6 +163,7 @@
          <div class="col s9 m10 l10">
            <span>สุนิสา ปานหิบ</span> <span class="description"> ส่ง 1 ข้อความถึงคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">chat_bubble</i> <span class="time"> 3 นาทีที่แล้ว</span>
          </div>
@@ -168,6 +177,7 @@
          <div class="col s9 m10 l10">
            <span>สุธีร์ แก้วตาหวาน</span> <span class="description">ส่ง 88 ข้อความถึงคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s1 m10 l10">
            <i class="material-icons left">chat_bubble</i><span class="time"> 4 ชั่วโมงที่แล้ว</span>
          </div>
@@ -185,6 +195,7 @@
          <div class="col s9 m10 l10">
            <span>สุธีร์ แก้วตาหวาน และ สุนิสา ปานหิบ</span> <span class="description">ได้เข้าร่วมกิจกรรมของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="material-icons left">insert_invitation</i><span class="time"> 56 นาทีที่แล้ว</span>
          </div>
@@ -203,6 +214,7 @@
          <div class="col s9 m10 l10">
            <span>สุธีร์ แก้วตาหวาน และเพื่อนอีก 7,890 คน</span> <span class="description">ได้ถูกใจสถานะของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="fa fa-heart fa-lg"></i><span class="time"> 32 นาทีที่แล้ว</span>
          </div>
@@ -216,6 +228,7 @@
          <div class="col s9 m10 l10">
            <span>สุนิสา ปานหิบ และเพื่อนอีก 3 คน</span> <span class="description">ได้แสดงความคิดบนสถานะของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="material-icons left">insert_comment</i> <span class="time"> 44 นาทีที่แล้ว</span>
          </div>
@@ -229,6 +242,7 @@
          <div class="col s9 m10 l10">
            <span>สุนิสา และเพื่อนอีก 190,890 คน</span> <span class="description">ได้ถูกใจสถานะของคุณ</span>
          </div>
+         <div class="section"></div>
          <div class="col s10 m10 l10">
            <i class="material-icons left">star</i><span class="time"> 51 นาทีที่แล้ว</span>
          </div>

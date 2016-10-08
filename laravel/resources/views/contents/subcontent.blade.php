@@ -15,8 +15,8 @@
 <nav class="mybc">
     <div class="nav-wrapper">
         <div class="col s12">
-            <a href="#" class="breadcrumb">ตำรับอาหาร</a>
-            <a class="breadcrumb"><span>{{ $headtitle->category_title_th}}</span></a>
+
+            <a href="{{url('/content/'.$headtitle->category_title)}}"class="breadcrumb"><span>{{ $headtitle->category_title_th}}</span></a>
         </div>
     </div>
 </nav>
@@ -39,7 +39,7 @@
                   <div class="card-action" style="background-color: #ee6e73;">
                       <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
                   </div>
-                  
+
               </div>
           </div>
 @endforeach

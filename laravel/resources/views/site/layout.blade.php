@@ -28,16 +28,16 @@
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/profile-v2.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/cover-head.css')}}">
   <link rel="stylesheet" type="text/css" href="{{url::asset('css/setting-profile.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/overlay-hover.css')}}">
 
 
     <!--Import bootstrap.css
 
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!--materialize javaScript-->
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
@@ -120,6 +120,7 @@
             </a>
             <ul class="left hide-on-med-and-down">
                 <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
+               
                 <li>
                     <nav class="white" style="box-shadow: none;" >
                       <div class="nav-wrapper">
@@ -149,7 +150,11 @@
       </a>
     </li>
 
+<<<<<<< HEAD
+    <li><a class="navlink" href="{{url('/chat')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+=======
     <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -201,7 +206,11 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
+<<<<<<< HEAD
+
+=======
                 <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
@@ -268,16 +277,13 @@
     </div>
 
     <!-- Dropdownhelp Structure -->
-    <ul id="dropdownhelp" class="dropdown-content">
       <ul id="dropdownhelp" class="dropdown-content">
           <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
           <li><a href="#!">สมัครสมาชิก</a></li>
           <li><a href="#!">เข้าสู่ระบบ</a></li>
       </ul>
-
-
     <!-- ถ้าอยู่หน้าไหนให้ไปตามหน้านั้น-->
-    </ul>
+    
 
     <ul id="dropdownprofile" class="dropdown-content">
         <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
@@ -294,7 +300,11 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
+<<<<<<< HEAD
+
+=======
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
@@ -423,7 +433,7 @@
         <!--Endd Resize Button-->
 
         <!--Back btn-->
-        <div class="fixed-action-btn goback-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left'>
+        <div class="fixed-action-btn goback-btn" data-step="5" data-intro="Ok, wasn't that fun?" data-position='right'>
             <a class="btn-floating btn-large tooltipped" data-position="right" data-delay="50" data-tooltip="กลับ"
             onclick="goBack()"><i class="material-icons">chevron_left</i></a>
         </div>

@@ -10,8 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::post('/event/{eid}/edit','EventController@editEvent');
-
+Route::post('/event/{eid}/edit','EventController@editEvents');
+Route::get('/index', function(){
+  $title ='Boompow';
+  return view('index',compact('title'));
+});
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
 Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
@@ -55,9 +58,13 @@ Route::get('/newsfeed',function(){
     $title = 'newsfeed';
       return view('social.newsfeed',compact('title'));
 });
+Route::post('/newsfeed','PostController@poststatus');
 
 Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
 Route::post('/profile','Profile\ProfileController@UpdateAvatar');
+Route::post('/post','PostController@postStatus');
+Route::post('/comment/{pid}','PostController@comments');
+// Route::get('/profile','PostController@viewLikes');
 Route::post('/Pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){
   $title ='Boompow - Friend profile';

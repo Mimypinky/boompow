@@ -132,19 +132,24 @@ public function cancelRequest(Request $req){
       $isFriend2 = Friends::where('from_user_id' , $fid)
       ->where('to_user_id' , $myId)->where('status' , 'accepted')->count();
       $status = Friends::select('status')->where([['from_user_id','=',$fid],['to_user_id','=',$myId]])->first();
+<<<<<<< HEAD
+
+      echo $isFriend1;
+      echo $isFriend2;
+=======
       //echo $isFriend1;
       //echo $isFriend2;
+>>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
       if($isFriend1 == 0 && $isFriend2 == 0){
         return view('social.profile-friend')->with('title' , $title)
         ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
       }else{
-        $post = Post::where('user_id' , $fid)->get();
-        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('post' , $post);
+        $posts = Post::join('accounts','posts.user_id','=','accounts.id')
+        ->join('profiles','accounts.profile_id','=','profiles.id')
+        ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar')
+        ->get();
+        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts);
 
       }
-
-
-
-
     }
 }

@@ -43,6 +43,9 @@ a{
 }
 
 /*Override from Materialize*/
+.collection a.collection-item{
+    color: #EE6E73;
+}
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #EE6E74;
 }
@@ -110,6 +113,9 @@ input[type="checkbox"].filled-in:checked + label:after {
   transform: translate3d(0, 0, 0);
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+span.noti-badge{
+    position: unset;
 }
 .mob-menu{
     font-size: 30pt;

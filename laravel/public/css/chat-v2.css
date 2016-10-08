@@ -28,9 +28,12 @@
     margin-bottom: 71% !important;
   }
   .sendmsg-btn{
-    left: 73px !important;
-    width: 111 !important;
+    left: 73% !important;
+    width: 111px !important;
   }
+  span.b-space:after {
+    content: "" !important;
+}
 
 }
 .i-color{

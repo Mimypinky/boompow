@@ -527,64 +527,72 @@
                     <div id="picstore" class="modal pic-modal">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-picture-o fa-lg left" aria-hidden="true"></i><h4>รูปภาพของฉัน</h4>
-                            <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div><br>
+                            <p style="color: #8a8787;">คุณสามารถแก้ไขภาพ เปลี่ยนคำบรรยายภาพ หรือลบรูปภาพได้ในส่วนนี้</p>
+                            </li>
                         </ul>
                         <div class="row pic-rspace">
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/bike.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/bike.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/wf.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/wf.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/cover.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/cover.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row pic-rspace">
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/bike.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/bike.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/wf.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/wf.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                             <div class="col s12 m7 l4 pic-col">
-                                <img src="img/cover.jpg" style="width:100%;">
-                                <div class="divider"></div>
-                                <div class="pic-edit-sec">
-                                <a class="modal-trigger" href="#pic-edit"><span>แก้ไข</span></a>
-                                <span class="border-divi2"></span>
-                                <a href="#"><span>ลบ</span></a>
+                                <div class="hovereffect">
+                                    <img src="img/cover.jpg" style="width:100%;">
+                                    <div class="overlay">
+                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
+                                    <a class="info" href="#">ลบ</a>
+                                    </div>
+                                    <div class="divider"></div>
                                 </div>
                             </div>
                         </div>
