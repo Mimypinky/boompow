@@ -45,7 +45,9 @@
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/firebase.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
+
 
   <script type="text/javascript">
         $( document ).ready(function(){
@@ -76,7 +78,7 @@
        formatSubmit: 'yyyy-mm-dd',
        hiddenName: true,
        min: [1930,1,01],
-       max: [2001,12,01],
+       max: [2000,06,06],
        selectYears: 65,
      });
      $(document).ready(function() {

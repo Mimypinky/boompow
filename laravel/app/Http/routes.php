@@ -70,7 +70,7 @@ Route::get('/friends',function(){
 });
 Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
-  return view('social.chat',compact('title'));
+  return view('social.mockup_chat',compact('title'));
 });
 Route::get('/message_box','ChatController@index');
 Route::post('/sendMessage','ChatController@sendMessage');

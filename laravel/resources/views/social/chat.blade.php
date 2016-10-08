@@ -10,124 +10,32 @@
      <div class="row chatOption">
        <div class="col s12" style="background: #eceff1;">
          <ul class="tabs">
-        <li class="tab col s3"><a href="#friendList">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#recentMessage">Test 2</a></li>
+        <li class="tab col s3"><a href="#friendList">เพื่อนของคุณ</a></li>
+        <li class="tab col s3"><a class="active" href="#recentMessage">ข้อความล่าสุด</a></li>
         </ul>
 
        </div>
        <div id="friendList" class="col s12">
          <div class="people-list" id="people-list">
            <ul class="list" style="margin-top: 1px">
-
+             @foreach($account1 as $acc)
+             <a href="#">
                <li class="clearfix">
                  <img class="circle" src="img/mim_tn.jpg"/>
                  <div class="about">
-                   <div class="name">สุนิสา ปานหิบ</div>
-                   <div class="status">
-                     <i class="fa fa-circle online"></i> ออนไลน์
-                   </div>
+                   <div class="name">{{$acc->first_name}}  {{$acc->last_name}}</div>
                  </div>
                </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">สุธีร์ แก้วตาหวาน</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สอง</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สาม</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สี่</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่ห้า</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่หก</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่เจ็ด</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่แปด</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่เก้า</div>
-                 <div class="status">
-                   <i class="fa fa-circle offline"></i> ออฟไลน์
-                 </div>
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สิบ</div>
-                 <div class="status">
-                   <i class="fa fa-circle online"></i> ออนไลน์
-                 </div>
-               </div>
-             </li>
+             </a>
+               @endforeach
+               @foreach($account2 as $acc)
+                 <li class="clearfix">
+                   <img class="circle" src="img/mim_tn.jpg"/>
+                   <div class="about">
+                     <div class="name">{{$acc->first_name}}  {{$acc->last_name}}</div>
+                   </div>
+                 </li>
+                 @endforeach
            </ul>
          </div>
        </div>
