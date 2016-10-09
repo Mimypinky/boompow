@@ -627,6 +627,7 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
+<<<<<<< HEAD
 
 
                             <div class="row" >
@@ -634,6 +635,12 @@ $(document).ready(function () {
 
                                       <input type="hidden" name="_token" value="{{csrf_token()}}">
 
+=======
+                            <div class="row" >
+                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
+                                    <input type="hidden" name="_method" value="POST">
+                                    {!! csrf_field() !!}
+>>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
 
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -750,6 +757,21 @@ $(document).ready(function () {
 
                             </div>
 
+<<<<<<< HEAD
+=======
+                                <!--    <div class="switch">
+                                        <label for="url">การรับสมัคร</label>
+                                        <p>
+                <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+                <label for="test5">เปิดรับอยู่</label>
+              </p>
+              <p>
+        <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
+        <label for="test5">เปิดรับอยู่</label>
+        </p>
+
+      </div>--->
+>>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
 
                         </div>
                         <div class="modal-footer">

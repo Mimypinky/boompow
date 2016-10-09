@@ -39,13 +39,14 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script>
+    <!--script type="text/javascript" src="{{ URL::asset('jquery-cookie.js')}}"></script-->
     <script type="text/javascript" src="{{URL::asset('js/secnav-scroll.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
+
 
   <script type="text/javascript">
         $( document ).ready(function(){
@@ -76,7 +77,7 @@
        formatSubmit: 'yyyy-mm-dd',
        hiddenName: true,
        min: [1930,1,01],
-       max: [2001,12,01],
+       max: [2000,06,06],
        selectYears: 65,
      });
      $(document).ready(function() {
@@ -147,10 +148,14 @@
         <span class="mynoti noti-right">7</span><span class="rps-bar">สังคมของฉัน</span>
       </a>
     </li>
+<<<<<<< HEAD
 
 
     <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
 
+=======
+    <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+>>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -282,9 +287,13 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
+<<<<<<< HEAD
 
                 <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
 
+=======
+                <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
+>>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
@@ -373,9 +382,13 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
+<<<<<<< HEAD
 
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
 
+=======
+        <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
+>>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
@@ -540,6 +553,6 @@
             <i class="material-icons left back-icon">keyboard_arrow_up</i></a>
 
         <!--UP BUTTON JS-->
-        <script type="text/javascript" src="js/btt.js"></script>
+        <script type="text/javascript" src="{{URL::asset('js/btt.js')}}"></script>
   </body>
 </html>
