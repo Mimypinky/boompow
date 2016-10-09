@@ -53,17 +53,22 @@ Route::group(['middleware' => ['web']], function (){
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
   Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });
-
-Route::get('/newsfeed',function(){
-    $title = 'newsfeed';
-      return view('social.newsfeed',compact('title'));
+Route::get('login',function(){
+  $title="เข้าสู่ระบบ";
+  return view('site.loginform',compact('title'));
 });
+Route::get('/newsfeed','Profile\ProfileController@newsfeed');
+
 Route::post('/newsfeed','PostController@poststatus');
 
 Route::get('/profile',[ 'as' => 'profile', 'uses' => 'Profile\ProfileController@index']);
 Route::post('/profile','Profile\ProfileController@UpdateAvatar');
 Route::post('/post','PostController@postStatus');
+Route::post('/postfriend/{fid}','PostController@postFriendStatus');
 Route::post('/comment/{pid}','PostController@comments');
+Route::get('/like/{pid}','PostController@likePost');
+Route::get('/delete/{pid}','PostController@deletePost');
+Route::get('/post/{pid}/edit','PostController@editPost');
 // Route::get('/profile','PostController@viewLikes');
 Route::post('/Pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){

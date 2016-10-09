@@ -118,7 +118,7 @@
             </a>
             <ul class="left hide-on-med-and-down">
                 <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
-               
+
                 <li>
                     <nav class="white" style="box-shadow: none;" >
                       <div class="nav-wrapper">
@@ -148,11 +148,9 @@
       </a>
     </li>
 
-<<<<<<< HEAD
-    <li><a class="navlink" href="{{url('/chat')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
-=======
+
     <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
+
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -162,11 +160,92 @@
     </ul>
 
     <!--Slidenav mobile-->
+@if(Auth::guest())
+<ul id="mobile-demo" class="side-nav" style="width: 248px;">
+<li style="height: 100px; background-color: #EE6E73;"><div class="userView">
+  <center><span class="white-text name mob-menu">เมนู</span></center>
+</div>
+</li>
+
+  <li style="border-bottom: 2px solid #e4e4e4;">
+    <nav class="white" style="box-shadow: none;">
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+              <input class="inputsearch" id="search" type="search" required="" placeholder="ค้นหาเพื่อนและกิจกรรม">
+              <label for="search" class="active"><i style="color: #212121; font-size: 18pt;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+          </div>
+          </form>
+      </div>
+    </nav>
+  </li>
+
+  <li>
+    <a href="{{url('/register')}}">สมัครสมาชิก</a>
+  </li>
+  <li>
+    <a href="{{url('/login')}}">เข้าสู่ระบบ</a>
+  </li>
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header">สาระน่ารู้<i class="material-icons">library_books</i><i class="material-icons right">keyboard_arrow_down</i></a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="{{url('/')}}">หน้าแรก</a></li>
+                  <ul class="collapsible collapsible-accordion">
+                    <li>
+                      <a class="collapsible-header" href="#">ตำรับอาหาร<i class="material-icons right">keyboard_arrow_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ของคาว</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ของหวาน</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                  <ul class="collapsible collapsible-accordion">
+                    <li>
+                      <a class="collapsible-header" href="#">บันเทิง<i class="material-icons right">keyboard_arrow_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li><a class="mob-submenu" href="{{url('/')}}">วิทยุ</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ดูหนัง</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ฟังเพลง</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ธรรมมะ</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                  <li><a href="{{url('/')}}">ครัวเรือน</a></li>
+                  <ul class="collapsible collapsible-accordion">
+                    <li>
+                      <a class="collapsible-header" href="#">ห้องข่าว<i class="material-icons right">keyboard_arrow_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ข่าวบันเทิง</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ข่าวกีฬา</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ข่าวเศรษฐกิจ</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">ข่าวการเมือง</a></li>
+                          <li><a class="mob-submenu" href="{{url('/')}}">สิทธิประโยชน์</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                  <li><a href="{{url('/')}}">งานประดิษฐ์</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+      </ul>
+</ul>
+@else
+
     <ul id="mobile-demo" class="side-nav" style="width: 248px;">
     <li style="height: 100px; background-color: #EE6E73;"><div class="userView">
       <center><span class="white-text name mob-menu">เมนู</span></center>
     </div>
     </li>
+
       <li style="border-bottom: 2px solid #e4e4e4;">
         <nav class="white" style="box-shadow: none;">
           <div class="nav-wrapper">
@@ -179,8 +258,7 @@
           </div>
         </nav>
       </li>
-
-
+<!--
         <ul class="collapsible collapsible-accordion">
           <li>
             <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i><i class="material-icons right">keyboard_arrow_down</i></a>
@@ -204,20 +282,16 @@
 
                 <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
                 <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-<<<<<<< HEAD
 
-=======
                 <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
+
                 <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
               </ul>
             </div>
           </li>
         </ul>
 
-        <li><a href="{{url('/message_box')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li>
-
-
+        <li><a href="{{url('/message_box')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li> -->
 
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -270,6 +344,7 @@
           </li>
         </ul>
     </ul>
+    @endif
     <!--End Slidenav mobile-->
 
     </div>
@@ -281,7 +356,7 @@
           <li><a href="#!">เข้าสู่ระบบ</a></li>
       </ul>
     <!-- ถ้าอยู่หน้าไหนให้ไปตามหน้านั้น-->
-    
+
 
     <ul id="dropdownprofile" class="dropdown-content">
         <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
@@ -298,11 +373,9 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-<<<<<<< HEAD
 
-=======
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
+
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 
@@ -315,7 +388,8 @@
                 <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
             -->
             <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
-            <li><a href="" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร<i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
+            <li><a href="{{url('content/')}}" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
+              <i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร<i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
             <li><a class="dropdown-button" href="{{url('content/entertainment')}}" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
               <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง<i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
             <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>

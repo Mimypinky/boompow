@@ -100,7 +100,7 @@ $(document).ready(function () {
                 <div class="col s4 center event-card" >
                   <div class="card">
                     <div class="card-image">
-                      <img class=" materialboxed" src="img/wf.jpg">
+                      <img class=" materialboxed" src="{{url('img/uploads/events/'.$data->image)}}">
                     </div>
                     @if (strcmp($data->status,"unavailable")==0)
                     <!--เริ่มแสดง status (unavailable)-->
@@ -139,15 +139,6 @@ $(document).ready(function () {
                   @endif
 
                   </div>
-
-
-              <!--  @if($data->creator != $user)
-                <a class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
-                @else
-                <a class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$data->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรมของคุณ</a>
-
-                @endif
--->
 
               </div>
               <div id="join{{$key}}" class="modal" style="width: 500px;">
@@ -283,7 +274,7 @@ $(document).ready(function () {
                   <div class="col s4 center event-card" >
                       <div class="card">
                           <div class="card-image">
-                              <img class=" materialboxed" src="{{url('img/wf.jpg')}}">
+                              <img class=" materialboxed" src="{{url('img/uploads/events/'.$join->image)}}">
                           </div>
                           <div class="card-content blue-grey darken-1">
                               <p class="ev-status">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
@@ -390,7 +381,7 @@ $(document).ready(function () {
 
                 <div class="collapsible-body add-ebody" >
                   <div class="row">
-                     <form class="col s12" method="POST" action="{{url('event/create')}}">
+                     <form class="col s12" method="POST" action="{{url('event/create')}}" enctype="multipart/form-data">
                        <div class="row">
                          <div class="input-field col s12">
                           <i class="material-icons prefix">event_note</i>
@@ -403,7 +394,7 @@ $(document).ready(function () {
                          <div class="input-field col s4">
                           <i class="material-icons prefix">people</i>
                            <input name="max_amount" id="amount-attend" type="number" class="validate" min="1" max="50" value="10" required>
-                           
+
                            <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
                          </div>
                        </div>
@@ -457,8 +448,26 @@ $(document).ready(function () {
                               </div>
 
                               <div class="input-field col s3 epic-col">
-                                 <input type="file" name="pic" accept="image/*">
+                                 <input type="file" name="files" accept="image/*" id="uploadImage">
+                             </div><br>
+                             <div class="row">
+                             <div id="show_pic_box" style="margin-top:5%;margin-left:10%">
+                               <img  id="show_pic" style="width:70%"/>
+                               <script>
+                               document.getElementById("uploadImage").onchange = function () {
+                                   var reader = new FileReader();
+
+                                   reader.onload = function (e) {
+                                       // get loaded data and render thumbnail.
+                                       document.getElementById("show_pic").src = e.target.result;
+                                   };
+
+                                   // read the image file as a data URL.
+                                   reader.readAsDataURL(this.files[0]);
+                               };
+                               </script>
                              </div>
+                           </div>
                          </div>
                                <div class="row">
                                <div class="input-field col s12" style="margin-top: 52px;">
@@ -529,7 +538,7 @@ $(document).ready(function () {
                     <div class="col s4 center event-card" >
                       <div class="card">
                         <div class="card-image">
-                          <img class=" materialboxed" src="img/wf.jpg">
+                          <img class=" materialboxed" src="{{url('img/uploads/events/'.$mine->image)}}">
                         </div>
                         <div class="card-content blue-grey darken-1">
                             <p class="ev-status">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
@@ -618,24 +627,18 @@ $(document).ready(function () {
                     <div id="edit{{$key}}" class="modal" style="width: 650px;">
                         <div class="modal-content">
                             <h4>แก้ไขกิจกรรม</h4>
-<<<<<<< HEAD
+
 
                             <div class="row" >
-                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
+                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="POST" enctype="multipart/form-data">
 
+                                      <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-
-=======
-                            <div class="row" >
-                                <form class="col s12" action="{{url('/event/'.$mine->id.'/edit')}}" method="post">
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
-                                    <input type="hidden" name="_method" value="POST">
-                                    {!! csrf_field() !!}
 
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">event_note</i>
-                                            <input placeholder="ตัวอย่าง: กิจกรรมปลูกป่า" id="event-name" type="text" class="validate" value="{{$mine->title}}" required>
+                                            <input placeholder="ตัวอย่าง: กิจกรรมปลูกป่า" id="event-name" type="text" class="validate" name="title"value="{{$mine->title}}" required>
                                             <label for="event-name">ชื่อกิจกรรม</label>
 
                                         </div>
@@ -643,7 +646,7 @@ $(document).ready(function () {
                                     <div class="row">
                                      <div class="input-field col s4">
                                       <i class="material-icons prefix">people</i>
-                                       <input name="amount-attend" id="amount-attend" type="number" class="validate" value="2" required>
+                                       <input name="max_amount" id="amount-attend" type="number" class="validate" value="{{$mine->max_amount}}" required>
 
                                        <label for="amount-attend">จำนวนผู้เข้าร่วมสูงสุด</label>
                                      </div>
@@ -654,7 +657,7 @@ $(document).ready(function () {
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">location_on</i>
 
-                                            <textarea placeholder="ตัวอย่าง: 11/2 ซ.สวยสุดในสอย ถนนพระราม32 เขตดุสิต" id="address" class="materialize-textarea" required>{{$mine->location}}</textarea>
+                                            <textarea placeholder="ตัวอย่าง: 11/2 ซ.สวยสุดในสอย ถนนพระราม32 เขตดุสิต" id="address" class="materialize-textarea" name="location" required>{{$mine->location}}</textarea>
                                             <label for="address">ที่อยู่จัดกิจกรรม</label>
                                         </div>
                                     </div>
@@ -665,7 +668,7 @@ $(document).ready(function () {
                                         </div>
 
                                         <div class="input-field col s3 etime-colm">
-                                            <input placeholder="12:00 น." id="event-name" type="text" class="validate" value="{{$mine->start_time}}" required>
+                                            <input placeholder="12:00 น." id="event-name" type="text" class="validate" name="start_time" value="{{$mine->start_time}}" required>
                                         </div>
 
                                         <div class="col s1">
@@ -673,7 +676,7 @@ $(document).ready(function () {
                                         </div>
 
                                         <div class="input-field col s3 etime-colm">
-                                            <input placeholder="13:00 น." id="event-name" type="text" class="validate" value="{{$mine->finish_time}}" required>
+                                            <input placeholder="13:00 น." id="event-name" type="text" class="validate" name="finish_time"value="{{$mine->finish_time}}" required>
                                         </div>
                                     </div>
 
@@ -683,7 +686,7 @@ $(document).ready(function () {
                                         </div>
 
                                         <div class="input-field col s3 etime-colm">
-                                            <input id="date" type="date" class="datepicker" value="{{$mine->start_date}}">
+                                            <input id="date" type="date" class="datepicker" name="start_date" value="{{$mine->start_date}}">
                                         </div>
 
                                         <div class="col s1">
@@ -691,7 +694,7 @@ $(document).ready(function () {
                                         </div>
 
                                         <div class="input-field col s3 etime-colm">
-                                            <input id="date" type="date" class="datepicker" value="{{$mine->finish_date}}">
+                                            <input id="date" type="date" class="datepicker" name="finish_date"value="{{$mine->finish_date}}">
                                         </div>
                                     </div>
 
@@ -699,7 +702,7 @@ $(document).ready(function () {
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">phone</i>
-                                            <input type="text" placeholder="ตัวอย่าง: 085-994-9230" value="{{$mine->contact}}" id="tel" required></input>
+                                            <input type="text" placeholder="ตัวอย่าง: 085-994-9230" name="contact"value="{{$mine->contact}}" id="tel" required></input>
                                             <label for="tel">เบอร์โทรศัพท์ติดต่อ</label>
                                         </div>
                                     </div>
@@ -709,14 +712,30 @@ $(document).ready(function () {
                                             <p><i class="etime-icon material-icons left">satellite</i>อัพโหลดรูปภาพ</p>
                                         </div>
                                         <div class="input-field col s3 epic-colm" style="    margin-top: -3px;">
-                                            <input type="file" name="pic" accept="image/*">
+                                            <input type="file" name="files" id="uploadImage">
+                                        </div>
+                                        <div id="show_pic_box">
+                                          <img  id="show_pic" style="width:90%"/>
+                                          <script>
+                                          document.getElementById("uploadImage").onchange = function () {
+                                              var reader = new FileReader();
+
+                                              reader.onload = function (e) {
+                                                  // get loaded data and render thumbnail.
+                                                  document.getElementById("show_pic").src = e.target.result;
+                                              };
+
+                                              // read the image file as a data URL.
+                                              reader.readAsDataURL(this.files[0]);
+                                          };
+                                          </script>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12" style="margin-top: 52px;">
                                             <i class="material-icons prefix">description</i>
-                                            <textarea placeholder="ตัวอย่าง: ช่วยสอนหนังสือเด็ก" id="edetail" class="materialize-textarea"  required>{{$mine->description}}</textarea>
+                                            <textarea placeholder="ตัวอย่าง: ช่วยสอนหนังสือเด็ก" id="edetail" class="materialize-textarea" name="description"  required>{{$mine->description}}</textarea>
                                             <label for="edetail">รายละเอียดกิจกรรม</label>
                                         </div>
                                     </div>
@@ -724,30 +743,13 @@ $(document).ready(function () {
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">link</i>
-                                            <input placeholder="ตัวอย่าง: www.facebook.com" id="url" type="text" class="validate">
+                                            <input name="url" placeholder="ตัวอย่าง: www.facebook.com" id="url" type="text" class="validate" value="{{$mine->url}}">
                                             <label for="url">ลิงค์ภายนอก</label>
                                         </div>
                                     </div>
 
                             </div>
 
-<<<<<<< HEAD
-=======
-                                <!--    <div class="switch">
-                                        <label for="url">การรับสมัคร</label>
-                                        <p>
-                <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-                <label for="test5">เปิดรับอยู่</label>
-              </p>
-              <p>
-        <input class="with-gap" name="availability" type="radio" id="test5" value="available" checked />
-        <label for="test5">เปิดรับอยู่</label>
-        </p>
-
-      </div>--->
-                    
-
->>>>>>> 271ae8baa94ce23b4191d47e441bed704cc3c1c6
 
                         </div>
                         <div class="modal-footer">
