@@ -148,14 +148,7 @@
         <span class="mynoti noti-right">7</span><span class="rps-bar">สังคมของฉัน</span>
       </a>
     </li>
-<<<<<<< HEAD
-
-
     <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
-
-=======
-    <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -263,44 +256,6 @@
           </div>
         </nav>
       </li>
-<!--
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header">ข้อมูลส่วนตัว<i class="material-icons">person</i><i class="material-icons right">keyboard_arrow_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
-                <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-
-
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header"><i class="material-icons">people</i>สังคมของฉัน<span class="new badge">7</span></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="{{url('/newsfeed')}}">กระดานข่าว </a></li>
-                <li><a href="{{url('/friends')}}">เพื่อน</a></li>
-
-                <li><a href="{{url('/favourite')}}">รายการโปรด</a></li>
-                <li><a href="{{url('/event')}}">กิจกรรม <span class="new badge">4</span></a></li>
-<<<<<<< HEAD
-
-                <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
-
-=======
-                <li><a href="{{url('/message_box')}}">ข้อความ <span class="new badge">2</span></a></li>
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
-                <li><a href="{{url('/notificate')}}">แจ้งเตือน <span class="new badge">7</span></a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-
-        <li><a href="{{url('/message_box')}}"><i class="small material-icons left">question_answer</i>ข้อความ<span class="new badge">4</span></a></li> -->
 
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -382,13 +337,7 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-<<<<<<< HEAD
-
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
-
-=======
-        <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 

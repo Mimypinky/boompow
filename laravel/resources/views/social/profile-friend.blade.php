@@ -42,7 +42,7 @@
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
                           <form action='{{url('Pending')}}' method='post'>
                             {{ csrf_field() }}
-                          
+
                             @if($is != 'pending')
                               <input type='hidden' value='{{$account->id}}' name='aid'>
                             <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
@@ -50,32 +50,7 @@
                             <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
                               @endif
 
-<<<<<<< HEAD
                           <input type='hidden' value='{{$account->id}}' name='aid'>
-=======
-                        <!--  <input type='submit' value='Add'>
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
-
-
-                        </form>
-
-                      </div>
-                        @else
-                        <div class="center"  id="friend" style="margin-bottom:1.5em;margin-top:-3.5em">
-
-                        <a class="btn orange waves-effect waves-light " href="{{url('unfriend')}}" >เพื่อน</a>
-
-                        </div>
-                        @endif
-                        <div style="font-size: 14pt; text-align: center;">
-                            <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a>
-                            <span class="border-divi"></span>
-                            <span><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspโพสต์</span></span>
-                            <span class="border-divi"></span>
-                            <a href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspรูปภาพ</span></span></a>
-                        </div>
-                    </div>
-                </div>
                 <!--End Pro head-->
 
                 <!--timeline-->
