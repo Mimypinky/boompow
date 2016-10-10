@@ -126,7 +126,7 @@ public function delPending($username){
     public function viewFriend($username){
 
       $id = Account::where('username' , $username)->first();
-      $fid =  $id->id;
+      $fid = $id->id;
       $account = Account::find($fid);
       $title = $account->first_name.'  '.$account->last_name;
       $myId = Auth::user()->id;

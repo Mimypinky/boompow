@@ -508,4 +508,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+      var comment = $('.comment').val(); // your comment text box
+      $.ajax({
+        type: 'POST',
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        success: function(data) {
+
+          $('.commentbox').append("</br>"+comment); // list of comments. its inserting your last comment at the end of line.
+
+        }
+      });
+    });
+</script>
 @stop
