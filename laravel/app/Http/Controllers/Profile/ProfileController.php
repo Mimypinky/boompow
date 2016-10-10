@@ -10,6 +10,7 @@ use App\Account;
 use App\Profile;
 use App\Post;
 use App\Like;
+use App\Friend;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,14 @@ class ProfileController extends Controller
           $info = DB::table('profiles')->select('*')->where('id','=',$currentId)->first();
           $title = Auth::user()->username.' \'s Profile';
           $user = Auth::user();
-          $posts = Post::select('*')->where('user_id',$id)->get();
+          $posts = Post::join('accounts','posts.user_id','=','accounts.id')
+          ->join('profiles','accounts.profile_id','=','profiles.id')
+          ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
+          ->orderBy('created_at', 'desc')
+          ->get();
+
+
+          // $liked = Like::where([['post_id','=',3],['liked_by','=',$id]])->get();
 
           // dd($user);
           return view('social.myprofile',compact('title','info','currentId','user','posts'));
@@ -58,5 +66,31 @@ class ProfileController extends Controller
 
       return redirect('/profile');
     }
+
+
+    public function newsfeed(Request $req)
+    {
+      $user = Auth::user();
+      $id = Auth::user()->id;
+      $title = 'Newsfeed';
+      $profile_id =Auth::user()->profile_id;
+      $info = Profile::select('*')->where('id','=',$profile_id)->first();
+
+      $friend1 = DB::table('friends')->select('to_user_id')->where([['from_user_id','=',$id],['status','=','accepted']]);
+      $allfriend = DB::table('friends')->select('from_user_id')->where([['to_user_id','=',$id],['status','=','accepted']])->union($friend1)->get();
+
+      $posts = Post::join('accounts','posts.user_id','=','accounts.id')
+      ->join('profiles','accounts.profile_id','=','profiles.id')
+      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
+      ->orderBy('created_at', 'desc')
+      ->get();
+
+
+
+
+      return view('social.newsfeed',compact('info','user','title','posts'));
+
+    }
+
 
 }

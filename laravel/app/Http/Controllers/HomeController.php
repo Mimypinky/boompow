@@ -40,7 +40,7 @@ class HomeController extends Controller
       $content = Content::join('category','contents.cate_id','=','category.id')
       ->select('category.*','contents.*')->where('category_title','=', $cateid)->get();
       $headtitle= Category::select('category_title_th','pic')->where('category_title','=',$cateid)->first();
-    //  dd($headtitle);
+    
           return view('contents.subcontent',compact('content','title','headtitle'));
     }
     public function getTopic(Request $req)

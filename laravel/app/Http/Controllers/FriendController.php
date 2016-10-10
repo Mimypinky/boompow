@@ -9,6 +9,7 @@ use App\Account;
 use App\Friends;
 use Auth;
 use App\Post;
+use App\Profile;
 use DB;
 class FriendController extends Controller
 {
@@ -80,21 +81,6 @@ public function sendFriendRequest(Request $req){
       }
   }
 
-/*public function acceptFriend(Request $req){
-  $id = $req->input('rid');
-    $user = Auth::user()->id;
-    $title='Friend Request';
-    $status = 'pending';
-    $accounts = DB::table('friends')
-            ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
-            ->where([['to_user_id',$user],['status','pending']])
-            ->select('accounts.*' , 'friends.from_user_id')->get();
-
-    return view('social.noti',compact('accounts','user','title'));
-  }  else {
-      echo 'Please login ..';
-      return redirect()->intended('/');
-    }}*/
 
 
 public function cancelRequest(Request $req){
@@ -108,7 +94,6 @@ public function cancelRequest(Request $req){
   return redirect()->intended('FriendReq');
 
 }
-
 
 
 /*public function cancelRequest(Request $req){
@@ -145,11 +130,19 @@ public function delPending($username){
       $account = Account::find($fid);
       $title = $account->first_name.'  '.$account->last_name;
       $myId = Auth::user()->id;
-      $isFriend1 = Friends::where('from_user_id' , $myId)
-      ->where('to_user_id' , $fid)->where('status' , 'accepted')->count();
-      $isFriend2 = Friends::where('from_user_id' , $fid)
-      ->where('to_user_id' , $myId)->where('status' , 'accepted')->count();
+      $isFriend1 = Friends::where([['from_user_id' ,'=', $myId],['to_user_id' , '=',$fid],['status','=','accepted']])->count();
+      $isFriend2 = Friends::where([['from_user_id' ,'=', $fid],['to_user_id','=' , $myId],['status' , 'accepted']])->count();
       $status = Friends::select('status')->where([['from_user_id','=',$fid],['to_user_id','=',$myId]])->first();
+
+      $currentId = Auth::user()->profile_id;
+      $f_pro_id = Account::find($fid)->profile_id;
+      $id = Auth::user()->id;
+      $info = DB::table('profiles')->select('*')->where('id','=',$currentId)->first();
+      $f_info = DB::table('profiles')->select('*')->where('id','=',$f_pro_id)->first();
+
+      // dd($f_info);
+
+
       if($isFriend1 == 0 && $isFriend2 == 0){
         $ip = '';
         $isPending1 = Friends::where('from_user_id' , $myId)
@@ -162,16 +155,19 @@ public function delPending($username){
       //  echo $isPending2;
           $ip= 'pending';
         }
-        
+
       return view('social.profile-friend')->with('title' , $title)
         ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('is' , $ip);
       }else{
         $posts = Post::join('accounts','posts.user_id','=','accounts.id')
         ->join('profiles','accounts.profile_id','=','profiles.id')
-        ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar')
+        ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$fid)
+        ->orderBy('created_at', 'desc')
         ->get();
-        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts);
 
+        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts)->with('info',$info)->with('f_info',$f_info);
       }
     }
+
+
 }

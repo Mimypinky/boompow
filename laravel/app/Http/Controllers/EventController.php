@@ -11,6 +11,7 @@ use App\Users;
 use App\EventPhotos;
 use App\JoinEvent;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManagerStatic as Image;
 class EventController extends Controller
 {
     /**
@@ -24,16 +25,16 @@ class EventController extends Controller
         $user =Auth::user()->id;
         $title = 'กิจกรรม';
         $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
-            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')
             ->get();
         $myEvent = Event::join('accounts', 'events.creator', '=', 'accounts.id')
             ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
-            ->where('creator','=',$user)
+            ->where('creator','=',$user)->orderBy('create_at', 'desc')
             ->get();
         $joinEvent = JoinEvent::join('accounts','join_event.user_id','=','accounts.id')
         ->join('events','join_event.eve_id','=','events.id')
         ->select('events.*','join_event.*', 'accounts.first_name as fname','accounts.last_name as lname')
-        ->where('user_id','=',$user)
+        ->where('user_id','=',$user)->orderBy('join_time', 'desc')
         ->get();
         $joinEvent2 = JoinEvent::where('user_id', $user)->get();
 
@@ -48,7 +49,7 @@ class EventController extends Controller
 
         $party = Event::join('accounts','events.id','=','accounts.id')
         ->join('join_event','events.id','=','join_event.eve_id')
-        ->select('accounts.first_name as fname','accounts.last_name as lname','events.id')
+        ->select('accounts.first_name as fname','accounts.last_name as lname','events.id')->orderBy('create_at', 'desc')
         ->get();
         $eieiei = $party->toArray();
         $attend = array();
@@ -99,8 +100,18 @@ class EventController extends Controller
       $event->location = $req['location'];
       $event->contact = $req['contact'];
       $event->title = $req['title'];
+      $event->max_amount =  $req['max_amount'];
+
+      if($req->hasfile('files')){
+        $image = $req->file('files');
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        Image::make($image)->save(public_path().'/img/uploads/events/'.$filename);
+        $event->image = $filename;
+        $event->save();
+      }
+
       $event->save();
-      return redirect('event');
+      return redirect()->back();
     }
 
     /**
@@ -136,6 +147,13 @@ class EventController extends Controller
       $obj1->contact = $request['contact'];
       $obj1->title = $request['title'];
       $obj1->max_amount = $request['max_amount'];
+      if($req->hasfile('files')){
+        $image = $req->file('files');
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        Image::make($image)->save(public_path().'/img/uploads/events/'.$filename);
+        $event->image = $filename;
+        $event->save();
+      }
       $obj1->save();
       $join = new JoinEvent();
       $join->eve_id = $obj1->id;
@@ -145,51 +163,7 @@ class EventController extends Controller
       return redirect('event');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $obj = Event::find($id);
 
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
     public function eventBoardindex(Request $req)
     {
       $eid = $req->eid;
