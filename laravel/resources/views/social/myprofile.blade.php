@@ -15,7 +15,7 @@
                 <!--End Pro pic-->
                 <!--Pro head-->
                 <div class="row">
-                    <div class="col s8 offset-s2 pro-detail w-profile">
+                    <div class="col s8 offset-s2 w-profile pro-detail">
                         <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
                             <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
@@ -158,8 +158,8 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div id="deletePost{{$key}}" class="modal">
-                                                  <div class="modal-content">
+                                                <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                                                  <div class="modal-content" >
 
                                                         <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
                                                       </div>
@@ -250,7 +250,7 @@
                                                                 </div>
                                                               @endif
                                                                 @foreach($comments as $comment)
-                                                                <div class="collapsible-body">
+                                                                <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/$comment->id')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
@@ -309,7 +309,7 @@
                         </ul>
                     </div>
                     <!--picstore-->
-                    <div id="picstore" class="modal pic-modal">
+                    <div id="picstore" class="pic-modal modal" style="width: 950px;">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-picture-o fa-lg left" aria-hidden="true"></i><h4>รูปภาพของฉัน</h4>
                             <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div><br>
@@ -317,7 +317,7 @@
                             </li>
                         </ul>
                         <div class="row pic-rspace">
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/bike.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -327,7 +327,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/wf.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -337,7 +337,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/cover.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -350,7 +350,7 @@
                         </div>
 
                         <div class="row pic-rspace">
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/bike.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -360,7 +360,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/wf.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -370,7 +370,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/cover.jpg" style="width:100%;">
                                     <div class="overlay">
