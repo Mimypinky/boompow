@@ -1,6 +1,7 @@
 @extends('site.layout')
 
 @section('maincontent')
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/'.$headtitle->pic)}}">
@@ -47,7 +48,7 @@
                   <div class="card-image">
                       <img src="{{url('img/healthy.jpg')}}">
                   </div>
-                  <div class="card-content">
+                  <div class="card-content" style="height: 200px;">
                       <h5>{{$data->content_title}}</h5>
                       <p class="wordwrap">{{$data->description}}</p>
                   </div>

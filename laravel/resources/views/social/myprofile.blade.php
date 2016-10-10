@@ -15,7 +15,7 @@
                 <!--End Pro pic-->
                 <!--Pro head-->
                 <div class="row">
-                    <div class="col s8 offset-s2 pro-detail w-profile">
+                    <div class="col s8 offset-s2 w-profile pro-detail">
                         <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
                             <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
@@ -158,8 +158,8 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div id="deletePost{{$key}}" class="modal">
-                                                  <div class="modal-content">
+                                                <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                                                  <div class="modal-content" >
 
                                                         <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
                                                       </div>
@@ -218,32 +218,18 @@
                                                <div class="divider"></div>
                                                <div>
                                                    <div class="row">
-<<<<<<< HEAD
-
                                                    <form action="{{url('/comment/'.$post->id)}}" method="post">
                                                        <div class="input-field cmt-coll-space">
 
                                                        <div class="input-field w-cmt">
 
-=======
-                                                   <form action="{{url('/comment/'.$post->id)}}" method="post">
-                                                       <div class="input-field cmt-coll-space">
-
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
                                                             <div class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-<<<<<<< HEAD
-
                                                             <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
 
-
-
-=======
-                                                            <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</a>
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
                                                         </div>
 
                                                     </form>
@@ -264,21 +250,13 @@
                                                                 </div>
                                                               @endif
                                                                 @foreach($comments as $comment)
-                                                                <div class="collapsible-body">
+                                                                <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/$comment->id')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
                                                                     </li>
 
                                                                 </ul>
@@ -297,9 +275,11 @@
                         </div>
                         <div class="section"></div>
                       </div>
+                    </div>
                         @endforeach
                         <!--End timeline mypost-->
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -458,65 +438,10 @@
 
 
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+=======
+>>>>>>> 847b1f229b9db266f10461cb1091213ade8929cb
 
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
 
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
-
-                                                            <span class="pic-wholike morelike">...</span>
-                                                        </div>
-                                                    </div>
-                                               </div>
-                                               <div class="divider"></div>
-                                               <div>
-                                                   <div class="row">
-                                                   <form>
-                                                       <div class="input-field w-cmt">
-                                                            <div class="input-field col s12">
-                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
-                                                            </div>
-                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
-                                                        </div>
-                                                    </form>
-                                                   </div>
-
-                                                   <div class="comment-section">
-                                                       <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
-                                                            <li>
-                                                                <div class="collapsible-header cmt-coll-head active">
-                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
-                                                                </div>
-
-                                                                <div class="collapsible-body">
-                                                                    <ul class="col s12 collection cmt-box">
-                                                                <li class="transper collection-item avatar cmt-detail">
-                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
-                                                                        <span class="title title-name">สมัย สมร</span></a>
-                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
-                                                                    </li>
-                                                                    <li class="transper collection-item avatar cmt-detail">
-                                                                        <img src="img/pic5.jpg" alt="" class="circle">
-                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
-                                                                    </li>
-                                                                </ul>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                   </div>
-                                               </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        End timeline pin mypost-->
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
                     </div>
                 </div>
                 <!--End timeline-->
@@ -546,7 +471,7 @@
                         </ul>
                     </div>
                     <!--picstore-->
-                    <div id="picstore" class="modal pic-modal">
+                    <div id="picstore" class="pic-modal modal" style="width: 950px;">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-picture-o fa-lg left" aria-hidden="true"></i><h4>รูปภาพของฉัน</h4>
                             <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div><br>
@@ -554,7 +479,7 @@
                             </li>
                         </ul>
                         <div class="row pic-rspace">
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/bike.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -564,7 +489,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/wf.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -574,7 +499,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/cover.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -587,7 +512,7 @@
                         </div>
 
                         <div class="row pic-rspace">
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/bike.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -597,7 +522,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/wf.jpg" style="width:100%;">
                                     <div class="overlay">
@@ -607,7 +532,7 @@
                                     <div class="divider"></div>
                                 </div>
                             </div>
-                            <div class="col s12 m7 l4 pic-col">
+                            <div class="col s12 l4 pic-col">
                                 <div class="hovereffect">
                                     <img src="img/cover.jpg" style="width:100%;">
                                     <div class="overlay">

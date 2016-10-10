@@ -95,23 +95,6 @@ public function cancelRequest(Request $req){
 
 }
 
-
-<<<<<<< HEAD
-    public function viewFriend($fid){
-=======
-
-/*public function cancelRequest(Request $req){
-=======
->>>>>>> c2f5e503d97a1803b6b260c420661a44208e3189
-  $user=Auth::user()->id;
-  $fr = Friends::where([['from_user_id',$user],['to_user_id',$rid]]);
-  $fr->status = 'accepted';
-  //dd($fr);
-  $fr->save();
-  return redirect('social.noti');
-
-
-*/
 public function delPending($username){
   $id = Account::where('username' , $username)->first();
   $fid =  $id->id;
@@ -128,17 +111,16 @@ public function delPending($username){
 }
 
     public function viewFriend($username){
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
 
       $id = Account::where('username' , $username)->first();
-      $fid =  $id->id;
+      $fid = $id->id;
       $account = Account::find($fid);
       $title = $account->first_name.'  '.$account->last_name;
       $myId = Auth::user()->id;
       $isFriend1 = Friends::where([['from_user_id' ,'=', $myId],['to_user_id' , '=',$fid],['status','=','accepted']])->count();
       $isFriend2 = Friends::where([['from_user_id' ,'=', $fid],['to_user_id','=' , $myId],['status' , 'accepted']])->count();
       $status = Friends::select('status')->where([['from_user_id','=',$fid],['to_user_id','=',$myId]])->first();
-<<<<<<< HEAD
+
       $currentId = Auth::user()->profile_id;
       $f_pro_id = Account::find($fid)->profile_id;
       $id = Auth::user()->id;
@@ -148,11 +130,6 @@ public function delPending($username){
       // dd($f_info);
 
 
-      if($isFriend1 == 0 and  $isFriend2 == 0){
-
-        return view('social.profile-friend')->with('title' , $title)
-        ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
-=======
       if($isFriend1 == 0 && $isFriend2 == 0){
         $ip = '';
         $isPending1 = Friends::where('from_user_id' , $myId)
@@ -165,10 +142,9 @@ public function delPending($username){
       //  echo $isPending2;
           $ip= 'pending';
         }
-        
+
       return view('social.profile-friend')->with('title' , $title)
         ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('is' , $ip);
->>>>>>> 2c0e33c31273b40467217667ee0afc5fc4db9687
       }else{
         $posts = Post::join('accounts','posts.user_id','=','accounts.id')
         ->join('profiles','accounts.profile_id','=','profiles.id')
@@ -179,6 +155,4 @@ public function delPending($username){
         return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts)->with('info',$info)->with('f_info',$f_info);
       }
     }
-
-
 }
