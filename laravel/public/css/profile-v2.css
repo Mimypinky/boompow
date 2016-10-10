@@ -1,6 +1,10 @@
 
 /*ipad Horizontal */
-@media screen and (max-width: 1025px){
+@media only screen and (max-width: 1025px){
+	.w-profile{
+		width: 80% !important;
+    	margin-left: 11% !important;
+	}
 	.edit-btn{
 		left: 78% !important;
 	}
@@ -141,8 +145,16 @@
 
 
 }
+.pic-modal {
+    width: 800px !important;
+}
 /*ipad Vertical */
-@media screen and (max-width: 769px) {
+@media only screen and (max-width: 769px) {
+	
+	.w-profile{
+		width: 80% !important;
+    	margin-left: 11% !important;
+	}
 	.cmt-detail{
 		width: 300px !important;
 	}
@@ -164,10 +176,7 @@
 		margin-left: 73% !important;
     	margin-top: -21% !important;
 	}
-	.w-profile{
-		width: 80% !important;
-    	margin-left: 11% !important;
-	}
+	
 	.cam-input{
 		margin-top: -6% !important;
     	margin-left: 3% !important;
@@ -219,9 +228,7 @@
 		margin-top: -23% !important;
     	margin-left: 23% !important;
 	}
-	.pic-modal{
-		width: 500px !important;
-	}
+	
 	.pic-col{
 		display: block !important;
 	    margin: auto !important;
@@ -431,6 +438,7 @@
 	.event-option{
 		margin-top: -10px !important;
 	}
+
 
 
 }
@@ -907,9 +915,8 @@ span.badge.me {
 .noshadow{
 	box-shadow: none;
 }
-.pic-modal{
-	width: 950px;
-}
+
+
 .f-modal{
 	border:none;
 	background-color: transparent !important;
