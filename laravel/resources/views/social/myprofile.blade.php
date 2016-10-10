@@ -275,6 +275,7 @@
                         </div>
                         <div class="section"></div>
                       </div>
+                    </div>
                         @endforeach
                         <!--End timeline mypost-->
 

@@ -45,6 +45,9 @@ $(document).ready(function () {
     </div>
     <!--Start tab-->
     <div id="allevent" class="col s12 ">
+      <div class="center">
+        {!! (new Landish\Pagination\Materialize($event))->render() !!}
+      </div>
       <ul class="collection event-border" data-collapsible="accordion">
         @foreach($event as $key => $data)
         <li class=" collection-item">
