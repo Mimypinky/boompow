@@ -1,6 +1,5 @@
 @extends('site.layout')
 @section('maincontent')
-
         <div class="col s12" style="margin-top: 12%;">
             <div class="row">
                 <!--Pro pic-->
@@ -51,6 +50,9 @@
                               @endif
 
                           <input type='hidden' value='{{$account->id}}' name='aid'>
+                        </div>
+                      </div>
+                    </div>
                 <!--End Pro head-->
 
                 <!--timeline-->
@@ -413,27 +415,9 @@
                                 <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                             </li>
                         </ul>
-                    </div>
-
-
-                    <!-- End Modal Structure -->
-
-
+                      </div>
+                </div>
             </div>
         </div>
-
-
-<script type="text/javascript">
-
-  $("#click-button").on('click', firstClick)
-
-  function firstClick() {
-    alert("First Clicked");
-    $("#click-button").off('click').on('click', secondClick)
-  }
-
-  function secondClick() {
-    alert("Second Clicked");
-    $("#click-button").off('click').on('click', firstClick)
-  }
-</script>
+      </div>
+@stop
