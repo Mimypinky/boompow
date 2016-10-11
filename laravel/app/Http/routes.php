@@ -67,8 +67,10 @@ Route::post('/post','PostController@postStatus');
 Route::post('/postfriend/{fid}','PostController@postFriendStatus');
 Route::post('/comment/{pid}','PostController@comments');
 Route::get('/like/{pid}','PostController@likePost');
+Route::get('/unlike/{lid}','PostController@unlikePost');
 Route::get('/delete/{pid}','PostController@deletePost');
 Route::get('/post/{pid}/edit','PostController@editPost');
+Route::get('/delPic/{pid}','PostController@delPicPost');
 // Route::get('/profile','PostController@viewLikes');
 Route::post('/Pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){

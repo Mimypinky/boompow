@@ -111,7 +111,6 @@ public function delPending($username){
 }
 
     public function viewFriend($username){
-
       $id = Account::where('username' , $username)->first();
       $fid = $id->id;
       $account = Account::find($fid);
@@ -126,33 +125,37 @@ public function delPending($username){
       $id = Auth::user()->id;
       $info = DB::table('profiles')->select('*')->where('id','=',$currentId)->first();
       $f_info = DB::table('profiles')->select('*')->where('id','=',$f_pro_id)->first();
-
+      $is_f = $isFriend1 + $isFriend2;
       // dd($f_info);
-
-
-      if($isFriend1 == 0 && $isFriend2 == 0){
-        $ip = '';
+     if($is_f == 0){
+       //ยังไม่ได้เป็นเพื่อนกัน?
         $isPending1 = Friends::where('from_user_id' , $myId)
         ->where('to_user_id' , $fid)->where('status' , 'pending')->count();
         $isPending2 = Friends::where('from_user_id' , $fid)
         ->where('to_user_id' , $myId)->where('status' , 'pending')->count();
-
-      if($isPending1 != 0 || $isPending2 != 0){
-      //  echo $isPending1;
-      //  echo $isPending2;
-          $ip= 'pending';
-        }
-
-      return view('social.profile-friend')->with('title' , $title)
-        ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('is' , $ip);
-      }else{
+        $pending = $isPending1+$isPending2;
+            if($pending==0)
+            {
+              $friend_status ='pending';
+              return view('social.profile-friend')->with('title' , $title)
+                ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('ip' , $ip);
+            }elseif($pending==1||$pending)
+            {
+              $friend_status ='notfriend';
+                return view('social.profile-friend')->with('title' , $title)
+                  ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('ip' , $ip);
+            }
+      }elseif($is_f == 1||$is_f ==2)
+      {
+        $friend_status ='friend';
         $posts = Post::join('accounts','posts.user_id','=','accounts.id')
         ->join('profiles','accounts.profile_id','=','profiles.id')
         ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$fid)
         ->orderBy('created_at', 'desc')
         ->get();
 
-        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts)->with('info',$info)->with('f_info',$f_info);
+        return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts)->with('info',$info)->with('f_info',$f_info)
+        ->with('friend_status',$friend_status);
       }
     }
 }

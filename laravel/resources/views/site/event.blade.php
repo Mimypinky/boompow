@@ -330,7 +330,7 @@ $(document).ready(function () {
                     </tr>
                     <tr>
                       <td><p>โดย</p></td>
-                      <td><p>{{$join->fname.'  '.$data->lname}}</p></td>
+                      <td><p>{{$join->fname.'  '.$join->lname}}</p></td>
                     </tr>
                     <tr>
                       <td><p>สถานที่</p></td>

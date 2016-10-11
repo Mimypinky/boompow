@@ -264,6 +264,12 @@ nav ul a{
     font-size: 14pt;
     line-height: 20px;
 }
+#datecomment2{
+    color: #bdbdbd;
+    font-size: 14pt;
+    line-height: 20px;
+    margin-top: -4%;
+}
 
 #namecomment{
     font-size: 20pt;

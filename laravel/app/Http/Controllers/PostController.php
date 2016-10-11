@@ -44,7 +44,7 @@ class PostController extends Controller
     {
       $post= new Post();
       $post->user_id = Auth::user()->id;
-      $post->post_message = $req['post_message'];
+      $post->post_message = $req->post_message;
       $post->section ='posts';
       $post->on_id = $fid;
       if($req->hasfile('uploadImage')){
@@ -67,6 +67,13 @@ class PostController extends Controller
       $like->save();
       return back();
     }
+    public function unlikePost($lid){
+      $liked = Like::find($lid);
+      $liked->delete();
+      return back();
+
+    }
+
     public function deletePost($pid)
     {
       $post = Post::find($pid);
@@ -77,6 +84,14 @@ class PostController extends Controller
       $post = Post::find($pid);
       $post->post_message =$req->post_message;
       $post->save();
+      return redirect()->back();
+    }
+
+    public function delPicPost(Request $req,$pid)
+    {
+      $picpost=Post::find($pid);
+      $picpost->image='NULL';
+      $picpost->save();
       return redirect()->back();
     }
 }

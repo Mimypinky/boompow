@@ -14,7 +14,7 @@ class JoinEvent extends Model
     }
     public function accounts()
     {
-        return $this->hasMany('App\JoinEvent', 'eve_id', 'eve_id');
+        return $this->hasMany('App\JoinEvent', 'user_id');
     }
 
 }

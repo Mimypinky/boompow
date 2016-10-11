@@ -31,14 +31,12 @@ class EventController extends Controller
             ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
             ->where('creator','=',$user)->orderBy('create_at', 'desc')
             ->get();
-        $joinEvent = JoinEvent::join('accounts','join_event.user_id','=','accounts.id')
-        ->join('events','join_event.eve_id','=','events.id')
+        $joinEvent = JoinEvent::join('events','join_event.eve_id','=','events.id')
+        ->join('accounts','events.creator','=','accounts.id')
         ->select('events.*','join_event.*', 'accounts.first_name as fname','accounts.last_name as lname')
         ->where('user_id','=',$user)->orderBy('join_time', 'desc')
         ->get();
         $joinEvent2 = JoinEvent::where('user_id', $user)->get();
-
-
 
         $eiei =$joinEvent->toArray();
         $joined = array();

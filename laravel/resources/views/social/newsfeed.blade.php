@@ -148,6 +148,7 @@
                             @endif
                                 <div class="col s12" id="commenthead">
                                     <span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span>
+                                    <div class="row">
                                     <div class="edit-cmt-sec">
                                       @if($post->user_id==$user->id)
                                       <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
@@ -156,12 +157,13 @@
                                       <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                         <i class="fa fa-trash-o"></i> ลบ</a>
                                         @else
-                                        <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:73%">
+                                        <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:205px">
                                           <i class="fa fa-trash-o"></i> ลบ</a>
                                           @endif
 
                                           </div>
-                                    <p id="datecomment">{{$post->created_at}}</p>
+                                        </div>
+                                    <p id="datecomment2">{{$post->created_at}}</p>
                                 </div>
                                 <div class="status-post2 col s12">
                                     <p>{{$post->post_message}}</p>
@@ -179,11 +181,11 @@
 
                                           ?>
                                     <div class="row wholike-sec">
+
                                         <div class="col s1 like-section">
                                           <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                             <img class="heart-i" src="{{url('img/heart-like.png')}}">
                                           </a>
-
                                         </div>
                                         <div class="col s2"></div>
                                         <div class="col s2">
@@ -267,7 +269,7 @@
             <div class="section"></div>
             @endforeach
             <!--End timeline mypost-->
-          
+
         </div>
         <!--End newsfeed section-->
     </div>

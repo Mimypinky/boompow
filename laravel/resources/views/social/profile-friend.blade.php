@@ -36,21 +36,24 @@
                         $friend =$account->id;
                         $status=DB::table('friends')->select('status')->where([['from_user_id',$user],['to_user_id',$friend]])->first();
                         ?>
-                        @if(! isset($posts))
+
 
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
                           <form action='{{url('Pending')}}' method='post'>
                             {{ csrf_field() }}
 
-                            @if($is != 'pending')
+                            @if($friend_status=='pending')
+                            <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
+                              @elseif($friend_status=='notfriend')
                               <input type='hidden' value='{{$account->id}}' name='aid'>
                             <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
-                            @else
-                            <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
-                              @endif
+                            @elseif($friend_status=='friend')
+                            <a href="#"><button class="btn red waves-effect waves-light "  type="button">เพื่อน</button></a>
+                            @endif
 
-                          <input type='hidden' value='{{$account->id}}' name='aid'>
-                        </div>
+                        </form>
+                          </div>
+
                       </div>
                     </div>
                 <!--End Pro head-->
@@ -75,10 +78,8 @@
                                         <div class="input-field col s8 upsta-line-f">
                                           <form enctype="multipart/form-data" action="{{url('/postfriend/'.$account->id)}}" method="post">
                                             <textarea style="margin-left: 20px;" id="textarea1" name="post_message" class="materialize-textarea"></textarea>
-
                                             <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
                                             <div class="card-action" style="border: none;">
-
                                                     <div class="file-field input-field">
                                                         <div class="btn prouppic-btn black-text">
                                                         <span style="font-size: 14pt;">

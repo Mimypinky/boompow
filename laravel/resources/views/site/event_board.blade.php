@@ -23,7 +23,7 @@
                       @else
                       <span style="font-size: 18pt;">สร้างโดย:&nbsp</span><a href="Social-Profile-v2.html" style="color: #0d47a1; font-size: 18pt !important;">{{$eve_name->fname.' '.$eve_name->lname}}</a>
 
-                      <a href="#cancel" id="status_join" class="modal-trigger white-text noshadow waves-effect waves-light btn red right">
+                      <a href="#cancelattend" id="status_join" class="modal-trigger white-text noshadow waves-effect waves-light btn red right">
                       <i class="fa fa-minus-square-o left" aria-hidden="true"></i>&nbspยกเลิกการเข้าร่วม</a>
                       @endif
 
@@ -400,27 +400,33 @@
       <div class="row joined-f">
           <div class="collection pro-upstatus-feed">
               <div class="collection-item">
-                  <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม 7 คน</span></h5>
-                  <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
+                <?php $parties  =DB::table('join_event')
+                ->join('accounts','join_event.user_id','=','accounts.id')
+                ->join('profiles','accounts.profile_id','=','profiles.id')
+                ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
+                ->where('eve_id','=',$eve_name->id)->get();
+                $count_parties  =DB::table('join_event')
+                ->join('accounts','join_event.user_id','=','accounts.id')
+                ->join('profiles','accounts.profile_id','=','profiles.id')
+                ->where('eve_id','=',$eve_name->id)->count();
+                ?>
+                  <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม {{$count_parties}} คน</span></h5>
+
               </div>
+              @if($count_parties < 12)
               <div class="collection-item" id="eve_friend">
                       <div class="row joiner-pic-rspace">
+                        @foreach($parties as $person)
                           <div class="col s12 m7 l4 joiner-pic-col">
-                              <a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="แม้น ณ ซอยสี่"><img src="{{url('img/pic3.jpg')}}"></a>
+                              <a href="{{url('/friend/'.$person->username)}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
+                                <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
                           </div>
-
-                          <div class="col s12 m7 l4 joiner-pic-col">
-                              <a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร"><img src="{{url('img/pic4.jpg')}}"></a>
-                          </div>
-
-                          <div class="col s12 m7 l4 joiner-pic-col">
-                              <a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัคร รักสนุกไม่คิดผูกผัน"><img src="{{url('img/pic2.jpg')}}"></a>
-                          </div>
+                          @endforeach
                       </div>
-
-
-
               </div>
+              @else
+                <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
+              @endif
 
           </div>
       </div>
@@ -477,26 +483,19 @@
       </ul>
   </div>
   <!--allfriend-->
+
   <div id="allfriend" class="modal" style="width: 500px;">
       <ul class="collection with-header f-modal">
           <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
               <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
           </li>
+          @foreach($parties as $p)
           <li class="collection-item avatar transper">
-              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
-              <p>เจ๊สมร ดอนเจดีย์</p>
-              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+              <img src="{{url('img/uploads/avatars/'.$p->avatar)}}" alt="" class="circle">
+              <p>{{$p->first_name.' '.$p->last_name}}</p>
+              <a href="{{url('/friend/'.$p->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
           </li>
-          <li class="collection-item avatar transper">
-              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
-              <p>พิชิต จิตมั่นคง </p>
-              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-          </li>
-          <li class="collection-item avatar transper">
-              <img src="{{url('img/pic.jpg')}}" alt="" class="circle">
-              <p>มาโนช ชงชม </p>
-              <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-          </li>
+          @endforeach
       </ul>
   </div>
   <!--cancelattend-->
@@ -508,7 +507,7 @@
       </div>
       <div class="modal-footer">
           <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ไม่ อยู่กิจกรรมนี้ต่อ</a>
-          <a href="#!" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ยกเลิกการเข้าร่วม</a>
+          <a href="{{url('/cancel/'.$eve_name->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ยกเลิกการเข้าร่วม</a>
       </div>
   </div>
   <!--End Modal Structure-->
