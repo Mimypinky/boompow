@@ -39,19 +39,19 @@
 
 
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
-                          <form action='{{url('Pending')}}' method='post'>
-                            {{ csrf_field() }}
 
                             @if($friend_status=='pending')
-                            <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
+                            <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button></a>
                               @elseif($friend_status=='notfriend')
+                              <form action="{{url('/pending')}}" method='post'>
+                                {{ csrf_field() }}
                               <input type='hidden' value='{{$account->id}}' name='aid'>
                             <button class="btn red waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+                            </form>
                             @elseif($friend_status=='friend')
-                            <a href="#"><button class="btn red waves-effect waves-light "  type="button">เพื่อน</button></a>
+                            <button class="btn red waves-effect waves-light "  type="button">เพื่อน</button>
                             @endif
 
-                        </form>
                           </div>
 
                       </div>
@@ -60,6 +60,8 @@
 
                 <!--timeline-->
                 @if(!isset($posts))
+
+
                 <div id="prodetail">
                     <p> {{$msg}}</p>
                 </div>

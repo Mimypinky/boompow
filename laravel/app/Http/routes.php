@@ -72,12 +72,12 @@ Route::get('/delete/{pid}','PostController@deletePost');
 Route::get('/post/{pid}/edit','PostController@editPost');
 Route::get('/delPic/{pid}','PostController@delPicPost');
 // Route::get('/profile','PostController@viewLikes');
-Route::post('/Pending' , 'FriendController@sendFriendRequest');
+Route::post('/pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){
   $title ='Boompow - Friend profile';
   return view('social.profile-friend',compact('title'));
 });
-Route::get('/friend/{username}' , 'FriendController@viewFriend');
+Route::get('/friend/{username}' ,'FriendController@viewFriend');
 Route::get('/friends',function(){
   $title ='Boompow - My Friends';
   return view('social.friend',compact('title'));
@@ -103,7 +103,5 @@ Route::get('/upload',function(){
 Route::get('/testProfile', function(){
   return view('social.test_profile');
 });
-Route::get('/setting', function(){
-  $title= 'Boompow';
-  return view('social.setting_profile',compact('title'));
-});
+Route::get('/setting', 'Profile\ProfileController@settingProfile');
+Route::post('/updateInfo','Profile\ProfileController@updateInfo');

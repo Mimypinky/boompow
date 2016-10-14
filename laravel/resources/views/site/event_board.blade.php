@@ -417,10 +417,17 @@
               <div class="collection-item" id="eve_friend">
                       <div class="row joiner-pic-rspace">
                         @foreach($parties as $person)
+                        @if($person->id == Auth::user()->id)
+                        <div class="col s12 m7 l4 joiner-pic-col">
+                            <a href="{{url('/friend/profile')}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
+                              <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
+                        </div>
+                        @else
                           <div class="col s12 m7 l4 joiner-pic-col">
                               <a href="{{url('/friend/'.$person->username)}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
                                 <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
                           </div>
+                          @endif
                           @endforeach
                       </div>
               </div>
