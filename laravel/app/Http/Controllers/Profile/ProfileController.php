@@ -10,7 +10,7 @@ use App\Account;
 use App\Profile;
 use App\Post;
 use App\Like;
-use App\Friend;
+use App\Friends;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -73,7 +73,7 @@ class ProfileController extends Controller
       if($req->hasFile('avatar')){
         $avatar = $req ->file('avatar');
         $filename = time(). '.'. $avatar->getClientOriginalExtension();
-        Image::make($avatar)->resize(210,null)->save(public_path().'/img/uploads/avatars/'.$filename);
+        Image::make($avatar)->save(public_path().'/img/uploads/avatars/'.$filename);
         $id = Auth::user()->profile_id;
         $image = Profile::find($id);
         $image->avatar = $filename;
@@ -100,9 +100,56 @@ class ProfileController extends Controller
       ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
       ->orderBy('created_at', 'desc')
       ->get();
+      // $friends_sql=mysql_query("SELECT b.to_user_id FROM (SELECT to_user_id FROM friends WHERE from_user_id = $id) a INNER JOIN (SELECT from_user_id FROM friends WHERE to_user_id = $id) b
+      // ON a.friend_two = b.friend_two");
+      //             while($friends=mysql_fetch_array($friends_sql))
+      //             {
+      //                  $getMutualFriendInfo = mysql_query("SELECT * FROM users WHERE uid='{$friends['friend_two']}'");
+      //                   $MutualFriendInfo = mysql_fetch_array($getMutualFriendInfo);
+      //                 }
+      //           dd($MutualFriendInfo);
+
+      // $i = $allfriend->toArray();
+      // $ii = array();
+      // foreach ($i as $key => $value) {
+      //   array_push($ii,$value['accounts.id']);
+      //   // dd($ii);
+      // }
+
 
       return view('social.newsfeed',compact('info','user','title','posts'));
 
+    }
+    public function settingProfile(Request $req)
+    {
+      $id=Auth::user()->id;
+      $title='ตั้งค่าข้อมูลส่วนตัว';
+      $info = Account::join('profiles','accounts.profile_id','=','profiles.id')->where('accounts.id','=',$id)->first();
+      return view('social.setting_profile',compact('info','title'));
+    }
+    public function updateInfo(Request $req)
+    {
+      $id=Auth::user()->id;
+      $name = Account::find($id);
+      $pro_id= Account::find($id)->profile_id;
+      $pro = Profile::find($pro_id);
+      $name->first_name = $req['first_name'];
+      $name->last_name = $req['last_name'];
+      $pro->bio = $req['bio'];
+      if($req->hasFile('uploadImage')){
+        $avatar = $req ->file('uploadImage');
+        $filename = time(). '.'. $avatar->getClientOriginalExtension();
+        Image::make($avatar)->save(public_path().'/img/uploads/avatars/'.$filename);
+        $id = Auth::user()->profile_id;
+
+        $pro->avatar = $filename;
+        // dd($filename);
+        $pro->save();
+      }
+      $name->save();
+      $pro->save();
+
+      return redirect('/profile');
     }
 
 

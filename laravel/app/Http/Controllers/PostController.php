@@ -94,4 +94,9 @@ class PostController extends Controller
       $picpost->save();
       return redirect()->back();
     }
+    public function postEventBoard(Request $req,$eid)
+    {
+      
+    }
+
 }

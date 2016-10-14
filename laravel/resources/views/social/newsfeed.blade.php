@@ -124,7 +124,7 @@
             </li>
         </ul>
         <!--timeline mypost-->
-  @foreach($posts as $key=>$post)
+    @foreach($posts as $key=>$post)
             <div class="row" style="">
                 <div class="col s12">
 
@@ -263,39 +263,42 @@
                             </div>
                         </div>
                     </div>
+                    <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
+                        <ul class="collection with-header f-modal">
+                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
+                            <li class="transper collection-item avatar">
+                                <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="circle">
+                                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                <form action="#">
+                                    <div class="file-field input-field" style="margin-top: -5%;">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
+                            </li>
+                        </ul>
+                    </div>
+    @endforeach
                 </div>
             </div>
+
             <div class="section"></div>
-            @endforeach
+
             <!--End timeline mypost-->
 
         </div>
         <!--End newsfeed section-->
     </div>
 
+
     <!--Modal Structure-->
     <!--post-edit-->
-    <div id="post-edit" class="modal" style="width: 500px;">
-        <ul class="collection with-header f-modal">
-            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
-                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
-            <li class="transper collection-item avatar">
-                <img src="img/pic5.jpg" alt="" class="circle">
-                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-                <form action="#">
-                    <div class="file-field input-field" style="margin-top: -5%;">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
-                            </textarea>
-                        </div>
-                    </div>
-                </form>
-                <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
-            </li>
-        </ul>
-    </div>
     <!--wholike-->
     <div id="wholike" class="modal" style="width: 500px;">
         <ul class="collection with-header f-modal">
