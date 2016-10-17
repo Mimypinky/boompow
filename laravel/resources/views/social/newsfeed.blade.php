@@ -87,28 +87,31 @@
                         </li>
                     </ul>
                     <div id="test">
+
                         <div class="card-content black-text">
                            <ul class="collection" style="margin-top: -15px;">
+                             @foreach($fof as $f)
+                             @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
+
+                             <?php
+                             $f_status = DB::table('friends')->select('status')->where([['from_user_id','=',Auth::user()->id],['to_user_id','=',$f->id]])->first();
+                             ?>
                             <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
+                                <img src="{{url('img/uploads/avatars/'.$f->avatar)}}" alt="" class="circle pic-border">
+                                <h5 class="title">{{$f->first_name.' '.$f->last_name}}</h5>
+                                @if($f_status=='pending')
+                                <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button></a>
+                                @else
+                                <form action="{{url('/pending')}}" method='post'>
+                                  {{ csrf_field() }}
+                                <input type='hidden' value='{{$f->id}}' name='aid'>
+                              <button class="btn  waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+                              </form>
+                              @endif
+
                             </li>
-                            <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-                            </li>
+                            @endif
+                            @endforeach
 
                         </ul>
                     </div>
@@ -123,9 +126,10 @@
             <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-rss-square fa-3x left" aria-hidden="true"></i><h4>มีอะไรใหม่วันนี้</h4>
             </li>
         </ul>
-        <!--timeline mypost-->
+
     @foreach($posts as $key=>$post)
-            <div class="row" style="">
+    @if(in_array($post->id,$all_posts))
+            <div class="row" >
                 <div class="col s12">
 
                     <div class="card" style="box-shadow:none; background-color: transparent;">
@@ -176,27 +180,50 @@
                                 <div class="card-action" style="border: none;">
                                   <?php $count_likes = DB::table('likes')->where('post_id','=',$post->id)->count();
                                       $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
-                                      ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->orderBy('created_at', 'desc')->get();
+                                      ->where('post_id',$post->id)->select('likes.*','accounts.username','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->orderBy('created_at', 'desc')->get();
                                       $uid = Auth::user()->id;
-
+                                      $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
                                           ?>
                                     <div class="row wholike-sec">
+                                      <div class="col s2">
+                                      @if($liked!=null)
 
-                                        <div class="col s1 like-section">
+                                          <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                            <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                          </a>
+                                          @else
                                           <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                             <img class="heart-i" src="{{url('img/heart-like.png')}}">
                                           </a>
-                                        </div>
-                                        <div class="col s2"></div>
+
+                                          @endif
+                                            </div>
+
+
                                         <div class="col s2">
                                             <div class="likecount">
                                                 <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
                                             </div>
                                         </div>
+
+                                        <div id="wholike" class="modal" style="width: 500px;">
+                                            <ul class="collection with-header f-modal">
+                                                <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
+                                                    <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+                                                <li class="collection-item avatar transper">
+                                                    <img src="" alt="" class="circle">
+                                                    <p>พิชิต จิตมั่นคง </p>
+                                                    <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
                                         <div class="col s2">
                                             <div class="wholike">
                                               @foreach($likes as $like)
-                                                <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
+                                                <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                   <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
                                                   @endforeach
                                             </div>
@@ -263,6 +290,16 @@
                             </div>
                         </div>
                     </div>
+                    <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                      <div class="modal-content" >
+
+                            <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
+                          </div>
+                          <div class="modal-footer">
+                            <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                             <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                          </div>
+                    </div>
                     <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
@@ -283,6 +320,9 @@
                             </li>
                         </ul>
                     </div>
+
+
+                  @endif
     @endforeach
                 </div>
             </div>
@@ -300,26 +340,6 @@
     <!--post-edit-->
 
     <!--wholike-->
-    <div id="wholike" class="modal" style="width: 500px;">
-        <ul class="collection with-header f-modal">
-            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
-                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
-            <li class="collection-item avatar transper">
-                <img src="img/pic.jpg" alt="" class="circle">
-                <p>เจ๊สมร ดอนเจดีย์</p>
-                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-            </li>
-            <li class="collection-item avatar transper">
-                <img src="img/pic.jpg" alt="" class="circle">
-                <p>พิชิต จิตมั่นคง </p>
-                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-            </li>
-            <li class="collection-item avatar transper">
-                <img src="img/pic.jpg" alt="" class="circle">
-                <p>มาโนช ชงชม </p>
-                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-            </li>
-        </ul>
-    </div>
+
 
 @stop

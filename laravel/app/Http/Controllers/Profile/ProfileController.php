@@ -91,35 +91,65 @@ class ProfileController extends Controller
       $title = 'Newsfeed';
       $profile_id =Auth::user()->profile_id;
       $info = Profile::select('*')->where('id','=',$profile_id)->first();
+      $f_all = array();
+      $friend1 = DB::table('friends')->select('to_user_id as id')->where([['from_user_id','=',$id],['status','=','accepted']]);
 
-      $friend1 = DB::table('friends')->select('to_user_id')->where([['from_user_id','=',$id],['status','=','accepted']]);
-      $allfriend = DB::table('friends')->select('from_user_id')->where([['to_user_id','=',$id],['status','=','accepted']])->union($friend1)->get();
+      $allfriend = DB::table('friends')->select('from_user_id as id')->where([['to_user_id','=',$id],['status','=','accepted']])->union($friend1)->get();
+      $myfriend = array();
+      foreach($allfriend as $friend){
+        array_push($myfriend,$friend->id);
+      }
+      foreach($myfriend as $mf){
+        $fof1 =DB::table('friends')->select('to_user_id as id')->where([['from_user_id','=',$mf],['status','=','accepted'],['from_user_id','<>',$id],['to_user_id','<>',$mf]]);
+        $fof2 =DB::table('friends')->select('from_user_id as id')->where([['to_user_id','=',$mf],['status','=','accepted'],['to_user_id','<>',$id],['from_user_id','<>',$mf]])
+        ->union($fof1)->get();
 
+        foreach ($fof2 as $key => $value) {
+          array_push($f_all,$value->id);
+
+        }
+
+      }
+
+      $fof = DB::table('accounts')->join('profiles','profiles.id','=','accounts.profile_id')
+      ->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar')
+      ->get();
+
+      // dd($f_all);
+      $p_all = array();
       $posts = Post::join('accounts','posts.user_id','=','accounts.id')
       ->join('profiles','accounts.profile_id','=','profiles.id')
-      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
+      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')
       ->orderBy('created_at', 'desc')
       ->get();
-      // $friends_sql=mysql_query("SELECT b.to_user_id FROM (SELECT to_user_id FROM friends WHERE from_user_id = $id) a INNER JOIN (SELECT from_user_id FROM friends WHERE to_user_id = $id) b
-      // ON a.friend_two = b.friend_two");
-      //             while($friends=mysql_fetch_array($friends_sql))
-      //             {
-      //                  $getMutualFriendInfo = mysql_query("SELECT * FROM users WHERE uid='{$friends['friend_two']}'");
-      //                   $MutualFriendInfo = mysql_fetch_array($getMutualFriendInfo);
-      //                 }
-      //           dd($MutualFriendInfo);
-
-      // $i = $allfriend->toArray();
-      // $ii = array();
-      // foreach ($i as $key => $value) {
-      //   array_push($ii,$value['accounts.id']);
-      //   // dd($ii);
-      // }
 
 
-      return view('social.newsfeed',compact('info','user','title','posts'));
+      foreach ($allfriend as $key => $value) {
+          $allposts = DB::table('posts')->join('accounts','accounts.id','=','posts.user_id')->join('profiles','profiles.id','=','accounts.profile_id')
+          ->select('posts.*','accounts.first_name','accounts.last_name','profiles.avatar')
+          ->where('posts.user_id' ,'=',$value->id)->orderBy('created_at','desc')->get();
+          foreach ($allposts as $key => $value) {
+            array_push($p_all,$value->id);
+          }
+     }
+
+     $m_post = array();
+     $my_post = DB::table('posts')->join('accounts','accounts.id','=','posts.user_id')->join('profiles','profiles.id','=','accounts.profile_id')
+     ->select('posts.*','accounts.first_name','accounts.last_name','profiles.avatar')
+     ->where('posts.user_id' ,'=',$id)->orderBy('created_at','desc')->get();
+     foreach ($my_post as $key => $value) {
+       array_push($m_post,$value->id);
+     }
+     $all_posts = array_collapse([$m_post,$p_all]);
+
+
+      return view('social.newsfeed',compact('info','title','posts','user','allfriend','all_posts','fof','myfriend','f_all'));
 
     }
+
+
+
+
     public function settingProfile(Request $req)
     {
       $id=Auth::user()->id;

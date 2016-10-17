@@ -13,4 +13,9 @@ class Friends extends Model
     {
         return $this->hasMany('App\Account');
     }
+
+    public function post()
+    {
+      return $this->hasMany('App\Post','user_id');
+    }
 }

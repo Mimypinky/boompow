@@ -34,7 +34,7 @@ class ChatController extends Controller
     }
 
     public function testChat($fid){
-      $title = 'ทดสอบแชท';
+      $title = 'สนทนา';
       $friendAccount = Account::find($fid);
       $myAccount = Account::find(Auth::user()->id);
       $userid =  Auth::user()->id;

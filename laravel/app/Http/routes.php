@@ -18,6 +18,7 @@ Route::get('/index', function(){
 Route::get('/','HomeController@index');
 Route::get('/content/{category_title}', 'HomeController@showContent');
 Route::get('/content/{category_title}/{topic}','HomeController@getTopic');
+Route::get('/fav/{cid}','FavouriteController@addFav');
 Route::get('/content',[ 'as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/event',[ 'as' => 'event', 'uses' => 'EventController@index']);
@@ -78,11 +79,7 @@ Route::get('/profile-friend',function(){
   return view('social.profile-friend',compact('title'));
 });
 Route::get('/friend/{username}' ,'FriendController@viewFriend');
-Route::get('/friends',function(){
-  $title ='Boompow - My Friends';
-  return view('social.friend',compact('title'));
-});
-
+Route::get('/friends','FriendController@showFriendlist');
 Route::get('/dP/{username}', 'FriendController@delPending');
 
 
@@ -105,3 +102,21 @@ Route::get('/testProfile', function(){
 });
 Route::get('/setting', 'Profile\ProfileController@settingProfile');
 Route::post('/updateInfo','Profile\ProfileController@updateInfo');
+Route::get('/administator',function(){
+  return view('admin.adminhome');
+});
+Route::get('/administator/user',function(){
+  return view('admin.manage_user');
+});
+Route::get('/administator/post',function(){
+  return view('admin.manage_post');
+});
+Route::get('/administator/post/create',function(){
+  return view('admin.create_content');
+});
+Route::get('/administator/login',function(){
+  return view('admin.adminlogin');
+});
+Route::get('/administator/register',function(){
+  return view('admin.regist_admin');
+});

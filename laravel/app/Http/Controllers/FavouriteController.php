@@ -14,9 +14,9 @@ class FavouriteController extends Controller
      if(Auth::check()){
        $user =Auth::user()->id;
        $title = 'Boompow - Favourite';
-       $myFav = Favourite::join('contents','favourite.content_id','=','contents.id')
-       ->select('favourite.*','contents.content_title','contents.description','contents.id')
-       ->where('user_id','=',$user)->get();
+       $myFav = Favourite::join('contents','favourite.content_id','=','contents.id')->join('category','category.id','=','contents.cate_id')
+       ->select('favourite.*','contents.content_title','contents.description','contents.id','category.*')
+       ->where('user_id','=',$user)->orderBy('created_at','desc')->get();
 
 
        return view('social.fav',compact('myFav','title'));
@@ -26,6 +26,7 @@ class FavouriteController extends Controller
      }
    }
    public function addFav($cid){
+
        $user =Auth::user()->id;
        $fav = new Favourite();
        $fav->user_id = $user;
