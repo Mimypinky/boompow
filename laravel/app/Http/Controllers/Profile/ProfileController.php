@@ -122,10 +122,6 @@ class ProfileController extends Controller
       ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')
       ->orderBy('created_at', 'desc')
       ->get();
-<<<<<<< HEAD
-=======
-
->>>>>>> 80bac48b41892f61c5787009b2ac92898eaf6ec0
 
       foreach ($allfriend as $key => $value) {
           $allposts = DB::table('posts')->join('accounts','accounts.id','=','posts.user_id')->join('profiles','profiles.id','=','accounts.profile_id')

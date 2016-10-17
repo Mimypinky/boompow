@@ -79,17 +79,9 @@ Route::get('/profile-friend',function(){
   return view('social.profile-friend',compact('title'));
 });
 Route::get('/friend/{username}' ,'FriendController@viewFriend');
-<<<<<<< HEAD
-Route::get('/friends',function(){
-  $title ='Boompow - My Friends';
-  return view('social.friend',compact('title'));
-});
 
-
-=======
 Route::get('/friends','FriendController@showFriendlist');
-Route::get('/dP/{username}', 'FriendController@delPending');
->>>>>>> 80bac48b41892f61c5787009b2ac92898eaf6ec0
+
 
 
 Route::get('/chat',function(){
