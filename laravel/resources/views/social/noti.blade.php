@@ -140,7 +140,7 @@
          <div class="col s10 m10 l10" style="margin-top:1em">
            <span style="color:#26a69a">{{$person->first_name.' '.$person->last_name}}</span> <span class="description">ได้ส่งคำขอเป็นเพื่อน</span>
             <a href="{{url('acceptFriend/'.$person->id)}}"class="btn waves-effects  waves-light teal lighten-2 right "  >ยอมรับคำขอ</a><br/><br/>
-            <a href="{{url('declineFriend/'.$person->id)}}"class="btn waves-effects waves-light  red lighten-1 right" style="margin-right:1em" >ลบคำขอ</a>
+            <a href="{{url('cancelFriendReq/'.$person->username)}}"class="btn waves-effects waves-light  red lighten-1 right" style="margin-right:1em" >ลบคำขอ</a>
          </div>
          <div class="section"></div>
          <div class="col s1 m10 l10">

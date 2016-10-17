@@ -100,21 +100,6 @@ class ProfileController extends Controller
       ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
       ->orderBy('created_at', 'desc')
       ->get();
-      // $friends_sql=mysql_query("SELECT b.to_user_id FROM (SELECT to_user_id FROM friends WHERE from_user_id = $id) a INNER JOIN (SELECT from_user_id FROM friends WHERE to_user_id = $id) b
-      // ON a.friend_two = b.friend_two");
-      //             while($friends=mysql_fetch_array($friends_sql))
-      //             {
-      //                  $getMutualFriendInfo = mysql_query("SELECT * FROM users WHERE uid='{$friends['friend_two']}'");
-      //                   $MutualFriendInfo = mysql_fetch_array($getMutualFriendInfo);
-      //                 }
-      //           dd($MutualFriendInfo);
-
-      // $i = $allfriend->toArray();
-      // $ii = array();
-      // foreach ($i as $key => $value) {
-      //   array_push($ii,$value['accounts.id']);
-      //   // dd($ii);
-      // }
 
 
       return view('social.newsfeed',compact('info','user','title','posts'));

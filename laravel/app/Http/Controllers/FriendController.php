@@ -53,37 +53,21 @@ public function sendFriendRequest(Request $req){
 
 
   }
-    public function acceptFriend(Request $req){
-      if(Auth::check()){
-        $id = $req->input('rid');
-        $fr = Friends::find($id);
-        $fr->status = 'accepted';
-        $fr->save();
-        return redirect()->intended('social.noti');
-      }else {
-        echo 'Please login ..';
-        return redirect()->intended('/');
-
-      if(Auth::check()){
-          $user = Auth::user()->id;
-          $title='Friend Request';
-          $status = 'pending';
-          $accounts = DB::table('friends')
-                  ->join('accounts', 'accounts.id', '=', 'friends.to_user_id')
-                  ->where([['action_user_id',$user],['status','pending']])
-                  ->select('accounts.*' , 'friends.*')->get();
-              //  dd($accounts);
-          return view('social.noti',compact('accounts','user','title'));
-        }else {
-          echo 'Please login ..';
-          return redirect()->intended('/');
-        }
-      }
+    public function acceptFriendRequest($fid){
+          if(Auth::check()){
+            $fr = Friends::where('id' , $fid)->first();
+            $fr->status = 'accepted';
+            $fr->save();
+            return redirect()->intended('/notification');
+          }
+          else{
+            return redirect()->intended('/');
+          }
   }
 
 
 
-      public function cancelRequest(Request $req){
+      public function cancelFriendRequest(Request $req){
         $id = $req->input('aid');
         $user=Auth::user()->id;
         $friend = Friends::find($id);
@@ -91,21 +75,21 @@ public function sendFriendRequest(Request $req){
               ['from_user_id', '=', $user],
               ['to_user_id', '=', $id]])->delete();
 
-        return redirect()->intended('FriendReq');
+        return redirect()->intended('/notification');
       }
 
-public function delPending($username){
-  $id = Account::where('username' , $username)->first();
-  $fid =  $id->id;
-  $account = Account::find($fid);
-  $title = $account->first_name.'  '.$account->last_name;
-  $myId = Auth::user()->id;
-  $d1 = Friends::where('from_user_id' , $myId)
-  ->where('to_user_id' , $fid)->where('status' , 'pending')->delete();
-   $d2 = Friends::where('from_user_id' , $fid)
-  ->where('to_user_id' , $myId)->where('status' , 'pending')->delete();
-  return redirect()->intended('friend/'.$username);
-}
+      public function deletePending($username){
+        $id = Account::where('username' , $username)->first();
+        $fid =  $id->id;
+        $account = Account::find($fid);
+        $title = $account->first_name.'  '.$account->last_name;
+        $myId = Auth::user()->id;
+        $d1 = Friends::where('from_user_id' , $myId)
+        ->where('to_user_id' , $fid)->where('status' , 'pending')->delete();
+         $d2 = Friends::where('from_user_id' , $fid)
+        ->where('to_user_id' , $myId)->where('status' , 'pending')->delete();
+        return redirect()->intended('friend/'.$username);
+      }
 
     public function viewFriend($username){
       $id = Account::where('username' , $username)->first();
@@ -133,22 +117,14 @@ public function delPending($username){
         $pending = $isPending1+$isPending2;
             if($pending==0)
             {
-              $friend_status ='pending';
-              return view('social.profile-friend')->with('title' , $title)
-<<<<<<< HEAD
-                ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
-=======
-                ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('f_info',$f_info)->with('friend_status',$friend_status);
->>>>>>> d0b8a566a3788df13693ef1bb657513d163acddd
-            }elseif($pending==1||$pending)
-            {
               $friend_status ='notfriend';
+              return view('social.profile-friend')->with('title' , $title)
+                ->with('account' , $account)->with('msg' , 'ไม่สามารถเห็นโพสต์ของผู้ใช้นี้ได้ ต้องเป็นเพื่อนกันก่อนนะ')->with('status',$status)->with('f_info',$f_info)->with('friend_status',$friend_status);
+            }elseif($pending>=1)
+            {
+              $friend_status ='pending';
                 return view('social.profile-friend')->with('title' , $title)
-<<<<<<< HEAD
-                  ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
-=======
-                  ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('f_info',$f_info)->with('friend_status',$friend_status);
->>>>>>> d0b8a566a3788df13693ef1bb657513d163acddd
+                  ->with('account' , $account)->with('msg' , 'ไม่สามารถเห็นโพสต์ของผู้ใช้นี้ได้ ต้องเป็นเพื่อนกันก่อนนะ')->with('status',$status)->with('f_info',$f_info)->with('friend_status',$friend_status);
             }
       }elseif($is_f == 1||$is_f ==2)
       {

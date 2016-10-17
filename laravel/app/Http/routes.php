@@ -31,23 +31,23 @@ Route::get('/event/board/{eid}','EventController@eventBoardindex');
 Route::get('/favourite','FavouriteController@index');
 
 Route::auth();
-
 Route::get('/register/step2',function(){
     $title ='Register';
     return view('auth/register_p2',compact('title'));
 });
 Route::resource('/register','Profile\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
-Route::get('/checkAvailableUsername',function(){
-  $username = Request::Input('username');
-
-  $result = App\Account::where('username', $username)->first();
-  if(isset($result)){
-    return Response::json('1');
-  }
-  else {
-    return Response::json('0');
-  }
-});
+Route::get('/checkAvailableUsername','Profile\AuthController@checkAvailableUsername');
+// Route::get('/checkAvailableUsername',function(){
+//   $username = Request::Input('username');
+//
+//   $result = App\Account::where('username', $username)->first();
+//   if(isset($result)){
+//     return Response::json('1');
+//   }
+//   else {
+//     return Response::json('0');
+//   }
+// });
 
 Route::group(['middleware' => ['web']], function (){
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
@@ -83,20 +83,20 @@ Route::get('/friends',function(){
   return view('social.friend',compact('title'));
 });
 
-Route::get('/dP/{username}', 'FriendController@delPending');
+
 
 
 Route::get('/chat',function(){
   $title ='Boompow - Chatbox';
   return view('social.mockup_chat',compact('title'));
 });
-route::get('chatHistory/{accid}','ChatController@testChat');
+route::get('chatHistory/{accid}','ChatController@chatRoom');
 Route::get('/message_box','ChatController@index');
-Route::post('/sendMessage','ChatController@sendMessage');
-Route::get('/retrieveChatMessages','ChatController@retrieveChatMessages');
 
 Route::get('/notification' , 'FriendController@viewFriendRequest');
-Route::get('acceptFriend/{rid}', 'FriendController@acceptFriend');
+Route::get('/deletePending/{username}', 'FriendController@deletePending');
+Route::get('/cancelFriendReq/{username}', 'FriendController@cancelFriendRequest');
+Route::get('acceptFriend/{fid}', 'FriendController@acceptFriendRequest');
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });

@@ -41,8 +41,8 @@
                         <div class="center"  id="friendRequest" style="margin-bottom:1.5em;margin-top:-3.5em">
 
                             @if($friend_status=='pending')
-                            <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button></a>
-                              @elseif($friend_status=='notfriend')
+                            <a href="{{ url('/deletePending/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button></a>
+                            @elseif($friend_status=='notfriend')
                               <form action="{{url('/pending')}}" method='post'>
                                 {{ csrf_field() }}
                               <input type='hidden' value='{{$account->id}}' name='aid'>

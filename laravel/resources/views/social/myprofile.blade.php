@@ -95,6 +95,7 @@
                 </div>
                 <!--end Update status-->
                 <!--timeline-->
+                @if(isset($posts))
                 <div class="row" style="margin-top: 11%;">
                     <div class="col s8 offset-s2 pro-upstatus w-profile">
                         <!--timeline mypost-->
@@ -240,17 +241,19 @@
                                                <div>
                                                    <div class="row">
 
-                                                   <form action="{{url('/comment/'.$post->id)}}" method="post">
+                                                   <!-- <form action="{{url('/comment/'.$post->id)}}" method="post"> -->
+                                                   <form>
                                                        <div class="input-field cmt-coll-space">
 
                                                        <div class="input-field w-cmt">
 
                                                             <div class="input-field col s12">
-                                                                <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+                                                                <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                                <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
-                                                            <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
+                                                            <!--<button id="btn-comment" name="action" class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>-->
+                                                            <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
                                                         </div>
 
@@ -259,18 +262,34 @@
 
                                                    <div class="comment-section">
                                                        <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
-                                                            <li>
+                                                            <li id="commentboxs">
                                                               <?php $comments = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
                                                               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
                                                               ->where('post_id',$post->id)->get();
                                                               $count_comments = DB::table('comments')->where('post_id',$post->id)->count();
 
                                                               ?>
+
                                                               @if($count_comments !=null)
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
                                                               @endif
+                                                              <script type="text/javascript">
+                                                                  $('.btn-comment').click(function(){
+                                                                    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                    type : "POST",
+                                                                    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                                                                  })
+                                                                    .done(function(html) {
+                                                                      $('#commentboxs').append(html);
+                                                                    })
+                                                                    .fail(function(){
+                                                                      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                    })
+                                                                  });
+                                                              </script>
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
@@ -300,15 +319,10 @@
                           @endforeach
                       </div>
                     </div>
-
                         <!--End timeline mypost-->
-
-
-
-
                     </div>
                 </div>
-
+                @endif
                 <!--End timeline-->
 
                 <!-- Modal Structure -->
@@ -432,6 +446,9 @@
 
                         </ul>
                     </div>
+                    @if(!isset($key))
+                    <div class="section"></div>
+                    @else
                     <div id="delPicPost{{$key}}" class="modal" style="width: 500px;">
                        <div class="modal-content">
                          <h4>ยืนยันการลบรูปภาพ</h4>
@@ -440,6 +457,7 @@
                          <a href="{{url('/delPic/'.$post->id)}}" class=" modal-action modal-close waves-effect waves-green btn-flat">ยืนยัน</a>
                        </div>
                      </div>
+                     @endif
                     <!-- End Modal Structure -->
 
 
@@ -447,4 +465,5 @@
         </div>
     </div>
 </div>
+
 @stop
