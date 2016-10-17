@@ -6,7 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Content;
 use App\Category;
-
+use App\Favourite;
 class HomeController extends Controller
 {
     /**
@@ -40,7 +40,7 @@ class HomeController extends Controller
       $content = Content::join('category','contents.cate_id','=','category.id')
       ->select('category.*','contents.*')->where('category_title','=', $cateid)->get();
       $headtitle= Category::select('category_title_th','pic')->where('category_title','=',$cateid)->first();
-    
+
           return view('contents.subcontent',compact('content','title','headtitle'));
     }
     public function getTopic(Request $req)
@@ -52,4 +52,9 @@ class HomeController extends Controller
       $article = Content::select('contents.*')->where('contents.id','=',$topicid)->get();
         return view('contents.topic',compact('content','headtitle','article','title'));
     }
+    public function pinned($value='')
+    {
+      # code...
+    }
+    
 }

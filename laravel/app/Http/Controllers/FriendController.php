@@ -139,4 +139,24 @@ public function sendFriendRequest(Request $req){
         ->with('friend_status',$friend_status);
       }
     }
+
+    public function showFriendlist(Request $req)
+    {
+      $fname= Auth::user()->first_name;
+      $lname = Auth::user()->last_name;
+
+      $id=Auth::user()->id;
+      $title = $fname.' '.$lname;
+      $friend1 = DB::table('friends')->select('to_user_id as id')->where([['from_user_id','=',$id],['status','=','accepted']]);
+      $allfriend = DB::table('friends')->select('from_user_id as id')->where([['to_user_id','=',$id],['status','=','accepted']])->union($friend1)->get();
+      $myfriend = array();
+      $account = Account::join('profiles','profiles.id','=','accounts.profile_id')
+      ->select('accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','accounts.id')
+      ->get();
+      foreach($allfriend as $friend){
+        array_push($myfriend,$friend->id);
+      }
+      return view('social.friend',compact('myfriend','title','account'));
+
+    }
 }

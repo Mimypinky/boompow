@@ -230,7 +230,7 @@
                                                             </a>
                                                           @endif
 
-                                                              @endforeach
+                                                          @endforeach
 
                                                         </div>
                                                     </div>

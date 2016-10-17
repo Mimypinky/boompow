@@ -225,10 +225,7 @@ $(document).ready(function () {
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -25px; padding-left: 3%;">
               <span><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>
                 &nbsp;&nbsp;&nbsp;<span style="font-size: 20pt">{{$join->title}}<span></span>
-                <?php $mem_join =$join->accounts->count();
-
-                      ?>
-
+<?php $mem_join = 0;?>
 
 
 @if($mem_join==0)
@@ -249,7 +246,7 @@ $(document).ready(function () {
                   </div>
                 </div>
 
-          @else
+          @else($mem_join!=0)
           <a href="#joinparti{{$key}}" class="modal-trigger"><div class="chip" align="right">{{ $mem_join}} ที่เข้าร่วม</div></a>
           <div id="joinparti{{$key}}" class="modal" style="width: 500px;">
           <ul class="collection with-header f-modal">
@@ -269,6 +266,8 @@ $(document).ready(function () {
             </ul>
           </div>
           @endif
+
+
               </div>
             </div>
 

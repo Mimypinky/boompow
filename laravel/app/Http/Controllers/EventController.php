@@ -11,6 +11,8 @@ use App\Users;
 use App\EventPhotos;
 use App\JoinEvent;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 use Intervention\Image\ImageManagerStatic as Image;
 class EventController extends Controller
 {
@@ -27,15 +29,42 @@ class EventController extends Controller
         $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
             ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')
             ->paginate(7);
+
         $myEvent = Event::join('accounts', 'events.creator', '=', 'accounts.id')
             ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
             ->where('creator','=',$user)->orderBy('create_at', 'desc')
             ->get();
+
         $joinEvent = JoinEvent::join('events','join_event.eve_id','=','events.id')
         ->join('accounts','events.creator','=','accounts.id')
         ->select('events.*','join_event.*', 'accounts.first_name as fname','accounts.last_name as lname')
         ->where('user_id','=',$user)->orderBy('join_time', 'desc')
         ->get();
+    // foreach($event as $eve){
+    //   $today = Carbon::now();
+    //   $now = $today->toDateString();
+    //   $fdate = $eve->finish_date;
+    //
+    //   $dif = $today->diffForHumans($fdate);
+    //   return $dif;
+    // }
+      //   foreach($event as $eve){
+      //     $finish =$event->finish_date;
+      //     $now = time();
+      //     $diff=date_diff($finish,$now);
+      // return $diff;
+      // }
+        $ii = array();
+        $time_dif = array();
+        $eve = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')->get();
+
+            foreach($eve as $e){
+              $fdate = $e->finish_date;
+              // // $now = now();
+              // return $now;
+            }
+
         $joinEvent2 = JoinEvent::where('user_id', $user)->get();
 
         $eiei =$joinEvent->toArray();
@@ -43,6 +72,7 @@ class EventController extends Controller
         foreach ($eiei as $key => $value) {
           array_push($joined,$value['eve_id']);
         }
+
 
 
         $party = Event::join('accounts','events.id','=','accounts.id')
@@ -55,7 +85,7 @@ class EventController extends Controller
           array_push($attend,$value['id']);
         }
 
-        return view('site.event',compact('title','event','myEvent','joinEvent','joined','user'));
+        return view('site.event',compact('title','event','myEvent','joinEvent','joined','user','ii'));
 
       }else {
         echo 'Please login ..';

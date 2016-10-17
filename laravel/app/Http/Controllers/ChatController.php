@@ -26,8 +26,13 @@ class ChatController extends Controller
       return view('social.chat',compact('title', 'account1' , 'account2'));
     }
 
+<<<<<<< HEAD
     public function chatRoom($fid){
       $title = 'ห้องแชทของ';
+=======
+    public function testChat($fid){
+      $title = 'สนทนา';
+>>>>>>> 80bac48b41892f61c5787009b2ac92898eaf6ec0
       $friendAccount = Account::find($fid);
       $myAccount = Account::find(Auth::user()->id);
       $userid =  Auth::user()->id;

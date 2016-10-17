@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\Content;
+use App\Category;
+
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+          $title =  'Boompow';
+          $headtitle = 'รวมสาระน่ารู้';
+          $content = Content::join('category','contents.cate_id','=','category.id')
+          ->select('category.*','contents.*')->paginate(12);
+          return view('site.home',compact('headtitle','title','content'));
+    }
+    public function showContent(Request $req)
+    {
+
+      $cateid=$req->category_title;
+      $title = 'Boompow';
+      $content = Content::join('category','contents.cate_id','=','category.id')
+      ->select('category.*','contents.*')->where('category_title','=', $cateid)->get();
+      $headtitle= Category::select('category_title_th','pic')->where('category_title','=',$cateid)->first();
+    
+          return view('contents.subcontent',compact('content','title','headtitle'));
+    }
+    public function getTopic(Request $req)
+    {
+      $cateid =$req->category_title;
+      $topicid = $req->topic;
+      $title = 'Boompow';
+      $headtitle= Category::select('category.*')->where('category_title','=',$cateid)->first();
+      $article = Content::select('contents.*')->where('contents.id','=',$topicid)->get();
+        return view('contents.topic',compact('content','headtitle','article','title'));
+    }
+}

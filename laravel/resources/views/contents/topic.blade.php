@@ -1,5 +1,7 @@
 @extends('site.layout')
 @section('maincontent')
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+<link rel="canonical" href="https://dev.twitter.com/web/tweet-button">
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/health3.jpg')}}">
@@ -23,6 +25,21 @@
 @endforeach
 
 <div class="container" style="width: 90%;">
+<style>
+#showlink{
+    border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+    border: 1px solid #ee6e73 ;
+    width:
+  }
+  ::selection{
+
+      background:#e57373 ; color:#fff; text-shadow: none;
+
+    }
+
+</style>
 
 <!--Content Section-->
 <div class="section"></div>
@@ -33,29 +50,48 @@
 
         <div>
             <!--FullScreen-->
-            <a class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
+@foreach($article as $data)
+            <a href="{{url('/fav/'.$data->id)}}"class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
+              <i class="fa fa-star" aria-hidden="true"></i></a>
+            <a href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
+              <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
+            <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
+              <i class="fa fa-link" aria-hidden="true"></i></a>
+
+              <div id="sharecontent" class="modal modal-fixed-footer " style="width:50%;height:50%">
+    <div class="modal-content">
+      <div class="row">
+        <h4>แบ่งปันบทความ</h4>
+      </div>
+      <div class="row">
+        <div class="col s12 white"id="showlink">
+        <p class="red-text text-lighten-2" id="link">{{url('/content/'.$headtitle->category_title.'/'.$data->id)}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <script type="text/javascript">
+              $(function(){
+              new Clipboard('.copy-text');
+              });
+
+      </script>
+      <div class="col s12" style="text-align:right;">
+        <a data-clipboard-target="#link" href="#" class="copy-text btn waves-effect waves-light" >คัดลอก
+            <i class="fa fa-files-o" aria-hidden="true"></i>
+          </a>
+      </div>
+      </div>
+
+    </div>
+  </div>
 
 
 
-
-        <!--iPad
-            <a class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-ipad tooltipped"data-position="top" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-ipad tooltipped" data-position="top" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light blue marginShareBtn-ipad tooltipped" data-position="top" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
-
-
-
-            <a class="btn-floating waves-effect waves-light yellow accent-3 marginShareBtn-mobile tooltipped"data-position="top" data-delay="50" data-tooltip="รายการโปรด"><i class="fa fa-star" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light red darken-1 marginShareBtn-mobile tooltipped" data-position="top" data-delay="50" data-tooltip="ปักหมุด"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
-            <a class="btn-floating waves-effect waves-light blue marginShareBtn-mobile tooltipped" data-position="top" data-delay="50" data-tooltip="คัดลอกลิ้งค์"><i class="fa fa-link" aria-hidden="true"></i></a>
-          -->
         </div>
 
 
 		</div>
-@foreach($article as $data)
+
         <div class="col s12 l10 m10 offset-m1 ContentBG">
 
           <h2 class="headContent">{{$data->content_title}}</h2>

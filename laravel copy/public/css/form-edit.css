@@ -1,0 +1,81 @@
+
+
+        /*CSS Form edit*/
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    padding-left: 21px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all .3s;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.input-field label {
+    color: #9e9e9e;
+    position: absolute;
+    top: 0.8rem;
+    left: 1.75rem;
+    font-size: 1rem;
+    cursor: text;
+    transition: .2s ease-out;
+}
+
+.input-field label.active {
+    font-size: 0.9em;
+    -webkit-transform: translateY(-140%);
+    transform: translateY(-164%);
+}
+/*end CSS form Edit*/
+
+.input-field input[type=search] {
+    padding-left: 3.4rem;
+}
+
+#dropdown1.dropdown-content {
+    background-color: #fff;
+    margin: 0;
+    display: none;
+    min-width: 100%;
+    max-height: 650px;
+    overflow-y: auto;
+    opacity: 0;
+    position: absolute;
+    z-index: 999;
+    will-change: width, height;
+}
+
+#dropdown1.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 16px;
+    color: #26a69a;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+
+#dropdown1.dropdown-content.active{
+	    width: 100px;
+    position: absolute;
+    top: 116px;
+    left: 63px;
+    opacity: 1;
+    display: block;
+}
+}
