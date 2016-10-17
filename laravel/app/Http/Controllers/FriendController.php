@@ -135,12 +135,20 @@ public function delPending($username){
             {
               $friend_status ='pending';
               return view('social.profile-friend')->with('title' , $title)
+<<<<<<< HEAD
+                ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
+=======
                 ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('f_info',$f_info)->with('friend_status',$friend_status);
+>>>>>>> d0b8a566a3788df13693ef1bb657513d163acddd
             }elseif($pending==1||$pending)
             {
               $friend_status ='notfriend';
                 return view('social.profile-friend')->with('title' , $title)
+<<<<<<< HEAD
+                  ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status);
+=======
                   ->with('account' , $account)->with('msg' , 'This profile has been hidden')->with('status',$status)->with('f_info',$f_info)->with('friend_status',$friend_status);
+>>>>>>> d0b8a566a3788df13693ef1bb657513d163acddd
             }
       }elseif($is_f == 1||$is_f ==2)
       {
