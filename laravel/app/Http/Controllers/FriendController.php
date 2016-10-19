@@ -67,14 +67,16 @@ public function sendFriendRequest(Request $req){
 
 
 
-      public function cancelFriendRequest(Request $req){
-        $id = $req->input('aid');
-        $user=Auth::user()->id;
-        $friend = Friends::find($id);
-        $friend = Friends::where([
-              ['from_user_id', '=', $user],
-              ['to_user_id', '=', $id]])->delete();
-
+      public function deleteFriendRequest($username){
+        $id = Account::where('username' , $username)->first();
+        $fid =  $id->id;
+        $account = Account::find($fid);
+        $title = $account->first_name.'  '.$account->last_name;
+        $myId = Auth::user()->id;
+        $d1 = Friends::where('from_user_id' , $myId)
+        ->where('to_user_id' , $fid)->where('status' , 'pending')->delete();
+         $d2 = Friends::where('from_user_id' , $fid)
+        ->where('to_user_id' , $myId)->where('status' , 'pending')->delete();
         return redirect()->intended('/notification');
       }
 
@@ -88,6 +90,19 @@ public function sendFriendRequest(Request $req){
         ->where('to_user_id' , $fid)->where('status' , 'pending')->delete();
          $d2 = Friends::where('from_user_id' , $fid)
         ->where('to_user_id' , $myId)->where('status' , 'pending')->delete();
+        return redirect()->intended('friend/'.$username);
+      }
+
+      public function unfriend($username){
+        $id = Account::where('username' , $username)->first();
+        $fid =  $id->id;
+        $account = Account::find($fid);
+        $title = $account->first_name.'  '.$account->last_name;
+        $myId = Auth::user()->id;
+        $d1 = Friends::where('from_user_id' , $myId)
+        ->where('to_user_id' , $fid)->where('status' , 'accepted')->delete();
+         $d2 = Friends::where('from_user_id' , $fid)
+        ->where('to_user_id' , $myId)->where('status' , 'accepted')->delete();
         return redirect()->intended('friend/'.$username);
       }
 

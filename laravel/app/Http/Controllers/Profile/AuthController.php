@@ -64,6 +64,17 @@ class AuthController extends Controller
       return view('site.index');
     }*/
 
+    public function loginForm(){
+      $title = 'เข้าสู่ระบบ';
+      if(!Auth::check()){
+        return view('auth.loginform',compact('title'));
+
+      }
+      else {
+        return redirect()->intended('/');;
+      }
+    }
+
     public function logout(){
       Auth::logout();
       return redirect()->intended('/');
@@ -86,12 +97,15 @@ class AuthController extends Controller
       $password = $request['password'];
       $remember = Input::has('remember')? true : false;
 
-      if(Auth::attempt(['username' => $username, 'password' => $password], $remember)){
+      if(Auth::attempt(['username' => $username, 'password' => $password], $remember) && Auth::user()->status == 'user' ){
         return redirect()->intended('/');
       }
-
+      else if(Auth::attempt(['username' => $username, 'password' => $password], $remember) && Auth::user()->status == 'admin'){
+        return redirect()->intended('/administator');
+      }
       else{
-        return back()->withInput();
+        $message = 'ขื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
+        return redirect('login')->with('loginStatus', $message );
       }
     }
     public function checkAvailableUsername(Request $request){

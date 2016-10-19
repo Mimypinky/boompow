@@ -324,6 +324,9 @@
 
     <ul id="dropdownprofile" class="dropdown-content">
         <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
+        @if(Auth::check() and Auth::user()->admin_status=="admin")
+          <li><a href="{{url('/administator')}}">หน้า Admin</a></li>
+        @endif
         <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
 
     </ul>
@@ -414,24 +417,16 @@
             <div class="row">
                 <div class="input-field col s8 offset-s2">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate" name="username">
-                    <label for="icon_prefix">เข้าสู่ระบบ</label>
+                    <input id="inputUsername" type="text" class="validate tooltipped" data-position="right" data-delay="50" data-tooltip="กรอกชื่อผู้ใช้" name="username" value="{{ old('username') }}" onchange="allowLogin()" onmouseleave="allowLogin()">
+                    <label for="inputUsername">เข้าสู่ระบบ</label>
                 </div>
 
                 <div class="input-field col s8 offset-s2">
                     <i class="material-icons prefix">https</i>
-                    <input id="icon_prefix" type="password" class="validate" name="password">
-                    <label for="icon_prefix">รหัสผ่าน</label>
+                    <input id="inputPassword" type="password" class="validate tooltipped" data-position="right" data-delay="50" data-tooltip="กรอกรหัสผ่าน" name="password" onchange="allowLogin()" onmouseleave="allowLogin()">
+                    <label for="inputPassword">รหัสผ่าน</label>
                 </div>
             </div>
-            <br>
-            @if ($errors->has('username'))
-                <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('username') }}</span>
-            @endif
-            <br>
-            @if ($errors->has('[password]'))
-                <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
-            @endif
             <div class="modal-footer" align="center">
                 <span>
                     <input type="checkbox" class="filled-in" id="filled-in-box" name="remember"/>
@@ -439,8 +434,23 @@
                     หรือ <a href="#">ลืมรหัสผ่าน</a></span>
                 </div>
                 <div align="center" style="margin-bottom: 10px">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">ลงชื่อเข้าใช้</button>
+                    <button id="loginBtn" class="btn waves-effect waves-light" type="submit" name="action" disabled>ลงชื่อเข้าใช้</button>
                 </div>
+                <script type="text/javascript">
+                  function allowLogin(){
+                    var inputUsername = document.getElementById('inputUsername');
+                    var inputPassword = document.getElementById('inputPassword');
+                    var loginBtn = document.getElementById('loginBtn');
+                      if(inputUsername.value.length > 0 && inputPassword.value.length > 0) {
+                        loginBtn.disabled = false;
+                        console.log('yes');
+                      }
+                      else{
+                        loginBtn.disabled = true;
+                        console.log('no');
+                      }
+                  }
+                </script>
             </form>
         </div>
     </div>

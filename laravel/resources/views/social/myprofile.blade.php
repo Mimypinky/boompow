@@ -275,22 +275,8 @@
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
                                                               @endif
-                                                              <script type="text/javascript">
-                                                                  $('.btn-comment').click(function(){
-                                                                    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                    type : "POST",
-                                                                    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-                                                                  })
-                                                                    .done(function(html) {
-                                                                      $('#commentboxs').append(html);
-                                                                    })
-                                                                    .fail(function(){
-                                                                      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                    })
-                                                                  });
-                                                              </script>
-                                                                @foreach($comments as $comment)
+
+                                                                @foreach($comments as $key => $comment)
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
@@ -302,7 +288,23 @@
 
                                                                 </ul>
                                                                 </div>
+                                                                <script type="text/javascript">
+                                                                    $('.btn-comment').click(function(){
+                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                      type : "POST",
+                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                                                                    })
+                                                                      .done(function(html) {
+                                                                        $('#commentboxs').append(html);
+                                                                      })
+                                                                      .fail(function(){
+                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                      })
+                                                                    });
+                                                                </script>
                                                                 @endforeach
+
                                                             </li>
                                                         </ul>
                                                    </div>
