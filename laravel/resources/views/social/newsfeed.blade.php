@@ -71,15 +71,15 @@
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "newsfeed2":
             $('.introjs-helperLayer').css({width:'494px'})
             break;
-      
+
         case "newsfeed3":
               $('.introjs-helperLayer').css({width:'184px'})
               break;
-      
+
         case "newsfeed4":
               $('.introjs-helperLayer').css({width:'91px'})
               break;
@@ -93,7 +93,7 @@
             $('.introjs-helperLayer').css({left:'651px'})
             break;
 
-      }   
+      }
     });
     intro.start()
   }
@@ -189,27 +189,7 @@
 
                         <div class="card-content black-text">
                            <ul class="collection" style="margin-top: -15px;">
-<<<<<<< HEAD
-                            <li id="newsfeed11" class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="img/pic4.jpg" alt="" class="circle pic-border">
-                                <h5 class="title">ยายละม้าย คล้ายจะเป็นลม</h5>
-                                <a class="feed-addF-btn waves-effect waves-light btn"><i class="fa fa-user-plus left" aria-hidden="true"></i>เพิ่มเป็นเพื่อน</a>
-=======
+
                              @foreach($fof as $f)
                              @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
 
@@ -229,7 +209,7 @@
                               </form>
                               @endif
 
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                             </li>
                             @endif
                             @endforeach
@@ -344,13 +324,10 @@
                                         <div class="col s2">
                                             <div class="wholike">
                                               @foreach($likes as $like)
-<<<<<<< HEAD
-                                                <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
-                                                  <img id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
-=======
+
                                                 <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                  <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+                                                  <img id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+
                                                   @endforeach
                                             </div>
                                         </div>

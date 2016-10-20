@@ -23,8 +23,8 @@ function content() {
             intro: "คุณสามารถคลิกอ่านเนื้อหาเพิ่มเติมได้ที่นี้",
             position: 'right'
         },
-        
-      
+
+
         ]
     });
 
@@ -61,13 +61,12 @@ function content() {
 
         @foreach($content as $data)
 
-<<<<<<< HEAD
-              </div>
-          </div>-->
+
+          
           <div id="content1" class="col s12 m4">
-=======
+
           <div class="col s12 m4">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
               <div class="card">
                   <div class="card-image">
                       <img src="{{url('img/content/'.$data->head_pic_content)}}">

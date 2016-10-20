@@ -1,8 +1,8 @@
 @extends('site.layout')
 @section('maincontent')
-<<<<<<< HEAD
+
 <script type="text/javascript">
-    
+
 
 function more(){
     var intro = introJs();
@@ -27,17 +27,14 @@ function more(){
         ]
       });
 
-      
+
       intro.start();
   };
 
   setTimeout( "more()", 1500);
-  
+
 </script>
-=======
-<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
-<link rel="canonical" href="https://dev.twitter.com/web/tweet-button">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/health3.jpg')}}">

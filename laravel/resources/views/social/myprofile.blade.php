@@ -25,7 +25,7 @@
             intro: "This is a <b>bold</b> tooltip.",
             position: 'left'
         },
-        
+
         {
             element: '#myprofile3',
             intro: "This is a <b>bold</b> tooltip.",
@@ -55,27 +55,27 @@
     });
 
 intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#meme').attr('id')) { 
-           $('#profile-edit').openModal();       
+        if($(targetElement).attr("id") == $('#meme').attr('id')) {
+           $('#profile-edit').openModal();
         }
         else{
             $('#profile-edit').closeModal();
         }
     });
-    
+
 
     /*intro.start().oncomplete(function() { $('#profile-edit').hide();
     }).onexit(function(){ $('#profile-edit').hide();
     }).onchange(function(targetElement) {
-      
-      
+
+
         // and show modal on Step 4
         if($(targetElement).attr("id") == $('#profile-edit').attr('id')) {
-          
+
             $('#profile-edit').show();
-            
-            
-        }   
+
+
+        }
         // don't forget to hide modal on other steps
         if($(targetElement).attr("id") != $('#profile-edit').attr('id')) {
             $('#profile-edit').hide();
@@ -101,7 +101,7 @@ intro.onchange(function(targetElement) {
         case "myprofile9":
             $('.introjs-helperLayer').css({left:'480px'})
             break;
-      } 
+      }
     });
     intro.start()
 }
@@ -135,14 +135,14 @@ function mypost() {
             intro: "This is a <b>bold</b> tooltip.",
             position: 'bottom'
         },
-        
+
         ]
     });
 
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "namecomment":
             $('.introjs-helperLayer').css({width:'209px'})
             break;
@@ -155,7 +155,7 @@ function mypost() {
         case "mypost4":
             $('.introjs-helperLayer').css({left:'606px'})
             break;
-      } 
+      }
     });
     intro.start()
 }
@@ -185,14 +185,14 @@ function mngpost() {
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "mngpost1":
             $('.introjs-helperLayer').css({width:'115px'})
             break;
         case "mngpost2":
             $('.introjs-helperLayer').css({width:'100px'})
             break;
-      } 
+      }
     });
     intro.start()
 }
@@ -222,11 +222,11 @@ function comment() {
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "comment2":
             $('.introjs-helperLayer').css({width:'127px'})
             break;
-      } 
+      }
     });
     intro.start()
   }
@@ -258,19 +258,13 @@ function comment() {
                             </p>
                         </div>
                         <div style="font-size: 14pt; text-align: center;">
-<<<<<<< HEAD
-                            <a id="myprofile2" href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a>
+
+                            <a id="myprofile2" href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp{{$sumfriend}}</span><span>&nbspเพื่อน</span></span></a>
                             <span class="border-divi"></span>
-                            <span id="myprofile3"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspโพสต์</span></span>
+                            <span id="myprofile3"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp{{$sumpost}}</span><span>&nbspโพสต์</span></span>
                             <span class="border-divi"></span>
-                            <a id="myprofile4" href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspรูปภาพ</span></span></a>
-=======
-                            <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp{{$sumfriend}}</span><span>&nbspเพื่อน</span></span></a>
-                            <span class="border-divi"></span>
-                            <span><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp{{$sumpost}}</span><span>&nbspโพสต์</span></span>
-                            <span class="border-divi"></span>
-                            <a href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp{{$sumpicpost}}</span><span>&nbspรูปภาพ</span></span></a>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+                            <a id="myprofile4" href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp{{$sumpicpost}}</span><span>&nbspรูปภาพ</span></span></a>
+
                         </div>
                     </div>
                 </div>
@@ -460,14 +454,10 @@ function comment() {
                                                         <div class="wholike">
 
                                                           @foreach($likes as $like)
-<<<<<<< HEAD
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
-                                                              <img id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
-                                                              @endforeach
-=======
+
                                                           @if($like->liked_by!=$user->id)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                              <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                             </a>
                                                           @else
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/profile')}}">
@@ -476,7 +466,7 @@ function comment() {
                                                           @endif
 
                                                           @endforeach
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
 
                                                         </div>
                                                     </div>
@@ -492,22 +482,17 @@ function comment() {
 
                                                        <div id="comment1" class="input-field w-cmt">
 
-<<<<<<< HEAD
-                                                            <div  class="input-field col s12">
-                                                                <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
-=======
+
                                                             <div class="input-field col s12">
                                                                 <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
-<<<<<<< HEAD
-                                                            <button id="comment2" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
-=======
+
                                                             <!--<button id="btn-comment" name="action" class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>-->
-                                                            <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+                                                            <input id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+
 
                                                         </div>
 
@@ -577,14 +562,7 @@ function comment() {
                           @endforeach
                       </div>
                     </div>
-<<<<<<< HEAD
 
-                        @endforeach
-                        <!--End timeline mypost-->
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                         <!--timeline friend post-->
                         <div class="row" style="">
                             <div class="col s12">
@@ -687,7 +665,7 @@ function comment() {
                         </div>
                         <!--End timeline friend post-->
 
-                  
+
                                         </div>
                                         <div class="input-field col s9 upsta-line-pin">
                                             <div class="col s12" id="commenthead">
@@ -805,11 +783,9 @@ function comment() {
                             <div class="modal-close close-fmbtn" align="right"><a id="close-modal-button" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>
 
                             <li>
-<<<<<<< HEAD
+
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
-=======
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -818,11 +794,9 @@ function comment() {
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
-<<<<<<< HEAD
+
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-=======
-                                                  <span style="margin-top: -20%; margin-left: 4%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
                                                   <input type="hidden" name="_token" value="{{csrf_token()}}"></span>

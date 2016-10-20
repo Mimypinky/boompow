@@ -47,12 +47,12 @@
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "ps3":
             $('.introjs-helperLayer').css({left:'435px'})
             break;
-        
-      } 
+
+      }
     });
     intro.start()
 }
@@ -80,13 +80,10 @@
                     <div class="col s10 offset-s1">
                         <ul id="ps1" class="collection with-header sp-head">
                             <li class="collection-header"><h4>ข้อมูลส่วนตัว</h4></li>
-<<<<<<< HEAD
+
                             <li id="register2" class="collection-item sp-item">
-                                <form class="col s12">
-=======
-                            <li class="collection-item sp-item">
                                 <form method="post"class="col s12" action="{{url('/updateInfo')}}" enctype="multipart/form-data">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                                     <div class="row">
                                         <div class="input-field col s6">
                                           <input name="first_name" id="first_name" type="text" class="validate" value="{{$info->first_name}}">
@@ -168,15 +165,12 @@
                             </li>
                         </ul>
 
-<<<<<<< HEAD
-                        <ul id="ps5" class="collection with-header sp-head">
-                            <li class="collection-header"><h4>แก้ไขอีเมล์</h4></li>
-=======
-                        <ul class="collection with-header sp-head">
+
+                        <ul  id="ps5"  class="collection with-header sp-head">
                             <li class="collection-header">
                               <h4>แก้ไขอีเมล์</h4>
                             </li>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                             <li class="collection-item sp-item">
                                     <div class="row">
                                         <div class="input-field col s6">
@@ -190,12 +184,9 @@
                                     </div>
                             </li>
                         </ul>
-<<<<<<< HEAD
 
                         <ul id="ps6" class="collection with-header sp-head">
-=======
-                        <ul class="collection with-header sp-head">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                             <li class="collection-item sp-item" style="margin-bottom: 25px;">
                                 <div align="center">
                                     <button name="action" type="submit" class="green btn waves-effect waves-light" >บันทึก</button>

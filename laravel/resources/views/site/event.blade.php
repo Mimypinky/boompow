@@ -92,39 +92,39 @@ use Carbon\Carbon;
         case "event3":
             $('.introjs-helperLayer').css("background-color", "#ee6e73")
             break;
-      } 
+      }
     });
-    
-  
+
+
 
   intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#event1').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'allevent');  
+        if($(targetElement).attr("id") == $('#event1').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
         }
-        if($(targetElement).attr("id") == $('#event2').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'attendevent');          
+        if($(targetElement).attr("id") == $('#event2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
         }
 
-        if($(targetElement).attr("id") == $('#event3').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'myevent');      
+        if($(targetElement).attr("id") == $('#event3').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
         }
-        if($(targetElement).attr("id") == $('#descrip').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'allevent');       
+        if($(targetElement).attr("id") == $('#descrip').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
         }
-        if($(targetElement).attr("id") == $('#status').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'allevent');       
+        if($(targetElement).attr("id") == $('#status').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
         }
-        if($(targetElement).attr("id") == $('#attend').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'allevent');       
+        if($(targetElement).attr("id") == $('#attend').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
         }
-        if($(targetElement).attr("id") == $('#cancelE').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'attendevent');       
+        if($(targetElement).attr("id") == $('#cancelE').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
         }
-        if($(targetElement).attr("id") == $('#Eboard').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'attendevent');       
+        if($(targetElement).attr("id") == $('#Eboard').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
         }
-        if($(targetElement).attr("id") == $('#addE').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'myevent');       
+        if($(targetElement).attr("id") == $('#addE').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
         }
     });
   intro.start()
@@ -233,20 +233,12 @@ use Carbon\Carbon;
                     ?>
 
                     <!--เริ่มแสดง status (unavailable)-->
-<<<<<<< HEAD
-                    <div id="status" class="card-content red darken-1" id="status_avai">
-                        <p class="ev-status">ปิดรับสมัคร</p>
-                    </div>
-                  @elseif(strcmp($data->status,"available")==0 )
-                  <div id="status" class="card-content light-green darken-1" id="status_unavai">
-                      <p class="ev-status">กำลังเปิดรับสมัคร</p>
-                  </div>
-=======
+
                     <div class="card-content {{$color}}" id="status_avai">
                         <p class="ev-status">{{$message}}</p>
                     </div>
 
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                   @if(in_array($data->id,$joined) AND ($data->creator!=$user))
                   <div class="card-action">
                       <ul class="event-menu ">

@@ -1,18 +1,18 @@
 @extends('site.layout')
 @section('maincontent')
 
-<<<<<<< HEAD
+
 <script type="text/javascript">
 
   /*
   if (RegExp('multipage', 'gi').test(window.location.search)) {
-    
-    
+
+
    function register(){
     var intro = introJs();
    intro.setOptions({
     showStepNumbers: false,
-    
+
     steps: [
     {
         element: '#register2',
@@ -90,21 +90,20 @@ function registerP2(){
             intro: "This is an option within a dropdown.",
             position: 'bottom'
           },
-          
+
 
         ]
       });
 
-      
+
       intro.start();
   };
 
   setTimeout( "registerP2()", 1500);
-}   
+}
 </script>
 
-=======
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
 <div class="container" style="width: 90%;">
 
     <div class="row" style="margin-top: 160px;">
@@ -288,25 +287,20 @@ function registerP2(){
                       </span>
                     </div>
                     <div class="section"></div>
-<<<<<<< HEAD
-                    <div id="register10" align="center">
-                        <input type="checkbox" class="filled-in" id="confirmCheck"/>
-=======
 
-                    <div align="center">
-                        <input id="confirmCheck" type="checkbox" class="filled-in checkbox"/>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+                    <div id="register10" align="center">
+                        <input type="checkbox" class="filled-in checkbox" id="confirmCheck"/>
+
                         <label for="confirmCheck">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
                     </div>
                     <div class="section">
                     </div>
                     <div align="center">
-<<<<<<< HEAD
-                      <button id="register11" class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmChk()" >ตกลง</button>
-=======
 
-                      <button class="blue darken-3 btn waves-effect waves-light" id="confSubmit" type="submit" name="button" disabled>ตกลง</button>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+                      <button id="register11" class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button"  >ตกลง</button>
+
+
+
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
                       <script type="text/javascript">
                         var confCheck = document.getElementById('confirmCheck');

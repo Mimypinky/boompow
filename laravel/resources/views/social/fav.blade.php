@@ -1,6 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
-<<<<<<< HEAD
+
 <style>
 #showlink{
     border-radius: 10px 10px 10px 10px;
@@ -16,7 +16,7 @@
     }
 
 </style>
-=======
+
 <script type="text/javascript">
     function favorite() {
     var intro = introJs();
@@ -58,16 +58,16 @@
     /*intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "comment2":
             $('.introjs-helperLayer').css({width:'127px'})
             break;
-      } 
+      }
     });*/
     intro.start()
   }
 </script>
->>>>>>> 85b9b9d131b04e8a435512e541da950a91814115
+
 <div class="container" style="width: 90%; margin-top: 132px;min-height: 600px;">
     <div class="row">
     <ul class="collection with-header pro-upstatus-feed">
@@ -93,41 +93,33 @@
                                 </div>
 
                                 <div class="card-action fav-icon-sec">
-<<<<<<< HEAD
-                                    <div class="col s4 link-col">
-                                        <a class="link-icon-color  modal-trigger  tooltipped" data-position="bottom" data-delay="50" data-tooltip="คัดลอกลิงค์" href="#sharecontent{{$key}}"><i style="margin-top: 13px;" class="fa fa-link fa-lg" aria-hidden="true"></i>
-=======
+
                                     <div id="fav2" class="col s4 link-col">
-                                        <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="คัดลอกลิงค์" href="#"><i style="margin-top: 13px;" class="fa fa-link fa-lg" aria-hidden="true"></i>
->>>>>>> 85b9b9d131b04e8a435512e541da950a91814115
+                                        <a class="link-icon-color  modal-trigger  tooltipped" data-position="bottom" data-delay="50" data-tooltip="คัดลอกลิงค์" href="#sharecontent{{$key}}"><i style="margin-top: 13px;" class="fa fa-link fa-lg" aria-hidden="true"></i>
+
                                         </a>
                                     </div>
                                     <div id="fav3" class="col s4 pin-col">
                                         <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="ปักหมุด" href="#"><i style="margin-top: 13px;" class="pin-icon fa fa-thumb-tack fa-lg" aria-hidden="true"></i>
                                         </a>
                                     </div>
-<<<<<<< HEAD
-                                    <div class="col s4">
+
+                                    <div class="col s4" id="fav4">
                                         <a class="link-icon-color modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="นำรายการนี้ออก" href="#del-fav{{$key}}"><i style="margin-top: 13px;" class="fa fa-times fa-lg" aria-hidden="true"></i>
-=======
-                                    <div id="fav4" class="col s4">
-                                        <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="นำรายการนี้ออก" href="#"><i style="margin-top: 13px;" class="fa fa-times fa-lg" aria-hidden="true"></i>
->>>>>>> 85b9b9d131b04e8a435512e541da950a91814115
+
                                         </a>
                                     </div>
 
                                 </div>
-<<<<<<< HEAD
+
                                 <div id="fav5" class="card-action" style="background-color: #ee6e73;">
                                         <center><a href="{{ url('content/favourite/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
-=======
-                                <div class="card-action" style="background-color: #ee6e73;">
-<<<<<<< HEAD
+
+                                <div id="fav5"  class="card-action" style="background-color: #ee6e73;">
+
                                         <center><a href="{{ url('content/'.$data->category_title.'/'.$data->cid) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
-=======
-                                        <center><a href="{{ url('content/'.$data->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
->>>>>>> 85b9b9d131b04e8a435512e541da950a91814115
+
+
                                 </div>
                             </div>
                         </div>

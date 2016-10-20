@@ -122,6 +122,21 @@ class AuthController extends Controller
           return Response::json('0');
         }
     }
+    public function findQuesPass(Request $request){
+        // $username = Request::Input('username');
+        $username = Input::get('username');
+        $result = Question::join('profiles','profiles.qp_id','=','questpass.id')->join('accounts','accounts.profile_id','=','profiles.id')
+        ->where('username',$username)->first();
+        if(isset($result)){
+          return Response::json('1');
+        }
+        elseif ($username==null) {
+          return Response::json('2');
+        }
+        else {
+          return Response::json('0');
+        }
+    }
 
     public function store(Request $request)
     {

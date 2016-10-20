@@ -53,6 +53,10 @@ Route::group(['middleware' => ['web']], function (){
   Route::get('login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@loginForm']);
   Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });
+Route::get('/forget',function(){
+    $title ='Boompow - ลืมรหัสผ่าน';
+    return view('auth.forget',compact('title'));
+});
 
 Route::get('/newsfeed','Profile\ProfileController@newsfeed');
 

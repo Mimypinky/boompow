@@ -36,7 +36,7 @@
         <ul class="collection with-header pro-upstatus-feed">
             <li class="collection-header myfriend-head">
                 <div class="row mf-row">
-                  
+
                     <div class="col s5"><h4 class="mf-col">เพื่อนของฉัน</h4></div>
                 </div>
             </li>
@@ -47,30 +47,8 @@
                     @if(in_array($person->id,$myfriend))
                     <div class="col s6">
                         <ul class="collection">
-<<<<<<< HEAD
-                            <li id="f1" class="collection-item avatar f-left">
-                                <img src="img/pic.jpg" alt="" class="circle myfriend-img">
-                                <span class="title f-title">พรทิพย์ ชวยบุณชุม</span><br>
-                                <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a id="f2" class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">question_answer</i>
-                                    <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a id="f3" class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">close</i>
-                                    <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
 
-
-                            </li>
-                            <li class="collection-item avatar f-left">
-                                <img src="{{url('img/pic2.jpg')}}" alt="" class="circle myfriend-img">
-                                <span class="title f-title">สมัคร รักสนุกไม่คิดผูกกพัน</span><br>
-                                <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">question_answer</i>
-                                    <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
-=======
-                            <li class="collection-item avatar f-left">
+                            <li  id="f1" class="collection-item avatar f-left">
                                 <a href="{{url('/friend/'.$person->id)}}">
                                   <img src="{{url('img/uploads/avatars/'.$person->avatar)}}" alt="" class="circle myfriend-img">
                               <span class="title f-title">{{$person->first_name.' '.$person->last_name}}</span></a><br>
@@ -79,7 +57,7 @@
                                     <i class="material-icons left">question_answer</i>
                                     <span class="msg-hide">ส่งข้อความ<span></a>
                                 <a href="{{url('/unfriend/'.$person->username)}}"class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                                     <i class="material-icons left">close</i>
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
                             </li>
