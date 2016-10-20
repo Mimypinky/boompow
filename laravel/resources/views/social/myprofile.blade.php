@@ -261,7 +261,7 @@
 
                                                    <div class="comment-section">
                                                        <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
-                                                            <li id="commentboxs">
+                                                            <li id="commentboxs{{$key}}">
                                                               <?php $comments = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
                                                               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
                                                               ->where('post_id',$post->id)->get();
@@ -280,9 +280,11 @@
                                                                     type : "POST",
                                                                     data : {comment_message: $(this).parent().parent().find('.newComment').val()},
                                                                     headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+
                                                                   })
                                                                     .done(function(html) {
-                                                                      $('#commentboxs').append(html);
+                                                                      console.log('{{$post->id}}');
+                                                                      $('#commentboxs{{$key}}').append(html);
                                                                     })
                                                                     .fail(function(){
                                                                       alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
