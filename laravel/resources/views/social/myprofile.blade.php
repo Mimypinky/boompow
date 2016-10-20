@@ -292,7 +292,8 @@
                                                                       headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
                                                                     })
                                                                       .done(function(html) {
-                                                                        $('#commentboxs').append(html);
+                                                                        console.log('{{$post->id}}');
+                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
                                                                       })
                                                                       .fail(function(){
                                                                         alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
