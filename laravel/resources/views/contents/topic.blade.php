@@ -1,7 +1,43 @@
 @extends('site.layout')
 @section('maincontent')
+<<<<<<< HEAD
+<script type="text/javascript">
+    
+
+function more(){
+    var intro = introJs();
+      intro.setOptions({
+        showStepNumbers: false,
+        nextLabel: "ต่อไป",
+        prevLabel: "กลับ",
+        skipLabel: "ข้าม",
+        doneLabel: "เสร็จ",
+
+        steps: [
+          {
+            element: "#more",
+            intro: "This is a dropdown"
+          },
+          {
+            element: '#more2',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+
+        ]
+      });
+
+      
+      intro.start();
+  };
+
+  setTimeout( "more()", 1500);
+  
+</script>
+=======
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
 <link rel="canonical" href="https://dev.twitter.com/web/tweet-button">
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/health3.jpg')}}">

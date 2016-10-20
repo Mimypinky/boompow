@@ -1,5 +1,67 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+  function message() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#chat1',
+            intro: "ในหน้านี้คุณสามารถ <b>ส่งข้อความ</b> หาเพื่อนคุณได้",
+            position: 'left'
+        },
+        {
+            element: '#chat2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#friendList',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#chat4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#recentMessage',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#chat5',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'top'
+        },
+        {
+            element: '#sendmsg',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'left'
+        },
+        
+      
+        ]
+    });
+
+  intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#chat2').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'friendList');  
+        }
+        if($(targetElement).attr("id") == $('#chat4').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'recentMessage');  
+        }
+        
+    });
+  intro.start()
+}
+</script>
 <meta charset="utf-8">
 <div class="container chat-container" style="width: 90%;"> <!--Chat is extending from css/chat.css-->
 
@@ -10,8 +72,8 @@
      <div class="row chatOption">
        <div class="col s12" style="background: #eceff1;">
          <ul class="tabs" style="overflow: hidden;">
-        <li class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
-        <li class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
+        <li id="chat2" class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
+        <li id="chat4" class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
         </ul>
 
        </div>
@@ -83,8 +145,8 @@
 
        </div> <!-- end chat-history -->
 
-       <div class="chat-message clearfix" style="">
-         <div class="input-field col s12">
+       <div id="chat5" class="chat-message clearfix" style="">
+         <div  class="input-field col s12">
 
            <textarea id="chat-text" class="materialize-textarea"></textarea>
            <label for="chat-text">เขียนข้อความของคุณที่นี่</label>

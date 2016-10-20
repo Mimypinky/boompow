@@ -84,6 +84,9 @@ tr.introjs-showElement > th {
        -o-box-sizing: content-box;
           box-sizing: content-box;
 }
+.introjs-tooltiptext{
+  font-size: 15pt !important;
+}
 
 .introjs-helperNumberLayer {
   position: absolute;
