@@ -242,9 +242,6 @@ use Carbon\Carbon;
             $mem_join =DB::table('join_event')->where('eve_id','=',$i)->count();
             }
 
-
-
-
           ?>
 
         <li class=" collection-item">
@@ -254,39 +251,6 @@ use Carbon\Carbon;
                 &nbsp;&nbsp;&nbsp;<span style="font-size: 20pt">{{$join->title}}<span></span>
 
 
-@if($mem_join==0)
-<a href="#parti2{{$key}}" class="modal-trigger"><div class="chip" align="right">ยังไม่มีผู้เข้าร่วม</div></a>
-
-                <div id="parti2{{$key}}" class="modal" style="width: 500px;">
-                  <ul class="collection">
-                    <li class="collection-item avatar">
-                    <h4>ยังไม่มีผู้เข้าร่วม</h4>
-                    </li>
-                  </ul>
-                  <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">
-                      <i class="fa fa-times" aria-hidden="true"></i></a>
-                  </div>
-                </div>
-          @elseif($mem_join!=0)
-          <a href="#joinparti{{$key}}" class="modal-trigger"><div class="chip" align="right">{{ $mem_join}} ที่เข้าร่วม</div></a>
-          <div id="joinparti{{$key}}" class="modal" style="width: 500px;">
-          <ul class="collection with-header f-modal">
-            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
-                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
-            </li>
-            @foreach($join->accounts as $account)
-              <li class="collection-item avatar transper">
-                <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
-                <p>{{$account->first_name.' '.$account->last_name}}</p>
-                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
-              </li>
-
-            @endforeach
-
-            </ul>
-          </div>
-          @endif
 
               </div>
             </div>
@@ -543,29 +507,12 @@ use Carbon\Carbon;
                   <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;
                   <span style="font-size: 20pt">{{$mine->title}}
                     <?php $m_name = DB::table('join_event')->join('accounts','join_event.user_id','=','accounts.id')->where('eve_id','=',$mine->id)->get(); ?>
-<?php $m = DB::table('join_event')->where('eve_id',$mine->id)->count(); ?>
-                    <a href="#myevePartiList{{$key}}" class="modal-trigger">
+                      <?php $m = DB::table('join_event')->where('eve_id',$mine->id)->count(); ?>
 
-                      <div class="chip" align="right">{{$m}} ผู้เข้าร่วม</div>
-                      </a>
 
                       </div>
-                      @foreach($m_name as $per)
-                    <div id="myevePartiList{{$key}}" class="modal" style="width: 500px;">
 
-                      <ul class="collection with-header f-modal">
-                        <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
-                        <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
-                        </li>
-                        <li class="collection-item avatar transper">
-                          <img src="img/pic.jpg" alt="" class="circle">
-                          <p>{{$per->first_name.' '.$per->last_name}}</p>
-                          <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                        </li>
 
-                      </ul>
-                    </div>
-                    @endforeach
                   </div>
 
                 </div>

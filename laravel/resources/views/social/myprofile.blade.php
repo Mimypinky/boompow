@@ -274,23 +274,7 @@
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
                                                               @endif
-                                                              <script type="text/javascript">
-                                                                  $('.btn-comment').click(function(){
-                                                                    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                    type : "POST",
-                                                                    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
 
-                                                                  })
-                                                                    .done(function(html) {
-                                                                      console.log('{{$post->id}}');
-                                                                      $('#commentboxs{{$key}}').append(html);
-                                                                    })
-                                                                    .fail(function(){
-                                                                      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                    })
-                                                                  });
-                                                              </script>
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
@@ -303,7 +287,7 @@
 
                                                                 </ul>
                                                                 </div>
-<<<<<<< HEAD
+
                                                                 <script type="text/javascript">
                                                                     $('.btn-comment').click(function(){
                                                                       var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
@@ -320,8 +304,7 @@
                                                                       })
                                                                     });
                                                                 </script>
-=======
->>>>>>> 145b25360acfdc5d6655030a21f1e347aa8c231c
+
                                                                 @endforeach
                                                             </li>
                                                         </ul>

@@ -48,10 +48,14 @@ $(window).load(function() { // makes sure the whole site is loaded
 
 
           @endforeach
-          <div class="center">
-            {!! (new Landish\Pagination\Materialize($content))->render() !!}
-          </div>
 
+      
+
+      </div>
+      <div class="col s12">
+        <div class="center">
+          {!! (new Landish\Pagination\Materialize($content))->render() !!}
+        </div>
       </div>
 
   </div>

@@ -123,9 +123,11 @@
                 <li>
                     <nav class="white" style="box-shadow: none;" >
                       <div class="nav-wrapper">
-                        <form>
+                        <form action="{{url('/search')}}" method="get" enctype="text/plain">
                           <div class="input-field">
-                            <input class="inputsearch" id="search" type="search" required placeholder="ค้นหาเพื่อนและกิจกรรม">
+                            <input class="inputsearch" id="search" type="search" name="value" required placeholder="ค้นหาบทความ เพื่อน หรือกิจกรรม">
+
+
                             <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
                         </div>
                     </form>
@@ -168,12 +170,14 @@
   <li style="border-bottom: 2px solid #e4e4e4;">
     <nav class="white" style="box-shadow: none;">
       <div class="nav-wrapper">
-        <form>
+        <form action="{{url('/search')}}" method="get" enctype="text/plain">
           <div class="input-field">
-              <input class="inputsearch" id="search" type="search" required="" placeholder="ค้นหาเพื่อนและกิจกรรม">
-              <label for="search" class="active"><i style="color: #212121; font-size: 18pt;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
-          </div>
-          </form>
+            <input class="inputsearch" id="search" type="search" name="value" required placeholder="ค้นหาบทความ เพื่อน หรือกิจกรรม">
+
+
+            <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+        </div>
+    </form>
       </div>
     </nav>
   </li>
@@ -247,12 +251,14 @@
       <li style="border-bottom: 2px solid #e4e4e4;">
         <nav class="white" style="box-shadow: none;">
           <div class="nav-wrapper">
-            <form>
+            <form action="{{url('/search')}}" method="get" enctype="text/plain">
               <div class="input-field">
-                  <input class="inputsearch" id="search" type="search" required="" placeholder="ค้นหาเพื่อนและกิจกรรม">
-                  <label for="search" class="active"><i style="color: #212121; font-size: 18pt;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
-              </div>
-              </form>
+                <input class="inputsearch" id="search" type="search" name="value" required placeholder="ค้นหาบทความ เพื่อน หรือกิจกรรม">
+
+
+                <label for="search"><i style="color: #212121;" class="fa fa-search fa-2x" aria-hidden="true"></i></label>
+            </div>
+        </form>
           </div>
         </nav>
       </li>

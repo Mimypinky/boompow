@@ -5,7 +5,7 @@
         <ul class="collection with-header pro-upstatus-feed">
             <li class="collection-header myfriend-head">
                 <div class="row mf-row">
-                    <div class="col s1"><img src="{{url('img/friends.png')}}" width="50"></div>
+                  
                     <div class="col s5"><h4 class="mf-col">เพื่อนของฉัน</h4></div>
                 </div>
             </li>

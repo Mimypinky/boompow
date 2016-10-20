@@ -56,8 +56,17 @@
 <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
   <i class="fa fa-link" aria-hidden="true"></i></a>
 @else
+<?php
+$uid =Auth::user()->id;
+$fav = DB::table('favourite')->where([['user_id','=',$uid],['content_id','=',$data->id]])->first();?>
+      @if($fav)
+      <a href="{{url('/unfav/'.$fav->id)}}"class="btn-floating waves-effect waves-light grey lighten-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
+        <i class="fa fa-star" aria-hidden="true"></i></a>
+        @else
             <a href="{{url('/fav/'.$data->id)}}"class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
               <i class="fa fa-star" aria-hidden="true"></i></a>
+              @endif
+
             <a href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
               <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
