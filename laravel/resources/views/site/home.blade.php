@@ -10,6 +10,42 @@ $(window).load(function() { // makes sure the whole site is loaded
   });
 })
 </script>
+
+<script type="text/javascript">
+function content() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "อ่านเพิ่มเติม",
+        steps: [
+        {
+            element: '#content1',
+            intro: "ในส่วนนี้คุณสามารถกดเพื่อดูหน้าต่อไปของเนื้อหาได้",
+            position: 'bottom'
+        },
+        {
+            element: '#content2',
+            intro: "ในส่วนนี้จะแสดงภาพประกอบ และเนื้อหาบางส่วน",
+            position: 'right'
+        },
+        {
+            element: '#content3',
+            intro: "คุณสามารถคลิกอ่านเนื้อหาเพิ่มเติมได้ที่นี้",
+            position: 'right'
+        },
+        
+      
+        ]
+    });
+
+    intro.start();
+}
+
+
+</script>
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/health3.jpg')}}">
@@ -24,14 +60,14 @@ $(window).load(function() { // makes sure the whole site is loaded
 
   <div class="row">
       <div class="col s12">
-        <div class="center">
+        <div id="content1" class="center">
           {!! (new Landish\Pagination\Materialize($content))->render() !!}
         </div>
 
         @foreach($content as $data)
         
 
-          <div class="col s12 m4">
+          <div id="content2" class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
                         <img src="{{url('img/healthy.jpg')}}">
@@ -40,7 +76,7 @@ $(window).load(function() { // makes sure the whole site is loaded
                         <h5>{{$data->content_title}}</h5>
                         <p class="wordwrap">{{$data->description}}</p>
                     </div>
-                    <div class="card-action" style="background-color: #ee6e73;">
+                    <div id="content3" class="card-action" style="background-color: #ee6e73;">
                         <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
                     </div>
                     </div>

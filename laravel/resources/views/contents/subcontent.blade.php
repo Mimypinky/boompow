@@ -2,6 +2,37 @@
 
 @section('maincontent')
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script type="text/javascript">
+function content() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#content1',
+            intro: "ในส่วนนี้จะแสดงภาพประกอบ และเนื้อหาบางส่วน",
+            position: 'right'
+        },
+        {
+            element: '#content2',
+            intro: "คุณสามารถคลิกอ่านเนื้อหาเพิ่มเติมได้ที่นี้",
+            position: 'right'
+        },
+        
+      
+        ]
+    });
+
+    intro.start();
+}
+
+
+</script>
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/'.$headtitle->pic)}}">
@@ -27,6 +58,7 @@
   <div class="row">
       <div class="col s12">
 
+
         @foreach($content as $data)
           <!--<div class="col s4 m4">
               <div class="card">
@@ -43,7 +75,7 @@
 
               </div>
           </div>-->
-          <div class="col s12 m4">
+          <div id="content1" class="col s12 m4">
               <div class="card">
                   <div class="card-image">
                       <img src="{{url('img/healthy.jpg')}}">
@@ -52,7 +84,7 @@
                       <h5>{{$data->content_title}}</h5>
                       <p class="wordwrap">{{$data->description}}</p>
                   </div>
-                  <div class="card-action" style="background-color: #ee6e73;">
+                  <div id="content2" class="card-action" style="background-color: #ee6e73;">
                       <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
                   </div>
               </div>

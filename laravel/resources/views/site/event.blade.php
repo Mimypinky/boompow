@@ -17,8 +17,117 @@ $(document).ready(function () {
 
 // Creates a dropdown of 15 years to control year
 });
-</script>
 
+
+</script>
+<script type="text/javascript">
+  function eventuser() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#event1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#status',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#descrip',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#attend',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#event2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#cancelE',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#Eboard',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#event3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#addE',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        case "event1":
+            $('.introjs-helperLayer').css("background-color", "#ee6e73")
+            break;
+        case "event2":
+            $('.introjs-helperLayer').css("background-color", "#ee6e73")
+            break;
+        case "event3":
+            $('.introjs-helperLayer').css("background-color", "#ee6e73")
+            break;
+      } 
+    });
+    
+  
+
+  intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#event1').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'allevent');  
+        }
+        if($(targetElement).attr("id") == $('#event2').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'attendevent');          
+        }
+
+        if($(targetElement).attr("id") == $('#event3').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'myevent');      
+        }
+        if($(targetElement).attr("id") == $('#descrip').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'allevent');       
+        }
+        if($(targetElement).attr("id") == $('#status').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'allevent');       
+        }
+        if($(targetElement).attr("id") == $('#attend').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'allevent');       
+        }
+        if($(targetElement).attr("id") == $('#cancelE').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'attendevent');       
+        }
+        if($(targetElement).attr("id") == $('#Eboard').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'attendevent');       
+        }
+        if($(targetElement).attr("id") == $('#addE').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'myevent');       
+        }
+    });
+  intro.start()
+}
+</script>
 
 
 
@@ -37,9 +146,9 @@ $(document).ready(function () {
   <div class="row">
     <div class="col s12 event-option">
       <ul class="event-option tabs tab-set" style="background-color: #F16B6F;">
-        <li class="tab"><a href="#allevent">กิจกรรมทั้งหมด</a></li>
-        <li class="tab"><a href="#attendevent">กิจกรรมที่เข้าร่วม</a></li>
-        <li class="tab"><a href="#myevent">กิจกรรมของฉัน</a></li>
+        <li id="event1" class="tab"><a href="#allevent">กิจกรรมทั้งหมด</a></li>
+        <li id="event2" class="tab"><a href="#attendevent">กิจกรรมที่เข้าร่วม</a></li>
+        <li id="event3" class="tab"><a href="#myevent">กิจกรรมของฉัน</a></li>
 
       </ul>
     </div>
@@ -107,11 +216,11 @@ $(document).ready(function () {
                     </div>
                     @if (strcmp($data->status,"unavailable")==0)
                     <!--เริ่มแสดง status (unavailable)-->
-                    <div class="card-content red darken-1" id="status_avai">
+                    <div id="status" class="card-content red darken-1" id="status_avai">
                         <p class="ev-status">ปิดรับสมัคร</p>
                     </div>
                   @elseif(strcmp($data->status,"available")==0 )
-                  <div class="card-content light-green darken-1" id="status_unavai">
+                  <div id="status" class="card-content light-green darken-1" id="status_unavai">
                       <p class="ev-status">กำลังเปิดรับสมัคร</p>
                   </div>
                   @if(in_array($data->id,$joined) AND ($data->creator!=$user))
@@ -132,7 +241,7 @@ $(document).ready(function () {
                   @else
                   <div class="card-action">
                       <ul class="event-menu">
-                          <li class="event-item"><a href="#join{{$key}}" class="modal-trigger">
+                          <li id="attend" class="event-item"><a href="#join{{$key}}" class="modal-trigger">
                               <i class="fa fa-plus-square-o left" aria-hidden="true"></i>เข้าร่วม</a></li>
                       </ul>
                   </div>
@@ -165,7 +274,7 @@ $(document).ready(function () {
               -->  </div>
               </div>
               <div class="col s6" style="margin-left: 10px;">
-                <div class="row" class="col s12" id="event_detail">
+                <div id="descrip" class="row" class="col s12" id="event_detail">
                   <table >
 
                     <tr>
@@ -294,9 +403,9 @@ $(document).ready(function () {
                          @else
                           <div class="card-action">
                               <ul class="event-menu">
-                                  <li class="event-item">
+                                  <li id="cancelE" class="event-item">
                                   <a href="#cancel{{$key}}" class="modal-trigger"><i class="fa fa-minus-square-o left" aria-hidden="true"></i>ยกเลิกการเข้าร่วม</a></li>
-                                  <li class="event-item">
+                                  <li id="Eboard" class="event-item">
                                     <a href="{{url('event/board/'.$join->eve_id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>
 
                               </ul>
@@ -377,7 +486,7 @@ $(document).ready(function () {
           <ul class="collection" style="margin-top: 17px;">
             <ul class="collapsible " data-collapsible="accordion" style="margin-top: 0%;">
               <li>
-                <div class="collapsible-header add-ev-btn" >
+                <div id="addE" class="collapsible-header add-ev-btn" >
 
                     <i class="fa fa-plus-circle" aria-hidden="true" ></i>เพิ่มกิจกรรม
                   </div>

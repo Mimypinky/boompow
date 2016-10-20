@@ -1,5 +1,38 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+    
+
+function more(){
+    var intro = introJs();
+      intro.setOptions({
+        showStepNumbers: false,
+        nextLabel: "ต่อไป",
+        prevLabel: "กลับ",
+        skipLabel: "ข้าม",
+        doneLabel: "เสร็จ",
+
+        steps: [
+          {
+            element: "#more",
+            intro: "This is a dropdown"
+          },
+          {
+            element: '#more2',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+
+        ]
+      });
+
+      
+      intro.start();
+  };
+
+  setTimeout( "more()", 1500);
+  
+</script>
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/health3.jpg')}}">

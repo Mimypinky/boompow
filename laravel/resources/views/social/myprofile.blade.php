@@ -1,5 +1,236 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+    function myprofile() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '.myprofile1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#meme',
+            intro: "คุณสามารถ <b>แก้ไขรูปภาพประจำตัว และ ข้อมูลส่วนตัว</b> ได้ในส่วนนี้",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'left'
+        },
+        
+        {
+            element: '#myprofile3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile5',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile6',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile7',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#meme').attr('id')) { 
+           $('#profile-edit').openModal();       
+        }
+        else{
+            $('#profile-edit').closeModal();
+        }
+    });
+    
+
+    /*intro.start().oncomplete(function() { $('#profile-edit').hide();
+    }).onexit(function(){ $('#profile-edit').hide();
+    }).onchange(function(targetElement) {
+      
+      
+        // and show modal on Step 4
+        if($(targetElement).attr("id") == $('#profile-edit').attr('id')) {
+          
+            $('#profile-edit').show();
+            
+            
+        }   
+        // don't forget to hide modal on other steps
+        if($(targetElement).attr("id") != $('#profile-edit').attr('id')) {
+            $('#profile-edit').hide();
+        }
+
+
+    });*/
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        case "myprofile5":
+            $('.introjs-helperLayer').css({width:'517px'})
+            break;
+        case "myprofile6":
+            $('.introjs-helperLayer').css({width:'190px'})
+            break;
+        case "myprofile7":
+            $('.introjs-helperLayer').css({width:'94px'})
+            break;
+        case "namecomment":
+            $('.introjs-helperLayer').css({width:'209px'})
+            break;
+        case "myprofile9":
+            $('.introjs-helperLayer').css({left:'480px'})
+            break;
+      } 
+    });
+    intro.start()
+}
+
+function mypost() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#namecomment',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#datecomment',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#mypost3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#mypost4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        
+        case "namecomment":
+            $('.introjs-helperLayer').css({width:'209px'})
+            break;
+        case "datecomment":
+            $('.introjs-helperLayer').css({width:'180px'})
+            break;
+        case "mypost3":
+            $('.introjs-helperLayer').css({left:'480px'})
+            break;
+        case "mypost4":
+            $('.introjs-helperLayer').css({left:'606px'})
+            break;
+      } 
+    });
+    intro.start()
+}
+
+function mngpost() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#mngpost1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#mngpost2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        
+        case "mngpost1":
+            $('.introjs-helperLayer').css({width:'115px'})
+            break;
+        case "mngpost2":
+            $('.introjs-helperLayer').css({width:'100px'})
+            break;
+      } 
+    });
+    intro.start()
+}
+
+function comment() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#comment1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#comment2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        
+        case "comment2":
+            $('.introjs-helperLayer').css({width:'127px'})
+            break;
+      } 
+    });
+    intro.start()
+  }
+</script>
 <div class="container" style="width: 90%;">
     <div class="row">
         <div class="col s12" style="margin-top: 12%;">
@@ -16,7 +247,7 @@
                 <!--Pro head-->
                 <div class="row">
                     <div class="col s8 offset-s2 w-profile pro-detail">
-                        <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                        <a id="show-popup-button" class="myprofile1 modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
                             <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
                         </div>
@@ -27,11 +258,11 @@
                             </p>
                         </div>
                         <div style="font-size: 14pt; text-align: center;">
-                            <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a>
+                            <a id="myprofile2" href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a>
                             <span class="border-divi"></span>
-                            <span><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspโพสต์</span></span>
+                            <span id="myprofile3"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspโพสต์</span></span>
                             <span class="border-divi"></span>
-                            <a href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspรูปภาพ</span></span></a>
+                            <a id="myprofile4" href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspรูปภาพ</span></span></a>
                         </div>
                     </div>
                 </div>
@@ -49,13 +280,14 @@
                                         </div>
                                         <div class="input-field col s8 upsta-line">
                                           <form enctype="multipart/form-data" action="/post" method="post">
+                                          <div id="myprofile5">
                                             <textarea style="margin-left: 20px;" id="textarea1" name="post_message" class="materialize-textarea"></textarea>
 
-                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
                                             <div class="card-action" style="border: none;">
 
                                                     <div class="file-field input-field">
-                                                        <div class="btn prouppic-btn black-text">
+                                                        <div id="myprofile6" class="btn prouppic-btn black-text">
                                                         <span style="font-size: 14pt;">
                                                             <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
                                                             <input type="file" name="uploadImage" id="uploadImage"></span>
@@ -81,7 +313,7 @@
                                                           </script>
                                                         </div>
                                                     </div>
-                                                    <button name="action" type="submit" class="proupsta-btn waves-effect waves-light btn">
+                                                    <button id="myprofile7" name="action" type="submit" class="proupsta-btn waves-effect waves-light btn">
                                                     โพสต์</button>
                                                 </form>
 
@@ -125,10 +357,10 @@
                                                 </span>
                                                 <div class="w-edit">
                                                   @if($post->user_id==$user->id)
-                                                  <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
+                                                  <a id="mngpost1" class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
                                                   style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
 
-                                                  <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
+                                                  <a id="mngpost2" href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                                     <i class="fa fa-trash-o"></i> ลบ</a>
                                                     @else
                                                     <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:73%">
@@ -192,7 +424,7 @@
 
 
                                                         <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                          <img class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                          <img id="mypost3" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                         </a>
 
                                                     </div>
@@ -207,7 +439,7 @@
 
                                                           @foreach($likes as $like)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
-                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+                                                              <img id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
                                                               @endforeach
 
                                                         </div>
@@ -221,14 +453,14 @@
                                                    <form action="{{url('/comment/'.$post->id)}}" method="post">
                                                        <div class="input-field cmt-coll-space">
 
-                                                       <div class="input-field w-cmt">
+                                                       <div id="comment1" class="input-field w-cmt">
 
-                                                            <div class="input-field col s12">
+                                                            <div  class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
                                                             </div>
-                                                            <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
+                                                            <button id="comment2" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
 
                                                         </div>
 
@@ -276,13 +508,13 @@
                         <div class="section"></div>
                       </div>
                     </div>
+
                         @endforeach
                         <!--End timeline mypost-->
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
-
                         <!--timeline friend post-->
                         <div class="row" style="">
                             <div class="col s12">
@@ -578,13 +810,14 @@
 
 
                     <!--profile-edit-->
-                    <div id="profile-edit" class="modal" style="width: 500px;">
+                    <div id="profile-edit" class="modal" style="width: 500px;" data-backdrop="static">
+                    <div  class="modal-content">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขข้อมูลส่วนตัว</h4>
-                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            <div class="modal-close close-fmbtn" align="right"><a id="close-modal-button" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>
 
                             <li>
-                                <div class="row" style="margin-top: 5%;">
+                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -593,10 +826,10 @@
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
-                                                  <span class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+                                                  <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
-                                                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                  <input type="hidden" name="_token" value="{{csrf_token()}}"></span>
 
                                               </div>
                                               <script>
@@ -639,6 +872,7 @@
 
                             </li>
                         </ul>
+                        </div>
                     </div>
                     <!--wholike-->
                     <div id="wholike" class="modal" style="width: 500px;">

@@ -83,6 +83,16 @@ input[type="checkbox"].filled-in:checked + label:after {
   background-color: #EE6E74;
   z-index: 0;
 }
+#dropdownhelp.dropdown-content li a.myheader{
+    cursor: initial;
+    pointer-events: none;
+    color: rgba(0,0,0,0.54);
+    font-size: 14px;
+    font-weight: 500;   
+  }
+#dropdownhelp.dropdown-content li.dis{
+    pointer-events:none;
+  }
 .mob-submenu{
     color: black !important;
     margin-left: 25% !important;
@@ -554,7 +564,7 @@ span.mynoti:after {
     -webkit-border-radius: 68%;
     -moz-border-radius: 68%;
     -o-border-radius: 68%;
-    position: absolute;
+    position: fixed;
     top: 11px;
     right: 73px;
     line-height: 25px;

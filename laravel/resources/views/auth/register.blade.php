@@ -1,6 +1,106 @@
 @extends('site.layout')
 @section('maincontent')
 
+<script type="text/javascript">
+
+  /*
+  if (RegExp('multipage', 'gi').test(window.location.search)) {
+    
+    
+   function register(){
+    var intro = introJs();
+   intro.setOptions({
+    showStepNumbers: false,
+    
+    steps: [
+    {
+        element: '#register2',
+        intro: "This is a <b>bold</b> tooltip."
+    },
+    {
+        element: '#register3',
+        intro: "Ok, <i>wasn't</i> that fun?",
+        position: 'bottom'
+    },
+    ]
+   });
+
+intro.start();
+ };
+}*/
+if (RegExp('regismultipage', 'gi').test(window.location.search)) {
+
+function registerP2(){
+    var intro = introJs();
+      intro.setOptions({
+        showStepNumbers: false,
+        nextLabel: "ต่อไป",
+        prevLabel: "กลับ",
+        skipLabel: "ข้าม",
+        doneLabel: "เสร็จ",
+
+        steps: [
+          {
+            element: "#register2",
+            intro: "This is a dropdown"
+          },
+          {
+            element: '#register3',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register4',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register5',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register6',
+            intro: "This is an option within a dropdown.",
+            position: 'right'
+          },
+          {
+            element: '#register7',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register8',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register9',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register10',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          {
+            element: '#register11',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+          
+
+        ]
+      });
+
+      
+      intro.start();
+  };
+
+  setTimeout( "registerP2()", 1500);
+}   
+</script>
 
 <div class="container" style="width: 90%;">
 
@@ -10,7 +110,7 @@
             <ul class="collection with-header">
                 {{ csrf_field() }}
                 <li class="collection-header"><center><h4>สมัครสมาชิก</h4></center></li>
-                <li class="collection-item">
+                <li id="register2" class="collection-item">
                   <br>
                   <i class="left material-icons">verified_user</i><p>ตรวจสอบชื่อผู้ใช้</p>
                 <div class="section"></div>
@@ -32,7 +132,7 @@
                 <div class="section"></div>
 
                 </li>
-                <li class="collection-item">
+                <li id="register3" class="collection-item">
                   <br><i class="left material-icons">perm_identity</i>
                 <p>ข้อมูลส่วนตัว</p>
                 <div class="section"></div>
@@ -103,14 +203,14 @@
                     <div class="section"></div>
 
                 </li>
-                <li class="collection-item">
+                <li id="register4" class="collection-item">
                   <br>
                   <i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
                 <br>
                 <table>
                   <tbody>
                     <tr>
-                      <td class="col s8">
+                      <td id="register5" class="col s8">
                         <label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label>
                         <input style="font-size:18pt;" class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email">
                       </td>
@@ -123,7 +223,7 @@
                     </tr>
                     <tr >
                       <td class="col s8">
-                        <div class="input-field">
+                        <div id="register6" class="input-field">
                           <select name="question">
                             <option value="" disabled selected>โปรดเลือกคำถาม (คำตอบของคุณจะถูกใช้เป็นรหัสผ่านในการลงชื่อเข้าใช้)</option>
                             @foreach($questions as $question)
@@ -143,7 +243,7 @@
 
                       <td class="col s8">
 
-                        <div class="input-field">
+                        <div id="register7" class="input-field">
                           <label for="icon_prefix email-label">กรอกคำตอบของคุณ </label>
                           <input id="answer" type="password" name="password" class="validate">
                         </div></td>
@@ -156,7 +256,7 @@
                       </tr>
                       <tr>
                         <td class="col s8">
-                          <div class="input-field">
+                          <div id="register8" class="input-field">
                             <label for="icon_prefix email-label">กรอกคำตอบของคุณอีกครั้ง </label>
                             <input id="confirm-answer" name="password_confirmation" type="password" class="validate">
                           </div></td>
@@ -179,13 +279,13 @@
                 <li class="collection-item" style="padding-bottom: 20px;">
                     <div class="section"></div>
                     <div align="center">
-                      <span>
+                      <span id="register9">
                           <label style="font-size: 18px;">อ่านข้อตกลงในการให้บริการ </label>
                           <a class="modal-trigger" href="#termofuse" style="font-size: 24px;">ที่นี่</a><br>
                       </span>
                     </div>
                     <div class="section"></div>
-                    <div align="center">
+                    <div id="register10" align="center">
                         <input type="checkbox" class="filled-in" id="confirmCheck"/>
                         <label for="confirmCheck">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
                     </div>
@@ -193,7 +293,7 @@
 
                     </div>
                     <div align="center">
-                      <button class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmChk()" >ตกลง</button>
+                      <button id="register11" class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmChk()" >ตกลง</button>
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
                     </div>
 

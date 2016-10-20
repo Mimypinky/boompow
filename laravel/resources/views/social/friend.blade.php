@@ -1,5 +1,36 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+    function friend() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#f1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#f2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#f3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.start()
+  }
+</script>
 <div class="container" style="width: 90%; margin-top: 160px;min-height: 600px;">
     <div class="row">
         <ul class="collection with-header pro-upstatus-feed">
@@ -13,14 +44,14 @@
                 <div class="row">
                     <div class="col s6">
                         <ul class="collection">
-                            <li class="collection-item avatar f-left">
+                            <li id="f1" class="collection-item avatar f-left">
                                 <img src="img/pic.jpg" alt="" class="circle myfriend-img">
                                 <span class="title f-title">พรทิพย์ ชวยบุณชุม</span><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
+                                <a id="f2" class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
                                     <i class="material-icons left">question_answer</i>
                                     <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
+                                <a id="f3" class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
                                     <i class="material-icons left">close</i>
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
 

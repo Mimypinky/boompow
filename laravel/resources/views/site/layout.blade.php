@@ -44,7 +44,9 @@
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
+    
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
+
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
 
 
@@ -87,6 +89,239 @@
        window.history.back();
    }
 
+   function beginerGuest() {
+    var intro = introJs();
+    /*intro.setOption('doneLabel', 'หน้าต่อไป').start().oncomplete(function() {
+          window.location.href = 'register';
+        });*/
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#beginer1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#beginer2',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#beginer3',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#register1',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#login1',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'left'
+        },
+        {
+            element: '#beginer6',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#beginer7',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'left'
+        },
+        {
+            element: '#beginer8',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'right'
+        },
+        ]
+    });
+
+
+    /*intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        case "beginer5":
+            $('.introjs-helperLayer').css({height:'68px',top:'304px'})
+            break;
+        
+      } 
+    });*/
+
+
+    intro.start();
+}
+
+function beginerUser() {
+    var intro = introJs();
+    /*intro.setOption('doneLabel', 'หน้าต่อไป').start().oncomplete(function() {
+          window.location.href = 'register';
+        });*/
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#beginer1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#beginer2',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#beginer3',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#beginerU4',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#beginerU5',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'left'
+        },
+        
+        {
+            element: '#beginerU6',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'left'
+        },
+        {
+            element: '#beginer6',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'bottom'
+        },
+        {
+            element: '#beginer7',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'left'
+        },
+        {
+            element: '#beginer8',
+            intro: "Ok, <i>wasn't</i> that fun?",
+            position: 'right'
+        },
+        ]
+    });
+
+    intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#beginerU5').attr('id')) { 
+           $('.button-collapse2').sideNav('show');       
+        }
+        if($(targetElement).attr("id") != $('#beginerU5').attr('id')) {
+            $('.button-collapse2').sideNav('hide'); 
+        } 
+    });
+
+    /*intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        case "u5":
+            $('.introjs-tooltip').css({left: '503px !important'});
+            
+      } 
+    });*/
+
+
+    intro.start();
+}
+
+function register() {
+   var intro = introJs();
+   intro.setOptions({
+    showStepNumbers: false,
+    doneLabel: "สมัครสมาชิก",
+    steps: [
+    {
+        element: '#register1',
+        intro: "Ok, <i>wasn't</i> that fun?",
+        position: 'bottom'
+    },
+    
+   
+    ]
+   });
+
+  intro.start().oncomplete(function() {
+      window.location.href = 'register?regismultipage=true';
+  });
+}
+
+   function login() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#login1',
+            intro: "คลิกที่นี้เพื่อเข้าสู่ระบบ",
+            position: 'left'
+        },
+        {
+            element: '#login2',
+            intro: "คุณสามารถ <b>เข้าสู่ระบบ</b> ได้ที่นี่",
+            position: 'bottom'
+        },
+        
+      
+        ]
+    });
+
+    intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#login2').attr('id')) { 
+           $('#loginform').openModal();       
+        }
+        else{
+            $('#loginform').closeModal();
+        }
+    });
+  intro.start()
+}
+
+function logout() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#beginerU4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'left'
+        },
+        
+      
+        ]
+    });
+
+  intro.start()
+}
+
+
+
  </script>
 
  <style>
@@ -110,17 +345,18 @@
 
     <title>{{$title}}</title>
   </head>
+
   <body style="background-color: #eceff1;">
     <nav style="box-shadow: none;" id="main-nav">
         <div class="nav-wrapper white">
-            <a href="{{url('/')}}" class="brand-logo center"><img class="mylogo" src="{{url('img/logo_boom2.png')}}"></a>
+            <a href="{{url('/')}}" class="brand-logo center"><img id="beginer3" class="mylogo" src="{{url('img/logo_boom2.png')}}"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 28px;">
                 <i style="color: #e53935" class="material-icons">menu</i>
             </a>
             <ul class="left hide-on-med-and-down">
-                <li style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
+                <li id="beginer1" style="background-color: #e53935;" ><a style="font-size: 14pt;" class="dropdown-button" href="#!" data-activates="dropdownhelp" data-constrainwidth="false" data-beloworigin="true"><i class="fa fa-info-circle fa-2x left" aria-hidden="true"></i>ผู้ช่วย</a></li>
 
-                <li>
+                <li id="beginer2">
                     <nav class="white" style="box-shadow: none;" >
                       <div class="nav-wrapper">
                         <form>
@@ -136,19 +372,19 @@
 
   <ul class="right hide-on-med-and-down">
       @if(Auth::guest())
-          <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
+          <li id="register1"><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
           <strong>สมัครสมาชิก</strong></a></li>
-          <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
+          <li id="login1"><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
       @else
 
-      <li data-step="1" data-intro="Ok, wasn't that fun?" data-position='left'><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
-      <li data-step="2" data-intro="Ok, wasn't that fun?" data-position='left'>
+      <li id="beginerU4"><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
+      <li id="beginerU5">
         <a class="button-collapse2 navlink" data-activates="slide-out" >
           <i style="margin-top: 6px;" class="material-icons left">people</i>
         <span class="mynoti noti-right">7</span><span class="rps-bar">สังคมของฉัน</span>
       </a>
     </li>
-    <li><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+    <li id="beginerU6"><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
       <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
 
 
@@ -314,50 +550,86 @@
     </div>
 
     <!-- Dropdownhelp Structure -->
-      <ul id="dropdownhelp" class="dropdown-content">
-          <li><a href="javascript:void(0);" onclick="javascript:introJs().start();">เริ่มต้นการใช้งาน</a></li>
-          <li><a href="#!">สมัครสมาชิก</a></li>
-          <li><a href="#!">เข้าสู่ระบบ</a></li>
-      </ul>
-    <!-- ถ้าอยู่หน้าไหนให้ไปตามหน้านั้น-->
-
+    <ul id="dropdownhelp" class="dropdown-content">
+    @if(Auth::guest())
+      <div class="row">
+        <div class="col s12">
+          <li class="dis"><a class="myheader"><i class="material-icons left">help</i>เริ่มต้นใช้งาน</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:void(0);" onclick="beginerGuest()">เริ่มต้นการใช้งาน</a></li>
+          <li><a href="javascript:void(0);" onclick="register()">สมัครสมาชิก</a></li>
+          <li><a href="javascript:void(0);" onclick="login()">เข้าสู่ระบบ</a></li>
+          <li><a href="javascript:void(0);" onclick="content()">สาระน่ารู้</a></li>
+        </div>
+      </div>
+    @else
+    <div class="row">
+        <div class="col s4">
+          <li class="dis"><a class="myheader"><i class="material-icons left">help</i>เริ่มต้นใช้งาน</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:void(0);" onclick="beginerUser()">เริ่มต้นการใช้งาน</a></li>
+          <li><a href="javascript:void(0);" onclick="logout()">ออกจากระบบ</a></li>
+          <li><a href="javascript:void(0);" onclick="content()">สาระน่ารู้</a></li>
+        </div>
+        <div class="col s4">
+          <li class="dis"><a class="myheader"><i class="material-icons left">person</i> โปรไฟล์ของฉัน</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:void(0);" onclick="myprofile()">โปรไฟล์ของฉัน</a></li>
+          <li><a href="javascript:void(0);" onclick="profilesetting()">ตั้งค่าโปรไฟล์</a></li>
+          <li><a href="javascript:void(0);" onclick="mypost()">โพสต์ของฉัน</a></li>
+          <li><a href="javascript:void(0);" onclick="mngpost()">จัดการโพสต์</a></li>
+          <li><a href="javascript:void(0);" onclick="comment()">แสดงความคิดเห็น</a></li>
+        </div>
+        <div class="col s4">
+          <li class="dis"><a class="myheader"><i class="material-icons left">people</i>สังคมของฉัน</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:void(0);" onclick="newsfeed()">กระดานข่าว</a></li>
+          <li><a href="javascript:void(0);" onclick="friend()">เพื่อน</a></li>
+          <li><a href="javascript:void(0);" onclick="favorite()">รายการโปรด</a></li>
+          <li><a href="javascript:void(0);" onclick="notification()">แจ้งเตือน</a></li>
+          <li><a href="javascript:void(0);" onclick="eventuser()">กิจกรรม</a></li>
+          <li><a href="javascript:void(0);" onclick="message()">ข้อความ</a></li>
+        </div>
+      </div>
+@endif  
+    </ul>
 
     <ul id="dropdownprofile" class="dropdown-content">
         <li><a href="{{url('/setting')}}">ตั้งค่าข้อมูลส่วนตัว</a></li>
         <li><a href="{{url('/logout')}}">ออกจากระบบ</a></li>
-
     </ul>
     <!--slidenav-->
+    <span id="u5">
     <ul id="slide-out" class="side-nav" style="width: 248px;">
       <li style="height: 105px; background-color: #EE6E73;"><div class="userView">
         <center><span class="white-text name slideo-menu">สังคมของฉัน</span></center>
       </div>
       </li>
-        <li><a href="{{url('/newsfeed')}}"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
+        <li ><a href="{{url('/newsfeed')}}"><i class="fa fa-rss" aria-hidden="true"></i> กระดานข่าว</a></li>
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
         <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
-    </ul>
+    </ul></span>
 
     <!--Second Nav-->
-    <header class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;" data-step="3" data-intro="Ok, wasn't that fun?" data-position='bottom'>
+    <header id="beginer6" class="nav-down second-nav nav-wrapper" style="background-color: #EE6E73; z-index: -99; height: 59px;">
         <ul class="secnav hide-on-med-and-down center">
 
-            <li><a href="/"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i>หน้าแรก</a></li>
+            <li><a href="/"><i id="secnav-icon" class="fa fa-home fa-lg left" aria-hidden="true"></i><span class="nav-resize">หน้าแรก</span></a></li>
                 <!--Slide nav menu
                 <li><a class="button-collapse2" data-activates="slide-out" href="sass.html"><i class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
             -->
-            <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i>สุขภาพ</a></li>
+            <li><a href="{{ url('content/health') }}"><i id="secnav-icon" class="fa fa-medkit fa-lg left" aria-hidden="true"></i><span class="nav-resize">สุขภาพ</span></a></li>
             <li><a href="{{url('content/')}}" class="dropdown-button" href="#" data-activates="dropdownfood" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
-              <i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i>ตำรับอาหาร<i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
+              <i id="secnav-icon" class="fa fa-cutlery fa-lg left" aria-hidden="true"></i><span class="nav-resize">ตำรับอาหาร</span><i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
             <li><a class="dropdown-button" href="{{url('content/entertainment')}}" data-activates="dropdownent" data-constrainwidth="false" data-beloworigin="true" data-hover="true">
-              <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i>บันเทิง<i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
-            <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}">ครัวเรือน</a></li>
-            <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i>ห้องข่าว<i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
+              <i id="secnav-icon" class="fa fa-smile-o fa-lg left" aria-hidden="true"></i><span class="nav-resize">บันเทิง</span><i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
+            <li><a href="{{url('content/family')}}"><img class="myicon left" src="{{url('img/fam.png')}}"><span class="nav-resize">ครัวเรือน</span></a></li>
+            <li><a class="dropdown-button" href="#" data-activates="dropdownnews" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i id="secnav-icon" class="fa fa-newspaper-o fa-lg left" aria-hidden="true"></i><span class="nav-resize">ห้องข่าว</span><i class="drop-i material-icons right">keyboard_arrow_down</i></a></li>
             <!--<li><a href="{{url('content/elder_promotion')}}"><i id="secnav-icon" class="fa fa-gift fa-lg left" aria-hidden="true"></i>สิทธิประโยชน์</a></li>-->
-            <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i>งานประดิษฐ์</a></li>
+            <li><a href="{{url('content/diy')}}"><i id="secnav-icon" class="fa fa-lightbulb-o fa-lg left" aria-hidden="true"></i><span class="nav-resize">งานประดิษฐ์</span></a></li>
         </ul>
         </header>
 
@@ -452,7 +724,7 @@
 
         <!-- FOOTER PART SINCE HERE!!!!!-->
         <!--Resize Button-->
-        <div class="fixed-action-btn" data-step="4" data-intro="Ok, wasn't that fun?" data-position='left' style="position: fixed;">
+        <div id="beginer7" class="fixed-action-btn" style="position: fixed;">
             <a class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="ปรับขนาดตัวอักษร" ><img src="{{url('img/retext-icon.png')}}" width="35" style="padding-top: 7px;"></a>
             <ul class="resizer">
                 <li id="large"><a class="large btn-floating red tooltipped " data-position="left" data-delay="50" data-tooltip="ตัวอักษรขนาดใหญ่">
@@ -467,7 +739,7 @@
         <!--Endd Resize Button-->
 
         <!--Back btn-->
-        <div class="fixed-action-btn goback-btn" data-step="5" data-intro="Ok, wasn't that fun?" data-position='right'>
+        <div id="beginer8" class="fixed-action-btn goback-btn" style="position: fixed;">
             <a class="btn-floating btn-large tooltipped" data-position="right" data-delay="50" data-tooltip="กลับ"
             onclick="goBack()"><i class="material-icons">chevron_left</i></a>
         </div>
@@ -503,5 +775,6 @@
 
         <!--UP BUTTON JS-->
         <script type="text/javascript" src="{{URL::asset('js/btt.js')}}"></script>
+
   </body>
 </html>
