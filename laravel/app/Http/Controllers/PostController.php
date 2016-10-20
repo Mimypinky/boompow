@@ -12,6 +12,8 @@ use App\PostPhoto;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
+use App\EventPosts;
+use App\EventPostComm;
 class PostController extends Controller
 {
     public function postStatus(Request $req)
@@ -93,8 +95,10 @@ class PostController extends Controller
     {
       $post = Post::find($pid);
       $post->delete();
+      $comment = Comment::where('post_id',$pid)->delete();
       return back();
     }
+
     public function editPost(Request $req,$pid){
       $post = Post::find($pid);
       $post->post_message =$req->post_message;
@@ -105,12 +109,35 @@ class PostController extends Controller
     public function delPicPost(Request $req,$pid)
     {
       $picpost=Post::find($pid);
-      $picpost->image='NULL';
-      $picpost->save();
+      $picpost->delete();
+      $comment = Comment::where('post_id',$pid)->delete();
       return redirect()->back();
     }
     public function postEventBoard(Request $req,$eid)
     {
+      $post = new EventPosts();
+      $post->event_id = $eid;
+      $post->message = $req->message;
+      $post->user_id = Auth::user()->id;
+      if($req->hasfile('uploadImage')){
+        $image = $req->file('uploadImage');
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        Image::make($image)->save(public_path().'/img/uploads/events/'.$filename);
+        $post->image = $filename;
+        $post->save();
+      }
+      $post->save();
+    return redirect()->back();
+    }
+    public function commentsPostEvent(Request $req,$pid){
+
+      $uid =Auth::user()->id;
+      $comment= new EventPostComm();
+      $comment->user_id =$uid;
+      $comment->message =$req['comment_message'];
+      $comment->event_post_id = $pid;
+      $comment->save();
+      return redirect()->back();
 
     }
 

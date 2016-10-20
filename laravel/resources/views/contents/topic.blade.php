@@ -51,13 +51,18 @@
         <div>
             <!--FullScreen-->
 @foreach($article as $data)
+
+@if(Auth::guest())
+<a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
+  <i class="fa fa-link" aria-hidden="true"></i></a>
+@else
             <a href="{{url('/fav/'.$data->id)}}"class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
               <i class="fa fa-star" aria-hidden="true"></i></a>
             <a href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
               <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
               <i class="fa fa-link" aria-hidden="true"></i></a>
-
+@endif
               <div id="sharecontent" class="modal modal-fixed-footer " style="width:50%;height:50%">
     <div class="modal-content">
       <div class="row">
@@ -93,10 +98,17 @@
 		</div>
 
         <div class="col s12 l10 m10 offset-m1 ContentBG">
-
+          <div class="row">
+          <div class="col s12">
           <h2 class="headContent">{{$data->content_title}}</h2>
+          <p class="headContent" style="font-style:italic;font-size:9pt">{{$data->updated_at}}</p>
+          <p class="headContent" style="font-style:italic;font-size:9pt">{{$data->reference}}</p>
+        </div>
+
+    </div>
+
           <div class="divider"></div>
-          <div class="section"></div>
+          <!-- <div class="section"></div> -->
           <div class="row" id="image">
           <!--  <img class="col s10 m10 l10 offset-l1 offset-m1 offset-s1" src="img/Chick.jpg">-->
         </div>

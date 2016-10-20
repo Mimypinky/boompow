@@ -28,6 +28,9 @@ Route::get('/event/remove/{eid}','EventController@deleteEvents');
 Route::get('/event/join/{eid}','EventController@joinEvents');
 Route::get('/event/cancel/{eid}','EventController@cancelEvents');
 Route::get('/event/board/{eid}','EventController@eventBoardindex');
+Route::post('/event/board/{eid}','PostController@postEventBoard');
+Route::post('/event/board/{eid}/comment','PostController@commentsPostEvent');
+Route::get('/event/board/{eid}/like/{pid}','PostController@likePost');
 
 Route::get('/favourite','FavouriteController@index');
 

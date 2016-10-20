@@ -160,9 +160,9 @@
 
                                       <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                         <i class="fa fa-trash-o"></i> ลบ</a>
-                                        @else
-                                        <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:205px">
-                                          <i class="fa fa-trash-o"></i> ลบ</a>
+
+                                        <!-- <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:205px">
+                                          <i class="fa fa-trash-o"></i> ลบ</a> -->
                                           @endif
 
                                           </div>
@@ -307,16 +307,17 @@
 
                             <li class="transper collection-item avatar">
                                 <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="circle">
-                                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-                                <form action="#">
+                                <span class="title title-name">{{$post->first_name.' '.$post->last_name}}</span>
+                                <form action="{{url('/post/'.$post->id.'/edit')}}" method="get" enctype="multipart/form-data">
                                     <div class="file-field input-field" style="margin-top: -5%;">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
+                                            <textarea id="textarea1" class="materialize-textarea" name="post_message" >{{$post->post_message}}
                                             </textarea>
                                         </div>
                                     </div>
+                                <button name="action" type="submit"  class="modal-close waves-effect waves-light btn right">ตกลง</button>
                                 </form>
-                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
+
                             </li>
                         </ul>
                     </div>

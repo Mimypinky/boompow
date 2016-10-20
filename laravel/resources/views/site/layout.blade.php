@@ -259,10 +259,62 @@
 
         <ul class="collapsible collapsible-accordion">
           <li>
+              <a class="collapsible-header" href="{{url('/')}}">หน้าแรก</a>
+          </li>
+          <li>
+            <a class="collapsible-header">{{Auth::user()->username}}
+              <i class="material-icons">perm_identity</i>
+              <i class="material-icons right">keyboard_arrow_down</i>
+            </a>
+              <div class="collapsible-body">
+                <ul>
+                  <li>
+                    <a class="mob-submenu" href="{{url('/profile')}}">หน้าโปรไฟล์ของคุณ</a>
+                  </li>
+                  <li>
+                    <a class="mob-submenu" href="{{url('/logout')}}">ออกจากระบบ</a>
+                  </li>
+                </ul>
+              </div>
+          </li>
+
+          <li>
+            <a class="collapsible-header">สังคมของฉัน
+                <i style="margin-top: 6px;" class="material-icons left">people</i>
+              <i class="material-icons right">keyboard_arrow_down</i>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <li>
+                  <a class="mob-submenu" href="{{url('/newsfeed')}}">กระดานข่าว</a>
+                </li>
+                <li>
+                  <a class="mob-submenu" href="{{url('/friends')}}">เพื่อน</a>
+                </li>
+                <li>
+                  <a class="mob-submenu" href="{{url('/favourite')}}">รายการโปรด</a>
+                </li>
+                <li>
+                  <a class="mob-submenu" href="{{url('/event')}}">กิจกรรม</a>
+                </li>
+                <li>
+                  <a class="mob-submenu" href="{{url('/notification')}}">แจ้งเตือน</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">ข้อความ
+            <i style="margin-top: 6px;" class="material-icons left">question_answer</i>
+
+            </a>
+          </li>
+          <li>
+
             <a class="collapsible-header">สาระน่ารู้<i class="material-icons">library_books</i><i class="material-icons right">keyboard_arrow_down</i></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="{{url('/')}}">หน้าแรก</a></li>
+
                 <ul class="collapsible collapsible-accordion">
                   <li>
                     <a class="collapsible-header" href="#">ตำรับอาหาร<i class="material-icons right">keyboard_arrow_down</i></a>
@@ -337,7 +389,7 @@
         <li><a href="{{url('/friends')}}"><i class="fa fa-users" aria-hidden="true"></i> เพื่อน</a></li>
         <li><a href="{{url('/favourite')}}"><i class="fa fa-star" aria-hidden="true"></i> รายการโปรด</a></li>
         <li><a href="{{url('/event')}}"><i class="fa fa-smile-o" aria-hidden="true"></i> กิจกรรม <span class="new badge">3</span></a></li>
-        <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li>
+        <!-- <li><a href="{{url('/message_box')}}"><i class="fa fa-comments-o" aria-hidden="true"></i> ข้อความ <span class="new badge">2</span></a></li> -->
         <li><a href="{{url('/notification')}}"><i class="fa fa-bell" aria-hidden="true"></i> แจ้งเตือน <span class="new badge">7</span></a></li>
     </ul>
 

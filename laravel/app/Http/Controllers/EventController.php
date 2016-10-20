@@ -8,11 +8,13 @@ use DB;
 use App\Http\Requests;
 use App\Event;
 use App\Users;
+use App\Account;
+use App\Profile;
 use App\EventPhotos;
 use App\JoinEvent;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
+use App\EventPosts;
 use Intervention\Image\ImageManagerStatic as Image;
 class EventController extends Controller
 {
@@ -35,35 +37,35 @@ class EventController extends Controller
             ->where('creator','=',$user)->orderBy('create_at', 'desc')
             ->get();
 
+            $mem = array();
+            $eve = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+                ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')->get();
+              foreach($eve as $e){
+                $mem_join =DB::table('join_event')->where('eve_id','=',$e->id)->count();
+                array_push($mem,$mem_join);
+              }
+              // return $mem;
+
         $joinEvent = JoinEvent::join('events','join_event.eve_id','=','events.id')
         ->join('accounts','events.creator','=','accounts.id')
         ->select('events.*','join_event.*', 'accounts.first_name as fname','accounts.last_name as lname')
         ->where('user_id','=',$user)->orderBy('join_time', 'desc')
         ->get();
-    // foreach($event as $eve){
-    //   $today = Carbon::now();
-    //   $now = $today->toDateString();
-    //   $fdate = $eve->finish_date;
-    //
-    //   $dif = $today->diffForHumans($fdate);
-    //   return $dif;
-    // }
-      //   foreach($event as $eve){
-      //     $finish =$event->finish_date;
-      //     $now = time();
-      //     $diff=date_diff($finish,$now);
-      // return $diff;
-      // }
-        $ii = array();
-        $time_dif = array();
-        $eve = Event::join('accounts', 'events.creator', '=', 'accounts.id')
-            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')->get();
+          $ii = array();
+        foreach ($joinEvent as $key => $value) {
+          array_push($ii,$value->eve_id);
+        }
+        // $iii = array();
 
-            foreach($eve as $e){
-              $fdate = $e->finish_date;
-              // // $now = now();
-              // return $now;
-            }
+      //   foreach($event as $key => $value) {
+      //     if(in_array($value->eve_id,$ii)){
+      //     $mem_join =DB::table('join_event')->where('eve_id','=',$value->eve_id)->count();
+      //     return $mem_join.'<br/>';
+      //   }
+      // }
+
+
+
 
         $joinEvent2 = JoinEvent::where('user_id', $user)->get();
 
@@ -72,7 +74,6 @@ class EventController extends Controller
         foreach ($eiei as $key => $value) {
           array_push($joined,$value['eve_id']);
         }
-
 
 
         $party = Event::join('accounts','events.id','=','accounts.id')
@@ -85,7 +86,7 @@ class EventController extends Controller
           array_push($attend,$value['id']);
         }
 
-        return view('site.event',compact('title','event','myEvent','joinEvent','joined','user','ii'));
+        return view('site.event',compact('title','event','myEvent','joinEvent','joined','user','ii','mem'));
 
       }else {
         echo 'Please login ..';
@@ -196,10 +197,25 @@ class EventController extends Controller
     {
       $eid = $req->eid;
       $user = Auth::user()->id;
+      $account = Account::join('profiles','profiles.id','=','accounts.profile_id')->select('accounts.first_name','accounts.last_name','profiles.avatar')
+      ->where('accounts.id',$user)->first();
       $eve_name = Event::join('accounts', 'events.creator', '=', 'accounts.id')
+      ->join('profiles','profiles.id','=','accounts.profile_id')
       ->select('events.*','accounts.first_name as fname','accounts.last_name as lname')->where('events.id','=',$eid)->first();
+
+
+
+      $eve_post = EventPosts::join('accounts','accounts.id','=','event_board_post.user_id')
+      ->join('profiles','profiles.id','=','accounts.profile_id')
+      ->select('event_board_post.id as pid','event_board_post.user_id','event_board_post.image','accounts.first_name','accounts.last_name','event_board_post.created_at','event_board_post.message','accounts.id as aid','profiles.avatar')
+      ->where('event_board_post.event_id','=',$eid)->orderBy('created_at','desc')
+      ->get();
+
+
+
+
       $title = 'กระดานกิจกรรม - '.$eve_name->title;
-      return view('site.event_board',compact('title','eve_name','user'));
+      return view('site.event_board',compact('title','eve_name','user','account','eve_post'));
 
     }
 

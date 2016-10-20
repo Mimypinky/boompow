@@ -187,15 +187,12 @@
                                                 @endif
                                             </div>
                                             <div class="card-action" style="border: none;">
-                                              <?php $count_likes = DB::table('likes')->where('post_id','=',$post->id)->count();
-                                                  $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
-                                                  ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')->orderBy('created_at', 'desc')->get();
+                                              <?php $count_likes = DB::table('event_board_like')->where('event_post_id','=',$post->pid)->count();
+                                                  $likes = DB::table('event_board_like')->join('accounts','event_board_like.user_id','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
+                                                  ->where('event_post_id',$post->pid)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id as aid','profiles.avatar','accounts.username')->orderBy('created_at', 'desc')->get();
                                                   $uid = Auth::user()->id;
-                                                  $uid = Auth::user()->id;
-
-                                                  $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
-
-                                                      ?>
+                                                  $liked= DB::table('event_board_like')->select('id')->where([['event_post_id','=',$post->pid],['user_id','=',$uid]])->first();
+                                                  ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
                                                     @if($liked!=null)
@@ -204,7 +201,7 @@
                                                           <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
                                                         </a>
                                                         @else
-                                                        <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                        <a class="tooltipped" href="{{url('/like/'.$post->pid)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                           <img class="heart-i" src="{{url('img/heart-like.png')}}">
                                                         </a>
 
@@ -220,7 +217,7 @@
                                                         <div class="wholike">
 
                                                           @foreach($likes as $like)
-                                                          @if($like->liked_by!=$user->id)
+                                                          @if($like->user_id!=$account->id)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                               <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                             </a>
@@ -241,7 +238,6 @@
                                                <div>
                                                    <div class="row">
 
-                                                   <!-- <form action="{{url('/comment/'.$post->id)}}" method="post"> -->
                                                    <form>
                                                        <div class="input-field cmt-coll-space">
 
@@ -411,19 +407,19 @@
                                         <div class="row">
                                             <div class="input-field col s12">
                                               <input id="name-pro" type="text" class="validate" name="first_name" value="{{$user->first_name}}">
-                                              <label for="name-pro"></label>
+                                              <label for="name-pro">ชื่อ</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
                                               <input id="name-pro" type="text" class="validate" name="last_name" value="{{$user->last_name}}">
-                                              <label for="name-pro"></label>
+                                              <label for="name-pro">นามสกุล</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
                                               <input id="detail-pro" type="text" class="validate" name="bio" value="{{$info->bio}}">
-                                              <label for="detail-pro"></label>
+                                              <label for="detail-pro">เกี่ยวกับฉัน</label>
                                             </div>
                                         </div>
                                         <button type="submit" name="action" class="waves-effect waves-light btn right">ตกลง</button>

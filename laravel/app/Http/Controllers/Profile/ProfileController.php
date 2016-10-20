@@ -69,7 +69,7 @@ class ProfileController extends Controller
       $info_bio = Profile::find($profile_id);
       $info_bio->bio = $req->bio;
       $info->save();
-
+      $info_bio->save();
       if($req->hasFile('avatar')){
         $avatar = $req ->file('avatar');
         $filename = time(). '.'. $avatar->getClientOriginalExtension();
