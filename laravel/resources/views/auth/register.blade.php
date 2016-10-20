@@ -1,6 +1,7 @@
 @extends('site.layout')
 @section('maincontent')
 
+<<<<<<< HEAD
 <script type="text/javascript">
 
   /*
@@ -102,6 +103,8 @@ function registerP2(){
 }   
 </script>
 
+=======
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 <div class="container" style="width: 90%;">
 
     <div class="row" style="margin-top: 160px;">
@@ -119,7 +122,7 @@ function registerP2(){
                         <div class="col s3" style="margin-top: 19px;"><p style="margin-left: 40%;font-size:16pt">ชื่อผู้ใช้</p></div>
                         <div class="col s6 ">
                             <form class="col s11">
-                                    <input style="font-size:18pt;text-align:center" type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ" onchange="checkAvailableUsername()">
+                                    <input style="font-size:18pt;text-align:center" type="text" class="validate" id="username" name="username" placeholder="ใส่ชื่อผู้ใช้ของคุณ" onchange="checkAvailableUsername()" onblur="checkAvailableUsername()" onfocus="checkAvailableUsername()">
                             </form>
                         </div>
 
@@ -285,22 +288,42 @@ function registerP2(){
                       </span>
                     </div>
                     <div class="section"></div>
+<<<<<<< HEAD
                     <div id="register10" align="center">
                         <input type="checkbox" class="filled-in" id="confirmCheck"/>
+=======
+
+                    <div align="center">
+                        <input id="confirmCheck" type="checkbox" class="filled-in checkbox"/>
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                         <label for="confirmCheck">ยืนยันการเข้าร่วมเป็นสมาชิก Boompow</label>
                     </div>
                     <div class="section">
-
                     </div>
                     <div align="center">
+<<<<<<< HEAD
                       <button id="register11" class="blue darken-3 btn waves-effect waves-light" id="submit" type="submit" name="button" onclick="confirmChk()" >ตกลง</button>
+=======
+
+                      <button class="blue darken-3 btn waves-effect waves-light" id="confSubmit" type="submit" name="button" disabled>ตกลง</button>
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                       <a href="{{url('/')}}" style="float: none" class="btn waves-effect waves-light modal-close">ยกเลิก</a>
+                      <script type="text/javascript">
+                        var confCheck = document.getElementById('confirmCheck');
+                        var confSubmit = document.getElementById('confSubmit');
+                        confCheck.onchange= function () {
+                          //check if checkbox is checked
+                          // if (confCheck.checked) {
+                          //   confSubmit.disabled=false; //enable input
+                          // } else {
+                          //   confSubmit.disabled=true; //disable input
+                          // }
+                          confSubmit.disabled=!confCheck.checked;
+                        };
+                      </script>
                     </div>
 
                 </li>
-
-
-
             </ul>
             </form>
             <div id="termofuse" class="modal" >
@@ -312,20 +335,11 @@ function registerP2(){
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
-
         </div>
-
     </div>
-
-
 </div>
 <script>
 
-
-
-  function submitRegister(){
-    document.getElementById("registerForm").submit();
-  }
   function checkAvailableUsername(){
     $.ajaxSetup({
       headers: {
@@ -337,19 +351,18 @@ function registerP2(){
       var username = $('#username').val();
       $.ajax({
         type: 'GET',
-        dataType : '',
-        url: 'checkAvailableUsername',
+        // url: 'checkAvailableUsername',
+        url: "{{url('/checkAvailableUsername')}}",
         data: {username: username},
         success: function(data){
           if (data==1) {
-            $("div#usernameAvailability").html("<div style='color: red;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว กรุณากรอกชื่อผู้ใช้อื่น</span></div>");
+            $("div#usernameAvailability").html("<div style='color: red;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้ซ้ำ กรุณากรอกชื่อผู้ใช้อื่น</span></div>");
           }
           else if(data==0){
             $("div#usernameAvailability").html("<div style='color: green;'><span style='font-size: 16pt'>"+"ชื่อผู้ใช้นี้สามารถใช้ได้</span></div>");
-
           }
-          else {
-            $("div#usernameAvailability").html("<div style='color: green;'><span style='font-size: 16pt'>"+"กรุณากรอกชื่อผู้ใช้</span></div>");
+          else if(data==2){
+            $("div#usernameAvailability").html("<div style='color: #ffb74d;'><span style='font-size: 16pt'>"+"กรุณากรอกชื่อผู้ใช้</span></div>");
           }
         }
       });

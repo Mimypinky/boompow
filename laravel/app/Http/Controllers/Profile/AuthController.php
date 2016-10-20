@@ -31,11 +31,14 @@ class AuthController extends Controller
     public function index()
     {
         //
-          $questions = Question::all();
-
+        $questions = Question::all();
         $title = 'สมัครสมาชิก';
-        return view('auth.register',compact('title','bio','questions'));
-
+        if(!Auth::check()){
+          return view('auth.register',compact('title','questions'));
+        }
+        else {
+          return redirect()->intended('/');;
+        }
     }
 
     /**
@@ -61,6 +64,17 @@ class AuthController extends Controller
       return view('site.index');
     }*/
 
+    public function loginForm(){
+      $title = 'เข้าสู่ระบบ';
+      if(!Auth::check()){
+        return view('auth.loginform',compact('title'));
+
+      }
+      else {
+        return redirect()->intended('/');;
+      }
+    }
+
     public function logout(){
       Auth::logout();
       return redirect()->intended('/');
@@ -83,23 +97,38 @@ class AuthController extends Controller
       $password = $request['password'];
       $remember = Input::has('remember')? true : false;
 
-      if(Auth::attempt(['username' => $username, 'password' => $password], $remember)){
+      if(Auth::attempt(['username' => $username, 'password' => $password], $remember) && Auth::user()->status == 'user' ){
         return redirect()->intended('/');
       }
-
+      else if(Auth::attempt(['username' => $username, 'password' => $password], $remember) && Auth::user()->status == 'admin'){
+        return redirect()->intended('/administator');
+      }
       else{
-        return back()->withInput();
+        $message = 'ขื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
+        return redirect('login')->with('loginStatus', $message );
       }
     }
     public function checkAvailableUsername(Request $request){
+        // $username = Request::Input('username');
+        $username = Input::get('username');
+        $result = Account::where('username', $username)->first();
+        if(isset($result)){
+          return Response::json('1');
+        }
+        elseif ($username==null) {
+          return Response::json('2');
+        }
+        else {
+          return Response::json('0');
+        }
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make(Input::all(),array(
-                'username'                              => 'required|unique:accounts,username|min:4|max:100',
-                'first_name'                            => 'required|string|max:100',
-                'last_name'                             => 'required|string|max:100',
+                'username'                              => 'required|unique:accounts,username|min:3|max:100',
+                'first_name'                            => 'required|alpha|max:100',
+                'last_name'                             => 'required|alpha|max:100',
                 'gender'                                => 'required',
                 'dob'                                   => 'required',
                 'question'                              => 'required|not_in:0',
@@ -109,11 +138,12 @@ class AuthController extends Controller
             ),
             array(
                 'username.required'                     => 'กรุณากรอกชื่อผู้ใช้',
+                'username.min'                          => 'กรุณากรอกชื่อผู้ใช้ที่มีตัวอักษรหรือตัวเลขรวมกันอย่างน้อย 3 ตัว',
                 'username.unique'                       => 'ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว กรุณากรอกชื่อผู้ใช้อื่น',
                 'first_name.required'                   => 'กรุณากรอกชื่อจริง',
-                'first_name.string'                     => 'กรุณากรอกชื่อเป็นตัวอักษร',
+                'first_name.alpha'                      => 'กรุณากรอกชื่อเป็นตัวอักษร',
                 'last_name.required'                    => 'กรุณากรอกนามสกุล',
-                'first_name.string'                     => 'กรุณากรอกนามสกุลเป็นตัวอักษร',
+                'last_name.alpha'                       => 'กรุณากรอกนามสกุลเป็นตัวอักษร',
                 'gender.required'                       => 'กรุณาระบุเพศ',
                 'dob.required'                          => 'กรุณาระบุวันเกิด',
                 'question.required'                     => 'กรุณาเลือกคำถาม',
@@ -154,9 +184,16 @@ class AuthController extends Controller
           $obj2->remember_token;
           $obj2->save();
 
-          Auth::loginUsingId($id, true);
-          echo 'ลงชื่อเข้าใช้ในระบบแล้ว..';
-          return redirect()->intended('/');
+          $credentials = array(
+            'username' => Input::get('username'),
+            'password' => Input::get('password')
+          );
+
+          if (Auth::attempt($credentials)) {
+            $title = 'เพิ่มข้อมูลส่วนตัว';
+            return view('auth.register_p2',compact('title'));
+          }
+
         }
 
 

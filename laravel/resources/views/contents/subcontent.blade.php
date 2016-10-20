@@ -60,25 +60,17 @@ function content() {
 
 
         @foreach($content as $data)
-          <!--<div class="col s4 m4">
-              <div class="card">
-                  <div class="card-image">
-                      <img src="{{url('img/healthy.jpg')}}">
-                  </div>
-                  <div class="card-content" style="height:200px;background-color:eecc6;">
-                      <h5 >{{$data->content_title}}</h5>
-                      <div><p class="wordwrap">{{$data->description}}</p></div>
-                  </div>
-                  <div class="card-action" style="background-color: #ee6e73;">
-                      <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
-                  </div>
 
+<<<<<<< HEAD
               </div>
           </div>-->
           <div id="content1" class="col s12 m4">
+=======
+          <div class="col s12 m4">
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
               <div class="card">
                   <div class="card-image">
-                      <img src="{{url('img/healthy.jpg')}}">
+                      <img src="{{url('img/content/'.$data->head_pic_content)}}">
                   </div>
                   <div class="card-content" style="height: 200px;">
                       <h5>{{$data->content_title}}</h5>
@@ -89,7 +81,7 @@ function content() {
                   </div>
               </div>
           </div>
-@endforeach
+          @endforeach
       </div>
 
   </div>

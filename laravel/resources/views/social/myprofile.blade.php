@@ -258,11 +258,19 @@ function comment() {
                             </p>
                         </div>
                         <div style="font-size: 14pt; text-align: center;">
+<<<<<<< HEAD
                             <a id="myprofile2" href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspเพื่อน</span></span></a>
                             <span class="border-divi"></span>
                             <span id="myprofile3"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspโพสต์</span></span>
                             <span class="border-divi"></span>
                             <a id="myprofile4" href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp100</span><span>&nbspรูปภาพ</span></span></a>
+=======
+                            <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp{{$sumfriend}}</span><span>&nbspเพื่อน</span></span></a>
+                            <span class="border-divi"></span>
+                            <span><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp{{$sumpost}}</span><span>&nbspโพสต์</span></span>
+                            <span class="border-divi"></span>
+                            <a href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp{{$sumpicpost}}</span><span>&nbspรูปภาพ</span></span></a>
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                         </div>
                     </div>
                 </div>
@@ -327,6 +335,7 @@ function comment() {
                 </div>
                 <!--end Update status-->
                 <!--timeline-->
+                @if(isset($posts))
                 <div class="row" style="margin-top: 11%;">
                     <div class="col s8 offset-s2 pro-upstatus w-profile">
                         <!--timeline mypost-->
@@ -343,6 +352,7 @@ function comment() {
                                               <!-- notice the "circle" class -->
                                         </div>
                                         <div class="input-field col s9 upsta-line">
+
                                         @else
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/uploads/avatars/{{$post->avatar}}" alt="" class="postbox-pic media-object img-circle imgthumb">
@@ -350,11 +360,13 @@ function comment() {
                                               <!-- notice the "circle" class -->
                                         </div>
                                         <div class="input-field col s9 upsta-line-f">
+
                                         @endif
 
                                             <div class="col s12" id="commenthead">
                                                 <span id="namecomment">{{$post->first_name.' '.$post->last_name}}
                                                 </span>
+                                                <div class="row">
                                                 <div class="w-edit">
                                                   @if($post->user_id==$user->id)
                                                   <a id="mngpost1" class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
@@ -363,11 +375,13 @@ function comment() {
                                                   <a id="mngpost2" href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                                     <i class="fa fa-trash-o"></i> ลบ</a>
                                                     @else
-                                                    <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:73%">
+                                                    <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1; margin-left: 95px;">
                                                       <i class="fa fa-trash-o"></i> ลบ</a>
                                                       @endif
 
                                                 </div>
+                                              </div>
+
                                                 <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
                                                     <ul class="collection with-header f-modal">
                                                         <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
@@ -400,7 +414,7 @@ function comment() {
                                                          <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
                                                       </div>
                                                 </div>
-                                                <p id="datecomment">{{$post->created_at}}
+                                                <p id="datecomment2">{{$post->created_at}}
                                                 </p>
                                             </div>
                                             <div class="status-post2 col s12">
@@ -415,18 +429,26 @@ function comment() {
                                             <div class="card-action" style="border: none;">
                                               <?php $count_likes = DB::table('likes')->where('post_id','=',$post->id)->count();
                                                   $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
-                                                  ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->orderBy('created_at', 'desc')->get();
+                                                  ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')->orderBy('created_at', 'desc')->get();
                                                   $uid = Auth::user()->id;
+                                                  $uid = Auth::user()->id;
+
+                                                  $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
 
                                                       ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
+                                                    @if($liked!=null)
 
-
+                                                        <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                          <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                        </a>
+                                                        @else
                                                         <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                           <img id="mypost3" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                         </a>
 
+                                                        @endif
                                                     </div>
                                                     <div class="col s2"></div>
                                                     <div class="col s2">
@@ -438,9 +460,23 @@ function comment() {
                                                         <div class="wholike">
 
                                                           @foreach($likes as $like)
+<<<<<<< HEAD
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
                                                               <img id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
                                                               @endforeach
+=======
+                                                          @if($like->liked_by!=$user->id)
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                            </a>
+                                                          @else
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/profile')}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                            </a>
+                                                          @endif
+
+                                                          @endforeach
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 
                                                         </div>
                                                     </div>
@@ -450,17 +486,28 @@ function comment() {
                                                <div class="divider"></div>
                                                <div>
                                                    <div class="row">
-                                                   <form action="{{url('/comment/'.$post->id)}}" method="post">
+
+                                                   <form>
                                                        <div class="input-field cmt-coll-space">
 
                                                        <div id="comment1" class="input-field w-cmt">
 
+<<<<<<< HEAD
                                                             <div  class="input-field col s12">
                                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+=======
+                                                            <div class="input-field col s12">
+                                                                <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                                <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
+<<<<<<< HEAD
                                                             <button id="comment2" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
+=======
+                                                            <!--<button id="btn-comment" name="action" class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>-->
+                                                            <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 
                                                         </div>
 
@@ -469,23 +516,41 @@ function comment() {
 
                                                    <div class="comment-section">
                                                        <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
-                                                            <li>
+                                                            <li id="commentboxs{{$key}}">
                                                               <?php $comments = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
                                                               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
                                                               ->where('post_id',$post->id)->get();
                                                               $count_comments = DB::table('comments')->where('post_id',$post->id)->count();
 
                                                               ?>
+
                                                               @if($count_comments !=null)
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
                                                               @endif
+                                                              <script type="text/javascript">
+                                                                  $('.btn-comment').click(function(){
+                                                                    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                    type : "POST",
+                                                                    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+
+                                                                  })
+                                                                    .done(function(html) {
+                                                                      console.log('{{$post->id}}');
+                                                                      $('#commentboxs{{$key}}').append(html);
+                                                                    })
+                                                                    .fail(function(){
+                                                                      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                    })
+                                                                  });
+                                                              </script>
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
-                                                                    <a href="{{url('/friend/$comment->id')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
+                                                                    <a href="{{url('/friend/'.$comment->id)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
@@ -493,6 +558,25 @@ function comment() {
 
                                                                 </ul>
                                                                 </div>
+<<<<<<< HEAD
+                                                                <script type="text/javascript">
+                                                                    $('.btn-comment').click(function(){
+                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                      type : "POST",
+                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                                                                    })
+                                                                      .done(function(html) {
+                                                                        console.log('{{$post->id}}');
+                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
+                                                                      })
+                                                                      .fail(function(){
+                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                      })
+                                                                    });
+                                                                </script>
+=======
+>>>>>>> 145b25360acfdc5d6655030a21f1e347aa8c231c
                                                                 @endforeach
                                                             </li>
                                                         </ul>
@@ -505,9 +589,12 @@ function comment() {
                                 </div>
                             </div>
                         </div>
+                      </div>
                         <div class="section"></div>
+                          @endforeach
                       </div>
                     </div>
+<<<<<<< HEAD
 
                         @endforeach
                         <!--End timeline mypost-->
@@ -674,8 +761,12 @@ function comment() {
 >>>>>>> 847b1f229b9db266f10461cb1091213ade8929cb
 
 
+=======
+                        <!--End timeline mypost-->
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                     </div>
                 </div>
+                @endif
                 <!--End timeline-->
 
                 <!-- Modal Structure -->
@@ -685,21 +776,13 @@ function comment() {
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>เพื่อนของฉัน</h4>
                             <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            @foreach($allfriend as $myfriend)
                             <li class="collection-item avatar transper">
-                                <img src="img/pic.jpg" alt="" class="circle">
-                                <p>เจ๊สมร ดอนเจดีย์</p>
-                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                                <img src="{{url('/img/uploads/avatars/'.$myfriend->avatar)}}" alt="" class="circle">
+                                <p>{{$myfriend->first_name.' '.$myfriend->last_name}}</p>
+                                <a href="{{url('/friend/'.$myfriend->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                             </li>
-                            <li class="collection-item avatar transper">
-                                <img src="img/pic.jpg" alt="" class="circle">
-                                <p>พิชิต จิตมั่นคง </p>
-                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar transper">
-                                <img src="img/pic.jpg" alt="" class="circle">
-                                <p>มาโนช ชงชม </p>
-                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!--picstore-->
@@ -707,108 +790,30 @@ function comment() {
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-picture-o fa-lg left" aria-hidden="true"></i><h4>รูปภาพของฉัน</h4>
                             <div class="modal-close close-mbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div><br>
-                            <p style="color: #8a8787;">คุณสามารถแก้ไขภาพ เปลี่ยนคำบรรยายภาพ หรือลบรูปภาพได้ในส่วนนี้</p>
+                            <p style="color: #8a8787;">คุณดูรูปภาพที่โพสต์ได้</p>
                             </li>
                         </ul>
                         <div class="row pic-rspace">
-                            <div class="col s12 l4 pic-col">
-                                <div class="hovereffect">
-                                    <img src="img/bike.jpg" style="width:100%;">
-                                    <div class="overlay">
-                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
-                                    <a class="info" href="#">ลบ</a>
-                                    </div>
-                                    <div class="divider"></div>
-                                </div>
-                            </div>
-                            <div class="col s12 l4 pic-col">
-                                <div class="hovereffect">
-                                    <img src="img/wf.jpg" style="width:100%;">
-                                    <div class="overlay">
-                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
-                                    <a class="info" href="#">ลบ</a>
-                                    </div>
-                                    <div class="divider"></div>
-                                </div>
-                            </div>
-                            <div class="col s12 l4 pic-col">
-                                <div class="hovereffect">
-                                    <img src="img/cover.jpg" style="width:100%;">
-                                    <div class="overlay">
-                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
-                                    <a class="info" href="#">ลบ</a>
-                                    </div>
-                                    <div class="divider"></div>
-                                </div>
-                            </div>
-                        </div>
+                          @foreach($pic_post as $key=> $pic)
 
-                        <div class="row pic-rspace">
-                            <div class="col s12 l4 pic-col">
-                                <div class="hovereffect">
-                                    <img src="img/bike.jpg" style="width:100%;">
-                                    <div class="overlay">
-                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
-                                    <a class="info" href="#">ลบ</a>
-                                    </div>
-                                    <div class="divider"></div>
-                                </div>
-                            </div>
-                            <div class="col s12 l4 pic-col">
-                                <div class="hovereffect">
-                                    <img src="img/wf.jpg" style="width:100%;">
-                                    <div class="overlay">
-                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
-                                    <a class="info" href="#">ลบ</a>
-                                    </div>
-                                    <div class="divider"></div>
-                                </div>
-                            </div>
-                            <div class="col s12 l4 pic-col">
-                                <div class="hovereffect">
-                                    <img src="img/cover.jpg" style="width:100%;">
-                                    <div class="overlay">
-                                    <a class="info modal-trigger" href="#pic-edit">แก้ไข</a>
-                                    <a class="info" href="#">ลบ</a>
-                                    </div>
-                                    <div class="divider"></div>
-                                </div>
-                            </div>
-                        </div>
+                           <div class="col s12 l4 pic-col">
+                               <div class="hovereffect">
+                                   <img src="{{url('/img/uploads/posts/'.$pic->image)}}" style="width:100%;">
+                                   <div class="overlay">
+
+                                   <a class="info  modal-trigger" href="#delPicPost{{$key}}">ลบ</a>
+
+
+                               </div>
+                           </div>
+                         </div>
+
+
+
+                            @endforeach
+
                     </div>
-                    <!--pic-edit-->
-                    <div id="pic-edit" class="modal" style="width: 500px;">
-                        <ul class="collection with-header f-modal">
-                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
-                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
-
-                            <li class="transper collection-item avatar">
-                                <img src="img/pic5.jpg" alt="" class="circle">
-                                <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-                                <div class="card-image">
-                                    <img width="300" src="img/love.jpg">
-                                </div>
-                                <form action="#">
-                                    <div class="file-field input-field">
-                                        <div class="btn edit-uppix-btn black-text">
-                                            <span style="font-size: 14pt;"><i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพใหม่</span>
-                                            <input type="file">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="edit-uppix-pathbtn file-path validate" type="text" placeholder="ยังไม่ได้เลือกไฟล์ใด">
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </form>
-                                <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
-                            </li>
-                        </ul>
-                    </div>
-
-
+                  </div>
                     <!--profile-edit-->
                     <div id="profile-edit" class="modal" style="width: 500px;" data-backdrop="static">
                     <div  class="modal-content">
@@ -817,16 +822,24 @@ function comment() {
                             <div class="modal-close close-fmbtn" align="right"><a id="close-modal-button" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>
 
                             <li>
+<<<<<<< HEAD
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
+=======
+                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 
                                         <div class="row">
                                           <div style="text-align: center;">
-                                              <img class="pro-pic media-object dp img-circle" id="avatar"style="width:150px;height:150px;" src="img/uploads/avatars/{{$info->avatar}}">
+                                              <img class="pro-pic media-object dp img-circle" id="avatar" style="width:150px;height:150px;" src="img/uploads/avatars/{{$info->avatar}}">
 
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
+<<<<<<< HEAD
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+=======
+                                                  <span style="margin-top: -20%; margin-left: 4%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
                                                   <input type="hidden" name="_token" value="{{csrf_token()}}"></span>
@@ -851,19 +864,19 @@ function comment() {
                                         <div class="row">
                                             <div class="input-field col s12">
                                               <input id="name-pro" type="text" class="validate" name="first_name" value="{{$user->first_name}}">
-                                              <label for="name-pro"></label>
+                                              <label for="name-pro">ชื่อ</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
                                               <input id="name-pro" type="text" class="validate" name="last_name" value="{{$user->last_name}}">
-                                              <label for="name-pro"></label>
+                                              <label for="name-pro">นามสกุล</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
                                               <input id="detail-pro" type="text" class="validate" name="bio" value="{{$info->bio}}">
-                                              <label for="detail-pro"></label>
+                                              <label for="detail-pro">เกี่ยวกับฉัน</label>
                                             </div>
                                         </div>
                                         <button type="submit" name="action" class="waves-effect waves-light btn right">ตกลง</button>
@@ -884,18 +897,21 @@ function comment() {
                                 <p>เจ๊สมร ดอนเจดีย์</p>
                                 <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                             </li>
-                            <li class="collection-item avatar transper">
-                                <img src="img/pic.jpg" alt="" class="circle">
-                                <p>พิชิต จิตมั่นคง </p>
-                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                            </li>
-                            <li class="collection-item avatar transper">
-                                <img src="img/pic.jpg" alt="" class="circle">
-                                <p>มาโนช ชงชม </p>
-                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                            </li>
+
                         </ul>
                     </div>
+                    @if(!isset($key))
+                    <div class="section"></div>
+                    @else
+                    <div id="delPicPost{{$key}}" class="modal" style="width: 500px;">
+                       <div class="modal-content">
+                         <h4>ยืนยันการลบรูปภาพ</h4>
+                       </div>
+                       <div class="modal-footer">
+                         <a href="{{url('/delPic/'.$post->id)}}" class=" modal-action modal-close waves-effect waves-green btn-flat">ยืนยัน</a>
+                       </div>
+                     </div>
+                     @endif
                     <!-- End Modal Structure -->
 
 
@@ -903,4 +919,5 @@ function comment() {
         </div>
     </div>
 </div>
+
 @stop

@@ -1,5 +1,8 @@
 @extends('site.layout')
 @section('maincontent')
+<link rel="stylesheet" type="text/css" href="{{URL::asset('image-picker/image-picker.css')}}">
+
+<script src="{{URL::asset('image-picker/image-picker.js')}}" type="text/javascript"></script>
 <div class="container" style="width: 90%;">
 
     <div class="row" style="margin-top: 160px;">
@@ -11,45 +14,77 @@
             <ul class="collection with-header sp-head">
                 <li class="collection-header"><h5>เพิ่มภาพประจำตัว</h5></li>
                 <li class="collection-item sp-item">
-                    <form class="col s12">
+                    <form class="col s12" action="" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s4 offset-s1">
                                 <span class="sp-caption1">เปลี่ยนภาพ</span>
                                 <div style="text-align: center;">
-                                    <img class="sp-pic-edit media-object dp img-circle" src="img/pic.jpg">
+                                    <img class="media-object dp img-circle sp-pic-edit" style="max-width:210px;"src="{{url('img/uploads/avatars/default.jpg')}}" id="show_pic">
                                     <form action="#">
                                         <div class="file-field input-field">
                                             <span class="sp-cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
                                             <i class="cam-icon fa fa-camera"></i>
-                                            <input type="file">
+                                            <input type="file" id="uploadImage">
+                                            <p id="demo"></p>
                                         </div>
-                                    </form>
+
                                 </div>
                             </div>
                             <div class="input-field col s6">
                                 <span class="sp-caption2">เลือกภาพประจำตัวที่มีให้</span>
-                                <div class="row joiner-pic-rspace">
-                                    <div class="col s12 m7 l4 joiner-pic-col">
-                                        <a href="#"><img src="img/pic3.jpg"></a>
+                                <div class="row joiner-pic-rspace  image_picker_selector"style="margin-bottom:40px">
+                                  <div class="row" style="margin-bottom:20px;">
+                                    <div class="col s12 m7 l4 joiner-pic-col ">
+                                        <a href="#"><img src="{{url('img/pic3.jpg')}}" alt="pic1"></a>
+                                        <input name="avatar" type="radio" id="test1" value="img/pic3.jpg" />
+                                        <label for="test1">ป้าแมรี่</label>
                                     </div>
-                                    <div class="col s12 m7 l4 joiner-pic-col">
-                                        <a href="#"><img src="img/pic4.jpg"></a>
+                                    <div class="col s12 m7 l4 joiner-pic-col ">
+                                        <a href="#"><img src="{{url('img/pic4.jpg')}}" alt="pic2"></a>
+                                        <input name="avatar" type="radio" id="test2"  value="img/pic4.jpg"/>
+                                        <label for="test2">ป้าสมศรี</label>
                                     </div>
-                                    <div class="col s12 m7 l4 joiner-pic-col">
-                                        <a href="#"><img src="img/pic2.jpg"></a>
+                                    <div class="col s12 m7 l4 joiner-pic-col " >
+                                        <a href="#"><img src="{{url('img/pic2.jpg')}}" alt="pic3"></a>
+                                        <input name="avatar" type="radio" id="test3"  value="img/pic2.jpg"/>
+                                        <label for="test3">ลุงเจียม</label>
                                     </div>
-                                </div>
-                                <div class="row joiner-pic-rspace">
-                                    <div class="col s12 m7 l4 joiner-pic-col">
-                                        <a href="#"><img src="img/pic3.jpg"></a>
+                                  </div>
+                                    <div class="col s12 m7 l4 joiner-pic-col ">
+                                        <a href="#"><img src="{{url('img/pic3.jpg')}}" alt="pic1"></a>
+                                        <input name="avatar" type="radio" id="test4"  value="img/pic3.jpg"/>
+                                        <label for="test4">ป้าแมรี่2</label>
                                     </div>
-                                    <div class="col s12 m7 l4 joiner-pic-col">
-                                        <a href="#"><img src="img/pic4.jpg"></a>
+                                    <div class="col s12 m7 l4 joiner-pic-col ">
+                                        <a href="#"><img src="{{url('img/pic4.jpg')}}" alt="pic1" ></a>
+                                        <input name="avatar" type="radio" id="test5"  value="img/pic4.jpg" />
+                                        <label for="test5">ป้าสมศรี2</label>
                                     </div>
-                                    <div class="col s12 m7 l4 joiner-pic-col">
-                                        <a href="#"><img src="img/pic2.jpg"></a>
+                                    <div class="col s12 m7 l4 joiner-pic-col ">
+                                        <a href="#"><img src="{{url('img/pic2.jpg')}}" alt="pic1"></a>
+                                        <input name="avatar" type="radio" id="test6"  value="img/pic2.jpg" />
+                                        <label for="test6">ลุงเจียม2</label>
                                     </div>
-                                </div>
+
+                                    <button class="btn" onclick="myFunction();">Try it</button>
+                                    <script type="text/javascript">
+
+                                    document.getElementById("uploadImage").onchange = function () {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            // get loaded data and render thumbnail.
+                                            var pic= document.getElementById('show_pic');
+                                            pic.src = e.target.result;
+                                            // pic.width='60%';
+
+                                        };
+
+                                        // read the image file as a data URL.
+                                        reader.readAsDataURL(this.files[0]);
+                                    };
+                                    </script>
+
                             </div>
                         </div>
                     </form>
@@ -59,7 +94,7 @@
             <ul class="collection with-header sp-head">
                 <li class="collection-header"><h4>เขียนอธิบายเกี่ยวกับตัวคุณ</h4></li>
                 <li class="collection-item sp-item">
-                    <form class="col s12">
+
                         <div class="row">
                             <div class="input-field col s12">
                                 <textarea id="describe" class="materialize-textarea" placeholder="อยากบอกอะไรเกี่ยวกับตัวคุณ บอกเลย! ">
@@ -67,7 +102,7 @@
                                 <label for="describe">อธิบายเกี่ยวกับตัวคุณ</label>
                             </div>
                         </div>
-                    </form>
+
                 </li>
             </ul>
 
@@ -79,6 +114,7 @@
                     </div>
                 </li>
             </ul>
+              </form>
         </div>
     </div>
 

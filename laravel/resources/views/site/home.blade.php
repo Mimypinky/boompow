@@ -65,12 +65,12 @@ function content() {
         </div>
 
         @foreach($content as $data)
-        
+
 
           <div id="content2" class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="{{url('img/healthy.jpg')}}">
+                        <img src="{{url('img/content/'.$data->head_pic_content)}}">
                     </div>
                     <div class="card-content" style="height: 230px;">
                         <h5>{{$data->content_title}}</h5>
@@ -82,7 +82,7 @@ function content() {
                     </div>
                 </div>
 
-         
+
           @endforeach
           <div class="center">
             {!! (new Landish\Pagination\Materialize($content))->render() !!}

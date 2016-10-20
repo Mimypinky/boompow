@@ -13,7 +13,9 @@ $(document).ready(function () {
   $('#edit').openModal();
   $('#edit').closeModal();
 });
-
+<?php
+use Carbon\Carbon;
+?>
 
 // Creates a dropdown of 15 years to control year
 });
@@ -159,6 +161,7 @@ $(document).ready(function () {
       </div>
       <ul class="collection event-border" data-collapsible="accordion">
         @foreach($event as $key => $data)
+
         <li class=" collection-item">
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -25px; padding-left: 3%;">
@@ -197,9 +200,7 @@ $(document).ready(function () {
 
                               @endforeach
 
-
                             </ul>
-
                           </div>
           @endif
 
@@ -214,8 +215,25 @@ $(document).ready(function () {
                     <div class="card-image">
                       <img class=" materialboxed" src="{{url('img/uploads/events/'.$data->image)}}">
                     </div>
-                    @if (strcmp($data->status,"unavailable")==0)
+                    <?php
+                    $now = Carbon::parse('now');
+                    $start_date = Carbon::parse($data->start_date);
+                    $dif = $lengthOfAd = $now->diffInDays($start_date,false);
+                    $max = $data->max_amount;
+
+                    if($dif<0 ){
+                      $color=' red darken-1 ';
+                      $message = 'ปิดรับสมัคร';
+                      $display = 'display:none';
+                  }else{
+                      $color=' light-green darken-1 ';
+                      $message = 'กำลังรับสมัคร';
+                      $display = ' ';
+                    }
+                    ?>
+
                     <!--เริ่มแสดง status (unavailable)-->
+<<<<<<< HEAD
                     <div id="status" class="card-content red darken-1" id="status_avai">
                         <p class="ev-status">ปิดรับสมัคร</p>
                     </div>
@@ -223,6 +241,12 @@ $(document).ready(function () {
                   <div id="status" class="card-content light-green darken-1" id="status_unavai">
                       <p class="ev-status">กำลังเปิดรับสมัคร</p>
                   </div>
+=======
+                    <div class="card-content {{$color}}" id="status_avai">
+                        <p class="ev-status">{{$message}}</p>
+                    </div>
+
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                   @if(in_array($data->id,$joined) AND ($data->creator!=$user))
                   <div class="card-action">
                       <ul class="event-menu ">
@@ -239,7 +263,7 @@ $(document).ready(function () {
                   </div>
 
                   @else
-                  <div class="card-action">
+                  <div class="card-action " style="{{$display}}">
                       <ul class="event-menu">
                           <li id="attend" class="event-item"><a href="#join{{$key}}" class="modal-trigger">
                               <i class="fa fa-plus-square-o left" aria-hidden="true"></i>เข้าร่วม</a></li>
@@ -248,7 +272,7 @@ $(document).ready(function () {
 
 
                   @endif
-                  @endif
+
 
                   </div>
 
@@ -327,45 +351,49 @@ $(document).ready(function () {
     </div>
 <!--กิจกรรมที่เข้าร่วมมมมม นะจ๊ะ-->
     <div id="attendevent" class="col s12">
+
       <ul class="collection event-border" data-collapsible="accordion">
         @foreach($joinEvent as $key=> $join)
+        <?php
+          $iii =array();
+          $mem_join=0 ;
+            foreach($ii as $key=>$i){
+            $mem_join =DB::table('join_event')->where('eve_id','=',$i)->count();
+            }
+
+
+
+
+          ?>
+
         <li class=" collection-item">
           <div class="row">
             <div class="col s10 m9 l9" style="margin-top: 10px; margin-bottom: -25px; padding-left: 3%;">
               <span><i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>
                 &nbsp;&nbsp;&nbsp;<span style="font-size: 20pt">{{$join->title}}<span></span>
-                <?php $mem_join =$join->accounts->count();
-
-                      ?>
-
 
 
 @if($mem_join==0)
 <a href="#parti2{{$key}}" class="modal-trigger"><div class="chip" align="right">ยังไม่มีผู้เข้าร่วม</div></a>
+
                 <div id="parti2{{$key}}" class="modal" style="width: 500px;">
                   <ul class="collection">
-
-
                     <li class="collection-item avatar">
                     <h4>ยังไม่มีผู้เข้าร่วม</h4>
                     </li>
-
-
                   </ul>
                   <div class="modal-footer">
                     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">
                       <i class="fa fa-times" aria-hidden="true"></i></a>
                   </div>
                 </div>
-
-          @else
+          @elseif($mem_join!=0)
           <a href="#joinparti{{$key}}" class="modal-trigger"><div class="chip" align="right">{{ $mem_join}} ที่เข้าร่วม</div></a>
           <div id="joinparti{{$key}}" class="modal" style="width: 500px;">
           <ul class="collection with-header f-modal">
             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
                 <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
             </li>
-
             @foreach($join->accounts as $account)
               <li class="collection-item avatar transper">
                 <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
@@ -378,6 +406,7 @@ $(document).ready(function () {
             </ul>
           </div>
           @endif
+
               </div>
             </div>
 
@@ -388,8 +417,21 @@ $(document).ready(function () {
                           <div class="card-image">
                               <img class=" materialboxed" src="{{url('img/uploads/events/'.$join->image)}}">
                           </div>
-                          <div class="card-content blue-grey darken-1">
-                              <p class="ev-status">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
+                          <?php
+                          $now = Carbon::parse('now');
+                          $start_date = Carbon::parse($join->start_date);
+                          $dif = $lengthOfAd = $now->diffInDays($start_date,false);
+                          if($dif<=0){
+                            $color=' light-blue darken-3 ';
+                            $message = 'กิจกรรมได้เริ่มไปแล้ว';
+
+                        }else{
+                            $color=' blue-grey darken-1 ';
+                            $message = 'กิจกรรมเริ่มต้นในอีก '.$dif.' วัน';
+                          }
+                          ?>
+                          <div class="card-content {{$color}}">
+                              <p class="ev-status">{{$message}}</p>
                           </div>
                           @if($join->event->creator == $user)
                           <div class="card-action">
@@ -439,7 +481,7 @@ $(document).ready(function () {
                     </tr>
                     <tr>
                       <td><p>โดย</p></td>
-                      <td><p>{{$join->fname.'  '.$data->lname}}</p></td>
+                      <td><p>{{$join->fname.'  '.$join->lname}}</p></td>
                     </tr>
                     <tr>
                       <td><p>สถานที่</p></td>
@@ -472,7 +514,9 @@ $(document).ready(function () {
             </div>
           </div>
         </li>
-          @endforeach
+
+        @endforeach
+
 
           </ul>
         </div>
@@ -652,9 +696,24 @@ $(document).ready(function () {
                         <div class="card-image">
                           <img class=" materialboxed" src="{{url('img/uploads/events/'.$mine->image)}}">
                         </div>
-                        <div class="card-content blue-grey darken-1">
-                            <p class="ev-status">กิจกรรมเริ่มต้นในอีก 10 วัน</p>
+                  <?php
+                  $now = Carbon::parse('now');
+                  $start_date = Carbon::parse($mine->start_date);
+                  $dif = $lengthOfAd = $now->diffInDays($start_date,false);
+                  if($dif<0){
+                    $color=' light-blue darken-3 ';
+                    $message = 'กิจกรรมได้เริ่มไปแล้ว';
+
+                }else{
+                    $color=' blue-grey darken-1 ';
+                    $message = 'กิจกรรมเริ่มต้นในอีก '.$dif.' วัน';
+                  }
+
+                  ?>
+                        <div class="card-content {{$color}}">
+                            <p class="ev-status">{{$message}}</p>
                         </div>
+
                         <div class="card-action">
                             <ul class="event-menu">
                                 <li class="event-item"><a href="#edit{{$key}}" class="modal-trigger"><i class="fa fa-pencil-square-o left" aria-hidden="true"></i>แก้ไข</a>
@@ -711,10 +770,6 @@ $(document).ready(function () {
 
                     </div>
 
-                    <!--  <a style=" height: 100%"class="modal-trigger waves-effect waves-light btn-large red" href="#eve-del{{$key}}"><i class="fa fa-times left" aria-hidden="true" style="margin-right: 5px;"></i>ลบกิจกรรม</a>
-                      <a style=" height: 100%;"class="waves-effect waves-light btn-large blue darken-4" href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true" style="margin-right: 5px;"></i>กระดานกิจกรรม</a>
-
--->
 
                     </div>
                     <!---ส่วนของ delete event-->

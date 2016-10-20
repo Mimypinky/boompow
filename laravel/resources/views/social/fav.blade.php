@@ -57,7 +57,7 @@
             <div class="row mf-row">
                 <div class="col s1"><img src="img/fav.png" width="50"></div>
                 <div class="col s5"><h4 class="mf-col">รายการโปรด</h4></div>
-            </div> 
+            </div>
         </li>
         <li class="collection-item" style="background-color: #fbfbfb;">
             <div class="row">
@@ -73,7 +73,7 @@
                                     <h5 >{{$data->content_title}}</h5>
                                     <div><p class="wordwrap">{{$data->description}}</p></div>
                                 </div>
-                                
+
                                 <div class="card-action fav-icon-sec">
                                     <div id="fav2" class="col s4 link-col">
                                         <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="คัดลอกลิงค์" href="#"><i style="margin-top: 13px;" class="fa fa-link fa-lg" aria-hidden="true"></i>
@@ -87,10 +87,15 @@
                                         <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="นำรายการนี้ออก" href="#"><i style="margin-top: 13px;" class="fa fa-times fa-lg" aria-hidden="true"></i>
                                         </a>
                                     </div>
-                                    
+
                                 </div>
+<<<<<<< HEAD
                                 <div id="fav5" class="card-action" style="background-color: #ee6e73;">
                                         <center><a href="{{ url('content/favourite/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
+=======
+                                <div class="card-action" style="background-color: #ee6e73;">
+                                        <center><a href="{{ url('content/'.$data->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                                 </div>
                             </div>
                         </div>

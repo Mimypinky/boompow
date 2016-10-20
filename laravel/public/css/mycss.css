@@ -274,6 +274,12 @@ nav ul a{
     font-size: 14pt;
     line-height: 20px;
 }
+#datecomment2{
+    color: #bdbdbd;
+    font-size: 14pt;
+    line-height: 20px;
+    margin-top: -4%;
+}
 
 #namecomment{
     font-size: 20pt;
@@ -666,7 +672,7 @@ span.mynoti:after {
 
 .headContent {
     padding-left: 2%;
-    margin-top: 39px;
+    /*margin-top: 39px;*/
 
 }
 

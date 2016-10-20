@@ -42,8 +42,12 @@
             </li>
             <li class="collection-item" style="background-color: #fbfbfb;">
                 <div class="row">
+                  <div class="col s12">
+                    @foreach($account as $person)
+                    @if(in_array($person->id,$myfriend))
                     <div class="col s6">
                         <ul class="collection">
+<<<<<<< HEAD
                             <li id="f1" class="collection-item avatar f-left">
                                 <img src="img/pic.jpg" alt="" class="circle myfriend-img">
                                 <span class="title f-title">พรทิพย์ ชวยบุณชุม</span><br>
@@ -65,60 +69,30 @@
                                     <i class="material-icons left">question_answer</i>
                                     <span class="msg-hide">ส่งข้อความ<span></a>
                                 <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">close</i>
-                                    <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
-                            </li>
+=======
                             <li class="collection-item avatar f-left">
-                                <img src="{{url('img/pic3.jpg')}}" alt="" class="circle myfriend-img">
-                                <span class="title f-title">ละมุน ละม่อม</span><br>
+                                <a href="{{url('/friend/'.$person->id)}}">
+                                  <img src="{{url('img/uploads/avatars/'.$person->avatar)}}" alt="" class="circle myfriend-img">
+                              <span class="title f-title">{{$person->first_name.' '.$person->last_name}}</span></a><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
+                                <a href="{{url('/chatHistory/'.$person->id)}}"class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn" target="_blank">
                                     <i class="material-icons left">question_answer</i>
                                     <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
+                                <a href="{{url('/unfriend/'.$person->username)}}"class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                                     <i class="material-icons left">close</i>
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
                             </li>
-                        </ul>
-                    </div>
 
-                    <div class="col s6">
-                        <ul class="collection">
-                            <li class="collection-item avatar f-left">
-                                <img src="{{url('img/pic4.jpg')}}" alt="" class="circle myfriend-img">
-                                <span class="title f-title">สมัย สมร</span><br>
-                                <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">question_answer</i>
-                                    <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">close</i>
-                                    <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
-                            </li>
-                            <li class="collection-item avatar f-left">
-                                <img src="{{url('img/pic5.jpg')}}" alt="" class="circle myfriend-img">
-                                <span class="title f-title">ยายละม้าย คล้ายจะเป็นลม</span><br>
-                                <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">question_answer</i>
-                                    <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">close</i>
-                                    <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
-                            </li>
-                            <li class="collection-item avatar f-left">
-                                <img src="{{url('img/wf.jpg')}}" alt="" class="circle myfriend-img">
-                                <span class="title f-title">น้ำตก ลาบหมู</span><br>
-                                <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">question_answer</i>
-                                    <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
-                                    <i class="material-icons left">close</i>
-                                    <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
-                            </li>
                         </ul>
                     </div>
+                    @endif
+                    @endforeach
+
+
+
+
+                  </div>
                 </div>
             </li>
         </ul>
