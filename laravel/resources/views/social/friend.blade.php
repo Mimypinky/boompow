@@ -21,10 +21,10 @@
                                   <img src="{{url('img/uploads/avatars/'.$person->avatar)}}" alt="" class="circle myfriend-img">
                               <span class="title f-title">{{$person->first_name.' '.$person->last_name}}</span></a><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>
-                                <a href="{{url('/chatHistory/'.$person->id)}}"class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn">
+                                <a href="{{url('/chatHistory/'.$person->id)}}"class="mf-send-msg cyan darken-1 noshadow waves-effect waves-light btn" target="_blank">
                                     <i class="material-icons left">question_answer</i>
                                     <span class="msg-hide">ส่งข้อความ<span></a>
-                                <a href="{{url('/dP/'.$person->id)}}"class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
+                                <a href="{{url('/unfriend/'.$person->username)}}"class="mf-send-msg red darken-1 noshadow waves-effect waves-light btn">
                                     <i class="material-icons left">close</i>
                                     <span class="msg-hide">เลิกเป็นเพื่อน<span></a>
                             </li>

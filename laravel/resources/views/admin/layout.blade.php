@@ -125,7 +125,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 									<div class="user-name">
-										<p>Thida Sriprasert</p>
+										<p>{{Auth::user()->username}}</p>
 										<span>Administrator</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>

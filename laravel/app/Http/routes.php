@@ -55,12 +55,10 @@ Route::get('/checkAvailableUsername','Profile\AuthController@checkAvailableUsern
 
 Route::group(['middleware' => ['web']], function (){
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
+  Route::get('login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@loginForm']);
   Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });
-Route::get('login',function(){
-  $title="เข้าสู่ระบบ";
-  return view('site.loginform',compact('title'));
-});
+
 Route::get('/newsfeed','Profile\ProfileController@newsfeed');
 
 Route::post('/newsfeed','PostController@poststatus');
@@ -96,7 +94,8 @@ Route::get('/message_box','ChatController@index');
 
 Route::get('/notification' , 'FriendController@viewFriendRequest');
 Route::get('/deletePending/{username}', 'FriendController@deletePending');
-Route::get('/cancelFriendReq/{username}', 'FriendController@cancelFriendRequest');
+Route::get('/deleteFriendReq/{username}', 'FriendController@deleteFriendRequest');
+Route::get('/unfriend/{username}', 'FriendController@unfriend');
 Route::get('acceptFriend/{fid}', 'FriendController@acceptFriendRequest');
 Route::get('/upload',function(){
   return view('social.ex_upload');
@@ -106,9 +105,11 @@ Route::get('/testProfile', function(){
 });
 Route::get('/setting', 'Profile\ProfileController@settingProfile');
 Route::post('/updateInfo','Profile\ProfileController@updateInfo');
-Route::get('/administator',function(){
-  return view('admin.adminhome');
-});
+
+Route::post('/handleAdminLogin',[ 'as' => 'handleAdminLogin', 'uses' => 'Admin\AuthController@handleAdminLogin']);
+Route::resource('/administator/register','Admin\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
+Route::get('/administator','Admin\AdminController@index');
+
 Route::get('/administator/user',function(){
   return view('admin.manage_user');
 });

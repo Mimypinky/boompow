@@ -27,7 +27,7 @@ class ChatController extends Controller
     }
 
     public function chatRoom($fid){
-      $title = 'ห้องแชทของ';
+      $title = 'ห้องแชทของคุณกับ '.Account::find($fid)->username;
       $friendAccount = Account::find($fid);
       $myAccount = Account::find(Auth::user()->id);
       $userid =  Auth::user()->id;
@@ -37,7 +37,7 @@ class ChatController extends Controller
     $account1 = Friends::join('accounts' , 'accounts.id' , '=' ,'from_user_id' )->where('to_user_id', $userid)->where('status', 'accepted')->get();;
 
     $account2 = Friends::join('accounts' , 'accounts.id' , '=' ,'to_user_id' )->where('from_user_id', $userid)->where('status', 'accepted')->get();;
-      return view('social.chat0',compact('friendAccount' , 'myAccount','title' , 'account1' , 'account2'));
+      return view('social.chat0',compact('friendAccount', 'myAccount','title' , 'account1' , 'account2'));
     }
 
 
