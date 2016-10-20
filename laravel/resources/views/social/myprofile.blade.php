@@ -187,12 +187,15 @@
                                                 @endif
                                             </div>
                                             <div class="card-action" style="border: none;">
-                                              <?php $count_likes = DB::table('event_board_like')->where('event_post_id','=',$post->pid)->count();
-                                                  $likes = DB::table('event_board_like')->join('accounts','event_board_like.user_id','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
-                                                  ->where('event_post_id',$post->pid)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id as aid','profiles.avatar','accounts.username')->orderBy('created_at', 'desc')->get();
+                                              <?php $count_likes = DB::table('likes')->where('post_id','=',$post->id)->count();
+                                                  $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
+                                                  ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')->orderBy('created_at', 'desc')->get();
                                                   $uid = Auth::user()->id;
-                                                  $liked= DB::table('event_board_like')->select('id')->where([['event_post_id','=',$post->pid],['user_id','=',$uid]])->first();
-                                                  ?>
+                                                  $uid = Auth::user()->id;
+
+                                                  $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
+
+                                                      ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
                                                     @if($liked!=null)
@@ -201,7 +204,7 @@
                                                           <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
                                                         </a>
                                                         @else
-                                                        <a class="tooltipped" href="{{url('/like/'.$post->pid)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                        <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                           <img class="heart-i" src="{{url('img/heart-like.png')}}">
                                                         </a>
 
@@ -217,7 +220,7 @@
                                                         <div class="wholike">
 
                                                           @foreach($likes as $like)
-                                                          @if($like->user_id!=$account->id)
+                                                          @if($like->liked_by!=$user->id)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                               <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                             </a>
@@ -271,8 +274,22 @@
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
                                                               @endif
-
-                                                                @foreach($comments as $key => $comment)
+                                                              <script type="text/javascript">
+                                                                  $('.btn-comment').click(function(){
+                                                                    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                    type : "POST",
+                                                                    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                                                                  })
+                                                                    .done(function(html) {
+                                                                      $('#commentboxs').append(html);
+                                                                    })
+                                                                    .fail(function(){
+                                                                      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                    })
+                                                                  });
+                                                              </script>
+                                                                @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
@@ -284,23 +301,7 @@
 
                                                                 </ul>
                                                                 </div>
-                                                                <script type="text/javascript">
-                                                                    $('.btn-comment').click(function(){
-                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                      type : "POST",
-                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-                                                                    })
-                                                                      .done(function(html) {
-                                                                        $('#commentboxs').append(html);
-                                                                      })
-                                                                      .fail(function(){
-                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                      })
-                                                                    });
-                                                                </script>
                                                                 @endforeach
-
                                                             </li>
                                                         </ul>
                                                    </div>
