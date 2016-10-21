@@ -45,19 +45,19 @@
             intro: "This is a <b>bold</b> tooltip.",
             position: 'left'
         },
-        
-      
+
+
         ]
     });
 
   intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#chat2').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'friendList');  
+        if($(targetElement).attr("id") == $('#chat2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'friendList');
         }
-        if($(targetElement).attr("id") == $('#chat4').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'recentMessage');  
+        if($(targetElement).attr("id") == $('#chat4').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'recentMessage');
         }
-        
+
     });
   intro.start()
 }
@@ -221,13 +221,20 @@
            function addToChatBox(text) {
              var li ='';
              var msg = text.sender;
-             
+             var timeLocale = moment.locale('th');
+             var timeOfMessage = moment(text.time).fromNow();
+             var dateOfMessage = moment(text.time).calendar();
+
+             $(document).ready(function(){
+               $('.tooltipped').tooltip({delay: 50});
+             });
+
 
              if(msg==($('#username1').val())){
                li = '<li><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
-                   '<span class="message-data-time">'+text.time+'</span>'+
+                   '<span class="message-data-time">'+timeOfMessage+'</span>'+
                  '</div>'+
-                 '<div class="message my-message">'+
+                 '<div class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
                    '<p>'+text.message+'</p>'+
                  '</div>'+
                '</li>' ;
@@ -235,11 +242,11 @@
           }else{
             li = '<li class="clearfix">'+
               '<div class="message-data align-right">'+
-                '<span class="message-data-time" >'+text.time+'</span> &nbsp; &nbsp;'+
+                '<span class="message-data-time" >'+timeOfMessage+'</span> &nbsp; &nbsp;'+
                 '<span class="message-data-name" >'+text.sender+'</span>'+
 
               '</div>'+
-              '<div class="message other-message float-right">'+
+              '<div class="message other-message float-right tooltipped" data-position="left" data-delay="50" data-tooltip="'+dateOfMessage+'">'+
                 '<p>'+text.message+'</p>'+
               '</div>'+
             '</li>' ;
