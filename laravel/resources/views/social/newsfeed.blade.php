@@ -286,7 +286,7 @@
                                       $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
                                           ?>
                                     <div class="row wholike-sec">
-                                      <div class="col s2">
+                                      <div class="col s2" style="margin-top: 20px;">
                                       @if($liked!=null)
 
                                           <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
@@ -345,20 +345,8 @@
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
-<<<<<<< HEAD
-
-
                                                    <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-
-
-
-
                                                </div>
-=======
-                                                   <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-                                             </div>
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
-
                                            </form>
                                         </div>
                                         <div class="comment-section">

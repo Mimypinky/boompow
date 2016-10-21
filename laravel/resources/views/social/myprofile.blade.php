@@ -121,7 +121,7 @@ function mypost() {
             position: 'bottom'
         },
         {
-            element: '#datecomment',
+            element: '#datecomment2',
             intro: "This is a <b>bold</b> tooltip.",
             position: 'bottom'
         },
@@ -211,23 +211,11 @@ function comment() {
             intro: "This is a <b>bold</b> tooltip.",
             position: 'bottom'
         },
-        {
-            element: '#comment2',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'bottom'
-        },
+
         ]
     });
 
-    intro.onafterchange(function(targetElement) {
-      console.log(targetElement.id);
-      switch (targetElement.id){
 
-        case "comment2":
-            $('.introjs-helperLayer').css({width:'127px'})
-            break;
-      }
-    });
     intro.start()
   }
 </script>
@@ -442,18 +430,11 @@ function comment() {
                                                           </button>
                                                         </a>
                                                         @else
-<<<<<<< HEAD
 
-=======
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
                                                         <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
                                                           <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                             <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                           </button>
-<<<<<<< HEAD
-
-=======
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
                                                         </a>
                                                         @endif
                                                     </div>
@@ -516,15 +497,7 @@ function comment() {
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
-                                                             <input  id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-
-
-<<<<<<< HEAD
-
-
-=======
-                                                            <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
+                                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
                                                         </div>
 
@@ -560,32 +533,8 @@ function comment() {
                                                                     </li>
 
                                                                 </ul>
-<<<<<<< HEAD
 
-                                                                </div>
-
-                                                                <script type="text/javascript">
-                                                                    $('.btn-comment').click(function(){
-                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                      type : "POST",
-                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-                                                                    })
-                                                                      .done(function(html) {
-                                                                        console.log('{{$post->id}}');
-                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
-                                                                      })
-                                                                      .fail(function(){
-                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                      })
-                                                                    });
-                                                                </script>
-
-
-=======
                                                               </div>
-
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
                                                                 @endforeach
 
 
@@ -672,11 +621,7 @@ function comment() {
 
                             <li>
 
-<<<<<<< HEAD
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
-=======
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -685,12 +630,8 @@ function comment() {
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
-<<<<<<< HEAD
 
-                                                  <span style="margin-top: -20%; margin-left: 4%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-=======
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
 
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">

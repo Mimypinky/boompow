@@ -231,10 +231,10 @@
 
 
              if(msg==($('#username1').val())){
-               li = '<li><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
+               li = '<li class="clearfix"><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
                    '<span class="message-data-time">'+timeOfMessage+'</span>'+
                  '</div>'+
-                 '<div class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
+                 '<div style="float:left"class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
                    '<p>'+text.message+'</p>'+
                  '</div>'+
                '</li>' ;

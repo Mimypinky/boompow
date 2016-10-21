@@ -13,7 +13,7 @@
         {
             element: '#notiintro',
             intro: "คุณสามารถดูการแจ้งเตืองทั้งหมดของคุณได้ในหน้านี้"
-            
+
         },
         {
             element: '#noti1',
@@ -46,32 +46,32 @@
     /*intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
-        
+
         case "comment2":
             $('.introjs-helperLayer').css({width:'127px'})
             break;
-      } 
+      }
     });*/
 
     intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#noti1').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'allNotify');       
+        if($(targetElement).attr("id") == $('#noti1').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allNotify');
         }
-        if($(targetElement).attr("id") == $('#noti2').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'friendNotify');       
+        if($(targetElement).attr("id") == $('#noti2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'friendNotify');
         }
-        if($(targetElement).attr("id") == $('#noti3').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'chatNotify');       
+        if($(targetElement).attr("id") == $('#noti3').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'chatNotify');
         }
-        if($(targetElement).attr("id") == $('#noti4').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'eventNotify');       
+        if($(targetElement).attr("id") == $('#noti4').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'eventNotify');
         }
-        if($(targetElement).attr("id") == $('#noti5').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'statusNotify');       
+        if($(targetElement).attr("id") == $('#noti5').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'statusNotify');
         }
     });
 
-      
+
 
     intro.start()
   }
@@ -211,7 +211,7 @@
        <div class="row">
 
          <div class="col col-thumbnail">
-           <img class="who circle" src="img/mim_tn.jpg">
+           <img class="who circle" src="{{url('img/uploads/avatars/'.$person->avatar)}}">
          </div>
          <div class="col s10 m10 l10" style="margin-top:1em">
            <span style="color:#26a69a">{{$person->first_name.' '.$person->last_name}}</span> <span class="description">ได้ส่งคำขอเป็นเพื่อน</span>

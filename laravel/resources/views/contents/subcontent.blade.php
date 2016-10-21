@@ -62,10 +62,10 @@ function content() {
         @foreach($content as $data)
 
 
-          
-          <div id="content1" class="col s12 m4">
 
-          <div class="col s12 m4">
+
+
+          <div id="content1" class="col s4">
 
               <div class="card">
                   <div class="card-image">
