@@ -29,7 +29,7 @@ class ProfileController extends Controller
           $user = Auth::user();
           $posts = Post::join('accounts','posts.user_id','=','accounts.id')
           ->join('profiles','accounts.profile_id','=','profiles.id')
-          ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
+          ->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')->where('on_id','=',$id)
           ->orderBy('created_at', 'desc')
           ->get();
           $count_friend1 = DB::table('friends')

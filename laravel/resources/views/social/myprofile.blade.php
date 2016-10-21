@@ -358,8 +358,7 @@ function comment() {
                                         @endif
 
                                             <div class="col s12" id="commenthead">
-                                                <span id="namecomment">{{$post->first_name.' '.$post->last_name}}
-                                                </span>
+                                                <a href="{{url('/friend/'.$post->username)}}"><span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span></a>
                                                 <div class="row">
                                                 <div class="w-edit">
                                                   @if($post->user_id==$user->id)
@@ -443,15 +442,10 @@ function comment() {
                                                           </button>
                                                         </a>
                                                         @else
-<<<<<<< HEAD
                                                         <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
                                                           <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                             <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                           </button>
-=======
-                                                        <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                          <img id="mypost3" class="heart-i" src="{{url('img/heart-like.png')}}">
->>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
                                                         </a>
                                                         @endif
                                                     </div>
@@ -501,10 +495,7 @@ function comment() {
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
 
-                                                            <button id="comment2" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
-
-                                                      
-
+                                                            <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
                                                         </div>
 
@@ -533,36 +524,15 @@ function comment() {
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
-                                                                    <a href="{{url('/friend/$comment->username')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
+                                                                    <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
                                                                     </li>
 
                                                                 </ul>
-<<<<<<< HEAD
                                                               </div>
-=======
-                                                                </div>
 
-                                                                <script type="text/javascript">
-                                                                    $('.btn-comment').click(function(){
-                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                      type : "POST",
-                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-                                                                    })
-                                                                      .done(function(html) {
-                                                                        console.log('{{$post->id}}');
-                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
-                                                                      })
-                                                                      .fail(function(){
-                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                      })
-                                                                    });
-                                                                </script>
-
->>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
                                                                 @endforeach
 
 
@@ -648,11 +618,8 @@ function comment() {
                             <div class="modal-close close-fmbtn" align="right"><a id="close-modal-button" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>
 
                             <li>
-<<<<<<< HEAD
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
-=======
+
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -661,11 +628,8 @@ function comment() {
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
-<<<<<<< HEAD
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-=======
-                                                  <span style="margin-top: -20%; margin-left: 4%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
                                                   <input type="hidden" name="_token" value="{{csrf_token()}}"></span>
@@ -746,25 +710,25 @@ function comment() {
     </div>
 </div>
 <script type="text/javascript">
-    var $self;
-    $('.btn-comment').click(function(){
-      $self = $(this);
-      var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
-      console.log(id);
-      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
-      type : "POST",
-      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-      })
-      .done(function(html) {
-        // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
-        console.log(html);
-        $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
-      })
-      .fail(function(){
-        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-      })
-    });
+  var $self;
+  $('.btn-comment').click(function(){
+    $self = $(this);
+    var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+    console.log(id);
+    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+    type : "POST",
+    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+    })
+    .done(function(html) {
+      // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+      console.log(html);
+      $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+    })
+    .fail(function(){
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+    })
+  });
 </script>
 
 

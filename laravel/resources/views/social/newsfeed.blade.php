@@ -345,16 +345,8 @@
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
-
-<<<<<<< HEAD
                                                    <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-=======
-                                                   <button id="newsfeed9" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
->>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
-
-
-
-                                               </div>
+                                             </div>
 
                                            </form>
                                         </div>
