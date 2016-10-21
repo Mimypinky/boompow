@@ -1,9 +1,107 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+  function newsfeed() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#newsfeed1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#newsfeed2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#newsfeed3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#newsfeed4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#newsfeed5',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#newsfeed6',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#newsfeed7',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#newsfeed8',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#newsfeed9',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#newsfeed10',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'left'
+        },
+        {
+            element: '#newsfeed11',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+
+        case "newsfeed2":
+            $('.introjs-helperLayer').css({width:'494px'})
+            break;
+
+        case "newsfeed3":
+              $('.introjs-helperLayer').css({width:'184px'})
+              break;
+
+        case "newsfeed4":
+              $('.introjs-helperLayer').css({width:'91px'})
+              break;
+        case "newsfeed6":
+            $('.introjs-helperLayer').css({left:'288px'})
+            break;
+        case "newsfeed7":
+            $('.introjs-helperLayer').css({left:'411px'})
+            break;
+        case "newsfeed9":
+            $('.introjs-helperLayer').css({left:'651px'})
+            break;
+
+      }
+    });
+    intro.start()
+  }
+</script>
 <div class="container" style="width: 90%;">
     <div class="row">
         <div class="col s8" style="margin-top: 15%;">
-            <div class="card pro-upstatus-feed">
+            <div id="newsfeed1" class="card pro-upstatus-feed">
                 <div class="card-image">
                     <img class="feed-picBg" src="img/bgpro.png">
                     <span class="card-title" style="top: 21px; left: 36%;">
@@ -34,11 +132,12 @@
                                         </div>
                                         <div class="input-field col s8 upsta-line">
                                           <form action="{{url('/post')}}" method="post" enctype="multipart/form-data">
+                                          <div id="newsfeed2">
                                             <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea" name="post_message"></textarea>
-                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
                                             <div class="card-action" style="border: none;">
                                               <div class="file-field input-field">
-                                                  <div class="btn prouppic-btn black-text">
+                                                  <div id="newsfeed3" class="btn prouppic-btn black-text">
                                                   <span style="font-size: 14pt;">
                                                       <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
                                                       <input type="file" name="uploadImage" id="uploadImage"></span>
@@ -64,7 +163,7 @@
                                                     </script>
                                                   </div>
                                               </div>
-                                                    <button type="submit" name="action" class="proupsta-btn waves-effect waves-light btn">
+                                                    <button id="newsfeed4" type="submit" name="action" class="proupsta-btn waves-effect waves-light btn">
                                                     โพสต์</button>
                                                 </form>
 
@@ -79,7 +178,7 @@
 
 
             <!--Start Suggest Friend Part-->
-            <div class="col s4 suggestF-sec">
+            <div id="newsfeed10" class="col s4 suggestF-sec">
                 <div class="card pro-upstatus-feed">
                     <ul class="collection with-header f-modal">
                         <li class="collection-header transper suggest-label"><i style="line-height: 1.3;" class="fa fa-user-plus fa-2x left" aria-hidden="true"></i>
@@ -90,6 +189,7 @@
 
                         <div class="card-content black-text">
                            <ul class="collection" style="margin-top: -15px;">
+
                              @foreach($fof as $f)
                              @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
 
@@ -109,6 +209,7 @@
                               </form>
                               @endif
 
+
                             </li>
                             @endif
                             @endforeach
@@ -121,7 +222,7 @@
         <!--End Suggest Friend Part-->
 
         <!--Start newsfeed section-->
-        <div class="col s8 pro-upstatus pro-feed">
+        <div id="newsfeed5" class="col s8 pro-upstatus pro-feed">
         <ul class="collection with-header f-modal">
             <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-rss-square fa-3x left" aria-hidden="true"></i><h4>มีอะไรใหม่วันนี้</h4>
             </li>
@@ -193,7 +294,7 @@
                                           </a>
                                           @else
                                           <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                            <img class="heart-i" src="{{url('img/heart-like.png')}}">
+                                            <img id="newsfeed6" class="heart-i" src="{{url('img/heart-like.png')}}">
                                           </a>
 
                                           @endif
@@ -223,8 +324,10 @@
                                         <div class="col s2">
                                             <div class="wholike">
                                               @foreach($likes as $like)
+
                                                 <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                  <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+                                                  <img id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+
                                                   @endforeach
                                             </div>
                                         </div>
@@ -235,7 +338,7 @@
                                           <form>
                                               <div class="input-field cmt-coll-space">
 
-                                              <div class="input-field w-cmt">
+                                              <div id="newsfeed8" class="input-field w-cmt">
 
                                                    <div class="input-field col s12">
                                                        <textarea id="newComment" class="newComment materialize-textarea" name="comment_message"></textarea>
@@ -243,7 +346,11 @@
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
 
+<<<<<<< HEAD
                                                    <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+=======
+                                                   <button id="newsfeed9" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
+>>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
 
 
 
@@ -268,7 +375,7 @@
                                                       </div>
                                                     @endif
                                                       @foreach($comments as $comment)
-                                                      <div class="collapsible-body">
+                                                      <div class="collapsible-body nonborder">
                                                           <ul class="col s12 collection cmt-box">
 
                                                           <li class="transper collection-item avatar">

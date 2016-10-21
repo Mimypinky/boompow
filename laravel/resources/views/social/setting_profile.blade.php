@@ -1,5 +1,63 @@
 @extends('site.layout')
 @section('maincontent')
+
+<script type="text/javascript">
+    function profilesetting() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#ps1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#ps2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#ps3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#ps4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#ps5',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#ps6',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+
+        case "ps3":
+            $('.introjs-helperLayer').css({left:'435px'})
+            break;
+
+      }
+    });
+    intro.start()
+}
+</script>
+
 <div class="container" style="width: 90%; margin-top: 160px;min-height: 600px;">
     <div class="row">
         <ul class="collection with-header pro-upstatus-feed">
@@ -20,10 +78,12 @@
             <li class="collection-item" style="background-color: #fbfbfb;">
                 <div class="row">
                     <div class="col s10 offset-s1">
-                        <ul class="collection with-header sp-head">
+                        <ul id="ps1" class="collection with-header sp-head">
                             <li class="collection-header"><h4>ข้อมูลส่วนตัว</h4></li>
-                            <li class="collection-item sp-item">
+
+                            <li id="register2" class="collection-item sp-item">
                                 <form method="post"class="col s12" action="{{url('/updateInfo')}}" enctype="multipart/form-data">
+
                                     <div class="row">
                                         <div class="input-field col s6">
                                           <input name="first_name" id="first_name" type="text" class="validate" value="{{$info->first_name}}">
@@ -46,7 +106,7 @@
                             </li>
                         </ul>
 
-                        <ul class="collection with-header sp-head">
+                        <ul id="ps2" class="collection with-header sp-head">
                             <li class="collection-header"><h5>ภาพประจำตัว</h5></li>
                             <li class="collection-item sp-item">
 
@@ -57,7 +117,7 @@
                                                 <img id="avatar"class="sp-pic-edit media-object dp img-circle" src="{{url('img/uploads/avatars/'.$info->avatar)}}">
 
                                                     <div class="file-field input-field">
-                                                        <span class="sp-cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+                                                        <span id="ps3" class="sp-cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
                                                         <i class="cam-icon fa fa-camera"></i>
                                                         <input type="file" name="uploadImage" id="uploadImage"></span>
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -86,7 +146,7 @@
 
                                             <div class="row joiner-pic-rspace">
                                                 <div class="col s12 m7 l4 joiner-pic-col">
-                                                    <a href="#"><img src="img/pic3.jpg"></a>
+                                                    <a href="#"><img id="ps4" src="img/pic3.jpg"></a>
                                                 </div>
 
                                                 <div class="col s12 m7 l4 joiner-pic-col">
@@ -105,10 +165,12 @@
                             </li>
                         </ul>
 
-                        <ul class="collection with-header sp-head">
+
+                        <ul  id="ps5"  class="collection with-header sp-head">
                             <li class="collection-header">
                               <h4>แก้ไขอีเมล์</h4>
                             </li>
+
                             <li class="collection-item sp-item">
                                     <div class="row">
                                         <div class="input-field col s6">
@@ -122,7 +184,9 @@
                                     </div>
                             </li>
                         </ul>
-                        <ul class="collection with-header sp-head">
+
+                        <ul id="ps6" class="collection with-header sp-head">
+
                             <li class="collection-item sp-item" style="margin-bottom: 25px;">
                                 <div align="center">
                                     <button name="action" type="submit" class="green btn waves-effect waves-light" >บันทึก</button>

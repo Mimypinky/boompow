@@ -33,7 +33,7 @@
                     <span>
                         <input type="checkbox" class="filled-in" name="remember"/>
                         <label for="loginBtn">ให้ฉันอยู่ในระบบต่อไป</label>
-                        หรือ <a href="#" style="color:#d32f2f">ลืมรหัสผ่าน</a>
+                        หรือ <a href="{{url('/forget')}}" style="color:#d32f2f">ลืมรหัสผ่าน</a>
                       </span>
                   </div>
                 </li>

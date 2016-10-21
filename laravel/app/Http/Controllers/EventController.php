@@ -33,7 +33,8 @@ class EventController extends Controller
             ->paginate(7);
 
         $myEvent = Event::join('accounts', 'events.creator', '=', 'accounts.id')
-            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')
+            ->join('join_event', 'join_event.user_id', '=', 'accounts.id')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname','accounts.username')
             ->where('creator','=',$user)->orderBy('create_at', 'desc')
             ->get();
 
@@ -197,12 +198,12 @@ class EventController extends Controller
     {
       $eid = $req->eid;
       $user = Auth::user()->id;
-      $account = Account::join('profiles','profiles.id','=','accounts.profile_id')->select('accounts.first_name','accounts.last_name','profiles.avatar')
+      $account = Account::join('profiles','profiles.id','=','accounts.profile_id')->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id as id')
       ->where('accounts.id',$user)->first();
+      // dd($account->id);
       $eve_name = Event::join('accounts', 'events.creator', '=', 'accounts.id')
       ->join('profiles','profiles.id','=','accounts.profile_id')
       ->select('events.*','accounts.first_name as fname','accounts.last_name as lname')->where('events.id','=',$eid)->first();
-
 
 
       $eve_post = EventPosts::join('accounts','accounts.id','=','event_board_post.user_id')
@@ -210,8 +211,6 @@ class EventController extends Controller
       ->select('event_board_post.id as pid','event_board_post.user_id','event_board_post.image','accounts.first_name','accounts.last_name','event_board_post.created_at','event_board_post.message','accounts.id as aid','profiles.avatar')
       ->where('event_board_post.event_id','=',$eid)->orderBy('created_at','desc')
       ->get();
-
-
 
 
       $title = 'กระดานกิจกรรม - '.$eve_name->title;

@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $("#normal").click(function (event) {
         event.preventDefault();
@@ -10,6 +11,7 @@ $(document).ready(function () {
         $("p").animate({"font-size": "15pt"});
         $("a").animate({"font-size": "15pt"});
         $("td").animate({"font-size": "15pt"});
+        $("span.nav-resize").animate({"font-size": "14pt"});
     });
 
     $("#medium").click(function (event) {
@@ -23,6 +25,7 @@ $(document).ready(function () {
         $("thead").animate({"font-size": "19pt"});
         $("a").animate({"font-size": "18pt"});
         $("td").animate({"font-size": "18pt"});
+        $("span.nav-resize").animate({"font-size": "17pt"});
     });
 
     $("#large").click(function (event) {
@@ -36,6 +39,7 @@ $(document).ready(function () {
         $("thead").animate({"font-size": "21pt"});
         $("a").animate({"font-size": "20pt"});
         $("td").animate({"font-size": "20pt"});
+        $("span.nav-resize").animate({"font-size": "19pt"});
     });
 
     $("a").click(function () {

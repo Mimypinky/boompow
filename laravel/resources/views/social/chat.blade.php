@@ -21,7 +21,7 @@
              @foreach($account1 as $acc)
              <a href="#">
                <li class="clearfix">
-                 <img class="circle" src="img/mim_tn.jpg"/>
+                 <img class="circle" src="{{url('img/uploads/avatars/'.$acc->avatar)}}"/>
                  <div class="about">
                   <a href="{{url('chatHistory/'.$acc->id)}}"> <div class="name">{{$acc->first_name}}  {{$acc->last_name}}</div>
                  </div>
@@ -30,7 +30,7 @@
                @endforeach
                @foreach($account2 as $acc)
                  <li class="clearfix">
-                   <img class="circle" src="img/mim_tn.jpg"/>
+                   <img class="circle" src="{{url('img/uploads/avatars/'.$acc->avatar)}}"/>
                    <div class="about">
                      <a href="{{url('chatHistory/'.$acc->id)}}"><div class="name">{{$acc->first_name}}  {{$acc->last_name}}</div></a>
                    </div>
@@ -52,85 +52,7 @@
                  </div>
                </li>
 
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">สุธีร์ แก้วตาหวาน (88)</div>
 
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สอง</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สาม</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สี่</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่ห้า</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่หก</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่เจ็ด</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่แปด</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่เก้า</div>
-
-               </div>
-             </li>
-
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">กล้วย ใบที่สิบ</div>
-
-               </div>
-             </li>
            </ul>
          </div>
        </div>
@@ -153,47 +75,7 @@
 
        <div class="chat-history">
          <ul>
-           <!--<li class="clearfix">
-             <div class="message-data align-right">
-               <span class="message-data-time" >วันนี้ 10:10น.</span> &nbsp; &nbsp;
-               <span class="message-data-name" >พรทิพย์</span>
-
-             </div>
-             <div class="message other-message float-right">
-               <p>สุนิสา ไปกินซูชิกันมั้ย? ช่วงนี้ซื้อ 1 ฟรี 1 นะ ฉันกะจะกินเพิ่มน้ำหนักซะหน่อย ไปด้วยกันนะ</p>
-             </div>
-           </li>
-
-           <li>
-             <div class="message-data">
-               <span class="message-data-name">สุนิสา</span>
-               <span class="message-data-time">วันนี้ 10:12น.</span>
-             </div>
-             <div class="message my-message">
-               <p>โปรดรักษากำหนดนี้เป็นความลับ</p>
-             </div>
-           </li>
-
-           <li class="clearfix">
-             <div class="message-data align-right">
-               <span class="message-data-time" >วันนี้ 10:14น.</span> &nbsp; &nbsp;
-               <span class="message-data-name" >พรทิพย์</span>
-
-             </div>
-             <div class="message other-message float-right">
-               <p>สังคมหรือประเทศที่มีประชากรอายุ60ปีขึ้นไป มากกว่าร้อยละ20 ของประชากรทั้งประเทศหรือมีประชากรอายุตั้งแต่ 65 ปี</p>
-             </div>
-           </li>
-
-           <li>
-             <div class="message-data">
-               <span class="message-data-name">สุนิสา</span>
-               <span class="message-data-time">วันนี้ 10:20น.</span>
-             </div>
-             <div class="message my-message">
-               <p>แต่ละประเทศจะเข้าสู่สังคมผู้สูงอายุแตกต่างกันไปตามสภาพแวดล้อมของแต่ละประเทศ เช่น ความเจริญเติบโตทางเศรษฐกิจ การพัฒนาทางด้านการแพทย์ การโภชนาอาหาร</p>
-             </div>
-           </li>-->
+          
 
 
          </ul>

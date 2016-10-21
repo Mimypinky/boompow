@@ -15,7 +15,7 @@ class FavouriteController extends Controller
        $user =Auth::user()->id;
        $title = 'Boompow - Favourite';
        $myFav = Favourite::join('contents','favourite.content_id','=','contents.id')->join('category','category.id','=','contents.cate_id')
-       ->select('favourite.*','contents.content_title','contents.description','contents.id','category.*')
+       ->select('favourite.*','contents.content_title','contents.head_pic_content','contents.description','contents.id as cid','category.category_title')
        ->where('user_id','=',$user)->orderBy('created_at','desc')->get();
 
 
@@ -33,5 +33,13 @@ class FavouriteController extends Controller
        $fav->content_id = $cid;
        $fav->save();
        return redirect()->back();
+   }
+   public function deleteFav($cid)
+   {
+
+      $fav = Favourite::find($cid);
+      $fav->delete();
+      return redirect()->back();
+
    }
 }

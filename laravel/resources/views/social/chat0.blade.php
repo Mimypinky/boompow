@@ -1,5 +1,67 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+  function message() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#chat1',
+            intro: "ในหน้านี้คุณสามารถ <b>ส่งข้อความ</b> หาเพื่อนคุณได้",
+            position: 'left'
+        },
+        {
+            element: '#chat2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#friendList',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#chat4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#recentMessage',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'right'
+        },
+        {
+            element: '#chat5',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'top'
+        },
+        {
+            element: '#sendmsg',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'left'
+        },
+        
+      
+        ]
+    });
+
+  intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#chat2').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'friendList');  
+        }
+        if($(targetElement).attr("id") == $('#chat4').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'recentMessage');  
+        }
+        
+    });
+  intro.start()
+}
+</script>
 <meta charset="utf-8">
 <div class="container chat-container" style="width: 90%;"> <!--Chat is extending from css/chat.css-->
 
@@ -10,8 +72,8 @@
      <div class="row chatOption">
        <div class="col s12" style="background: #eceff1;">
          <ul class="tabs" style="overflow: hidden;">
-        <li class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
-        <li class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
+        <li id="chat2" class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
+        <li id="chat4" class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
         </ul>
 
        </div>
@@ -21,7 +83,7 @@
              @foreach($account1 as $acc)
              <a href="#">
                <li class="clearfix">
-                 <img class="circle" src="img/mim_tn.jpg"/>
+                 <img class="circle" src="{{url('img/uploads/avatars/'.$acc->avatar)}}"/>
                  <div class="about">
                   <a href="{{url('chatHistory/'.$acc->id)}}"> <div class="name">{{$acc->first_name}}  {{$acc->last_name}}</div>
                  </div>
@@ -30,7 +92,7 @@
                @endforeach
                @foreach($account2 as $acc)
                  <li class="clearfix">
-                   <img class="circle" src="img/mim_tn.jpg"/>
+                   <img class="circle" src="{{url('img/uploads/avatars/'.$acc->avatar)}}"/>
                    <div class="about">
                      <a href="{{url('chatHistory/'.$acc->id)}}"><div class="name">{{$acc->first_name}}  {{$acc->last_name}}</div></a>
                    </div>
@@ -52,13 +114,6 @@
                  </div>
                </li>
 
-             <li class="clearfix">
-               <img class="circle" src="img/ball_tn.jpg"/>
-               <div class="about">
-                 <div class="name">สุธีร์ แก้วตาหวาน (88)</div>
-
-               </div>
-             </li>
            </ul>
          </div>
        </div>
@@ -84,56 +139,14 @@
          <input type="hidden" id="username2" value="{{$myAccount->first_name}}">
        <div class="chat-history">
          <ul id="chatul">
-           <!--
-           <li class="clearfix">
-             <div class="message-data align-right">
-               <span class="message-data-time" >วันนี้ 10:10น.</span> &nbsp; &nbsp;
-               <span class="message-data-name" >พรทิพย์</span>
 
-             </div>
-             <div class="message other-message float-right">
-               <p>สุนิสา ไปกินซูชิกันมั้ย? ช่วงนี้ซื้อ 1 ฟรี 1 นะ ฉันกะจะกินเพิ่มน้ำหนักซะหน่อย ไปด้วยกันนะ</p>
-             </div>
-           </li>
 
-           <li>
-             <div class="message-data">
-               <span class="message-data-name">สุนิสา</span>
-               <span class="message-data-time">วันนี้ 10:12น.</span>
-             </div>
-             <div class="message my-message">
-               <p>โปรดรักษากำหนดนี้เป็นความลับ</p>
-             </div>
-           </li>
-
-           <li class="clearfix">
-             <div class="message-data align-right">
-               <span class="message-data-time" >วันนี้ 10:14น.</span> &nbsp; &nbsp;
-               <span class="message-data-name" >พรทิพย์</span>
-
-             </div>
-             <div class="message other-message float-right">
-               <p>สังคมหรือประเทศที่มีประชากรอายุ60ปีขึ้นไป มากกว่าร้อยละ20 ของประชากรทั้งประเทศหรือมีประชากรอายุตั้งแต่ 65 ปี</p>
-             </div>
-           </li>
-
-           <li>
-             <div class="message-data">
-               <span class="message-data-name">สุนิสา</span>
-               <span class="message-data-time">วันนี้ 10:20น.</span>
-             </div>
-             <div class="message my-message">
-               <p>แต่ละประเทศจะเข้าสู่สังคมผู้สูงอายุแตกต่างกันไปตามสภาพแวดล้อมของแต่ละประเทศ เช่น ความเจริญเติบโตทางเศรษฐกิจ การพัฒนาทางด้านการแพทย์ การโภชนาอาหาร</p>
-             </div>
-           </li>
-
--->
          </ul>
 
        </div> <!-- end chat-history -->
 
-       <div class="chat-message clearfix" style="">
-         <div class="input-field col s12">
+       <div id="chat5" class="chat-message clearfix" style="">
+         <div  class="input-field col s12">
 
            <textarea id="chat-text" class="materialize-textarea"></textarea>
            <label for="chat-text">เขียนข้อความของคุณที่นี่</label>
@@ -179,12 +192,16 @@
               var text = input.val();
               var sender = $('#username2').val();
               var reciever = $('#username1').val();
+
               input.val('');
              var msg = {
                 sender : sender ,
                 message : text,
                 reciever : reciever,
-                time : 'send at '+new Date()
+                time : 'sent at '+new Date()
+                // time: new Date()
+                // t: 'sent at'+time.getDate()+'/'+(time.getMonth()+1)+'/'+time.getFullYear()+' @ '+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()
+
              };
              Connection.push(msg);
 
@@ -204,6 +221,8 @@
            function addToChatBox(text) {
              var li ='';
              var msg = text.sender;
+             
+
              if(msg==($('#username1').val())){
                li = '<li><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
                    '<span class="message-data-time">'+text.time+'</span>'+

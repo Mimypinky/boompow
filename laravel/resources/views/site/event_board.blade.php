@@ -43,7 +43,7 @@
               <div class="col s12">
                   <div class="card" style="box-shadow:none; background-color: transparent;">
                       <div class="card-content black-text" >
-                        @if($eve_name->creator == $user)
+                        @if($eve_name->creator == $account->id)
                         <div class="input-field col s3 img-position-res">
                             <img src="{{url('img/uploads/avatars/'.$account->avatar)}}" alt="" class="postbox-pic media-object img-circle imgthumb"> <!-- notice the "circle" class -->
                             <span class="posbadge-Eowner badge">เจ้าของกิจกรรม</span>
@@ -123,15 +123,17 @@
                               <span class="posbadge-Eowner badge">เจ้าของกิจกรรม</span>
                               <!-- notice the "circle" class -->
                           </div>
+                          <div class="input-field col s9 upsta-line-Eowner">
                           @else
                           <div class="input-field col s3 img-position-res">
                               <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="postbox-pic media-object img-circle imgthumb">
                               <span class="posbadge-Ejoiner badge">ผู้เข้าร่วม</span>
                               <!-- notice the "circle" class -->
                           </div>
+                          <div class="input-field col s9 upsta-line-Ejoiner">
                           @endif
 
-                          <div class="input-field col s9 upsta-line-Ejoiner">
+
                               <div class="col s12" id="commenthead">
                                   <span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span>
                                   <div class="event-edit-btn">
@@ -154,21 +156,21 @@
                               </div>
                               @endif
                               <div class="card-action" style="border: none;">
-                                <?php $count_likes = DB::table('likes')->where('post_id','=',$post->aid)->count();
-                                    $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
-                                    ->where('post_id',$post->pid)->select('likes.*','accounts.username','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->orderBy('created_at', 'desc')->get();
+                                <?php $count_likes = DB::table('event_board_like')->where('event_post_id','=',$post->pid)->count();
+                                    $likes = DB::table('event_board_like')->join('accounts','event_board_like.user_id','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
+                                    ->where('event_post_id',$post->pid)->select('event_board_like.*','accounts.username','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->orderBy('created_at', 'desc')->get();
                                     $uid = Auth::user()->id;
-                                    $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->pid],['liked_by','=',$uid]])->first();
+                                    $liked= DB::table('event_board_like')->select('id')->where([['event_post_id','=',$post->pid],['user_id','=',$uid]])->first();
                                         ?>
                                         <div class="row ">
                                             <div class="col s1 like-section">
                                             @if($liked!=null)
 
-                                                <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                <a class="tooltipped" href="{{url('/event/board/'.$eve_name->id.'/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                   <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
                                                 </a>
                                                 @else
-                                                <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                <a class="tooltipped" href="{{url('/event/board/'.$eve_name->id.'/like/'.$post->pid)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                   <img class="heart-i" src="{{url('img/heart-like.png')}}">
                                                 </a>
 
@@ -184,7 +186,7 @@
                                                 <div class="wholike">
 
                                                   @foreach($likes as $like)
-                                                  @if($like->liked_by!=$account->id)
+                                                  @if($like->user_id!=$account->id)
                                                     <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                       <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                     </a>
@@ -260,97 +262,7 @@
               </div>
           </div>
           @endforeach
-          <!--End timeline mypost-->
 
-          <!--timeline friend post-->
-          <!-- <div class="row" style="">
-              <div class="col s12">
-                  <div class="card" style="box-shadow:none; background-color: transparent;">
-                      <div class="card-content black-text" >
-                          <div class="input-field col s3 img-position-res">
-                              <img src="{{url('img/pic2.jpg')}}" alt="" class="postbox-pic media-object img-circle imgthumb">
-                              <span class="posbadge-Eowner badge">เจ้าของกิจกรรม</span>
-                              <!-- notice the "circle" class -->
-                        <!--  </div>
-                          <div class="input-field col s9 upsta-line-Eowner">
-                              <div class="col s12" id="commenthead">
-                                  <span id="namecomment">สมัคร รักสนุกไม่คิดผูกพัน
-                                  </span>
-                                  <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                              </div>
-                              <div class="status-post2 col s12">
-                                  <p>พรทิพย์จ้ะ ไปข้าวสารกันไหม</p>
-                              </div>
-                              <div class="card-action" style="border: none;">
-                                  <div class="row wholike-sec">
-                                      <div class="col s1 like-section">
-                                          <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="{{url('img/heart-like.png')}}"></a>
-                                      </div>
-                                      <div class="col s2"></div>
-                                      <div class="col s2">
-                                          <div class="likecount">
-                                              <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
-                                          </div>
-                                      </div>
-                                      <div class="col s2">
-                                          <div class="wholike">
-                                              <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="{{url('img/pic4.jpg')}}"></a>
-
-
-                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic5.jpg')}}"></a>
-
-                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic2.jpg')}}"></a>
-
-                                              <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="{{url('img/pic3.jpg')}}"></a>
-
-                                              <span class="pic-wholike morelike">...</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="divider"></div>
-                                  <div>
-                                      <div class="row">
-                                          <form>
-                                              <div class="input-field cmt-coll-space">
-                                                  <div class="input-field col s12">
-                                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                      <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
-                                                  </div>
-                                                  <a class="comment-btn-event waves-effect waves-light btn">ตกลง</a>
-                                              </div>
-                                          </form>
-                                      </div>
-
-                                      <div class="comment-section">
-                                          <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
-                                              <li>
-                                                  <div class="collapsible-header cmt-coll-head active">
-                                                  <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
-                                                  </div>
-
-                                                  <div class="collapsible-body">
-                                                      <ul class="col s12 collection cmt-box">
-                                                          <li class="transper collection-item avatar">
-                                                              <a href="Social-Profile-friend-v2.html"><img src="{{url('img/pic.jpg')}}" alt="" class="circle joiner-owner">
-                                                              <span class="title title-name">พรทิพย์ มีชัย</span></a>
-                                                              <span class="joiner-badge badge">ผู้เข้าร่วม</span>
-                                                              <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
-                                                              <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
-                                                          </li>
-
-                                                      </ul>
-                                                  </div>
-                                              </li>
-                                          </ul>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div> -->
-          <!--End timeline friend post-->
 
 
       </div>

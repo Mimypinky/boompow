@@ -1,5 +1,236 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+    function myprofile() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '.myprofile1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#meme',
+            intro: "คุณสามารถ <b>แก้ไขรูปภาพประจำตัว และ ข้อมูลส่วนตัว</b> ได้ในส่วนนี้",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'left'
+        },
+
+        {
+            element: '#myprofile3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile5',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile6',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#myprofile7',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#meme').attr('id')) {
+           $('#profile-edit').openModal();
+        }
+        else{
+            $('#profile-edit').closeModal();
+        }
+    });
+
+
+    /*intro.start().oncomplete(function() { $('#profile-edit').hide();
+    }).onexit(function(){ $('#profile-edit').hide();
+    }).onchange(function(targetElement) {
+
+
+        // and show modal on Step 4
+        if($(targetElement).attr("id") == $('#profile-edit').attr('id')) {
+
+            $('#profile-edit').show();
+
+
+        }
+        // don't forget to hide modal on other steps
+        if($(targetElement).attr("id") != $('#profile-edit').attr('id')) {
+            $('#profile-edit').hide();
+        }
+
+
+    });*/
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        case "myprofile5":
+            $('.introjs-helperLayer').css({width:'517px'})
+            break;
+        case "myprofile6":
+            $('.introjs-helperLayer').css({width:'190px'})
+            break;
+        case "myprofile7":
+            $('.introjs-helperLayer').css({width:'94px'})
+            break;
+        case "namecomment":
+            $('.introjs-helperLayer').css({width:'209px'})
+            break;
+        case "myprofile9":
+            $('.introjs-helperLayer').css({left:'480px'})
+            break;
+      }
+    });
+    intro.start()
+}
+
+function mypost() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#namecomment',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#datecomment',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#mypost3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#mypost4',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+
+        case "namecomment":
+            $('.introjs-helperLayer').css({width:'209px'})
+            break;
+        case "datecomment":
+            $('.introjs-helperLayer').css({width:'180px'})
+            break;
+        case "mypost3":
+            $('.introjs-helperLayer').css({left:'480px'})
+            break;
+        case "mypost4":
+            $('.introjs-helperLayer').css({left:'606px'})
+            break;
+      }
+    });
+    intro.start()
+}
+
+function mngpost() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#mngpost1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#mngpost2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+
+        case "mngpost1":
+            $('.introjs-helperLayer').css({width:'115px'})
+            break;
+        case "mngpost2":
+            $('.introjs-helperLayer').css({width:'100px'})
+            break;
+      }
+    });
+    intro.start()
+}
+
+function comment() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#comment1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#comment2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+
+        case "comment2":
+            $('.introjs-helperLayer').css({width:'127px'})
+            break;
+      }
+    });
+    intro.start()
+  }
+</script>
 <div class="container" style="width: 90%;">
     <div class="row">
         <div class="col s12" style="margin-top: 12%;">
@@ -16,7 +247,7 @@
                 <!--Pro head-->
                 <div class="row">
                     <div class="col s8 offset-s2 w-profile pro-detail">
-                        <a class="modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                        <a id="show-popup-button" class="myprofile1 modal-trigger black-text edit-btn waves-effect waves-light btn" href="#profile-edit" style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
                         <div id="proname">
                             <h2>{{ Auth::user()->first_name.'  '.Auth::user()->last_name }}</h2>
                         </div>
@@ -27,11 +258,13 @@
                             </p>
                         </div>
                         <div style="font-size: 14pt; text-align: center;">
-                            <a href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp{{$sumfriend}}</span><span>&nbspเพื่อน</span></span></a>
+
+                            <a id="myprofile2" href="#whofriend" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนของฉัน"><i class="fa fa-users" aria-hidden="true"></i><span>&nbsp{{$sumfriend}}</span><span>&nbspเพื่อน</span></span></a>
                             <span class="border-divi"></span>
-                            <span><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp{{$sumpost}}</span><span>&nbspโพสต์</span></span>
+                            <span id="myprofile3"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>&nbsp{{$sumpost}}</span><span>&nbspโพสต์</span></span>
                             <span class="border-divi"></span>
-                            <a href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp{{$sumpicpost}}</span><span>&nbspรูปภาพ</span></span></a>
+                            <a id="myprofile4" href="#picstore" class="modal-trigger"><span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูรูปภาพที่เคยโพสต์"><i class="fa fa-picture-o" aria-hidden="true"></i><span>&nbsp{{$sumpicpost}}</span><span>&nbspรูปภาพ</span></span></a>
+
                         </div>
                     </div>
                 </div>
@@ -49,13 +282,14 @@
                                         </div>
                                         <div class="input-field col s8 upsta-line">
                                           <form enctype="multipart/form-data" action="/post" method="post">
+                                          <div id="myprofile5">
                                             <textarea style="margin-left: 20px;" id="textarea1" name="post_message" class="materialize-textarea"></textarea>
 
-                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
                                             <div class="card-action" style="border: none;">
 
                                                     <div class="file-field input-field">
-                                                        <div class="btn prouppic-btn black-text">
+                                                        <div id="myprofile6" class="btn prouppic-btn black-text">
                                                         <span style="font-size: 14pt;">
                                                             <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
                                                             <input type="file" name="uploadImage" id="uploadImage"></span>
@@ -81,7 +315,7 @@
                                                           </script>
                                                         </div>
                                                     </div>
-                                                    <button name="action" type="submit" class="proupsta-btn waves-effect waves-light btn">
+                                                    <button id="myprofile7" name="action" type="submit" class="proupsta-btn waves-effect waves-light btn">
                                                     โพสต์</button>
                                                 </form>
 
@@ -129,10 +363,10 @@
                                                 <div class="row">
                                                 <div class="w-edit">
                                                   @if($post->user_id==$user->id)
-                                                  <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
+                                                  <a id="mngpost1" class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
                                                   style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
 
-                                                  <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
+                                                  <a id="mngpost2" href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                                     <i class="fa fa-trash-o"></i> ลบ</a>
                                                     @else
                                                     <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1; margin-left: 95px;">
@@ -209,10 +443,15 @@
                                                           </button>
                                                         </a>
                                                         @else
+<<<<<<< HEAD
                                                         <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
                                                           <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                             <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                           </button>
+=======
+                                                        <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                          <img id="mypost3" class="heart-i" src="{{url('img/heart-like.png')}}">
+>>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
                                                         </a>
                                                         @endif
                                                     </div>
@@ -226,9 +465,10 @@
                                                         <div class="wholike">
 
                                                           @foreach($likes as $like)
+
                                                           @if($like->liked_by!=$user->id)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                              <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                             </a>
                                                           @else
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/profile')}}">
@@ -237,6 +477,7 @@
                                                           @endif
 
                                                           @endforeach
+
 
                                                         </div>
                                                     </div>
@@ -250,15 +491,19 @@
                                                    <form>
                                                        <div class="input-field cmt-coll-space">
 
-                                                       <div class="input-field w-cmt">
+                                                       <div id="comment1" class="input-field w-cmt">
+
 
                                                             <div class="input-field col s12">
                                                                 <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
+
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
+
                                                             <!--<button id="btn-comment" name="action" class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>-->
-                                                            <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+                                                            <input id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+
 
                                                         </div>
 
@@ -294,7 +539,29 @@
                                                                     </li>
 
                                                                 </ul>
+<<<<<<< HEAD
                                                               </div>
+=======
+                                                                </div>
+
+                                                                <script type="text/javascript">
+                                                                    $('.btn-comment').click(function(){
+                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                      type : "POST",
+                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                                                                    })
+                                                                      .done(function(html) {
+                                                                        console.log('{{$post->id}}');
+                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
+                                                                      })
+                                                                      .fail(function(){
+                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                      })
+                                                                    });
+                                                                </script>
+
+>>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
                                                                 @endforeach
 
 
@@ -314,7 +581,169 @@
                           @endforeach
                       </div>
                     </div>
+
+                        <!--timeline friend post-->
+                        <div class="row" style="">
+                            <div class="col s12">
+                                <div class="card" style="box-shadow:none; background-color: transparent;">
+                                    <div class="card-content black-text" >
+                                        <div class="input-field col s3" style="padding-left: 35px;">
+                                             <img src="img/pic2.jpg" alt="" class="postbox-pic media-object img-circle imgthumb">
+                                             <span class="posbadge me badge f">เพื่อน</span>
+                                              <!-- notice the "circle" class -->
+                                        </div>
+                                        <div class="input-field col s9 upsta-line-f">
+                                            <div class="col s12" id="commenthead">
+                                                <span id="namecomment">สมัคร รักสนุกไม่คิดผูกพัน
+                                                </span>
+                                                <div class="w-edit-f">
+
+                                                    <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;"><i class="fa fa-trash-o"></i> ลบ</a>
+                                                </div>
+
+                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                </p>
+                                            </div>
+                                            <div class="status-post2 col s12">
+                                                <p>พรทิพย์จ้ะ ไปข้าวสารกันไหม</p>
+                                            </div>
+                                            <div class="card-action" style="border: none;">
+                                                <div class="row wholike-sec">
+                                                    <div class="col s1 like-section">
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2">
+                                                        <div class="likecount">
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <div class="wholike">
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic2.jpg"></a>
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic3.jpg"></a>
+
+                                                            <span class="pic-wholike morelike">...</span>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                               <div class="divider"></div>
+                                               <div>
+                                                   <div class="row">
+                                                   <form>
+                                                       <div class="input-field w-cmt">
+                                                            <div class="input-field col s12">
+                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                                <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                            </div>
+                                                            <a class="cmt-btn-pro waves-effect waves-light btn">ตกลง</a>
+                                                        </div>
+                                                    </form>
+                                                   </div>
+
+                                                   <div class="comment-section">
+                                                       <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
+                                                            <li>
+                                                                <div class="collapsible-header cmt-coll-head active">
+                                                                    <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นจากเพื่อน
+                                                                </div>
+
+                                                                <div class="collapsible-body">
+                                                                    <ul class="col s12 collection cmt-box">
+                                                                <li class="transper collection-item avatar cmt-detail">
+                                                                    <a href="Social-Profile-friend-v2.html"><img src="img/pic4.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">สมัย สมร</span></a>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">ไปด้วยคนจ้าทักมา <br></p>
+                                                                    </li>
+                                                                    <li class="transper collection-item avatar cmt-detail">
+                                                                        <img src="img/pic5.jpg" alt="" class="circle">
+                                                                        <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
+                                                                        <p id="datecomment">21 เมษายน 2558, 22.01 น.</p>
+                                                                        <p class="space-cmt">สนใจทำงานผ่านเน็ตรายได้ดีเพียงนั่งคีย์ข้อมูลวันละ 3-4 ชั่วโมง <br></p>
+                                                                    </li>
+                                                                </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End timeline friend post-->
+
+
+                                        </div>
+                                        <div class="input-field col s9 upsta-line-pin">
+                                            <div class="col s12" id="commenthead">
+                                                <span id="namecomment">พรทิพย์ มีชัย
+                                                </span>
+                                                <i class="fa fa-thumb-tack fa-lg pinpost" aria-hidden="true"></i>
+                                                <div class="w-edit-f">
+
+                                                    <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;"><i class="fa fa-trash-o"></i> ลบ</a>
+                                                </div>
+
+                                                <p id="datecomment">21 เมษายน 2558, 22.01 น.
+                                                </p>
+                                            </div>
+                                            <div class="status-post2 col s12">
+                                                <div class="row">
+                                                    <div class="col s12 m11">
+                                                        <div class="card non-shadow" style="margin-top: 13px;">
+                                                            <div class="card-image">
+                                                                <img src="img/healthy.jpg">
+                                                            </div>
+                                                            <div class="card-content">
+                                                                <h5>Card Title</h5>
+                                                                <p>I am a very simple card. I am good at containing small bits of information.
+                                                                I am convenient because I require little markup to use effectively.</p>
+                                                            </div>
+                                                            <div class="card-action">
+                                                                <a href="#">This is a link</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-action" style="border: none;">
+                                                <div class="row wholike-sec">
+                                                    <div class="col s1 like-section">
+                                                        <a class="tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ"><img class="heart-i" src="img/heart-like.png"></a>
+
+                                                    </div>
+                                                    <div class="col s2"></div>
+                                                    <div class="col s2">
+                                                        <div class="likecount">
+                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">125+</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <div class="wholike">
+                                                            <a href="Social-Profile-friend-v2.html" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัย สมร" href="#"><img class="pic-wholike" src="img/pic4.jpg"></a>
+
+
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ละม้าย คล้ายจะเป็นลม" href=""><img class="pic-wholike" src="img/pic5.jpg"></a>
+=======
+>>>>>>> 847b1f229b9db266f10461cb1091213ade8929cb
+
+
+=======
                         <!--End timeline mypost-->
+>>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
                     </div>
                 </div>
                 @endif
@@ -366,13 +795,16 @@
                     </div>
                   </div>
                     <!--profile-edit-->
-                    <div id="profile-edit" class="modal" style="width: 500px;">
+                    <div id="profile-edit" class="modal" style="width: 500px;" data-backdrop="static">
+                    <div  class="modal-content">
                         <ul class="collection with-header f-modal">
                             <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขข้อมูลส่วนตัว</h4>
-                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                            <div class="modal-close close-fmbtn" align="right"><a id="close-modal-button" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>
 
                             <li>
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
+
+                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
+
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -381,10 +813,12 @@
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
-                                                  <span style="margin-top: -20%; margin-left: 4%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+
+                                                  <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
-                                                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                  <input type="hidden" name="_token" value="{{csrf_token()}}"></span>
 
                                               </div>
                                               <script>
@@ -427,6 +861,7 @@
 
                             </li>
                         </ul>
+                        </div>
                     </div>
                     <!--wholike-->
                     <div id="wholike" class="modal" style="width: 500px;">

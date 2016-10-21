@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\EventPosts;
 use App\EventPostComm;
+use App\EventLike;
 class PostController extends Controller
 {
     public function postStatus(Request $req)
@@ -139,6 +140,21 @@ class PostController extends Controller
       $comment->event_post_id = $pid;
       $comment->save();
       return redirect()->back();
+
+    }
+    public function likePostEvent($eid,$pid)
+    {
+      $like = new EventLike();
+      $user = Auth::user()->id;
+      $like->user_id = $user;
+      $like->event_post_id = $pid;
+      $like->save();
+      return redirect()->back();
+    }
+    public function unlikePostEvent($eid,$lid){
+      $liked = EventLike::find($lid);
+      $liked->delete();
+      return back();
 
     }
 

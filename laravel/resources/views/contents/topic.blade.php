@@ -1,7 +1,40 @@
 @extends('site.layout')
 @section('maincontent')
-<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
-<link rel="canonical" href="https://dev.twitter.com/web/tweet-button">
+
+<script type="text/javascript">
+
+
+function more(){
+    var intro = introJs();
+      intro.setOptions({
+        showStepNumbers: false,
+        nextLabel: "ต่อไป",
+        prevLabel: "กลับ",
+        skipLabel: "ข้าม",
+        doneLabel: "เสร็จ",
+
+        steps: [
+          {
+            element: "#more",
+            intro: "This is a dropdown"
+          },
+          {
+            element: '#more2',
+            intro: "This is an option within a dropdown.",
+            position: 'bottom'
+          },
+
+        ]
+      });
+
+
+      intro.start();
+  };
+
+  setTimeout( "more()", 1500);
+
+</script>
+
 <div id="wrapperHeader">
     <div class="img-cover">
         <img src="{{url('img/health3.jpg')}}">
@@ -56,8 +89,17 @@
 <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
   <i class="fa fa-link" aria-hidden="true"></i></a>
 @else
+<?php
+$uid =Auth::user()->id;
+$fav = DB::table('favourite')->where([['user_id','=',$uid],['content_id','=',$data->id]])->first();?>
+      @if($fav)
+      <a href="{{url('/unfav/'.$fav->id)}}"class="btn-floating waves-effect waves-light grey lighten-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
+        <i class="fa fa-star" aria-hidden="true"></i></a>
+        @else
             <a href="{{url('/fav/'.$data->id)}}"class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
               <i class="fa fa-star" aria-hidden="true"></i></a>
+              @endif
+
             <a href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
               <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">

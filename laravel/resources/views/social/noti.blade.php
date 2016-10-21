@@ -1,5 +1,81 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+  function notification() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#notiintro',
+            intro: "คุณสามารถดูการแจ้งเตืองทั้งหมดของคุณได้ในหน้านี้"
+            
+        },
+        {
+            element: '#noti1',
+            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนทั้งหมดที่คุณมี",
+            position: 'bottom'
+        },
+        {
+            element: '#noti2',
+            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนที่มีระหว่างคุณกับเพื่อนของคุณ",
+            position: 'bottom'
+        },
+        {
+            element: '#noti3',
+            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนข้อความระหว่างคุณและเพื่อน",
+            position: 'bottom'
+        },
+        {
+            element: '#noti4',
+            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนเกี่ยวกับกิจกรรมที่คุณมีส่วนร่วม",
+            position: 'bottom'
+        },
+        {
+            element: '#noti5',
+            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนเกี่ยวกับสถานะของคุณที่ได้ทำการโพสต์ไว้บนไทม์ไลน์",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    /*intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        
+        case "comment2":
+            $('.introjs-helperLayer').css({width:'127px'})
+            break;
+      } 
+    });*/
+
+    intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#noti1').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'allNotify');       
+        }
+        if($(targetElement).attr("id") == $('#noti2').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'friendNotify');       
+        }
+        if($(targetElement).attr("id") == $('#noti3').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'chatNotify');       
+        }
+        if($(targetElement).attr("id") == $('#noti4').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'eventNotify');       
+        }
+        if($(targetElement).attr("id") == $('#noti5').attr('id')) { 
+           $('ul.tabs').tabs('select_tab', 'statusNotify');       
+        }
+    });
+
+      
+
+    intro.start()
+  }
+</script>
 <div class="container" style="width: 90%; margin-top: 160px;min-height: 600px;">
   <div class="row">
  <div class="col s12">
@@ -12,12 +88,12 @@
      $post=3;
      $all = $freq+$mes+$eve+$post;
       ?>
-     <li class="tab col s3"><a class="active nt-tabfont" href="#allNotify"><span>แจ้งเตือนทั้งหมด <span class="noti-badge new badge">{{$all}}</span></a></li>
+     <li id="noti1" class="tab col s3"><a class="active nt-tabfont" href="#allNotify"><span>แจ้งเตือนทั้งหมด <span class="noti-badge new badge">{{$all}}</span></a></li>
 
-     <li class="tab col s3"><a href="#friendNotify" class="nt-tabfont">เพื่อน <span class="noti-badge new badge">{{$freq}}</span></a></li>
-     <li class="tab col s3"><a href="#chatNotify" class="nt-tabfont">ข้อความ <span class="noti-badge new badge">{{$mes}}</span></a></li>
-     <li class="tab col s3"><a href="#eventNotify" class="nt-tabfont">กิจกรรม <span class="noti-badge new badge">{{$eve}}</span></a></li>
-     <li class="tab col s3"><a href="#statusNotify" class="nt-tabfont">สถานะ <span class="noti-badge new badge">{{$post}}</span></a></li>
+     <li id="noti2" class="tab col s3"><a href="#friendNotify" class="nt-tabfont">เพื่อน <span class="noti-badge new badge">{{$freq}}</span></a></li>
+     <li id="noti3" class="tab col s3"><a href="#chatNotify" class="nt-tabfont">ข้อความ <span class="noti-badge new badge">{{$mes}}</span></a></li>
+     <li id="noti4" class="tab col s3"><a href="#eventNotify" class="nt-tabfont">กิจกรรม <span class="noti-badge new badge">{{$eve}}</span></a></li>
+     <li id="noti5" class="tab col s3"><a href="#statusNotify" class="nt-tabfont">สถานะ <span class="noti-badge new badge">{{$post}}</span></a></li>
    </ul>
  </div>
 
@@ -160,7 +236,7 @@
          <div class="col col-thumbnail">
            <img class="who circle" src="img/mim_tn.jpg">
          </div>
-         <div class="col s9 m10 l10">
+         <div id="noti3" class="col s9 m10 l10">
            <span>สุนิสา ปานหิบ</span> <span class="description"> ส่ง 1 ข้อความถึงคุณ</span>
          </div>
          <div class="section"></div>

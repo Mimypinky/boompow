@@ -19,8 +19,117 @@ use Carbon\Carbon;
 
 // Creates a dropdown of 15 years to control year
 });
-</script>
 
+
+</script>
+<script type="text/javascript">
+  function eventuser() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เสร็จ",
+        steps: [
+        {
+            element: '#event1',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#status',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#descrip',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#attend',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#event2',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#cancelE',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#Eboard',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#event3',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        {
+            element: '#addE',
+            intro: "This is a <b>bold</b> tooltip.",
+            position: 'bottom'
+        },
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+        case "event1":
+            $('.introjs-helperLayer').css("background-color", "#ee6e73")
+            break;
+        case "event2":
+            $('.introjs-helperLayer').css("background-color", "#ee6e73")
+            break;
+        case "event3":
+            $('.introjs-helperLayer').css("background-color", "#ee6e73")
+            break;
+      }
+    });
+
+
+
+  intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#event1').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
+        }
+        if($(targetElement).attr("id") == $('#event2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
+        }
+
+        if($(targetElement).attr("id") == $('#event3').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
+        }
+        if($(targetElement).attr("id") == $('#descrip').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
+        }
+        if($(targetElement).attr("id") == $('#status').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
+        }
+        if($(targetElement).attr("id") == $('#attend').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'allevent');
+        }
+        if($(targetElement).attr("id") == $('#cancelE').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
+        }
+        if($(targetElement).attr("id") == $('#Eboard').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
+        }
+        if($(targetElement).attr("id") == $('#addE').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
+        }
+    });
+  intro.start()
+}
+</script>
 
 
 
@@ -39,9 +148,9 @@ use Carbon\Carbon;
   <div class="row">
     <div class="col s12 event-option">
       <ul class="event-option tabs tab-set" style="background-color: #F16B6F;">
-        <li class="tab"><a href="#allevent">กิจกรรมทั้งหมด</a></li>
-        <li class="tab"><a href="#attendevent">กิจกรรมที่เข้าร่วม</a></li>
-        <li class="tab"><a href="#myevent">กิจกรรมของฉัน</a></li>
+        <li id="event1" class="tab"><a href="#allevent">กิจกรรมทั้งหมด</a></li>
+        <li id="event2" class="tab"><a href="#attendevent">กิจกรรมที่เข้าร่วม</a></li>
+        <li id="event3" class="tab"><a href="#myevent">กิจกรรมของฉัน</a></li>
 
       </ul>
     </div>
@@ -124,9 +233,11 @@ use Carbon\Carbon;
                     ?>
 
                     <!--เริ่มแสดง status (unavailable)-->
+
                     <div class="card-content {{$color}}" id="status_avai">
                         <p class="ev-status">{{$message}}</p>
                     </div>
+
 
                   @if(in_array($data->id,$joined) AND ($data->creator!=$user))
                   <div class="card-action">
@@ -146,7 +257,7 @@ use Carbon\Carbon;
                   @else
                   <div class="card-action " style="{{$display}}">
                       <ul class="event-menu">
-                          <li class="event-item"><a href="#join{{$key}}" class="modal-trigger">
+                          <li id="attend" class="event-item"><a href="#join{{$key}}" class="modal-trigger">
                               <i class="fa fa-plus-square-o left" aria-hidden="true"></i>เข้าร่วม</a></li>
                       </ul>
                   </div>
@@ -179,7 +290,7 @@ use Carbon\Carbon;
               -->  </div>
               </div>
               <div class="col s6" style="margin-left: 10px;">
-                <div class="row" class="col s12" id="event_detail">
+                <div id="descrip" class="row" class="col s12" id="event_detail">
                   <table >
 
                     <tr>
@@ -242,9 +353,6 @@ use Carbon\Carbon;
             $mem_join =DB::table('join_event')->where('eve_id','=',$i)->count();
             }
 
-
-
-
           ?>
 
         <li class=" collection-item">
@@ -254,39 +362,6 @@ use Carbon\Carbon;
                 &nbsp;&nbsp;&nbsp;<span style="font-size: 20pt">{{$join->title}}<span></span>
 
 
-@if($mem_join==0)
-<a href="#parti2{{$key}}" class="modal-trigger"><div class="chip" align="right">ยังไม่มีผู้เข้าร่วม</div></a>
-
-                <div id="parti2{{$key}}" class="modal" style="width: 500px;">
-                  <ul class="collection">
-                    <li class="collection-item avatar">
-                    <h4>ยังไม่มีผู้เข้าร่วม</h4>
-                    </li>
-                  </ul>
-                  <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">
-                      <i class="fa fa-times" aria-hidden="true"></i></a>
-                  </div>
-                </div>
-          @elseif($mem_join!=0)
-          <a href="#joinparti{{$key}}" class="modal-trigger"><div class="chip" align="right">{{ $mem_join}} ที่เข้าร่วม</div></a>
-          <div id="joinparti{{$key}}" class="modal" style="width: 500px;">
-          <ul class="collection with-header f-modal">
-            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
-                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
-            </li>
-            @foreach($join->accounts as $account)
-              <li class="collection-item avatar transper">
-                <img src="{{url('img/f1.jpg')}}" alt="" class="circle">
-                <p>{{$account->first_name.' '.$account->last_name}}</p>
-                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;เพิ่มเพื่อน</a>
-              </li>
-
-            @endforeach
-
-            </ul>
-          </div>
-          @endif
 
               </div>
             </div>
@@ -326,9 +401,9 @@ use Carbon\Carbon;
                          @else
                           <div class="card-action">
                               <ul class="event-menu">
-                                  <li class="event-item">
+                                  <li id="cancelE" class="event-item">
                                   <a href="#cancel{{$key}}" class="modal-trigger"><i class="fa fa-minus-square-o left" aria-hidden="true"></i>ยกเลิกการเข้าร่วม</a></li>
-                                  <li class="event-item">
+                                  <li id="Eboard" class="event-item">
                                     <a href="{{url('event/board/'.$join->eve_id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>
 
                               </ul>
@@ -411,7 +486,7 @@ use Carbon\Carbon;
           <ul class="collection" style="margin-top: 17px;">
             <ul class="collapsible " data-collapsible="accordion" style="margin-top: 0%;">
               <li>
-                <div class="collapsible-header add-ev-btn" >
+                <div id="addE" class="collapsible-header add-ev-btn" >
 
                     <i class="fa fa-plus-circle" aria-hidden="true" ></i>เพิ่มกิจกรรม
                   </div>
@@ -543,29 +618,12 @@ use Carbon\Carbon;
                   <i class="fa fa-calendar-o" aria-hidden="true" style="font-size: 20pt;"></i>&nbsp;&nbsp;&nbsp;
                   <span style="font-size: 20pt">{{$mine->title}}
                     <?php $m_name = DB::table('join_event')->join('accounts','join_event.user_id','=','accounts.id')->where('eve_id','=',$mine->id)->get(); ?>
-<?php $m = DB::table('join_event')->where('eve_id',$mine->id)->count(); ?>
-                    <a href="#myevePartiList{{$key}}" class="modal-trigger">
+                      <?php $m = DB::table('join_event')->where('eve_id',$mine->id)->count(); ?>
 
-                      <div class="chip" align="right">{{$m}} ผู้เข้าร่วม</div>
-                      </a>
 
                       </div>
-                      @foreach($m_name as $per)
-                    <div id="myevePartiList{{$key}}" class="modal" style="width: 500px;">
 
-                      <ul class="collection with-header f-modal">
-                        <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-users fa-lg left" aria-hidden="true"></i><h4>ผู้เข้าร่วมกิจกรรม</h4>
-                        <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div>
-                        </li>
-                        <li class="collection-item avatar transper">
-                          <img src="img/pic.jpg" alt="" class="circle">
-                          <p>{{$per->first_name.' '.$per->last_name}}</p>
-                          <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                        </li>
 
-                      </ul>
-                    </div>
-                    @endforeach
                   </div>
 
                 </div>
