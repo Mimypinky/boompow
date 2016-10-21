@@ -36,19 +36,20 @@ class PostController extends Controller
     }
     public function comments(Request $req,$pid){
 
-      $uid =Auth::user()->id;
+      $uid = Auth::user()->id;
       $comment= new Comment();
       $comment->user_id =$uid;
       $comment->message =$req['comment_message'];
       $comment->post_id = $pid;
       $comment->save();
       $commentbox = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
-            ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
+            ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
             ->where('post_id',$pid)->orderBy('created_at', 'desc')->first();
+
       return '<div class="collapsible-body nonborder" style="display: block;">
           <ul class="col s12 collection cmt-box">
           <li class="transper collection-item avatar">
-          <a href="/friend/'.$commentbox->id.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
+          <a href="/friend/'.$commentbox->username.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
               <span class="title title-name">'.$commentbox->first_name.' '.$commentbox->last_name.'</span></a>
               <p id="datecomment">'.$commentbox->created_at.'</p>
               <p class="space-cmt">'.$commentbox->message.'<br></p>

@@ -17,7 +17,7 @@
                     <div class="col s6">
                         <ul class="collection">
                             <li class="collection-item avatar f-left">
-                                <a href="{{url('/friend/'.$person->id)}}">
+                                <a href="{{url('/friend/'.$person->username)}}">
                                   <img src="{{url('img/uploads/avatars/'.$person->avatar)}}" alt="" class="circle myfriend-img">
                               <span class="title f-title">{{$person->first_name.' '.$person->last_name}}</span></a><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>

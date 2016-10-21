@@ -90,6 +90,15 @@
  </script>
 
  <style>
+ button.like-btn:focus{
+   background-color: transparent;
+   border-color: transparent;
+ }
+ button.like-btn{
+   background-color: transparent;
+   border-color: transparent;
+ }
+
 .wordwrap{
   overflow: hidden;
   text-overflow: ellipsis;

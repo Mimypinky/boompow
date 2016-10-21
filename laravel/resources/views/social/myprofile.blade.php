@@ -198,16 +198,22 @@
                                                       ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
-                                                    @if($liked!=null)
+                                                      <!-- <button class="tooltipped like-btn" href="#" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ" onclick="changeLike()">
+                                                        <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                      </button> -->
 
-                                                        <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
-                                                          <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                    @if($liked!=null)
+                                                        <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
+                                                          <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                          </button>
                                                         </a>
                                                         @else
-                                                        <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                          <img class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                        <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
+                                                          <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                          </button>
                                                         </a>
-
                                                         @endif
                                                     </div>
                                                     <div class="col s2"></div>
@@ -256,14 +262,16 @@
 
                                                         </div>
 
-                                                    </form>
+
                                                    </div>
+                                                   </form>
 
                                                    <div class="comment-section">
                                                        <ul class="cmt-coll w-cmt collapsible" data-collapsible="accordion">
-                                                            <li id="commentboxs{{$key}}">
+                                                            <li id="commentboxs" class="commentboxs">
+                                                              <input type="hidden" value="{{$post->id}}" class="idofpost" />
                                                               <?php $comments = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
-                                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
+                                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
                                                               ->where('post_id',$post->id)->get();
                                                               $count_comments = DB::table('comments')->where('post_id',$post->id)->count();
 
@@ -274,55 +282,22 @@
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
                                                               @endif
-                                                              <script type="text/javascript">
-                                                                  $('.btn-comment').click(function(){
-                                                                    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                    type : "POST",
-                                                                    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
 
-                                                                  })
-                                                                    .done(function(html) {
-                                                                      console.log('{{$post->id}}');
-                                                                      $('#commentboxs{{$key}}').append(html);
-                                                                    })
-                                                                    .fail(function(){
-                                                                      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                    })
-                                                                  });
-                                                              </script>
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
                                                                     <ul class="col s12 collection cmt-box">
                                                                     <li class="transper collection-item avatar">
-                                                                    <a href="{{url('/friend/'.$comment->id)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
+                                                                    <a href="{{url('/friend/$comment->username')}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
                                                                     </li>
 
                                                                 </ul>
-                                                                </div>
-<<<<<<< HEAD
-                                                                <script type="text/javascript">
-                                                                    $('.btn-comment').click(function(){
-                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
-                                                                      type : "POST",
-                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-                                                                    })
-                                                                      .done(function(html) {
-                                                                        console.log('{{$post->id}}');
-                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
-                                                                      })
-                                                                      .fail(function(){
-                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-                                                                      })
-                                                                    });
-                                                                </script>
-=======
->>>>>>> 145b25360acfdc5d6655030a21f1e347aa8c231c
+                                                              </div>
                                                                 @endforeach
+
+
                                                             </li>
                                                         </ul>
                                                    </div>
@@ -485,5 +460,98 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var $self;
+    $('.btn-comment').click(function(){
+      $self = $(this);
+      var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+      console.log(id);
+      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+      type : "POST",
+      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+      })
+      .done(function(html) {
+        // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+        console.log(html);
+        $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+      })
+      .fail(function(){
+        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      })
+    });
+</script>
 
+
+
+<script type="text/javascript">
+    // function changeLike() {
+    //   if(document.getElementById('likeMe').src == "{{url('img/heart-default-like.png')}}"){
+    //     console.log('Yes');
+    //     document.getElementById('likeMe').src = "{{url('img/heart-like.png')}}";
+    //   } else if(document.getElementById('likeMe').src == "{{url('img/heart-like.png')}}") {
+    //     console.log('No');
+    //     document.getElementById('likeMe').src = "{{url('img/heart-default-like.png')}}";
+    //   }
+    // }
+    var $self;
+    function likeFunction() {
+      $self = $(this);
+      var id = $self.parent().parent().parent().parent().find('.idofpost').val();
+        $.ajax({
+          type: "POST",
+          url: "{{url('/like/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}',
+            post_id: id
+          },
+          success: function () {
+            if(document.getElementById('likeMe').src == "{{url('img/heart-default-like.png')}}"){
+              console.log('like Yes');
+              document.getElementById('likeMe').src = "{{url('img/heart-like.png')}}";
+            }
+          }
+        });
+      }
+function unlikeFunction() {
+  $self = $(this);
+  var id = $self.parent().parent().parent().parent().find('.idofpost').val();
+    $.ajax({
+      type: "POST",
+      url: "{{url('/unlike/')}}"+"/"+id,
+      data: {
+        liked_by: '{{Auth::user()->id}}',
+        post_id: id
+      },
+      success: function () {
+        if(document.getElementById('likeMe').src == "{{url('img/heart-like.png')}}"){
+          console.log('unlike Yes');
+          document.getElementById('likeMe').src = "{{url('img/heart-default-like.png')}}";
+        }
+      }
+    });
+}
+
+    // $('.like-btn').click(function(){
+    //   $self = $(this);
+    //   var status_like = $self.parent().attr("class");
+    //   console.log(status_like);
+    //   var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+    //   var likePost = $.ajax({ url: "{{url('/like/')}}"+"/"+id,
+    //   type : "POST",
+    //   data : {liked_by: '{{Auth::user()->id}}',
+    //
+    //           like_status: status_like
+    //          },
+    //   headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+    //   })
+    //   .done(function(html) {
+    //     // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+    //     console.log('yes');
+    //   })
+    //   .fail(function(){
+    //     console.log('no');
+    //   })
+    // });
+</script>
 @stop
