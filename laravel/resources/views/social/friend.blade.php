@@ -47,9 +47,14 @@
                     @if(in_array($person->id,$myfriend))
                     <div class="col s6">
                         <ul class="collection">
+<<<<<<< HEAD
+                            <li class="collection-item avatar f-left">
+                                <a href="{{url('/friend/'.$person->username)}}">
+=======
 
                             <li  id="f1" class="collection-item avatar f-left">
                                 <a href="{{url('/friend/'.$person->id)}}">
+>>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
                                   <img src="{{url('img/uploads/avatars/'.$person->avatar)}}" alt="" class="circle myfriend-img">
                               <span class="title f-title">{{$person->first_name.' '.$person->last_name}}</span></a><br>
                                 <span class="mf-des">เพื่อนของคุณ</span><br>

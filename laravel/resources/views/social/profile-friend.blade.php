@@ -196,21 +196,18 @@
                                                <div class="divider"></div>
                                                <div>
                                                    <div class="row">
-                                                     <form action="{{url('/comment/'.$post->id)}}" method="post">
+                                                     <form>
                                                          <div class="input-field cmt-coll-space">
 
                                                          <div class="input-field w-cmt">
 
                                                               <div class="input-field col s12">
-                                                                  <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+                                                                  <textarea id="newComment" class="newComment materialize-textarea" name="comment_message"></textarea>
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                  <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                                  <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                               </div>
 
-                                                              <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn" style="margin-top:-14%">ตกลง</button>
-
-
-
+                                                              <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
                                                           </div>
 
                                                       </form>
@@ -218,9 +215,10 @@
 
                                                    <div class="comment-section">
                                                        <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
-                                                            <li>
+                                                            <li class="commentboxs">
+                                                              <input type="hidden" value="{{$post->id}}" class="idofpost" />
                                                               <?php $comments = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
-                                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
+                                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
                                                               ->where('post_id',$post->id)->get();
                                                               $count_comments = DB::table('comments')->where('post_id',$post->id)->count();
 
@@ -233,15 +231,12 @@
                                                               @foreach($comments as $comment)
                                                               <div class="collapsible-body">
                                                                   <ul class="col s12 collection cmt-box">
-
                                                                   <li class="transper collection-item avatar">
-                                                                  <a href="{{url('/friend/$comment->id')}}"><img src="{{url('img/uploads/avatars/'.$info->avatar)}}" alt="" class="circle">
+                                                                  <a href="{{url('/friend/'.$comment->username)}}"><img src="{{url('img/uploads/avatars/'.$info->avatar)}}" alt="" class="circle">
                                                                       <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                       <p id="datecomment">{{$comment->created_at}}</p>
                                                                       <p class="space-cmt">{{$comment->message}}<br></p>
-
                                                                   </li>
-
                                                               </ul>
                                                               </div>
                                                               @endforeach
@@ -423,4 +418,53 @@
             </div>
         </div>
       </div>
+
+      <script type="text/javascript">
+          var $self;
+          $('.btn-comment').click(function(){
+            $self = $(this);
+            var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+            console.log(id);
+            var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+            type : "POST",
+            data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+            headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+            })
+            .done(function(html) {
+              // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+              console.log(html);
+              $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+            })
+            .fail(function(){
+              alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+            })
+          });
+
+          function changeLike() {
+            if(document.getElementById('likeMe').src == 'img/heart-default-like.png') {
+              document.getElementById('likeMe').src = 'img/heart-like.png';
+            } else if(document.getElementById('likeMe').src == 'img/heart-like.png') {
+              document.getElementById('likeMe').src = 'img/heart-default-like.png';
+            }
+          }
+
+          $('.like-btn').click(function(){
+            $self = $(this);
+            var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+            console.log(id);
+            var addingComment = $.ajax({ url: "{{url('/like/')}}"+"/"+id,
+            type : "POST",
+            data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+            headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+            })
+            .done(function(html) {
+              // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+              console.log(html);
+              $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+            })
+            .fail(function(){
+              alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+            })
+          });
+      </script>
 @stop

@@ -130,7 +130,10 @@ public function sendFriendRequest(Request $req){
         $isPending2 = Friends::where('from_user_id' , $fid)
         ->where('to_user_id' , $myId)->where('status' , 'pending')->count();
         $pending = $isPending1+$isPending2;
-            if($pending==0)
+        if($fid == $myId){
+          return redirect()->intended('/profile');
+        }
+            elseif($pending==0)
             {
               $friend_status ='notfriend';
               return view('social.profile-friend')->with('title' , $title)
@@ -153,6 +156,7 @@ public function sendFriendRequest(Request $req){
         return view('social.profile-friend')->with('title' , $title)->with('account' , $account)->with('posts' , $posts)->with('info',$info)->with('f_info',$f_info)
         ->with('friend_status',$friend_status);
       }
+
     }
 
     public function showFriendlist(Request $req)
