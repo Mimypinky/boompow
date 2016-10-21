@@ -177,12 +177,12 @@ class EventController extends Controller
       $obj1->contact = $request['contact'];
       $obj1->title = $request['title'];
       $obj1->max_amount = $request['max_amount'];
-      if($req->hasfile('files')){
-        $image = $req->file('files');
+      if($request->hasfile('files')){
+        $image = $request->file('files');
         $filename = time().'.'.$image->getClientOriginalExtension();
         Image::make($image)->save(public_path().'/img/uploads/events/'.$filename);
-        $event->image = $filename;
-        $event->save();
+        $obj1->image = $filename;
+        $obj1->save();
       }
       $obj1->save();
       $join = new JoinEvent();

@@ -443,24 +443,35 @@ function comment() {
                                                           </button>
                                                         </a>
                                                         @else
-<<<<<<< HEAD
+
                                                         <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
                                                           <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                             <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                           </button>
-=======
-                                                        <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                          <img id="mypost3" class="heart-i" src="{{url('img/heart-like.png')}}">
->>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
+
                                                         </a>
                                                         @endif
                                                     </div>
                                                     <div class="col s2"></div>
                                                     <div class="col s2">
                                                         <div class="likecount">
-                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
+                                                            <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
                                                         </div>
                                                     </div>
+                                                    @foreach($likes as $key => $like)
+                                                    <div id="wholike{{$key}}" class="modal" style="width: 500px;">
+                                                        <ul class="collection with-header f-modal">
+                                                            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
+                                                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                                                            <li class="collection-item avatar transper">
+                                                                <img src="{{url('img/uploads/avatars/'.$like->avatar)}}" alt="" class="circle">
+                                                                <p>{{$like->first_name.' '.$like->last_name}}</p>
+                                                                <a href="{{url('/friend/'.$like->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                    @endforeach
                                                     <div class="col s2">
                                                         <div class="wholike">
 
@@ -500,10 +511,10 @@ function comment() {
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
+                                                             <input  id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
-                                                            <button id="comment2" type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
 
-                                                      
+
 
 
                                                         </div>
@@ -540,9 +551,7 @@ function comment() {
                                                                     </li>
 
                                                                 </ul>
-<<<<<<< HEAD
-                                                              </div>
-=======
+
                                                                 </div>
 
                                                                 <script type="text/javascript">
@@ -562,7 +571,7 @@ function comment() {
                                                                     });
                                                                 </script>
 
->>>>>>> c8f836cbb05118a346165dbd165929e1cda3abc9
+
                                                                 @endforeach
 
 
@@ -648,11 +657,8 @@ function comment() {
                             <div class="modal-close close-fmbtn" align="right"><a id="close-modal-button" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>
 
                             <li>
-<<<<<<< HEAD
+
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
-=======
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -661,11 +667,9 @@ function comment() {
                                           </div>
                                           <form enctype="multipart/form-data" action="/profile" id="updateInfo"  method="post">
                                               <div class="file-field input-field">
-<<<<<<< HEAD
-                                                  <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-=======
+
                                                   <span style="margin-top: -20%; margin-left: 4%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
->>>>>>> 8cd5638b2dcfceb33cc82de0db8002fab58fef00
+
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
                                                   <input type="hidden" name="_token" value="{{csrf_token()}}"></span>
@@ -714,18 +718,7 @@ function comment() {
                         </div>
                     </div>
                     <!--wholike-->
-                    <div id="wholike" class="modal" style="width: 500px;">
-                        <ul class="collection with-header f-modal">
-                            <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
-                            <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
-                            <li class="collection-item avatar transper">
-                                <img src="img/pic.jpg" alt="" class="circle">
-                                <p>เจ๊สมร ดอนเจดีย์</p>
-                                <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
-                            </li>
 
-                        </ul>
-                    </div>
                     @if(!isset($key))
                     <div class="section"></div>
                     @else

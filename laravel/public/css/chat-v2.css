@@ -236,7 +236,7 @@ span.badge.new {
 .chat .chat-history .my-message {
   background: #e0e0e0;
   color: black;
-  float: left;
+  
 }
 .chat .chat-history .other-message {
   background: #FF979B;

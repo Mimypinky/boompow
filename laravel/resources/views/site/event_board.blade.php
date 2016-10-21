@@ -375,7 +375,7 @@
                       </div>
                   </div>
                   <div class="row">
-                   <div class="input-field col s4">
+                   <div class="input-field col s5">
                     <i class="material-icons prefix">people</i>
                      <input name="max_amount" id="amount-attend" type="number" class="validate" value="{{$eve_name->max_amount}}" required>
 
@@ -430,7 +430,7 @@
                   </div>
 
 
-                  <div class="row">
+                  <div class="row" style="margin-top: 42px;">
                       <div class="input-field col s12">
                           <i class="material-icons prefix">phone</i>
                           <input type="text" placeholder="ตัวอย่าง: 085-994-9230" name="contact"value="{{$eve_name->contact}}" id="tel" ></input>

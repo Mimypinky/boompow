@@ -160,7 +160,7 @@
 
                                             </div>
                                         </div>
-                                    </div>
+
 
                             </li>
                         </ul>
@@ -185,6 +185,7 @@
                             </li>
                         </ul>
 
+
                         <ul id="ps6" class="collection with-header sp-head">
 
                             <li class="collection-item sp-item" style="margin-bottom: 25px;">
@@ -195,6 +196,7 @@
                                   </form>
                             </li>
                         </ul>
+                      </div>
 
                 </div>
             </li>
