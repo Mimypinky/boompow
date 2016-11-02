@@ -45,19 +45,19 @@
             intro: "This is a <b>bold</b> tooltip.",
             position: 'left'
         },
-        
-      
+
+
         ]
     });
 
   intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#chat2').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'friendList');  
+        if($(targetElement).attr("id") == $('#chat2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'friendList');
         }
-        if($(targetElement).attr("id") == $('#chat4').attr('id')) { 
-           $('ul.tabs').tabs('select_tab', 'recentMessage');  
+        if($(targetElement).attr("id") == $('#chat4').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'recentMessage');
         }
-        
+
     });
   intro.start()
 }
@@ -221,13 +221,13 @@
            function addToChatBox(text) {
              var li ='';
              var msg = text.sender;
-             
+
 
              if(msg==($('#username1').val())){
-               li = '<li><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
+               li = '<li class="clearfix"><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
                    '<span class="message-data-time">'+text.time+'</span>'+
                  '</div>'+
-                 '<div class="message my-message">'+
+                 '<div class="message my-message" style="float: left">'+
                    '<p>'+text.message+'</p>'+
                  '</div>'+
                '</li>' ;

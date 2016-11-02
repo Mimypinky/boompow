@@ -157,7 +157,32 @@
                                                 </p>
                                             </div>
                                             <div class="status-post2 col s12">
-                                                <p>{{$post->post_message}}</p><br>
+                                                <p>{{$post->post_message}}</p>  <br>
+                                                  @if($post->content_id!=null)
+                                                  <?php $content = DB::table('contents')->join('category','category.id','=','contents.cate_id')->select('category.id as cgid','category.category_title','contents.*')->where('contents.id','=',$post->content_id)->first();?>
+
+                                                    <div class="row ">
+                                                    <div class="col s9 offset-s2 ">
+
+                                                       <div class="card">
+                                                         <div class="card-image">
+                                                           <img src="{{url('img/content/'.$content->head_pic_content)}}" style="max-height:300px"/>
+                                                         </div>
+                                                         <div class="card-stacked">
+                                                           <div class="card-content">
+                                                            <h2>{{$content->content_title}}</h2>
+                                                           </div>
+                                                           <div class="card-action">
+                                                            <a href="{{url('/content/'.$content->category_title.'/'.$content->id)}}">อ่านเนื้อหา</a>
+                                                          </div>
+                                                         </div>
+                                                       </div>
+                                                     </div>
+                                                   </div>
+
+
+                                                  @endif
+
                                                 @if($post->image!=null)
                                                   <div class="card-image">
                                                       <img class="materialboxed " src="{{url('img/uploads/posts/'.$post->image)}}" style="width:70%">
@@ -234,11 +259,25 @@
                                                                   <li class="transper collection-item avatar">
                                                                   <a href="{{url('/friend/'.$comment->username)}}"><img src="{{url('img/uploads/avatars/'.$info->avatar)}}" alt="" class="circle">
                                                                       <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+                                                                      @if($comment->user_id == $uid )
+                                                                    <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                                      <i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                                      @endif
                                                                       <p id="datecomment">{{$comment->created_at}}</p>
                                                                       <p class="space-cmt">{{$comment->message}}<br></p>
                                                                   </li>
                                                               </ul>
                                                               </div>
+
+                                                              <div id="deletecom{{$key}}" class="modal " style="width: 500px;">
+                                                                  <div class="modal-content" >
+                                                                <p>คุณต้องการจะลบความคิดเห็นนี้ใช่หรือไม่</p>
+                                                                </div>
+                                                                  <div class="modal-footer">
+                                                                    <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                                  <a href="{{url('/comment/delete/'.$comment->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                                                      </div>
+                                                                    </div>
                                                               @endforeach
                                                             </li>
                                                         </ul>

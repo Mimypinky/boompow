@@ -252,18 +252,46 @@
                             <div class="input-field col s9 upsta-line-f">
                             @endif
                                 <div class="col s12" id="commenthead">
-                                    <span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span>
+                                    <a href="{{url('/friend/'.$post->username)}}"><span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span></a>
                                     <div class="row">
                                     <div class="edit-cmt-sec">
                                       @if($post->user_id==$user->id)
                                       <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
                                       style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                                      <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
+                                          <ul class="collection with-header f-modal">
+                                              <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                                                  <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
+                                              <li class="transper collection-item avatar">
+                                                  <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="circle">
+                                                  <span class="title title-name">{{$post->first_name.' '.$post->last_name}}</span>
+                                                  <form action="{{url('/post/'.$post->id.'/edit')}}" method="get" enctype="multipart/form-data">
+                                                      <div class="file-field input-field" style="margin-top: -5%;">
+                                                          <div class="input-field col s12">
+                                                              <textarea id="textarea1" class="materialize-textarea" name="post_message" >{{$post->post_message}}
+                                                              </textarea>
+                                                          </div>
+                                                      </div>
+                                                  <button name="action" type="submit"  class="modal-close waves-effect waves-light btn right">ตกลง</button>
+                                                  </form>
+
+                                              </li>
+                                          </ul>
+                                      </div>
                                       <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                         <i class="fa fa-trash-o"></i> ลบ</a>
 
-                                        <!-- <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:205px">
-                                          <i class="fa fa-trash-o"></i> ลบ</a> -->
+                                        <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                                          <div class="modal-content" >
+
+                                                <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                 <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                              </div>
+                                        </div>
                                           @endif
 
                                           </div>
@@ -272,6 +300,31 @@
                                 </div>
                                 <div class="status-post2 col s12">
                                     <p>{{$post->post_message}}</p>
+                                    <br>
+                                    @if($post->content_id!=null)
+                                    <?php $content = DB::table('contents')->join('category','category.id','=','contents.cate_id')->select('category.id as cgid','category.category_title','contents.*')->where('contents.id','=',$post->content_id)->first();?>
+
+                                      <div class="row ">
+                                      <div class="col s9 offset-s2 ">
+
+                                         <div class="card">
+                                           <div class="card-image">
+                                             <img src="{{url('img/content/'.$content->head_pic_content)}}" style="max-height:300px"/>
+                                           </div>
+                                           <div class="card-stacked">
+                                             <div class="card-content">
+                                              <h2>{{$content->content_title}}</h2>
+                                             </div>
+                                             <div class="card-action">
+                                              <a href="{{url('/content/'.$content->category_title.'/'.$content->id)}}">อ่านเนื้อหา</a>
+                                            </div>
+                                           </div>
+                                         </div>
+                                       </div>
+                                     </div>
+
+
+                                    @endif
                                     @if($post->image!=null)
                                     <div class="card-image">
                                         <img class="materialboxed " src="img/uploads/posts/{{$post->image}}" style="width:60%">
@@ -286,7 +339,7 @@
                                       $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
                                           ?>
                                     <div class="row wholike-sec">
-                                      <div class="col s2">
+                                      <div class="col s1" style="  margin-top: 15px;">
                                       @if($liked!=null)
 
                                           <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
@@ -311,13 +364,13 @@
                                             <ul class="collection with-header f-modal">
                                                 <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
                                                     <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
-
+                                                    @foreach($likes as $like)
                                                 <li class="collection-item avatar transper">
-                                                    <img src="" alt="" class="circle">
-                                                    <p>พิชิต จิตมั่นคง </p>
-                                                    <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                                                    <img src="{{url('img/uploads/avatars/'.$like->avatar)}}" alt="" class="circle">
+                                                    <p>{{$like->first_name.'  '.$like->last_name}}</p>
+                                                    <a href="{{url('/friend/'.$like->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                                                 </li>
-
+                                                @endforeach
                                             </ul>
                                         </div>
 
@@ -345,19 +398,11 @@
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
-<<<<<<< HEAD
 
 
                                                    <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-
-
-
-
-                                               </div>
-=======
-                                                   <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
                                              </div>
->>>>>>> 65df5bfc9e25b4b19844690d179457f6392e91c4
+
 
                                            </form>
                                         </div>
@@ -377,13 +422,17 @@
                                                           <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                       </div>
                                                     @endif
-                                                      @foreach($comments as $comment)
+                                                      @foreach($comments as $key=>$comment)
                                                       <div class="collapsible-body nonborder">
                                                           <ul class="col s12 collection cmt-box">
 
                                                           <li class="transper collection-item avatar">
                                                           <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                               <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+                                                                @if($comment->user_id == $uid )
+                                                              <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                                <i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                                @endif
                                                               <p id="datecomment">{{$comment->created_at}}</p>
                                                               <p class="space-cmt">{{$comment->message}}<br></p>
 
@@ -391,6 +440,18 @@
 
                                                       </ul>
                                                       </div>
+
+                                                      <div id="deletecom{{$key}}" class="modal " style="width: 500px;">
+                                                        <div class="modal-content" >
+
+                                                              <p>คุณต้องการจะลบความคิดเห็นนี้ใช่หรือไม่</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                               <a href="{{url('/comment/delete/'.$comment->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                                            </div>
+                                                      </div>
+
                                                       @endforeach
 
                                                 </li>
@@ -401,37 +462,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
-                      <div class="modal-content" >
 
-                            <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
-                          </div>
-                          <div class="modal-footer">
-                            <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
-                             <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
-                          </div>
-                    </div>
-                    <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
-                        <ul class="collection with-header f-modal">
-                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
-                                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
-                            <li class="transper collection-item avatar">
-                                <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="circle">
-                                <span class="title title-name">{{$post->first_name.' '.$post->last_name}}</span>
-                                <form action="{{url('/post/'.$post->id.'/edit')}}" method="get" enctype="multipart/form-data">
-                                    <div class="file-field input-field" style="margin-top: -5%;">
-                                        <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea" name="post_message" >{{$post->post_message}}
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                <button name="action" type="submit"  class="modal-close waves-effect waves-light btn right">ตกลง</button>
-                                </form>
-
-                            </li>
-                        </ul>
-                    </div>
 
 
                   @endif

@@ -59,6 +59,13 @@ class PostController extends Controller
       </div>';
 
     }
+    public function deleteComment($cid)
+    {
+
+      $comment = Comment::find($cid);
+      $comment->delete();
+      return back();
+    }
     public function postFriendStatus(Request $req,$fid)
     {
       $post= new Post();
@@ -142,6 +149,20 @@ class PostController extends Controller
       return redirect()->back();
 
     }
+    public function deletePostEvent($eid,$pid)
+    {
+      dd($pid);
+      $post = EventPost::find($pid);
+      $post->delete();
+      return back();
+    }
+    public function deleteComEvent($eid,$cid)
+    {
+      dd($cid);
+      $comment = EventPostComm::find($pid);
+      $comment->delete();
+      return back();
+    }
     public function likePostEvent($eid,$pid)
     {
       $like = new EventLike();
@@ -156,6 +177,19 @@ class PostController extends Controller
       $liked->delete();
       return back();
 
+    }
+    public function pinPost(Request $req,$cid)
+    {
+      
+      $post = new Post();
+      $uid= Auth::user()->id;
+      $post->user_id = $uid;
+      $post->post_message = $req->message;
+      $post->content_id= $cid;
+      $post->section = 'contents';
+      $post->on_id=$uid;
+      $post->save();
+      return redirect('/profile');
     }
 
 }

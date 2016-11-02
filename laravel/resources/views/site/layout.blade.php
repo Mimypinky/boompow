@@ -44,7 +44,7 @@
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
-    
+
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
@@ -151,8 +151,8 @@
         case "beginer5":
             $('.introjs-helperLayer').css({height:'68px',top:'304px'})
             break;
-        
-      } 
+
+      }
     });*/
 
 
@@ -196,7 +196,7 @@ function beginerUser() {
             intro: "Ok, <i>wasn't</i> that fun?",
             position: 'left'
         },
-        
+
         {
             element: '#beginerU6',
             intro: "Ok, <i>wasn't</i> that fun?",
@@ -221,12 +221,12 @@ function beginerUser() {
     });
 
     intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#beginerU5').attr('id')) { 
-           $('.button-collapse2').sideNav('show');       
+        if($(targetElement).attr("id") == $('#beginerU5').attr('id')) {
+           $('.button-collapse2').sideNav('show');
         }
         if($(targetElement).attr("id") != $('#beginerU5').attr('id')) {
-            $('.button-collapse2').sideNav('hide'); 
-        } 
+            $('.button-collapse2').sideNav('hide');
+        }
     });
 
     /*intro.onafterchange(function(targetElement) {
@@ -234,8 +234,8 @@ function beginerUser() {
       switch (targetElement.id){
         case "u5":
             $('.introjs-tooltip').css({left: '503px !important'});
-            
-      } 
+
+      }
     });*/
 
 
@@ -253,8 +253,8 @@ function register() {
         intro: "Ok, <i>wasn't</i> that fun?",
         position: 'bottom'
     },
-    
-   
+
+
     ]
    });
 
@@ -282,14 +282,14 @@ function register() {
             intro: "คุณสามารถ <b>เข้าสู่ระบบ</b> ได้ที่นี่",
             position: 'bottom'
         },
-        
-      
+
+
         ]
     });
 
     intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#login2').attr('id')) { 
-           $('#loginform').openModal();       
+        if($(targetElement).attr("id") == $('#login2').attr('id')) {
+           $('#loginform').openModal();
         }
         else{
             $('#loginform').closeModal();
@@ -312,8 +312,8 @@ function logout() {
             intro: "This is a <b>bold</b> tooltip.",
             position: 'left'
         },
-        
-      
+
+
         ]
     });
 
@@ -555,7 +555,7 @@ function logout() {
             </div>
           </li>
           <li>
-            <a class="collapsible-header">ข้อความ
+            <a href="{{url('/message_box')}}"class="collapsible-header">ข้อความ
             <i style="margin-top: 6px;" class="material-icons left">question_answer</i>
 
             </a>
@@ -658,7 +658,7 @@ function logout() {
           <li><a href="javascript:void(0);" onclick="message()">ข้อความ</a></li>
         </div>
       </div>
-@endif  
+@endif
     </ul>
 
     <ul id="dropdownprofile" class="dropdown-content">
