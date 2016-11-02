@@ -154,14 +154,14 @@ class PostController extends Controller
 
       $uid = Auth::user()->id;
       $comment= new EventPostComm();
-      $comment->user_id = $uid;
-      $comment->message = $req['comment_message'];
-      $comment->event_post_id = $pid;
-      $comment->save();
+      // $comment->user_id = $uid;
+      // $comment->message = $req['comment_message'];
+      // $comment->event_post_id = $pid;
+      // $comment->save();
       // $commentbox = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
       //               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
       //               ->where('event_post_id','=',$pid)->orderBy('created_at', 'desc')->first();
-                    return back();
+                    return echo $uid;
       // return '<div class="collapsible-body">
       //     <ul class="col s12 collection cmt-box">
       //     <li class="transper collection-item avatar">
