@@ -84,12 +84,23 @@ class PostController extends Controller
       $like->liked_by = $user;
       $like->post_id = $pid;
       $like->save();
-      return back();
+      $count = DB::table('likes')->select('id')->where('post_id',$pid)->count();
+      $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')->where('post_id',$pid)
+      ->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')
+      ->orderBy('created_at', 'desc')->first();
+      $wholiked = '<a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="'.$likes->first_name.' '.$likes->last_name.'" href="/friend/'.$likes->username.'"> <img  id="mypost4" class="pic-wholike " src="img/uploads/avatars/'.$likes->avatar.'"/> </a>';
+      $json = '{ "count" : "'.$count.'",
+                 "html" : "'.str_replace('"', "'", $wholiked).'"
+      }';
+      return $json;
+      // return response()->json([$count,$wholiked]);
     }
-    public function unlikePost($lid){
-      $liked = Like::find($lid);
-      $liked->delete();
-      return back();
+    public function unlikePost(Request $req,$pid){
+      $liked_by = Auth::user()->id;
+      $post_id = $pid;
+      $lid = Like::select('id')->where([['liked_by',$liked_by],['post_id',$post_id]])->delete();
+      $count = DB::table('likes')->select('id')->where('post_id',$pid)->count();
+      return $count;
 
     }
 
@@ -133,13 +144,34 @@ class PostController extends Controller
     }
     public function commentsPostEvent(Request $req,$pid){
 
-      $uid =Auth::user()->id;
+      // $uid =Auth::user()->id;
+      // $comment= new EventPostComm();
+      // $comment->user_id =$uid;
+      // $comment->message =$req['comment_message'];
+      // $comment->event_post_id = $pid;
+      // $comment->save();
+      // return redirect()->back();
+
+      $uid = Auth::user()->id;
       $comment= new EventPostComm();
-      $comment->user_id =$uid;
-      $comment->message =$req['comment_message'];
+      $comment->user_id = $uid;
+      $comment->message = $req['comment_message'];
       $comment->event_post_id = $pid;
       $comment->save();
-      return redirect()->back();
+      // $commentbox = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
+      //               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
+      //               ->where('event_post_id','=',$pid)->orderBy('created_at', 'desc')->first();
+                    return back();
+      // return '<div class="collapsible-body">
+      //     <ul class="col s12 collection cmt-box">
+      //     <li class="transper collection-item avatar">
+      //     <a href="/friend/'.$commentbox->username.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
+      //     <span class="title title-name">'.$commentbox->first_name.' '.$commentbox->last_name.'</span></a>
+      //     <p id="datecomment">'.$commentbox->created_at.'</p>
+      //     <p class="space-cmt">'.$commentbox->message.'<br></p>
+      // </li>
+      // </ul>
+      // </div>';
 
     }
     public function likePostEvent($eid,$pid)
