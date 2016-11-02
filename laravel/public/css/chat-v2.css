@@ -236,7 +236,7 @@ span.badge.new {
 .chat .chat-history .my-message {
   background: #e0e0e0;
   color: black;
-  
+
 }
 .chat .chat-history .other-message {
   background: #FF979B;
@@ -316,6 +316,7 @@ textarea {
 
 .float-right {
   float: right;
+  
 }
 
 .clearfix:after {

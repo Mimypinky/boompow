@@ -221,6 +221,8 @@
            function addToChatBox(text) {
              var li ='';
              var msg = text.sender;
+<<<<<<< HEAD
+=======
              var timeLocale = moment.locale('th');
              var timeOfMessage = moment(text.time).fromNow();
              var dateOfMessage = moment(text.time).calendar();
@@ -228,13 +230,20 @@
              $(document).ready(function(){
                $('.tooltipped').tooltip({delay: 50});
              });
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 
 
              if(msg==($('#username1').val())){
                li = '<li class="clearfix"><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
+<<<<<<< HEAD
+                   '<span class="message-data-time">'+text.time+'</span>'+
+                 '</div>'+
+                 '<div class="message my-message" style="float: left">'+
+=======
                    '<span class="message-data-time">'+timeOfMessage+'</span>'+
                  '</div>'+
                  '<div style="float:left"class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
                    '<p>'+text.message+'</p>'+
                  '</div>'+
                '</li>' ;

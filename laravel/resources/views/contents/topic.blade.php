@@ -100,11 +100,52 @@ $fav = DB::table('favourite')->where([['user_id','=',$uid],['content_id','=',$da
               <i class="fa fa-star" aria-hidden="true"></i></a>
               @endif
 
-            <a href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
+            <a href="#pinstatus"class="modal-trigger btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
               <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
               <i class="fa fa-link" aria-hidden="true"></i></a>
 @endif
+<div id="pinstatus" class="modal modal-fixed-footer">
+<div class="modal-content" style="padding:50px ">
+<div class="row">
+    <span style="font-size:2.5em"class="card-title">ปักหมุดบทความ</span><br>
+    <span><i>บทความที่ได้ปักหมุดจะถูกโพสต์บทหน้าไทม์ไลน์ของคุณ</i></span>
+  <div class="col s12">
+    <form action="{{url('/pin/'.$data->id)}}" method="post">
+    <div class="row">
+       <div class="input-field col s12">
+         <textarea id="textarea1" class="materialize-textarea" name="message"placeholder="กล่าวบางอย่างเกี่ยวกับบทความนี้"></textarea>
+         {{ csrf_field() }}
+       </div>
+     </div>
+  </div>
+  <div class="row ">
+  <div class="col s8 offset-s2 ">
+
+     <div class="card">
+       <div class="card-image">
+         <img src="{{url('img/content/'.$data->head_pic_content)}}" style="max-height:300px"/>
+       </div>
+       <div class="card-stacked">
+         <div class="card-content">
+          <h2>{{$data->content_title}}</h2>
+         </div>
+         <div class="card-action">
+          <a href="#">อ่านเนื้อหา</a>
+        </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+
+<div class="modal-footer">
+  <a  class="modal-action modal-close waves-effect waves-red btn-flat ">ยกเลิก</a>
+  <button type="submit" name="action" class="modal-action  waves-effect waves-green btn-flat" >  <i class="material-icons right">send</i>ปัก</button>
+</div>
+</form>
+</div>
               <div id="sharecontent" class="modal modal-fixed-footer " style="width:50%;height:50%">
     <div class="modal-content">
       <div class="row">
@@ -157,8 +198,11 @@ $fav = DB::table('favourite')->where([['user_id','=',$uid],['content_id','=',$da
         <div class="row">
             <div class="col s10 m10 l10 offset-l1 offset-m1 offset-s1">
                 <div class="section shortenNav"></div>
+
                 <p>
-                  {{$data->description}}
+
+                  {!!$data->description!!}
+
                 </p>
             </div>
         </div>
