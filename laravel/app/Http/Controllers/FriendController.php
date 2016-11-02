@@ -39,9 +39,10 @@ public function sendFriendRequest(Request $req){
     if(Auth::check()){
       $accounts = DB::table('friends')
               ->join('accounts', 'accounts.id', '=', 'friends.from_user_id')
+              ->join('profiles','profiles.id','=','accounts.profile_id')
               ->where('to_user_id' , Auth::user()->id)
               ->where('status' , 'pending')
-              ->select('accounts.*' , 'friends.*')->get();
+              ->select('accounts.*' , 'friends.*','profiles.avatar')->get();
 
 
       return view('social.noti')->with('accounts' , $accounts)->with('title',$title);

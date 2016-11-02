@@ -31,7 +31,7 @@ Route::get('/event/join/{eid}','EventController@joinEvents');
 Route::get('/event/cancel/{eid}','EventController@cancelEvents');
 Route::get('/event/board/{eid}','EventController@eventBoardindex');
 Route::post('/event/board/{eid}','PostController@postEventBoard');
-Route::post('/event/board/{eid}/comment','PostController@commentsPostEvent');
+Route::post('/event/board/{eid}/comment/{pid}','PostController@commentsPostEvent');
 Route::get('/event/board/{eid}/like/{pid}','PostController@likePostEvent');
 Route::get('/event/board/{eid}/unlike/{lid}','PostController@unlikePostEvent');
 Route::get('/event/board/{eid}/post/delete/{pid}','PostController@deletePostEvent');
@@ -68,9 +68,14 @@ Route::post('/profile','Profile\ProfileController@UpdateAvatar');
 Route::post('/post','PostController@postStatus');
 Route::post('/postfriend/{fid}','PostController@postFriendStatus');
 Route::post('/comment/{pid}','PostController@comments');
+<<<<<<< HEAD
 Route::get('/comment/delete/{cid}','PostController@deleteComment');
 Route::get('/like/{pid}','PostController@likePost');
 Route::get('/unlike/{lid}','PostController@unlikePost');
+=======
+Route::post('/like/{pid}','PostController@likePost');
+Route::post('/unlike/{pid}','PostController@unlikePost');
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 Route::get('/delete/{pid}','PostController@deletePost');
 Route::get('/post/{pid}/edit','PostController@editPost');
 Route::get('/delPic/{pid}','PostController@delPicPost');

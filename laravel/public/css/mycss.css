@@ -88,7 +88,7 @@ input[type="checkbox"].filled-in:checked + label:after {
     pointer-events: none;
     color: rgba(0,0,0,0.54);
     font-size: 14px;
-    font-weight: 500;   
+    font-weight: 500;
   }
 #dropdownhelp.dropdown-content li.dis{
     pointer-events:none;
@@ -178,7 +178,7 @@ span.noti-badge{
 
 .mylogo{
     width: 200px;
-    margin-top: 7%;
+    margin-top: 5%;
     margin-left: -2%;
 }
 

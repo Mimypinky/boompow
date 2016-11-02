@@ -11,6 +11,7 @@ use App\Chat;
 use App\Account;
 use App\Friends;
 use DB;
+use Carbon\Carbon;
 class ChatController extends Controller
 {
     //
@@ -37,6 +38,7 @@ class ChatController extends Controller
       $friendAccount = Account::find($fid);
       $myAccount = Account::find(Auth::user()->id);
       $userid =  Auth::user()->id;
+      $now = Carbon::now();
 //$friendId1 = Friends::all();
     $friendId1 = Friends::where('from_user_id', $userid)->where('status', 'accepted')->get();
     $friendId2 = Friends::where('to_user_id' , Auth::user()->id)->where('status', 'accepted')->get();
@@ -50,7 +52,7 @@ class ChatController extends Controller
     ->join('profiles','profiles.id','=','accounts.profile_id')->where('from_user_id', $userid)
     ->select('accounts.id as id','accounts.first_name','accounts.last_name','profiles.avatar')
     ->where('status', 'accepted')->get();
-      return view('social.chat0',compact('friendAccount', 'myAccount','title' , 'account1' , 'account2'));
+      return view('social.chat0',compact('friendAccount', 'now' ,'myAccount','title' , 'account1' , 'account2'));
     }
 
 

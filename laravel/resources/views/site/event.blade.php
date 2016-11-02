@@ -38,7 +38,7 @@ use Carbon\Carbon;
             position: 'bottom'
         },
         {
-            element: '#status',
+            element: '#status_avai',
             intro: "This is a <b>bold</b> tooltip.",
             position: 'bottom'
         },

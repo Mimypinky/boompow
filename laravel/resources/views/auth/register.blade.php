@@ -391,7 +391,7 @@ function registerP2(){
           else if(data==2){
             $("div#usernameAvailability").html("<div style='color: #ffb74d;'><span style='font-size: 16pt'>"+"กรุณากรอกชื่อผู้ใช้</span></div>");
           }
-        }
+        } 
       });
     });
   }

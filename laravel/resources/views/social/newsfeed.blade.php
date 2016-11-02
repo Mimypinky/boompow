@@ -339,6 +339,7 @@
                                       $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
                                           ?>
                                     <div class="row wholike-sec">
+<<<<<<< HEAD
                                       <div class="col s1" style="  margin-top: 15px;">
                                       @if($liked!=null)
 
@@ -351,12 +352,24 @@
                                           </a>
 
                                           @endif
+=======
+                                      <div class="col s2" style="margin-top: 20px;">
+                                        @if($liked == null)
+                                        <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                          <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                        </button>
+                                        @else
+                                        <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                          <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                        </button>
+                                        @endif
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
                                             </div>
 
 
                                         <div class="col s2">
                                             <div class="likecount">
-                                                <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
+                                                <a href="#wholike" id="show_total" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
                                             </div>
                                         </div>
 
@@ -375,11 +388,11 @@
                                         </div>
 
                                         <div class="col s2">
-                                            <div class="wholike">
+                                            <div class="wholike" id="wholiked">
                                               @foreach($likes as $like)
-
-                                                <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                  <img id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+                                                  <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                    <img  id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                  </a>
 
                                                   @endforeach
                                             </div>
@@ -398,12 +411,17 @@
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
+<<<<<<< HEAD
 
 
                                                    <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
                                              </div>
 
 
+=======
+                                                   <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+                                               </div>
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
                                            </form>
                                         </div>
                                         <div class="comment-section">
@@ -486,22 +504,82 @@
     <!--wholike-->
 
     <script type="text/javascript">
-        var $self;
-        $('.btn-comment').click(function(){
-          $self = $(this);
-          var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
-          var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
-          type : "POST",
-          data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+      var $self;
+      $('.btn-comment').click(function(){
+        $self = $(this);
+        var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+        console.log(id);
+        var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+        type : "POST",
+        data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+        headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(html) {
+          // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+          console.log(html);
+          $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+        })
+        .fail(function(){
+          alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+        })
+      });
+
+
+
+    </script>
+
+    <script type="text/javascript">
+    $('.like-btn').click(function(){
+      $self = $(this);
+      var id = $self.parent().parent().parent().find('.idofpost').val();
+      // var checkLiked = $self.find('#likeMe');
+      if($self.attr("id") == "canLike"){
+        $.ajax({
+          type: "POST",
+          url: "{{url('/like/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}'
+          },
           headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-          })
-          .done(function(html) {
-            console.log(id);
-            $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
-          })
-          .fail(function(){
-            alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-          })
+        })
+        .done(function(data){
+          console.log(data);
+          var json = $.parseJSON(data);
+          console.log(json['count']);
+          console.log('like');
+          $self.attr("id","canUnlike");
+          $self.find('#likeMe').attr("src","{{url('img/heart-like.png')}}");
+          $self.parent().parent().find('#show_total').html(json['count']);
+          $self.parent().parent().find('#wholiked').append(json['html']);
+        })
+        .fail(function(data){
+          console.log('like failed');
         });
+      }
+      else if($self.attr("id") == "canUnlike"){
+        $.ajax({
+          type: "POST",
+          url: "{{url('/unlike/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}',
+            post_id: id
+          },
+          headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(data){
+          console.log('unlike');
+          $self.attr("id","canLike");
+          $self.find('#likeMe').attr("src","{{url('img/heart-default-like.png')}}");
+          $self.parent().parent().find('#userLiked').remove();
+          $self.parent().parent().find('#show_total').html(data);
+
+
+        })
+        .fail(function(data){
+          console.log('unlike failed : ');
+        });
+      }
+
+    });
     </script>
 @stop

@@ -205,7 +205,7 @@ class EventController extends Controller
 
 
       $title = 'กระดานกิจกรรม - '.$eve_name->title;
-      return view('site.event_board',compact('title','eve_name','user','account','eve_post'));
+      return view('site.event_board',compact('title','eve_name','user','account','eve_post','eid'));
 
     }
 

@@ -195,26 +195,34 @@
                                                   $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
                                                   ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar')->orderBy('created_at', 'desc')->get();
                                                   $uid = Auth::user()->id;
+                                                  $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
 
                                                       ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
-                                                      <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                        <img class="heart-i" src="{{url('img/heart-like.png')}}">
-                                                      </a>
+                                                      @if($liked == null)
+                                                            <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                              <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                            </button>
+                                                          @else
+                                                            <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                              <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                            </button>
+                                                          @endif
                                                     </div>
                                                     <div class="col s2"></div>
                                                     <div class="col s2">
                                                         <div class="likecount">
-                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
+                                                            <a href="#wholike" id="show_total" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
                                                         </div>
                                                     </div>
                                                     <div class="col s2">
-                                                        <div class="wholike">
+                                                        <div class="wholike" id="wholiked">
                                                           @foreach($likes as $like)
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
-                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
-                                                              @endforeach
+                                                            <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->liked_by)}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}">
+                                                            </a>
+                                                          @endforeach
                                                         </div>
                                                     </div>
                                                </div>
@@ -479,31 +487,60 @@
             })
           });
 
-          function changeLike() {
-            if(document.getElementById('likeMe').src == 'img/heart-default-like.png') {
-              document.getElementById('likeMe').src = 'img/heart-like.png';
-            } else if(document.getElementById('likeMe').src == 'img/heart-like.png') {
-              document.getElementById('likeMe').src = 'img/heart-default-like.png';
-            }
-          }
+      </script>
 
-          $('.like-btn').click(function(){
-            $self = $(this);
-            var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
-            console.log(id);
-            var addingComment = $.ajax({ url: "{{url('/like/')}}"+"/"+id,
-            type : "POST",
-            data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+      <script type="text/javascript">
+      $('.like-btn').click(function(){
+        $self = $(this);
+        var id = $self.parent().parent().parent().find('.idofpost').val();
+        // var checkLiked = $self.find('#likeMe');
+        if($self.attr("id") == "canLike"){
+          $.ajax({
+            type: "POST",
+            url: "{{url('/like/')}}"+"/"+id,
+            data: {
+              liked_by: '{{Auth::user()->id}}'
+            },
             headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-            })
-            .done(function(html) {
-              // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
-              console.log(html);
-              $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
-            })
-            .fail(function(){
-              alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-            })
+          })
+          .done(function(data){
+            console.log(data);
+            var json = $.parseJSON(data);
+            console.log(json['count']);
+            console.log('like');
+            $self.attr("id","canUnlike");
+            $self.find('#likeMe').attr("src","{{url('img/heart-like.png')}}");
+            $self.parent().parent().find('#show_total').html(json['count']);
+            $self.parent().parent().find('#wholiked').append(json['html']);
+          })
+          .fail(function(data){
+            console.log('like failed');
           });
+        }
+        else if($self.attr("id") == "canUnlike"){
+          $.ajax({
+            type: "POST",
+            url: "{{url('/unlike/')}}"+"/"+id,
+            data: {
+              liked_by: '{{Auth::user()->id}}',
+              post_id: id
+            },
+            headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+          })
+          .done(function(data){
+            console.log('unlike');
+            $self.attr("id","canLike");
+            $self.find('#likeMe').attr("src","{{url('img/heart-default-like.png')}}");
+            $self.parent().parent().find('#userLiked').remove();
+            $self.parent().parent().find('#show_total').html(data);
+
+
+          })
+          .fail(function(data){
+            console.log('unlike failed : ');
+          });
+        }
+
+      });
       </script>
 @stop
