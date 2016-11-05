@@ -32,7 +32,7 @@ class HomeController extends Controller
           $title =  'Boompow แหล่งเครือข่ายสังคมสำหรับคนเก๋าๆ';
           $headtitle = 'รวมสาระน่ารู้';
           $content = Content::join('category','contents.cate_id','=','category.id')
-          ->select('category.*','contents.*')->paginate(12);
+          ->select('category.*','contents.*')->orderBy('created_at','desc')->paginate(12);
           return view('site.home',compact('headtitle','title','content'));
     }
     public function showContent(Request $req)
@@ -46,14 +46,15 @@ class HomeController extends Controller
 
           return view('contents.subcontent',compact('content','title','headtitle'));
     }
-    public function getTopic(Request $req)
+    public function getTopic($category_title,$topic)
     {
-      $cateid =$req->category_title;
-      $topicid = $req->topic;
-      $uid = Auth::user()->id;
+      // dd($req);
+      // $cateid =$req->category_title;
+      // $topicid = $req->topic;
+      // $uid = Auth::user()->id;
       $title = 'Boompow';
-      $headtitle= Category::select('category.*')->where('category_title','=',$cateid)->first();
-      $article = Content::select('contents.*')->where('contents.id','=',$topicid)->get();
+      $headtitle= Category::select('category.*')->where('category_title','=',$category_title)->first();
+      $article = Content::select('contents.*')->where('contents.id','=',$topic)->get();
       // $fav = Favourite::where([['user_id','=',$uid],['content_id','=',$topicid]])->first();
 
         return view('contents.topic',compact('content','headtitle','article','title'));

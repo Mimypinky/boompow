@@ -44,7 +44,11 @@
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
+<<<<<<< HEAD
+
+=======
     <script type="text/javascript" src="{{ URL::asset('js/moment-with-locales.js')}}"></script>
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
@@ -711,7 +715,7 @@ function goto(page) {
             </div>
           </li>
           <li>
-            <a class="collapsible-header">ข้อความ
+            <a href="{{url('/message_box')}}"class="collapsible-header">ข้อความ
             <i style="margin-top: 6px;" class="material-icons left">question_answer</i>
 
             </a>

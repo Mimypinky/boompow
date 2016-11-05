@@ -36,8 +36,8 @@ function content() {
             intro: "คุณสามารถคลิก <b>อ่านเนื้อหาเพิ่มเติม</b> ได้ที่นี้",
             position: 'right'
         },
-        
-      
+
+
         ]
     });
    
@@ -112,9 +112,9 @@ if((RegExp('pinfavstart', 'gi').test(window.location.search))){
                     <div class="card-image">
                         <img src="{{url('img/content/'.$data->head_pic_content)}}">
                     </div>
-                    <div class="card-content" style="height: 230px;">
+                    <div class="card-content" style="max-height: 230px;">
                         <h5>{{$data->content_title}}</h5>
-                        <p class="wordwrap">{{$data->description}}</p>
+                        <div class="wordwrap">{!!$data->description!!}</div>
                     </div>
                     <div id="content3" class="card-action" style="background-color: #ee6e73;">
                         <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
@@ -125,7 +125,7 @@ if((RegExp('pinfavstart', 'gi').test(window.location.search))){
 
           @endforeach
 
-      
+
 
       </div>
       <div class="col s12">

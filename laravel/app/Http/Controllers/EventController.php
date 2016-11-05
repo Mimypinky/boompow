@@ -77,15 +77,6 @@ class EventController extends Controller
         }
 
 
-        $party = Event::join('accounts','events.id','=','accounts.id')
-        ->join('join_event','events.id','=','join_event.eve_id')
-        ->select('accounts.first_name as fname','accounts.last_name as lname','events.id')->orderBy('create_at', 'desc')
-        ->get();
-        $eieiei = $party->toArray();
-        $attend = array();
-        foreach($eieiei as $key =>$value){
-          array_push($attend,$value['id']);
-        }
 
         return view('site.event',compact('title','event','myEvent','joinEvent','joined','user','ii','mem'));
 
@@ -214,7 +205,7 @@ class EventController extends Controller
 
 
       $title = 'กระดานกิจกรรม - '.$eve_name->title;
-      return view('site.event_board',compact('title','eve_name','user','account','eve_post'));
+      return view('site.event_board',compact('title','eve_name','user','account','eve_post','eid'));
 
     }
 

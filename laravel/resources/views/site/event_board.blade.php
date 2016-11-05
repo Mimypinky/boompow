@@ -192,7 +192,7 @@ setTimeout( "eventboard2()", 1500);
           </li>
       </ul>
       <!--timeline mypost-->
-      @foreach($eve_post as $post)
+      @foreach($eve_post as $key=>$post)
 
 
           <div class="row" style="">
@@ -222,11 +222,41 @@ setTimeout( "eventboard2()", 1500);
                                   <span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span>
                                   <div class="event-edit-btn">
                                       @if($post->user_id == $account->id)
-                                      <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit"
+                                      <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
                                       style="background-color: #ebeef1">
                                       <i class="fa fa-pencil-square-o"></i> แก้ไข</a>
-                                      <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
+                                      <a href="#deletePost{{$key}}" class="black-text del-btn waves-effect waves-light btn modal-trigger" style="background-color: #ebeef1">
                                       <i class="fa fa-trash-o"></i> ลบ</a>
+                                      <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                                        <div class="modal-content" >
+
+                                              <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                               <a href="{{url('/event/board/'.$eve_name->id.'/post/delete/'.$post->pid)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                            </div>
+                                      </div>
+                                      <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
+                                          <ul class="collection with-header f-modal">
+                                              <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                                                  <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+                                              <li class="transper collection-item avatar">
+                                                  <img src="{{url('img/uploads/avatars/'.$account->avatar)}}" alt="" class="circle">
+                                                  <span class="title title-name">{{$account->first_name.'  '.$account->last_name}}</span>
+                                                  <form action="#">
+                                                      <div class="file-field input-field" style="margin-top: -5%;">
+                                                          <div class="input-field col s12">
+                                                              <textarea id="textarea1" class="materialize-textarea">{{$post->message}}
+                                                              </textarea>
+                                                          </div>
+                                                      </div>
+                                                  </form>
+                                                  <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
+                                              </li>
+                                          </ul>
+                                      </div>
                                       @endif
                                   </div>
                                   <p id="datecomment">{{$post->created_at}}</p>
@@ -287,29 +317,39 @@ setTimeout( "eventboard2()", 1500);
                                        </div>
                                   <div class="divider"></div>
                                   <div class="row">
-                                    <form action="{{url('/event/board/'.$post->id.'/comment')}}" method="post">
+<<<<<<< HEAD
+                                    <form action="{{url('/event/board/'.$post->pid.'/comment')}}" method="post">
+=======
+                                    <form>
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
                                         <div class="input-field cmt-coll-space">
 
                                         <div class="input-field w-cmt">
 
+<<<<<<< HEAD
                                              <div id="eveb7" class="input-field col s12">
                                                  <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+=======
+                                             <div class="input-field col s12">
+                                                 <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
+>>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                              </div>
-
-                                             <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
+                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
                                          </div>
-
+                                       </div>
                                      </form>
                                   </div>
                                   <div class="comment-section">
                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
 
-                                            <li>
+                                            <li id="commentboxs" class="commentboxs">
+                                              <input type="hidden" value="{{$eid}}" class="idofEvent" />
+                                              <input type="hidden" value="{{$post->pid}}" class="idofEventPost" />
                                               <?php $comments = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
-                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
+                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
                                               ->where('event_post_id','=',$post->pid)->get();
                                               $count_comments = DB::table('event_board_comment')->where('event_post_id','=',$post->pid)->count();
 
@@ -324,8 +364,12 @@ setTimeout( "eventboard2()", 1500);
                                                     <ul class="col s12 collection cmt-box">
 
                                                     <li class="transper collection-item avatar">
-                                                    <a href="{{url('/friend/$comment->id')}}"><img src="{{url('img/uploads/avatars/'.$comment->avatar)}}" alt="" class="circle">
+                                                    <a href="{{url('/friend/$comment->username')}}"><img src="{{url('img/uploads/avatars/'.$comment->avatar)}}" alt="" class="circle">
                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+                                                        @if($comment->user_id == $uid )
+                                                      <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                        @endif
                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                         <p class="space-cmt">{{$comment->message}}<br></p>
 
@@ -333,6 +377,15 @@ setTimeout( "eventboard2()", 1500);
 
                                                 </ul>
                                                 </div>
+                                                <div id="deletecom{{$key}}" class="modal " style="width: 500px;">
+                                                    <div class="modal-content" >
+                                                  <p>คุณต้องการจะลบความคิดเห็นนี้ใช่หรือไม่</p>
+                                                  </div>
+                                                    <div class="modal-footer">
+                                                      <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                    <a href="{{url('event/board/'.$eve_name->id.'/comment/delete/'.$comment->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                                        </div>
+                                                      </div>
                                                 @endforeach
 
                                           </li>
@@ -586,26 +639,7 @@ setTimeout( "eventboard2()", 1500);
       </div>
   </div>
   <!--post-edit-->
-  <div id="post-edit" class="modal" style="width: 500px;">
-      <ul class="collection with-header f-modal">
-          <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
-              <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
-          <li class="transper collection-item avatar">
-              <img src="{{url('img/pic5.jpg')}}" alt="" class="circle">
-              <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-              <form action="#">
-                  <div class="file-field input-field" style="margin-top: -5%;">
-                      <div class="input-field col s12">
-                          <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
-                          </textarea>
-                      </div>
-                  </div>
-              </form>
-              <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
-          </li>
-      </ul>
-  </div>
   <div id="eve-del" class="modal" style="width: 480px; overflow: hidden;">
     <div class="modal-content">
         <h4>ลบกิจกรรม</h4>
@@ -671,5 +705,28 @@ setTimeout( "eventboard2()", 1500);
       </div>
   </div>
   <!--End Modal Structure-->
+  <script type="text/javascript">
+    var $self;
+    $('.btn-comment').click(function(){
+      $self = $(this);
+      var eventId = $self.parent().parent().parent().parent().parent().parent().find('.idofEvent').val();
+      var postId = $self.parent().parent().parent().parent().parent().parent().find('.idofEventPost').val();
+      console.log(postId+" "+eventId);
+      var addingComment = $.ajax({ url: "{{url('/event/board/')}}"+"/"+eventId+"/comment/"+postId,
+      type : "POST",
+      data : {comment_message: $(this).parent().find('.newComment').val()},
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+      })
+      .done(function(html) {
+        console.log(html);
+        $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+      })
+      .fail(function(){
+        console.log('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      })
+    });
 
+
+
+  </script>
 @stop

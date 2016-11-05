@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="card-content" style="height:200px;background-color:eecc6;">
                                     <h5 >{{$data->content_title}}</h5>
-                                    <div><p class="wordwrap">{{$data->description}}</p></div>
+                                    <div class="wordwrap"><p >{!!$data->description!!}</p></div>
                                 </div>
 
                                 <div class="card-action fav-icon-sec">
@@ -117,15 +117,14 @@
 
                                 </div>
 
-                                <div id="fav5" class="card-action" style="background-color: #ee6e73;">
-                                        <center><a href="{{ url('content/favourite/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
+
 
                                 <div id="fav5"  class="card-action" style="background-color: #ee6e73;">
 
                                         <center><a href="{{ url('content/'.$data->category_title.'/'.$data->cid) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
 
 
-                                </div>
+
                             </div>
                         </div>
                         <div id="del-fav{{$key}}" class="modal" style="width: 480px; overflow: hidden;">
@@ -168,8 +167,9 @@
 
               </div>
             </div>
+            </div>
                     @endforeach
-                    </div>
+
                 </div>
             </div>
         </li>

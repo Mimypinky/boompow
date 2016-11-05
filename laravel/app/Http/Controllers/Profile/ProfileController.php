@@ -119,7 +119,7 @@ class ProfileController extends Controller
       $p_all = array();
       $posts = Post::join('accounts','posts.user_id','=','accounts.id')
       ->join('profiles','accounts.profile_id','=','profiles.id')
-      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')
+      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*','accounts.username')
       ->orderBy('created_at', 'desc')
       ->get();
 

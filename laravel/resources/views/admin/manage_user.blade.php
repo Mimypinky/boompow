@@ -33,55 +33,35 @@
             <table class="table">
               <thead>
             <tr>
+              <th>ID</th>
               <th>REGISTERED DATE</th>
               <th>USER NAME</th>
+              <th>NAME</th>
               <th>STATUS</th>
+              <th>PROFILE_ID</th>
               <th></th>
 
             </tr>
           </thead>
           <tbody>
+            @foreach($users as $user)
+            <?php $dt=$user->created_at;
+              $date = $dt->toDateString();?>
             <tr>
-              <th scope="row">18/08/2559</th>
-              <td>สมัย สมร</td>
-              <td><span class="label label-info">Normal</span></td>
+
+              <th scope="row">{{$user->id}}</th>
+              <td>{{$date}}</td>
+              <td>{{$user->username}}</td>
+              <td>{{$user->first_name.'  '.$user->last_name}}</td>
+              @if($user->admin_status=='admin')
+              <td><span class="label label-success">{{$user->admin_status}}</span></td>
+              @else
+              <td><span class="label label-info">{{$user->admin_status}}</span></td>
+              @endif
+              <td>{{$user->profile_id}}</td>
               <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Ban</a></h5></td>
             </tr>
-            <tr>
-              <th scope="row">17/08/2559</th>
-              <td>สมรักษ์ คักคิกคิก</td>
-              <td><span class="label label-info">Normal</span></td>
-              <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Ban</a></h5></td>
-            </tr>
-            <tr>
-              <th scope="row">16/08/2559</th>
-              <td>ละม้าย คล้ายจะเป็นลม</td>
-              <td><span class="label label-info">Normal</span></td>
-              <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Ban</a></h5></td>
-            </tr>
-            <tr>
-              <th scope="row">15/08/2559</th>
-              <td>สมศรี ชูจันทร์</td>
-              <td><span class="label label-danger">Banned</span></td>
-              <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Unbaned</a></h5></td>
-            </tr>
-            <tr>
-              <th scope="row">14/08/2559</th>
-              <td>สมัคร รักจริง</td>
-              <td><span class="label label-info">Normal</span></td>
-              <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Ban</a></h5></td>
-            </tr>
-            <tr>
-              <th scope="row">13/08/2559</th>
-              <td>คลาก เคนท์</td>
-              <td><span class="label label-info">Normal</span></td>
-              <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Ban</a></h5></td>
-            </tr><tr>
-              <th scope="row">13/08/2559</th>
-              <td>เล็ก ลูเทอร์</td>
-              <td><span class="label label-danger">Banned</span></td>
-              <td><h5><a href="" data-toggle="modal" data-target="#profile-detail">View detail</a> | <a href="" style="color: red;">Unbaned</a></h5></td>
-            </tr>
+            @endforeach
           </tbody>
             </table>
         </div>

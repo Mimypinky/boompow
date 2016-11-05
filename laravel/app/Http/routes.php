@@ -31,10 +31,11 @@ Route::get('/event/join/{eid}','EventController@joinEvents');
 Route::get('/event/cancel/{eid}','EventController@cancelEvents');
 Route::get('/event/board/{eid}','EventController@eventBoardindex');
 Route::post('/event/board/{eid}','PostController@postEventBoard');
-Route::post('/event/board/{eid}/comment','PostController@commentsPostEvent');
+Route::post('/event/board/{eid}/comment/{pid}','PostController@commentsPostEvent');
 Route::get('/event/board/{eid}/like/{pid}','PostController@likePostEvent');
 Route::get('/event/board/{eid}/unlike/{lid}','PostController@unlikePostEvent');
-
+Route::get('/event/board/{eid}/post/delete/{pid}','PostController@deletePostEvent');
+Route::get('/event/board/{eid}/comment/delete/{cid}','PostController@deleteComEvent');
 
 Route::get('/favourite','FavouriteController@index');
 Route::get('/favourite/remove/{cid}','FavouriteController@deleteFav');
@@ -67,11 +68,18 @@ Route::post('/profile','Profile\ProfileController@UpdateAvatar');
 Route::post('/post','PostController@postStatus');
 Route::post('/postfriend/{fid}','PostController@postFriendStatus');
 Route::post('/comment/{pid}','PostController@comments');
+<<<<<<< HEAD
+Route::get('/comment/delete/{cid}','PostController@deleteComment');
 Route::get('/like/{pid}','PostController@likePost');
 Route::get('/unlike/{lid}','PostController@unlikePost');
+=======
+Route::post('/like/{pid}','PostController@likePost');
+Route::post('/unlike/{pid}','PostController@unlikePost');
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 Route::get('/delete/{pid}','PostController@deletePost');
 Route::get('/post/{pid}/edit','PostController@editPost');
 Route::get('/delPic/{pid}','PostController@delPicPost');
+Route::post('/pin/{cid}','PostController@pinPost');
 
 Route::post('/pending' , 'FriendController@sendFriendRequest');
 Route::get('/profile-friend',function(){
@@ -96,6 +104,7 @@ Route::get('/deletePending/{username}', 'FriendController@deletePending');
 Route::get('/deleteFriendReq/{username}', 'FriendController@deleteFriendRequest');
 Route::get('/unfriend/{username}', 'FriendController@unfriend');
 Route::get('acceptFriend/{fid}', 'FriendController@acceptFriendRequest');
+
 Route::get('/upload',function(){
   return view('social.ex_upload');
 });
@@ -108,16 +117,14 @@ Route::post('/updateInfo','Profile\ProfileController@updateInfo');
 Route::post('/handleAdminLogin',[ 'as' => 'handleAdminLogin', 'uses' => 'Admin\AuthController@handleAdminLogin']);
 Route::resource('/administator/register','Admin\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
 Route::get('/administator','Admin\AdminController@index');
-
-Route::get('/administator/user',function(){
-  return view('admin.manage_user');
-});
-Route::get('/administator/post',function(){
-  return view('admin.manage_post');
-});
-Route::get('/administator/post/create',function(){
-  return view('admin.create_content');
-});
+Route::get('/administator/content','Admin\AdminController@showContent');
+Route::get('/administator/user','Admin\AdminController@showUsers');
+Route::get('/administator/content/create','Admin\AdminController@create');
+Route::post('/administator/content/create','Admin\AdminController@store');
+Route::get('/administator/content/edit/{id}','Admin\AdminController@edit');
+Route::post('administator/content/update/{id}','Admin\AdminController@update');
+Route::get('/administator/content/delete/{id}','Admin\AdminController@deleteContent');
+Route::get('/administator/event','Admin\AdminController@showEvent');
 Route::get('/administator/login',function(){
   return view('admin.adminlogin');
 });
