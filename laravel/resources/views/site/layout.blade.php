@@ -99,46 +99,46 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#beginer1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเรียกดูใช้ <b>ผู้ช่วย</b> เพื่อแนะนำการใช้งานเว็บไซต์ให้กับคุณได้ที่ปุ่มนี้",
             position: 'bottom'
         },
         {
             element: '#beginer2',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถ <b>ค้นหา</b> เพื่อน หรือ บทความต่างๆได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#beginer3',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถ <b>คลิกที่โลโก้เว็บไซต์</b> เพื่อกลับสู่หน้าแรกได้เสมอ",
             position: 'bottom'
         },
         {
             element: '#register1',
-            intro: "Ok, <i>wasn't</i> that fun?",
-            position: 'bottom'
+            intro: "อยากพบปะผู้คนใหม่ๆใช่ไหม? คลิกที่นี้เพื่อ <b>สมัครสมาชิก</b> กับเรา!!",
+            position: 'left'
         },
         {
             element: '#login1',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "สมัครสมาชิกแล้วใช่ไหม? ถึงเวลาพบปะผู้คนใหม่ๆแล้ว! คลิกที่นี้เพื่อทำการ <b>เข้าสู่ระบบ</b>",
             position: 'left'
         },
         {
             element: '#beginer6',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "ในส่วนนี้จะแสดงกลุ่มของ <b>บทความต่างๆ</b> ซึ่งคุณสามารถเลือกอ่านบทความต่างๆบนเว็บไซต์ได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#beginer7',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "ตัวหนังสือเล็กเกินไปใช่ไหม? คุณสามารถเลือก <b>ปรับขนาดตัวอักษร</b> ได้ที่ส่วนนี้",
             position: 'left'
         },
         {
             element: '#beginer8',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถ <b>ย้อนกลับไป</b> หน้าก่อน ได้ที่ส่วนนี้",
             position: 'right'
         },
         ]
@@ -169,52 +169,62 @@ function beginerUser() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#beginer1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเรียกดูใช้ <b>ผู้ช่วย</b> เพื่อแนะนำการใช้งานเว็บไซต์ให้กับคุณได้ที่ปุ่มนี้",
             position: 'bottom'
         },
         {
             element: '#beginer2',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถ <b>ค้นหา</b> เพื่อน หรือ บทความต่างๆได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#beginer3',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถ <b>คลิกที่โลโก้เว็บไซต์</b> เพื่อกลับสู่หน้าแรกได้เสมอ",
             position: 'bottom'
         },
         {
             element: '#beginerU4',
-            intro: "Ok, <i>wasn't</i> that fun?",
-            position: 'bottom'
+            intro: "คุณสามารถคลิกที่นี้เพื่อไปยัง <b>หน้าโปรไฟล์ของคุณ</b> หรือวางเมาส์ไว้ที่นี้เพื่อเลือกที่จะ <b>ตั้งค่าโปรไฟล์</b> หรือ <b>ออกจากระบบ</b> ได้ในส่วนนี้",
+            position: 'left'
         },
         {
             element: '#beginerU5',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "เมื่อคุณกดที่ <b>สังคมของฉัน</b> จะแสดงเมนูทาง <b>ด้านซ้านมือ</b> ซึ่งคุณสามาถเลือกที่จะเข้าไปดูในส่วนของ <b>กระดานข่าว</b> <b>เพื่อน</b> <b>รายการโปรด</b> <b>กิจกรรม</b> และ <b>ข้อความ</b> ได้ในเมนูทางซ้าย",
+            position: 'left'
+        },
+        {
+            element: '#beginerU5',
+            intro: "ตัวเลขจะแสดง <b>แจ้งเตือนทั้งหมด</b> ในสังคมของคุณที่เกิดขึ้นระหว่างคุณกับเพื่อนของคุณ",
             position: 'left'
         },
 
         {
             element: '#beginerU6',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถคลิกที่ <b>ข้อความ</b> เพื่อเริ่มต้นส่งข้อความสนทนากับเพื่อนของคุณ",
+            position: 'left'
+        },
+        {
+            element: '#beginerU6',
+            intro: "ตัวเลขจะแสดง <b>แจ้งเตือนข้อความทั้งหมด</b> ที่เพื่อนส่งหาคุณ",
             position: 'left'
         },
         {
             element: '#beginer6',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "ในส่วนนี้จะแสดงกลุ่มของ <b>บทความต่างๆ</b> ซึ่งคุณสามารถเลือกอ่านบทความต่างๆบนเว็บไซต์ได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#beginer7',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "ตัวหนังสือเล็กเกินไปใช่ไหม? คุณสามารถเลือก <b>ปรับขนาดตัวอักษร</b> ได้ที่ส่วนนี้",
             position: 'left'
         },
         {
             element: '#beginer8',
-            intro: "Ok, <i>wasn't</i> that fun?",
+            intro: "คุณสามารถ <b>ย้อนกลับไป</b> หน้าก่อน ได้ที่ส่วนนี้",
             position: 'right'
         },
         ]
@@ -250,7 +260,7 @@ function register() {
     steps: [
     {
         element: '#register1',
-        intro: "Ok, <i>wasn't</i> that fun?",
+        intro: "อยากพบปะผู้คนใหม่ๆใช่ไหม? คลิกที่นี้เพื่อ <b>สมัครสมาชิก</b> กับเรา!!",
         position: 'bottom'
     },
 
@@ -263,6 +273,44 @@ function register() {
   });
 }
 
+function profilesetting() {
+   var intro = introJs();
+   intro.setOptions({
+    showStepNumbers: false,
+    doneLabel: "ตั้งค่าข้อมูลส่วนตัว",
+    steps: [
+    {
+        element: '#beginerU4',
+        intro: "วางเมาส์ของคุณไว้ที่นี้จากนั้นเลือก <b>ตั้งค่าข้อมูลส่วนตัว</b>",
+        position: 'left'
+    },
+
+
+    ]
+   });
+
+  intro.start().oncomplete(function() {
+      window.location.href = 'setting?prosetmultipage=true';
+  });
+}
+
+function message() {
+   var intro = introJs();
+   intro.setOptions({
+    showStepNumbers: false,
+    doneLabel: "เข้าใจแล้ว",
+    steps: [
+    {
+        element: '#beginerU6',
+        intro: "คลิกที่นี้เพื่อเริ่มต้น <b>ส่งข้อความ</b> สนทนากับเพื่อนของคุณ",
+        position: 'left'
+    },
+
+
+    ]
+   });
+}
+
    function login() {
     var intro = introJs();
     intro.setOptions({
@@ -270,32 +318,22 @@ function register() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าสู่ระบบ",
         steps: [
         {
             element: '#login1',
-            intro: "คลิกที่นี้เพื่อเข้าสู่ระบบ",
+            intro: "สมัครสมาชิกแล้วใช่ไหม? ถึงเวลาพบปะผู้คนใหม่ๆแล้ว! คลิกที่นี้เพื่อทำการ <b>เข้าสู่ระบบ</b>",
             position: 'left'
         },
-        {
-            element: '#login2',
-            intro: "คุณสามารถ <b>เข้าสู่ระบบ</b> ได้ที่นี่",
-            position: 'bottom'
-        },
-
-
+        
         ]
     });
 
-    intro.onchange(function(targetElement) {
-        if($(targetElement).attr("id") == $('#login2').attr('id')) {
-           $('#loginform').openModal();
-        }
-        else{
-            $('#loginform').closeModal();
-        }
-    });
-  intro.start()
+     intro.start().oncomplete(function() {
+      window.location.href = 'login?loginmultipage=true';
+  });
+
+
 }
 
 function logout() {
@@ -305,11 +343,11 @@ function logout() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#beginerU4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "วางเมาส์ของคุณไว้ที่นี้จากนั้นเลือก <b>ออกจากระบบ</b>",
             position: 'left'
         },
 
@@ -320,7 +358,125 @@ function logout() {
   intro.start()
 }
 
+function goto(page) {
+  var location = window.location.pathname;
 
+  switch(page){
+      case 'content':
+          if(location =="/content" || location =="/"){
+              content();
+          }else{
+              window.location.href ='content?contentstart=true';
+          }
+          break;
+    
+      case 'pinfav':
+          if(location =="/content" || location =="/"){
+              pinfav();
+          }else{
+              window.location.href ='content?pinfavstart=true';
+          }
+          break;
+  
+      case 'myprofile':
+          if(location =="/profile"){
+              myprofile();
+          }else{
+              window.location.href ='profile?profilestart=true';
+          }
+          break;
+
+      case 'mypost':
+          if(location =="/profile"){
+              mypost();
+          }else{
+              window.location.href ='profile?mypoststart=true';
+          }
+          break;
+
+      case 'mngpost':
+          if(location =="/profile"){
+              mngpost();
+          }else{
+              window.location.href ='profile?mngpoststart=true';
+          }
+          break;
+
+      case 'comment':
+          if(location =="/profile"){
+              comment();
+          }else{
+              window.location.href ='profile?commentstart=true';
+          }
+          break;
+
+      case 'newsfeed':
+          if(location =="/newsfeed"){
+              newsfeed();
+          }else{
+              window.location.href ='newsfeed?newsfeedstart=true';
+          }
+          break;
+
+      case 'friend':
+          if(location =="/friends"){
+              friend();
+          }else{
+              window.location.href ='friends?friendstart=true';
+          }
+          break;
+
+      case 'favourite':
+          if(location =="/favourite"){
+              favorite();
+          }else{
+              window.location.href ='favourite?favoritestart=true';
+          }
+          break;
+
+      case 'notification':
+          if(location =="/notification"){
+              notification();
+          }else{
+              window.location.href ='notification?notistart=true';
+          }
+          break;
+
+      case 'event':
+          if(location =="/event"){
+              eventuser();
+          }else{
+              window.location.href ='event?eventstart=true';
+          }
+          break;
+
+      case 'eventmng':
+          if(location =="/event"){
+              eventmng();
+          }else{
+              window.location.href ='event?eventmngstart=true';
+          }
+          break;
+
+      case 'eventboard':
+          if(location =="/event"){
+              eventboard();
+
+          }else{
+              window.location.href ='event?eventboardstart=true';
+          }
+          break;
+
+      case 'message':   
+          if(location =="/message_box" ){
+              message();
+          }else{
+              window.location.href ='message_box?msgstart=true';
+          }
+          break;
+  }
+}
+            
 
  </script>
 
@@ -385,7 +541,7 @@ function logout() {
       @if(Auth::guest())
           <li id="register1"><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
           <strong>สมัครสมาชิก</strong></a></li>
-          <li id="login1"><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
+          <li id="login1"><a class="navlink modal-trigger" href="{{url('login')}}"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
       @else
 
       <li id="beginerU4"><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
@@ -626,7 +782,7 @@ function logout() {
           <li><a href="javascript:void(0);" onclick="beginerGuest()">เริ่มต้นการใช้งาน</a></li>
           <li><a href="javascript:void(0);" onclick="register()">สมัครสมาชิก</a></li>
           <li><a href="javascript:void(0);" onclick="login()">เข้าสู่ระบบ</a></li>
-          <li><a href="javascript:void(0);" onclick="content()">สาระน่ารู้</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('content')">สาระน่ารู้</a></li>
         </div>
       </div>
     @else
@@ -636,26 +792,29 @@ function logout() {
           <li class="divider"></li>
           <li><a href="javascript:void(0);" onclick="beginerUser()">เริ่มต้นการใช้งาน</a></li>
           <li><a href="javascript:void(0);" onclick="logout()">ออกจากระบบ</a></li>
-          <li><a href="javascript:void(0);" onclick="content()">สาระน่ารู้</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('content')">สาระน่ารู้</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('pinfav')">ปักหมุดและบันทึกบทความ</a></li>
         </div>
         <div class="col s4">
           <li class="dis"><a class="myheader"><i class="material-icons left">person</i> โปรไฟล์ของฉัน</a></li>
           <li class="divider"></li>
-          <li><a href="javascript:void(0);" onclick="myprofile()">โปรไฟล์ของฉัน</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('myprofile')">โปรไฟล์ของฉัน</a></li>
           <li><a href="javascript:void(0);" onclick="profilesetting()">ตั้งค่าโปรไฟล์</a></li>
-          <li><a href="javascript:void(0);" onclick="mypost()">โพสต์ของฉัน</a></li>
-          <li><a href="javascript:void(0);" onclick="mngpost()">จัดการโพสต์</a></li>
-          <li><a href="javascript:void(0);" onclick="comment()">แสดงความคิดเห็น</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('mypost')">โพสต์ของฉัน</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('mngpost')">จัดการโพสต์</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('comment')">แสดงความคิดเห็น</a></li>
         </div>
         <div class="col s4">
           <li class="dis"><a class="myheader"><i class="material-icons left">people</i>สังคมของฉัน</a></li>
           <li class="divider"></li>
-          <li><a href="javascript:void(0);" onclick="newsfeed()">กระดานข่าว</a></li>
-          <li><a href="javascript:void(0);" onclick="friend()">เพื่อน</a></li>
-          <li><a href="javascript:void(0);" onclick="favorite()">รายการโปรด</a></li>
-          <li><a href="javascript:void(0);" onclick="notification()">แจ้งเตือน</a></li>
-          <li><a href="javascript:void(0);" onclick="eventuser()">กิจกรรม</a></li>
-          <li><a href="javascript:void(0);" onclick="message()">ข้อความ</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('newsfeed')">กระดานข่าว</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('friend')">เพื่อน</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('favourite')">รายการโปรด</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('notification')">แจ้งเตือน</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('event')">กิจกรรม</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('eventmng')">จัดการกิจกรรม</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('eventboard')">กระดานกิจกรรม</a></li>
+          <li><a href="javascript:void(0);" onclick="goto('message')">ข้อความ</a></li>
         </div>
       </div>
 @endif
@@ -750,13 +909,14 @@ function logout() {
 <div id="loginform" class="modal" style="width: 480px;">
     <div class="modal-content" >
         <form action="{{url('/handleLogin')}}" method="POST">
-          {{ csrf_field() }}
+           {{ csrf_field() }}
             <div class="modal-close" align="right" ><a href="#!" style="font-size: 20px">ปิด</a></div>
             <h4 class="center">เข้าสู่ระบบ</h4>
             <div class="row">
                 <div class="input-field col s8 offset-s2">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="inputUsername" type="text" class="validate tooltipped" data-position="right" data-delay="50" data-tooltip="กรอกชื่อผู้ใช้" name="username" value="{{ old('username') }}" onchange="allowLogin()" onmouseleave="allowLogin()">
+                   
                     <label for="inputUsername">เข้าสู่ระบบ</label>
                 </div>
 

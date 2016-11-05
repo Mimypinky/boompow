@@ -50,24 +50,24 @@
                   <script type="text/javascript">
 
                   </script>
-                  <button id="loginBtn" class="btn waves-effect waves-light" type="submit" name="action" disabled>ลงชื่อเข้าใช้</button>
+                  <button id="loginBtn" class="btn waves-effect waves-light" type="submit" name="action" >ลงชื่อเข้าใช้</button>
                 </div>
                 </li>
             </ul>
             <script type="text/javascript">
-            function allowLogin(){
-              var inputUsername = document.getElementById('inputUsername');
-              var inputPassword = document.getElementById('inputPassword');
-              var loginBtn = document.getElementById('loginBtn');
-                if(inputUsername.value.length > 0 && inputPassword.value.length > 0) {
-                  loginBtn.disabled = false;
-                  console.log('yes');
-                }
-                else{
-                  loginBtn.disabled = true;
-                  console.log('no');
-                }
-            }
+            // function allowLogin(){
+            //   var inputUsername = document.getElementById('inputUsername');
+            //   var inputPassword = document.getElementById('inputPassword');
+            //   var loginBtn = document.getElementById('loginBtn');
+            //     if(inputUsername.value.length > 0 && inputPassword.value.length > 0) {
+            //       loginBtn.disabled = false;
+            //       console.log('yes');
+            //     }
+            //     else{
+            //       loginBtn.disabled = true;
+            //       console.log('no');
+            //     }
+            // }
             </script>
             </form>
           </div>

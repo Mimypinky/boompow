@@ -1,5 +1,67 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+  function message() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เข้าใจแล้ว",
+        steps: [
+        {
+            element: '#chat1',
+            intro: "ในหน้านี้คุณสามารถ <b>ส่งข้อความ</b> หาเพื่อนคุณได้",
+            position: 'left'
+        },
+        {
+            element: '#chat2',
+            intro: "ในส่วนนี้จะแสดง <b>รายชื่อเพื่อนของคุณ</b> ทั้งหมด",
+            position: 'bottom'
+        },
+        {
+            element: '#friendList',
+            intro: "<b>รายชื่อเพื่อนทั้งหมด</b> ที่คุณมี",
+            position: 'right'
+        },
+        {
+            element: '#chat4',
+            intro: "ในส่วนนี้จะแสดง <b>แจ้งเตือนข้อความใหม่</b> ที่เพื่อนส่งมาให้คุณ",
+            position: 'bottom'
+        },
+        {
+            element: '#recentMessage',
+            intro: "รายชื่อเพื่อนที่ส่ง <b>ข้อความใหม่</b> มาหาคุณ",
+            position: 'right'
+        },
+        {
+            element: '#chat5',
+            intro: "คลิกที่รายชื่อเพื่อนของคุณเพื่อเริ่มต้น <b>ส่งข้อความ</b> สนทนา",
+            position: 'top'
+        },
+        
+        ]
+    });
+
+  intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#chat2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'friendList');
+        }
+        if($(targetElement).attr("id") == $('#chat4').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'recentMessage');
+        }
+
+    });
+  intro.start()
+}
+
+if((RegExp('msgstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "message()", 1500);
+}
+
+</script>
 <meta charset="utf-8">
 <div class="container chat-container" style="width: 90%;"> <!--Chat is extending from css/chat.css-->
 
@@ -10,8 +72,8 @@
      <div class="row chatOption">
        <div class="col s12" style="background: #eceff1;">
          <ul class="tabs" style="overflow: hidden;">
-        <li class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
-        <li class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
+        <li id="chat2" class="tab col s3"><a href="#friendList">เพื่อนของฉัน</a></li>
+        <li id="chat4" class="tab col s3"><a class="active" href="#recentMessage">ข้อความใหม่ <span class="new badge b-space">4</span></a></li>
         </ul>
 
        </div>
@@ -45,11 +107,11 @@
            <ul class="list" style="margin-top: 1px">
 
                <li class="clearfix">
-                 <img class="circle" src="img/mim_tn.jpg"/>
+                 <!--<img class="circle" src="img/mim_tn.jpg"/>
                  <div class="about">
                    <div class="name">สุนิสา ปานหิบ (4)</div>
 
-                 </div>
+                 </div>-->
                </li>
 
 

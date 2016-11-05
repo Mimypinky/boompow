@@ -1,6 +1,8 @@
 @extends('site.layout')
 @section('maincontent')
 <script type="text/javascript">
+
+
   function notification() {
     var intro = introJs();
     intro.setOptions({
@@ -11,33 +13,19 @@
       doneLabel: "เสร็จ",
         steps: [
         {
-            element: '#notiintro',
-            intro: "คุณสามารถดูการแจ้งเตืองทั้งหมดของคุณได้ในหน้านี้"
-
-        },
-        {
-            element: '#noti1',
-            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนทั้งหมดที่คุณมี",
-            position: 'bottom'
-        },
-        {
             element: '#noti2',
-            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนที่มีระหว่างคุณกับเพื่อนของคุณ",
+            intro: "ในส่วนนี้จะแสดง <b>คำขอเป็นเพื่อน</b> ที่ส่งมาให้กับคุณ",
             position: 'bottom'
         },
-        {
-            element: '#noti3',
-            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนข้อความระหว่างคุณและเพื่อน",
-            position: 'bottom'
-        },
+       
         {
             element: '#noti4',
-            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนเกี่ยวกับกิจกรรมที่คุณมีส่วนร่วม",
+            intro: "คลิกที่นี้เพื่อดู <b>การแจ้งเตือนกิจกรรม</b> ที่คุณมีส่วนร่วมได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#noti5',
-            intro: "คลิกที่นี้เพื่อดูการแจ้งเตือนเกี่ยวกับสถานะของคุณที่ได้ทำการโพสต์ไว้บนไทม์ไลน์",
+            intro: "คลิกที่นี้เพื่อดู <b>การแจ้งเตือนเกี่ยวกับสถานะของคุณ</b> ที่ได้ทำการโพสต์ไว้บนหน้าโปรไฟล์",
             position: 'bottom'
         },
         ]
@@ -71,10 +59,13 @@
         }
     });
 
-
-
     intro.start()
   }
+
+  if((RegExp('notistart', 'gi').test(window.location.search))){
+    
+   setTimeout( "notification()", 1500);
+}
 </script>
 <div class="container" style="width: 90%; margin-top: 160px;min-height: 600px;">
   <div class="row">

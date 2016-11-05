@@ -17,36 +17,30 @@
         },
         {
             element: '#chat2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะแสดง <b>รายชื่อเพื่อนของคุณ</b> ทั้งหมด",
             position: 'bottom'
         },
         {
             element: '#friendList',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "<b>รายชื่อเพื่อนทั้งหมด</b> ที่คุณมี",
             position: 'right'
         },
         {
             element: '#chat4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะแสดง <b>แจ้งเตือนข้อความใหม่</b> ที่เพื่อนส่งมาให้คุณ",
             position: 'bottom'
         },
         {
             element: '#recentMessage',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "รายชื่อเพื่อนที่ส่ง <b>ข้อความใหม่</b> มาหาคุณ",
             position: 'right'
         },
         {
             element: '#chat5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ส่งข้อความ</b> หาเพื่อนคุณได้ที่นี้",
             position: 'top'
         },
-        {
-            element: '#sendmsg',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'left'
-        },
-
-
+        
         ]
     });
 
@@ -61,6 +55,11 @@
     });
   intro.start()
 }
+
+if((RegExp('msgstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "message()", 1500);
+   }
 </script>
 <meta charset="utf-8">
 <div class="container chat-container" style="width: 90%;"> <!--Chat is extending from css/chat.css-->
@@ -107,11 +106,11 @@
            <ul class="list" style="margin-top: 1px">
 
                <li class="clearfix">
-                 <img class="circle" src="img/mim_tn.jpg"/>
+                 <!--<img class="circle" src="img/mim_tn.jpg"/>
                  <div class="about">
                    <div class="name">สุนิสา ปานหิบ (4)</div>
 
-                 </div>
+                 </div>-->
                </li>
 
            </ul>

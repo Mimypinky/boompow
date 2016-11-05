@@ -25,32 +25,32 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#fav1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้คือบทความที่คุณได้ทำการบันทึกไว้เป็น <b>รายการโปรด</b>",
             position: 'right'
         },
         {
             element: '#fav2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>คัดลอกลิ้งค์</b> ของบทความนี้เพื่อส่งต่อให้เพื่อนของคุณภายนอกเว็บไซต์ได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#fav3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ปักหมุด</b> เนื้อหานี้ไว้บนหน้าโปรไฟล์ของคุณได้ที่นี้ เพื่อนของคุณก็จะสามารถเห็นในสิ่งที่คุณปักหมุดไว้เช่นกัน",
             position: 'bottom'
         },
         {
             element: '#fav4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ลบรายการนี้</b> ออกจากรายการโปรดของคุณ",
             position: 'bottom'
         },
         {
             element: '#fav5',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'bottom'
+            intro: "คลิกที่นี้เพื่อ <b>อ่านเนื้อหาเพิ่มเติม</b>",
+            position: 'right'
         },
         ]
     });
@@ -66,6 +66,11 @@
     });*/
     intro.start()
   }
+
+  if((RegExp('favoritestart', 'gi').test(window.location.search))){
+    
+   setTimeout( "favorite()", 1500);
+}
 </script>
 
 <div class="container" style="width: 90%; margin-top: 132px;min-height: 600px;">

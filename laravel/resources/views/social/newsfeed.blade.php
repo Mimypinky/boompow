@@ -8,63 +8,55 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#newsfeed1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะแสดง <b>ข้อมูลส่วนตัวของคุณ</b>",
             position: 'right'
         },
         {
             element: '#newsfeed2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>อัพเดตข่าวของคุณ</b> บนหน้ากระดานข่าวได้ โดยอัพเดตของคุณจะไปแสดงที่หน้า <b>โปรไฟล์ของคุณ</b> เช่นกัน",
             position: 'bottom'
         },
         {
             element: '#newsfeed3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>อัพโหลดรูปภาพ</b> ได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#newsfeed4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>โพสต์ข้อความ</b> ของคุณ",
             position: 'bottom'
         },
         {
             element: '#newsfeed5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะเป็นส่วนของโพสต์อัพเดต <b>ข่าวสารจากเพื่อนของคุณ</b> ทั้งหมด",
             position: 'right'
         },
         {
             element: '#newsfeed6',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
             position: 'right'
         },
         {
             element: '#newsfeed7',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>แสดงความคิดเห็น</b> ให้กับโพสต์ได้ในส่วนนี้",
             position: 'right'
         },
         {
             element: '#newsfeed8',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'right'
-        },
-        {
-            element: '#newsfeed9',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'right'
-        },
-        {
-            element: '#newsfeed10',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ระบบจะทำการ <b>แนะนำเพื่อนใหม่</b> ประจำวันให้กับคุณ เพื่อช่วยให้คุณมีสังคมที่กว้างขึ้น โดยคุณสามารถเลือก <b>เพิ่มเป็นเพื่อน</b> ได้ในส่วนนี้",
             position: 'left'
         },
         {
-            element: '#newsfeed11',
-            intro: "This is a <b>bold</b> tooltip.",
+            element: '#newsfeed9',
+            intro: "คุณสามารถ <b>เพิ่มเป็นเพื่อน</b> โดยคลิกที่ปุ่มนี้",
             position: 'bottom'
         },
+       
+        
         ]
     });
 
@@ -84,19 +76,18 @@
               $('.introjs-helperLayer').css({width:'91px'})
               break;
         case "newsfeed6":
-            $('.introjs-helperLayer').css({left:'288px'})
+            $('.introjs-helperLayer').css({left:'298px'})
             break;
-        case "newsfeed7":
-            $('.introjs-helperLayer').css({left:'411px'})
-            break;
-        case "newsfeed9":
-            $('.introjs-helperLayer').css({left:'651px'})
-            break;
+        
 
       }
     });
     intro.start()
   }
+  if((RegExp('newsfeedstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "newsfeed()", 1500);
+}
 </script>
 <div class="container" style="width: 90%;">
     <div class="row">
@@ -178,7 +169,7 @@
 
 
             <!--Start Suggest Friend Part-->
-            <div id="newsfeed10" class="col s4 suggestF-sec">
+            <div id="newsfeed8" class="col s4 suggestF-sec">
                 <div class="card pro-upstatus-feed">
                     <ul class="collection with-header f-modal">
                         <li class="collection-header transper suggest-label"><i style="line-height: 1.3;" class="fa fa-user-plus fa-2x left" aria-hidden="true"></i>
@@ -205,7 +196,7 @@
                                 <form action="{{url('/pending')}}" method='post'>
                                   {{ csrf_field() }}
                                 <input type='hidden' value='{{$f->id}}' name='aid'>
-                              <button class="btn  waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+                              <button id="newsfeed9" class="btn  waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
                               </form>
                               @endif
 
@@ -326,7 +317,7 @@
                                               @foreach($likes as $like)
 
                                                 <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                  <img id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+                                                  <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
 
                                                   @endforeach
                                             </div>
@@ -338,14 +329,14 @@
                                           <form>
                                               <div class="input-field cmt-coll-space">
 
-                                              <div id="newsfeed8" class="input-field w-cmt">
+                                              <div id="newsfeed7" class="input-field w-cmt">
 
                                                    <div class="input-field col s12">
                                                        <textarea id="newComment" class="newComment materialize-textarea" name="comment_message"></textarea>
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
-                                                   <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+                                                   <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
                                                </div>
                                            </form>
                                         </div>
