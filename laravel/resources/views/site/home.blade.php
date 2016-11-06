@@ -74,7 +74,7 @@ function content() {
                     </div>
                     <div class="card-content" style="max-height: 230px;">
                         <h5>{{$data->content_title}}</h5>
-                        <div class="wordwrap">{!!$data->description!!}</div>
+                        <div class="wordwrap" style="line-height:1.25">{!!$data->description!!}</div>
                     </div>
                     <div id="content3" class="card-action" style="background-color: #ee6e73;">
                         <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>

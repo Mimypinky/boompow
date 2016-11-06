@@ -44,11 +44,9 @@
     <script type="text/javascript" src="{{ URL::asset('materialize/js/materialize.min.js')}}"></script>
     <!--<script type="text/javascript" src="{{ URL::asset('js/picker.date.js')}}"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/intro.js')}}"></script>
-<<<<<<< HEAD
 
-=======
     <script type="text/javascript" src="{{ URL::asset('js/moment-with-locales.js')}}"></script>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
     <script type="text/javascript" src="{{ URL::asset('js/resizetext.js')}}"></script>
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/introjs.css')}}">
@@ -389,7 +387,7 @@ function logout() {
       @if(Auth::guest())
           <li id="register1"><a class="navlink" href="{{url('/register')}}"><i style="margin-top: 6px;" class="material-icons left">person_add</i>
           <strong>สมัครสมาชิก</strong></a></li>
-          <li id="login1"><a class="navlink modal-trigger" href="#loginform"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
+          <li id="login1"><a class="navlink modal-trigger" href="{{url('login')}}"><i style="margin-top: 6px;" class="material-icons left">input</i>เข้าสู่ระบบ</a></li>
       @else
 
       <li id="beginerU4"><a class="dropdown-button navlink" href="{{url('/profile')}}" data-activates="dropdownprofile" data-constrainwidth="false" data-beloworigin="true" data-hover="true"><i style="margin-top: 6px;" class="material-icons left">person</i>{{ Auth::user()->username }}</a></li>
@@ -774,7 +772,7 @@ function logout() {
                 <span>
                     <input type="checkbox" class="filled-in" id="filled-in-box" name="remember"/>
                     <label for="filled-in-box">ให้ฉันอยู่ในระบบต่อไป</label>
-                    หรือ <a href="#">ลืมรหัสผ่าน</a></span>
+                    หรือ <a href="{{url('/forget')}}">ลืมรหัสผ่าน</a></span>
                 </div>
                 <div align="center" style="margin-bottom: 10px">
                     <button id="loginBtn" class="btn waves-effect waves-light" type="submit" name="action" disabled>ลงชื่อเข้าใช้</button>

@@ -4,31 +4,7 @@
 
 <script type="text/javascript">
 
-  /*
-  if (RegExp('multipage', 'gi').test(window.location.search)) {
 
-
-   function register(){
-    var intro = introJs();
-   intro.setOptions({
-    showStepNumbers: false,
-
-    steps: [
-    {
-        element: '#register2',
-        intro: "This is a <b>bold</b> tooltip."
-    },
-    {
-        element: '#register3',
-        intro: "Ok, <i>wasn't</i> that fun?",
-        position: 'bottom'
-    },
-    ]
-   });
-
-intro.start();
- };
-}*/
 if (RegExp('regismultipage', 'gi').test(window.location.search)) {
 
 function registerP2(){
@@ -391,7 +367,7 @@ function registerP2(){
           else if(data==2){
             $("div#usernameAvailability").html("<div style='color: #ffb74d;'><span style='font-size: 16pt'>"+"กรุณากรอกชื่อผู้ใช้</span></div>");
           }
-        } 
+        }
       });
     });
   }

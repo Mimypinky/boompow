@@ -111,6 +111,10 @@ class ProfileController extends Controller
 
       }
 
+      // $randomUser = DB::table('users')
+      //           ->inRandomOrder()
+      //           ->first();
+    
       $fof = DB::table('accounts')->join('profiles','profiles.id','=','accounts.profile_id')
       ->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar')
       ->get();

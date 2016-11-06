@@ -191,6 +191,7 @@
                            <ul class="collection" style="margin-top: -15px;">
 
                              @foreach($fof as $f)
+
                              @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
 
                              <?php
@@ -199,8 +200,10 @@
                             <li class="collection-item avatar">
                                 <img src="{{url('img/uploads/avatars/'.$f->avatar)}}" alt="" class="circle pic-border">
                                 <h5 class="title">{{$f->first_name.' '.$f->last_name}}</h5>
-                                @if($f_status=='pending')
-                                <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button></a>
+                                @if($f_status->status =='pending')
+                                <a href="{{ url('/dP/'.$f->username)}}">
+                                  <button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
+                                </a>
                                 @else
                                 <form action="{{url('/pending')}}" method='post'>
                                   {{ csrf_field() }}
@@ -339,20 +342,7 @@
                                       $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
                                           ?>
                                     <div class="row wholike-sec">
-<<<<<<< HEAD
-                                      <div class="col s1" style="  margin-top: 15px;">
-                                      @if($liked!=null)
 
-                                          <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
-                                            <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
-                                          </a>
-                                          @else
-                                          <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                            <img id="newsfeed6" class="heart-i" src="{{url('img/heart-like.png')}}">
-                                          </a>
-
-                                          @endif
-=======
                                       <div class="col s2" style="margin-top: 20px;">
                                         @if($liked == null)
                                         <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
@@ -363,7 +353,7 @@
                                           <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                         </button>
                                         @endif
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
                                             </div>
 
 
@@ -411,17 +401,12 @@
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
-<<<<<<< HEAD
+
 
 
                                                    <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
                                              </div>
 
-
-=======
-                                                   <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-                                               </div>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
                                            </form>
                                         </div>
                                         <div class="comment-section">
@@ -448,7 +433,7 @@
                                                           <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                               <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                                 @if($comment->user_id == $uid )
-                                                              <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                              <a class="tooltipped modal-trigger" id="delcom" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
                                                                 <i class="fa fa-times" aria-hidden="true"></i> </a>
                                                                 @endif
                                                               <p id="datecomment">{{$comment->created_at}}</p>
@@ -470,6 +455,8 @@
                                                             </div>
                                                       </div>
 
+
+                                                        <script></script>
                                                       @endforeach
 
                                                 </li>
@@ -582,4 +569,5 @@
 
     });
     </script>
+
 @stop

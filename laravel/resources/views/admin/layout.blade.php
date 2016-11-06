@@ -131,7 +131,6 @@
 							</a>
 							<ul class="dropdown-menu drp-mnu">
 
-								<li> <a href="{{url('/administator/register')}}"><i class="fa fa-plus"></i> Add new admin</a> </li>
 								<li> <a href="{{url('/logout')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>

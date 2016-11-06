@@ -100,8 +100,10 @@
                                         </a>
                                     </div>
                                     <div id="fav3" class="col s4 pin-col">
-                                        <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="ปักหมุด" href="#"><i style="margin-top: 13px;" class="pin-icon fa fa-thumb-tack fa-lg" aria-hidden="true"></i>
+                                        <a href="#pinstatus{{$key}}" class="link-icon-color tooltipped modal-trigger" data-position="bottom" data-delay="50" data-tooltip="ปักหมุด" href="#"><i style="margin-top: 13px;" class="pin-icon fa fa-thumb-tack fa-lg" aria-hidden="true"></i>
                                         </a>
+
+
                                     </div>
 
                                     <div class="col s4" id="fav4">
@@ -162,6 +164,48 @@
 
               </div>
             </div>
+            </div>
+
+            <div id="pinstatus{{$key}}" class="modal modal-fixed-footer">
+            <div class="modal-content" style="padding:50px ">
+            <div class="row">
+                <span style="font-size:2.5em"class="card-title">ปักหมุดบทความ</span><br>
+                <span><i>บทความที่ได้ปักหมุดจะถูกโพสต์บทหน้าไทม์ไลน์ของคุณ</i></span>
+              <div class="col s12">
+                <form action="{{url('/pin/'.$data->cid)}}" method="post">
+                <div class="row">
+                   <div class="input-field col s12">
+                     <textarea id="textarea1" class="materialize-textarea" name="message"placeholder="กล่าวบางอย่างเกี่ยวกับบทความนี้"></textarea>
+                     {{ csrf_field() }}
+                   </div>
+                 </div>
+              </div>
+              <div class="row ">
+              <div class="col s8 offset-s2 ">
+
+                 <div class="card">
+                   <div class="card-image">
+                     <img src="{{url('img/content/'.$data->head_pic_content)}}" style="max-height:300px"/>
+                   </div>
+                   <div class="card-stacked">
+                     <div class="card-content">
+                      <h2>{{$data->content_title}}</h2>
+                     </div>
+                     <div class="card-action">
+                      <a href="{{ url('content/'.$data->category_title.'/'.$data->cid) }}">อ่านเนื้อหา</a>
+                    </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+            </div>
+            </div>
+
+            <div class="modal-footer">
+              <a  class="modal-action modal-close waves-effect waves-red btn-flat ">ยกเลิก</a>
+              <button type="submit" name="action" class="modal-action  waves-effect waves-green btn-flat" >  <i class="material-icons right">send</i>ปัก</button>
+            </div>
+            </form>
             </div>
                     @endforeach
 

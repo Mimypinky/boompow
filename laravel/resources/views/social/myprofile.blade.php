@@ -1,5 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
+
 <script type="text/javascript">
     function myprofile() {
     var intro = introJs();
@@ -452,41 +453,21 @@ function comment() {
                                                       @if($liked == null)
                                                       <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
-<<<<<<< HEAD
-                                                      </button> -->
 
-                                                    @if($liked!=null)
-                                                        <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
-                                                          <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
-                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
-                                                          </button>
-                                                        </a>
-                                                        @else
-
-                                                        <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
-                                                          <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
-                                                          </button>
-
-                                                        </a>
-                                                        @endif
-=======
                                                       </button>
                                                       @else
                                                       <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                       </button>
                                                       @endif
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
                                                     </div>
 
                                                     <div class="col s2">
                                                         <div class="likecount">
-<<<<<<< HEAD
-                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
-=======
+
                                                             <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;" id="show_total">{{$count_likes}}</a>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
                                                         </div>
                                                     </div>
                                                     @foreach($likes as $like)
@@ -534,14 +515,11 @@ function comment() {
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
-<<<<<<< HEAD
+
                                                              <input  id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
 
 
-=======
-                                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 
                                                         </div>
 
@@ -564,7 +542,7 @@ function comment() {
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
-                                                              @endif 
+                                                              @endif
 
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
@@ -581,7 +559,7 @@ function comment() {
                                                                     </li>
 
                                                                 </ul>
-<<<<<<< HEAD
+
 
 
                                                                 </div>
@@ -617,10 +595,10 @@ function comment() {
 
 
 
-=======
 
-                                                              </div>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
+
+
                                                                 @endforeach
 
 
@@ -640,7 +618,6 @@ function comment() {
                           @endforeach
                       </div>
                     </div>
-<<<<<<< HEAD
 
 
 
@@ -649,9 +626,7 @@ function comment() {
 
 
 
-=======
-                    </div>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
                     </div>
                 </div>
                 @endif
@@ -709,13 +684,9 @@ function comment() {
 
                             <li>
 
-<<<<<<< HEAD
-<
+
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
 
-=======
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -726,10 +697,7 @@ function comment() {
                                               <div class="file-field input-field">
 
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-<<<<<<< HEAD
 
-=======
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">

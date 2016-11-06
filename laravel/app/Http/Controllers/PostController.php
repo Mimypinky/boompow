@@ -151,13 +151,6 @@ class PostController extends Controller
     }
     public function commentsPostEvent(Request $req,$pid){
 
-      // $uid =Auth::user()->id;
-      // $comment= new EventPostComm();
-      // $comment->user_id =$uid;
-      // $comment->message =$req['comment_message'];
-      // $comment->event_post_id = $pid;
-      // $comment->save();
-      // return redirect()->back();
 
       $uid = Auth::user()->id;
       $comment= new EventPostComm();
@@ -165,20 +158,8 @@ class PostController extends Controller
       $comment->message = $req['comment_message'];
       $comment->event_post_id = $pid;
       $comment->save();
-      // $commentbox = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
-      //               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
-      //               ->where('event_post_id','=',$pid)->orderBy('created_at', 'desc')->first();
-                    return back();
-      // return '<div class="collapsible-body">
-      //     <ul class="col s12 collection cmt-box">
-      //     <li class="transper collection-item avatar">
-      //     <a href="/friend/'.$commentbox->username.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
-      //     <span class="title title-name">'.$commentbox->first_name.' '.$commentbox->last_name.'</span></a>
-      //     <p id="datecomment">'.$commentbox->created_at.'</p>
-      //     <p class="space-cmt">'.$commentbox->message.'<br></p>
-      // </li>
-      // </ul>
-      // </div>';
+  return back();
+
 
     }
     public function deletePostEvent($eid,$pid)
@@ -212,7 +193,7 @@ class PostController extends Controller
     }
     public function pinPost(Request $req,$cid)
     {
-      
+
       $post = new Post();
       $uid= Auth::user()->id;
       $post->user_id = $uid;
@@ -222,6 +203,21 @@ class PostController extends Controller
       $post->on_id=$uid;
       $post->save();
       return redirect('/profile');
+    }
+    public function showPost($id)
+    {
+
+
+      $title='Boompow';
+      $posts = Post::join('accounts','posts.user_id','=','accounts.id')
+      ->join('profiles','accounts.profile_id','=','profiles.id')
+      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*','accounts.username')
+      ->where('posts.id','=',$id)
+      ->first();
+
+      // dd($posts);
+      return view('social.post',compact('posts','title'));
+
     }
 
 }

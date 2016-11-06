@@ -33,13 +33,14 @@
   </div>
 
   <!--Start Post Box-->
+  <div class="row">
   <div class="col s8 pro-upstatus-feed">
       <ul class="collection with-header f-modal">
           <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square fa-3x left" aria-hidden="true"></i><h4>อัพเดตข่าวกิจกรรมของคุณ</h4>
           </li>
       </ul>
       <div class="row" id="eve_desc">
-          <div class="row" style="">
+
               <div class="col s12">
                   <div class="card" style="box-shadow:none; background-color: transparent;">
                       <div class="card-content black-text" >
@@ -96,9 +97,10 @@
                       </div>
                   </div>
               </div>
-          </div>
-      </div>
+
+
   </div>
+</div>
   <!--End Post Box-->
 
   <!--Start newsfeed section-->
@@ -110,13 +112,12 @@
       <!--timeline mypost-->
       @foreach($eve_post as $key=>$post)
 
-
-          <div class="row" style="">
+          <div class="row">
               <div class="col s12">
                   <div class="card" style="box-shadow:none; background-color: transparent;">
                       <div class="card-content black-text" >
 
-                        @if($eve_name->creator == $account->id)
+                        @if($eve_name->creator == $post->aid)
 
                           <div class="input-field col s3 img-position-res">
                               <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="postbox-pic media-object img-circle imgthumb">
@@ -177,14 +178,17 @@
                                   </div>
                                   <p id="datecomment">{{$post->created_at}}</p>
                               </div>
-                              <div class="status-post2 col s12">
+
+                              <div class="status-post2 col s12" style="margin-bottom:5%;">
                                   <p>{{$post->message}}</p>
                               </div>
+
                               @if($post->image!=null)
                               <div class="card-image">
-                                  <img class="materialboxed " src="{{url('img/uploads/events/'.$post->image)}}" style="width:60%">
+                                  <img class="materialboxed " src="{{url('img/uploads/events/'.$post->image)}}" style="width:60%;margin-left:20%;">
                               </div>
                               @endif
+
                               <div class="card-action" style="border: none;">
                                 <?php $count_likes = DB::table('event_board_like')->where('event_post_id','=',$post->pid)->count();
                                     $likes = DB::table('event_board_like')->join('accounts','event_board_like.user_id','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
@@ -233,15 +237,9 @@
                                        </div>
                                   <div class="divider"></div>
                                   <div class="row">
-<<<<<<< HEAD
-                                    <form action="{{url('/event/board/'.$post->pid.'/comment')}}" method="post">
-=======
                                     <form>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
                                         <div class="input-field cmt-coll-space">
-
                                         <div class="input-field w-cmt">
-
                                              <div class="input-field col s12">
                                                  <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -302,106 +300,116 @@
                                           </li>
                                       </ul>
                                   </div>
-                              </div>
-                              </div>
+
+
                           </div>
                       </div>
                   </div>
               </div>
           </div>
+        </div>
           @endforeach
+</div>
 
 
 
-      </div>
-      <!--End newsfeed section-->
-      <!--Start detail section-->
-  <div class="col s4">
-      <div class="row event-detail">
-          <div class="collection pro-upstatus-feed">
-              <div class="collection-item edetail-space">
-                  <div class="collection-item">
-                      <span class="i-event-det">
-                      <i class="fa fa-calendar left" aria-hidden="true"></i>วันที่</span>
-                      <div class="space"></div>
-                      <p>{{$eve_name->start_date}} ถึง{{$eve_name->finish_date}}</p>
-                  </div>
-                  <div class="collection-item">
-                      <span class="i-event-det">
-                      <i class="fa fa-clock-o left" aria-hidden="true"></i>เวลา</span>
-                      <div class="space"></div>
-                      <p>{{$eve_name->start_time}} น. ถึง {{$eve_name->finish_time}} น.</p>
-                  </div>
-                  <div class="collection-item">
-                      <span class="i-event-det">
-                      <i class="fa fa-map-marker left" aria-hidden="true"></i>สถานที่</span>
-                      <div class="space"></div>
-                      <p>{{$eve_name->location}}</p>
-                  </div>
-                  <div class="collection-item">
-                      <span class="i-event-det">
-                      <i class="fa fa-phone left" aria-hidden="true"></i>ติดต่อ</span>
-                      <div class="space"></div>
-                      <p>{{$eve_name->contact}}</p>
-                  </div>
-                  <div class="collection-item">
-                      <h5><span class="i-event-det">เกี่ยวกับกิจกรรม</span></h5>
-                      <p>{{$eve_name->description}}</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!--End detail section-->
-  <!--Start whojoined section-->
-  <div class="col s4">
-      <div class="row joined-f">
-          <div class="collection pro-upstatus-feed">
-              <div class="collection-item">
-                <?php $parties  =DB::table('join_event')
-                ->join('accounts','join_event.user_id','=','accounts.id')
-                ->join('profiles','accounts.profile_id','=','profiles.id')
-                ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
-                ->where('eve_id','=',$eve_name->id)->get();
-                $count_parties  =DB::table('join_event')
-                ->join('accounts','join_event.user_id','=','accounts.id')
-                ->join('profiles','accounts.profile_id','=','profiles.id')
-                ->where('eve_id','=',$eve_name->id)->count();
-                ?>
-                  <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม {{$count_parties}} คน</span></h5>
+<div class="col s4">
+    <div class="row event-detail">
+        <div class="collection pro-upstatus-feed">
+            <div class="collection-item edetail-space">
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-calendar left" aria-hidden="true"></i>วันที่</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->start_date}} ถึง{{$eve_name->finish_date}}</p>
+                </div>
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-clock-o left" aria-hidden="true"></i>เวลา</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->start_time}} น. ถึง {{$eve_name->finish_time}} น.</p>
+                </div>
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-map-marker left" aria-hidden="true"></i>สถานที่</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->location}}</p>
+                </div>
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-phone left" aria-hidden="true"></i>ติดต่อ</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->contact}}</p>
+                </div>
+                <div class="collection-item">
+                    <h5><span class="i-event-det">เกี่ยวกับกิจกรรม</span></h5>
+                    <p>{{$eve_name->description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row joined-f">
+        <div class="collection pro-upstatus-feed">
+            <div class="collection-item">
+              <?php $parties  =DB::table('join_event')
+              ->join('accounts','join_event.user_id','=','accounts.id')
+              ->join('profiles','accounts.profile_id','=','profiles.id')
+              ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
+              ->where('eve_id','=',$eve_name->id)->get();
+              $count_parties  =DB::table('join_event')
+              ->join('accounts','join_event.user_id','=','accounts.id')
+              ->join('profiles','accounts.profile_id','=','profiles.id')
+              ->where('eve_id','=',$eve_name->id)->count();
+              ?>
+               <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม {{$count_parties}} คน</span></h5>
 
-              </div>
-              @if($count_parties < 12)
-              <div class="collection-item" id="eve_friend">
-                      <div class="row joiner-pic-rspace">
-                        @foreach($parties as $person)
-                        @if($person->id == Auth::user()->id)
+            </div>
+            @if($count_parties < 12)
+            <div class="collection-item" id="eve_friend">
+                    <div class="row joiner-pic-rspace">
+                      @foreach($parties as $person)
+                      @if($person->id == Auth::user()->id)
+                      <div class="col s12 m7 l4 joiner-pic-col">
+                          <a href="{{url('/friend/profile')}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
+                            <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
+                      </div>
+                      @else
                         <div class="col s12 m7 l4 joiner-pic-col">
-                            <a href="{{url('/friend/profile')}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
+                            <a href="{{url('/friend/'.$person->username)}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
                               <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
                         </div>
-                        @else
-                          <div class="col s12 m7 l4 joiner-pic-col">
-                              <a href="{{url('/friend/'.$person->username)}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
-                                <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
-                          </div>
-                          @endif
-                          @endforeach
-                      </div>
-              </div>
-              @else
-                <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
-              @endif
+                        @endif
+                        @endforeach
+                    </div>
+            </div>
+            @else
+              <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
+            @endif
 
-          </div>
-      </div>
-  </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+      <!--End newsfeed section-->
+      <!--Start detail section-->
+
+  <!--End detail section-->
+  <!--Start whojoined section-->
+
   <!--End whojoined section-->
 
 
   </div>
-</div>
 
+</div>
 
   <!--Modal Structure-->
 
