@@ -67,7 +67,9 @@ class AuthController extends Controller
     public function loginForm(){
       $title = 'เข้าสู่ระบบ';
       if(!Auth::check()){
-        return view('auth.loginform',compact('title'));
+        // $message= "<p style='color:red;text-align:center;font-size:12pt'>ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง<br> กรุณากรอกใหม่อีกครั้ง</p>";
+
+        return view('auth.forget',compact('title','message'));
 
       }
       else {
@@ -103,8 +105,12 @@ class AuthController extends Controller
       else if(Auth::attempt(['username' => $username, 'password' => $password], $remember) && Auth::user()->status == 'admin'){
         return redirect()->intended('/administator');
       }
+      else if(Auth::attempt(['username'=>$username,'password'=>$password],$remember)&& Auth::user()->status == 'banned'){
+        $message = 'ผู้ใช้นี้ถูกระงับการใช้งาน';
+        return redirect('login')->with('loginStatus', $message );
+      }
       else{
-        $message = 'ขื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
+        $message = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
         return redirect('login')->with('loginStatus', $message );
       }
     }
@@ -122,12 +128,14 @@ class AuthController extends Controller
           return Response::json('0');
         }
     }
-    public function findQuesPass(Request $request){
+    public function checkUsername(Request $request){
         // $username = Request::Input('username');
         $username = Input::get('username');
-        $result = Question::join('profiles','profiles.qp_id','=','questpass.id')->join('accounts','accounts.profile_id','=','profiles.id')
-        ->where('username',$username)->first();
+        $result = Account::where('username', $username)->first();
         if(isset($result)){
+          // $profile_id = $result->profile_id;
+          // $qp_id = Profile::select('qp_id')->where('id','=',$profile_id)->first();
+          // $questpass = Question::select('id','question')->where('profiles.qp_id','=',$profile_id)->first();
           return Response::json('1');
         }
         elseif ($username==null) {
@@ -136,6 +144,50 @@ class AuthController extends Controller
         else {
           return Response::json('0');
         }
+    }
+    public function findQuesPass(Request $request){
+        // $username = Request::Input('username');
+        $username = Input::get('username');
+        $result = Question::join('profiles','profiles.qp_id','=','questpass.id')->join('accounts','accounts.profile_id','=','profiles.id')
+        ->select('question')->where('username',$username)->first();
+        if(isset($result)){
+          return Response::json($result);
+        }
+        else {
+          return Response::json('0');
+        }
+    }
+    public function checkEmail(Request $request)
+    {
+      $email = Input::get('email');
+      $result = Profile::join('accounts','accounts.profile_id','=','profiles.id')->select('email')->where('profiles.email','=',$email)->first();
+      if(isset($result)){
+
+        return Response::json('1');
+      }
+      elseif ($email==null) {
+        return Response::json('2');
+      }
+      else {
+        return Response::json('0');
+      }
+    }
+    public function sendPassword(Request $req)
+    {
+      $email = $req->email;
+
+
+       $to      = $email;
+       $subject = 'the subject';
+       $message = 'hello';
+       $headers = 'From: webmaster@example.com' . "\r\n" .
+           'Reply-To: webmaster@example.com' . "\r\n" .
+           'X-Mailer: PHP/' . phpversion();
+
+       mail($to, $subject, $message, $headers);
+
+                  return view('auth.forget2');
+
     }
 
     public function store(Request $request)

@@ -1,11 +1,94 @@
 @extends('site.layout')
 @section('maincontent')
+<script type="text/javascript">
+  function eventboard2() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เข้าใจแล้ว",
+        steps: [
+        {
+            element: '#eveb1',
+            intro: "คุณสามารถ <b>จัดการกิจกรรมของคุณ</b> ได้ในส่วนนี้",
+            position: 'bottom'
+        },
+        {
+            element: '#eveb2',
+            intro: "คุณสามารถ <b>โพสต์ข้อความข่าวสารกิจกรรม</b> ได้ในส่วนนี้",
+            position: 'bottom'
+        },
+        {
+            element: '#eveb3',
+            intro: "คุณสามารถ <b>อัพโหลดรูปภาพ</b> ได้ที่นี้",
+            position: 'bottom'
+        },
+        {
+            element: '#eveb4',
+            intro: "คลิกที่นี้เพื่อ <b>โพสต์ข้อความ</b> ข้อความของคุณบนกระดานกิจกรรม",
+            position: 'bottom'
+        },
+        {
+            element: '#eveb5',
+            intro: "ในส่วนนี้จะเป็นส่วนของโพสต์อัพเดต <b>ข่าวสารจากกิจกรรม</b> จากผู้ร่วมกิจกรรมและเจ้าของกิจกรรม",
+            position: 'right'
+        },
+        {
+            element: '#eveb6',
+            intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
+            position: 'right'
+        },
+        {
+            element: '#eveb7',
+            intro: "คุณสามารถ <b>แสดงความคิดเห็น</b> ให้กับโพสต์ได้ในส่วนนี้",
+            position: 'bottom'
+        },
+        {
+            element: '#eveb8',
+            intro: "ในส่วนนี้คือ <b>รายละเอียดกิจกรรม</b> ที่คุณกำลังเข้าร่วม",
+            position: 'left'
+        },
+        {
+            element: '#eveb9',
+            intro: "ในส่วนนี้คือ <b>เพื่อนร่วมกิจกรรม</b> ของคุณ",
+            position: 'left'
+        },
+
+
+        ]
+    });
+
+    intro.onafterchange(function(targetElement) {
+      console.log(targetElement.id);
+      switch (targetElement.id){
+
+        case "eveb2":
+            $('.introjs-helperLayer').css({width:'509px'})
+            break;
+        case "eveb3":
+            $('.introjs-helperLayer').css({width:'185px'})
+            break;
+        case "eveb4":
+            $('.introjs-helperLayer').css({width:'85px'})
+            break;
+        case "eveb6":
+            $('.introjs-helperLayer').css({left:'295px'})
+            break;
+      }
+    });
+    intro.start()
+  }
+
+setTimeout( "eventboard2()", 1500);
+</script>
 
 <div class="row" id="act_part">
 <div class="container" >
   <div class="row" style="margin-bottom: 0">
       <div class="col s10">
-          <div class="card pro-upstatus-feed event-head">
+          <div  class="card pro-upstatus-feed event-head">
               <div class="card-image" >
                   <img src="{{url('img/polygons.jpg')}}" style="height:30em" id="eve_img" >
                   <span class="card-title">
@@ -14,7 +97,7 @@
                   <span class="card-title event-name">{{$eve_name->title}}</span>
 
               </div>
-              <div class="card-content">
+              <div id="eveb1" class="card-content">
                   @if($eve_name->creator == $user)
                   <span style="font-size: 18pt;">สร้างโดย:&nbsp</span><a href="Social-Profile-v2.html" style="color: #0d47a1; font-size: 18pt !important;">คุณ</a>
                       <a href="#eve-del" id="status_join" class="modal-trigger white-text noshadow waves-effect waves-light btn red right">
@@ -33,13 +116,14 @@
   </div>
 
   <!--Start Post Box-->
+  <div class="row">
   <div class="col s8 pro-upstatus-feed">
       <ul class="collection with-header f-modal">
           <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square fa-3x left" aria-hidden="true"></i><h4>อัพเดตข่าวกิจกรรมของคุณ</h4>
           </li>
       </ul>
       <div class="row" id="eve_desc">
-          <div class="row" style="">
+
               <div class="col s12">
                   <div class="card" style="box-shadow:none; background-color: transparent;">
                       <div class="card-content black-text" >
@@ -58,13 +142,14 @@
                           @endif
 
                               <form action="{{url('/event/board/'.$eve_name->id)}}" method="POST" enctype="multipart/form-data">
+                              <div id="eveb2">
                               <textarea style="margin-left: 20px;" id="textarea1" class="materialize-textarea" name="message"></textarea>
                               <input type="hidden" name="_token" value="{{csrf_token()}}">
-                              <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label>
+                              <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
 
                               <div class="card-action" style="border: none;">
                                       <div class="file-field input-field">
-                                          <div class="btn prouppic-btn black-text">
+                                          <div id="eveb3" class="btn prouppic-btn black-text">
                                               <span style="font-size: 14pt;">
                                                   <i class="fa fa-camera"></i>&nbspอัพโหลดรูปภาพ
                                                   <input type="file" name="uploadImage"  id="uploadImage"></span>
@@ -90,33 +175,33 @@
                                           </div>
                                       </div>
                                   </form>
-                                  <button class="proupsta-btn waves-effect waves-light btn" name="action" type="sumbit">โพสต์</button>
+                                  <button id="eveb4" class="proupsta-btn waves-effect waves-light btn" name="action" type="sumbit">โพสต์</button>
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
-          </div>
-      </div>
+
+
   </div>
+</div>
   <!--End Post Box-->
 
   <!--Start newsfeed section-->
-      <div class="col s8 pro-upstatus event-feed">
+      <div id="eveb5" class="col s8 pro-upstatus event-feed">
       <ul class="collection with-header f-modal">
           <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-rss-square fa-3x left" aria-hidden="true"></i><h4>ข่าวสารจากกิจกรรม</h4>
           </li>
       </ul>
       <!--timeline mypost-->
-      @foreach($eve_post as $post)
+      @foreach($eve_post as $key=>$post)
 
-
-          <div class="row" style="">
+          <div class="row">
               <div class="col s12">
                   <div class="card" style="box-shadow:none; background-color: transparent;">
                       <div class="card-content black-text" >
 
-                        @if($eve_name->creator == $account->id)
+                        @if($eve_name->creator == $post->aid)
 
                           <div class="input-field col s3 img-position-res">
                               <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="postbox-pic media-object img-circle imgthumb">
@@ -138,23 +223,56 @@
                                   <span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span>
                                   <div class="event-edit-btn">
                                       @if($post->user_id == $account->id)
-                                      <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit"
+                                      <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
                                       style="background-color: #ebeef1">
                                       <i class="fa fa-pencil-square-o"></i> แก้ไข</a>
-                                      <a class="black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
+                                      <a href="#deletePost{{$key}}" class="black-text del-btn waves-effect waves-light btn modal-trigger" style="background-color: #ebeef1">
                                       <i class="fa fa-trash-o"></i> ลบ</a>
+                                      <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                                        <div class="modal-content" >
+
+                                              <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                               <a href="{{url('/event/board/'.$eve_name->id.'/post/delete/'.$post->pid)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                            </div>
+                                      </div>
+                                      <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
+                                          <ul class="collection with-header f-modal">
+                                              <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                                                  <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+
+                                              <li class="transper collection-item avatar">
+                                                  <img src="{{url('img/uploads/avatars/'.$account->avatar)}}" alt="" class="circle">
+                                                  <span class="title title-name">{{$account->first_name.'  '.$account->last_name}}</span>
+                                                  <form action="#">
+                                                      <div class="file-field input-field" style="margin-top: -5%;">
+                                                          <div class="input-field col s12">
+                                                              <textarea id="textarea1" class="materialize-textarea">{{$post->message}}
+                                                              </textarea>
+                                                          </div>
+                                                      </div>
+                                                  </form>
+                                                  <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
+                                              </li>
+                                          </ul>
+                                      </div>
                                       @endif
                                   </div>
                                   <p id="datecomment">{{$post->created_at}}</p>
                               </div>
-                              <div class="status-post2 col s12">
+
+                              <div class="status-post2 col s12" style="margin-bottom:5%;">
                                   <p>{{$post->message}}</p>
                               </div>
+
                               @if($post->image!=null)
                               <div class="card-image">
-                                  <img class="materialboxed " src="{{url('img/uploads/events/'.$post->image)}}" style="width:60%">
+                                  <img class="materialboxed " src="{{url('img/uploads/events/'.$post->image)}}" style="width:60%;margin-left:20%;">
                               </div>
                               @endif
+
                               <div class="card-action" style="border: none;">
                                 <?php $count_likes = DB::table('event_board_like')->where('event_post_id','=',$post->pid)->count();
                                     $likes = DB::table('event_board_like')->join('accounts','event_board_like.user_id','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
@@ -171,7 +289,7 @@
                                                 </a>
                                                 @else
                                                 <a class="tooltipped" href="{{url('/event/board/'.$eve_name->id.'/like/'.$post->pid)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                  <img class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                  <img id="eveb6" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                 </a>
 
                                                 @endif
@@ -205,11 +323,16 @@
                                   <div class="row">
                                     <form>
                                         <div class="input-field cmt-coll-space">
-
                                         <div class="input-field w-cmt">
 
+<<<<<<< HEAD
                                              <div class="input-field col s12">
                                                  <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
+=======
+                                             <div id="eveb7" class="input-field col s12">
+                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                  <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                              </div>
@@ -237,12 +360,16 @@
                                                 </div>
                                               @endif
                                                 @foreach($comments as $comment)
-                                                <div class="collapsible-body">
+                                                <div class="collapsible-body nonborder">
                                                     <ul class="col s12 collection cmt-box">
 
                                                     <li class="transper collection-item avatar">
                                                     <a href="{{url('/friend/$comment->username')}}"><img src="{{url('img/uploads/avatars/'.$comment->avatar)}}" alt="" class="circle">
                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+                                                        @if($comment->user_id == $uid )
+                                                      <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                        @endif
                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                         <p class="space-cmt">{{$comment->message}}<br></p>
 
@@ -250,27 +377,122 @@
 
                                                 </ul>
                                                 </div>
+                                                <div id="deletecom{{$key}}" class="modal " style="width: 500px;">
+                                                    <div class="modal-content" >
+                                                  <p>คุณต้องการจะลบความคิดเห็นนี้ใช่หรือไม่</p>
+                                                  </div>
+                                                    <div class="modal-footer">
+                                                      <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                    <a href="{{url('event/board/'.$eve_name->id.'/comment/delete/'.$comment->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                                        </div>
+                                                      </div>
                                                 @endforeach
 
                                           </li>
                                       </ul>
                                   </div>
-                              </div>
-                              </div>
+
+
                           </div>
                       </div>
                   </div>
               </div>
           </div>
+        </div>
           @endforeach
+</div>
 
 
 
-      </div>
+<div class="col s4">
+    <div class="row event-detail">
+        <div class="collection pro-upstatus-feed">
+            <div class="collection-item edetail-space">
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-calendar left" aria-hidden="true"></i>วันที่</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->start_date}} ถึง{{$eve_name->finish_date}}</p>
+                </div>
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-clock-o left" aria-hidden="true"></i>เวลา</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->start_time}} น. ถึง {{$eve_name->finish_time}} น.</p>
+                </div>
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-map-marker left" aria-hidden="true"></i>สถานที่</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->location}}</p>
+                </div>
+                <div class="collection-item">
+                    <span class="i-event-det">
+                    <i class="fa fa-phone left" aria-hidden="true"></i>ติดต่อ</span>
+                    <div class="space"></div>
+                    <p>{{$eve_name->contact}}</p>
+                </div>
+                <div class="collection-item">
+                    <h5><span class="i-event-det">เกี่ยวกับกิจกรรม</span></h5>
+                    <p>{{$eve_name->description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row joined-f">
+        <div class="collection pro-upstatus-feed">
+            <div class="collection-item">
+              <?php $parties  =DB::table('join_event')
+              ->join('accounts','join_event.user_id','=','accounts.id')
+              ->join('profiles','accounts.profile_id','=','profiles.id')
+              ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
+              ->where('eve_id','=',$eve_name->id)->get();
+              $count_parties  =DB::table('join_event')
+              ->join('accounts','join_event.user_id','=','accounts.id')
+              ->join('profiles','accounts.profile_id','=','profiles.id')
+              ->where('eve_id','=',$eve_name->id)->count();
+              ?>
+               <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม {{$count_parties}} คน</span></h5>
+
+            </div>
+            @if($count_parties < 12)
+            <div class="collection-item" id="eve_friend">
+                    <div class="row joiner-pic-rspace">
+                      @foreach($parties as $person)
+                      @if($person->id == Auth::user()->id)
+                      <div class="col s12 m7 l4 joiner-pic-col">
+                          <a href="{{url('/friend/profile')}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
+                            <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
+                      </div>
+                      @else
+                        <div class="col s12 m7 l4 joiner-pic-col">
+                            <a href="{{url('/friend/'.$person->username)}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
+                              <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+            </div>
+            @else
+              <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
+            @endif
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
       <!--End newsfeed section-->
-      <!--Start detail section-->
+      <!--Start detail section--
   <div class="col s4">
-      <div class="row event-detail">
+      <div id="eveb8" class="row event-detail">
           <div class="collection pro-upstatus-feed">
               <div class="collection-item edetail-space">
                   <div class="collection-item">
@@ -307,54 +529,30 @@
   </div>
   <!--End detail section-->
   <!--Start whojoined section-->
-  <div class="col s4">
-      <div class="row joined-f">
+  <!-- <div class="col s4">
+      <div id="eveb9" class="row joined-f">
           <div class="collection pro-upstatus-feed">
               <div class="collection-item">
-                <?php $parties  =DB::table('join_event')
-                ->join('accounts','join_event.user_id','=','accounts.id')
-                ->join('profiles','accounts.profile_id','=','profiles.id')
-                ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
-                ->where('eve_id','=',$eve_name->id)->get();
-                $count_parties  =DB::table('join_event')
-                ->join('accounts','join_event.user_id','=','accounts.id')
-                ->join('profiles','accounts.profile_id','=','profiles.id')
-                ->where('eve_id','=',$eve_name->id)->count();
+                <?php
+                // $parties  =DB::table('join_event')
+                // ->join('accounts','join_event.user_id','=','accounts.id')
+                // ->join('profiles','accounts.profile_id','=','profiles.id')
+                // ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
+                // ->where('eve_id','=',$eve_name->id)->get();
+                // $count_parties  =DB::table('join_event')
+                // ->join('accounts','join_event.user_id','=','accounts.id')
+                // ->join('profiles','accounts.profile_id','=','profiles.id')
+                // ->where('eve_id','=',$eve_name->id)->count();
                 ?>
                   <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม {{$count_parties}} คน</span></h5>
 
-              </div>
-              @if($count_parties < 12)
-              <div class="collection-item" id="eve_friend">
-                      <div class="row joiner-pic-rspace">
-                        @foreach($parties as $person)
-                        @if($person->id == Auth::user()->id)
-                        <div class="col s12 m7 l4 joiner-pic-col">
-                            <a href="{{url('/friend/profile')}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
-                              <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
-                        </div>
-                        @else
-                          <div class="col s12 m7 l4 joiner-pic-col">
-                              <a href="{{url('/friend/'.$person->username)}}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$person->first_name.' '.$person->last_name}}">
-                                <img src="{{url('img/uploads/avatars/'.$person->avatar)}}"></a>
-                          </div>
-                          @endif
-                          @endforeach
-                      </div>
-              </div>
-              @else
-                <a href="#allfriend" class="modal-trigger">ดูเพื่อนทั้งหมด</a>
-              @endif
 
-          </div>
-      </div>
-  </div>
   <!--End whojoined section-->
 
 
   </div>
-</div>
 
+</div>
 
   <!--Modal Structure-->
 
@@ -503,26 +701,7 @@
       </div>
   </div>
   <!--post-edit-->
-  <div id="post-edit" class="modal" style="width: 500px;">
-      <ul class="collection with-header f-modal">
-          <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
-              <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
-          <li class="transper collection-item avatar">
-              <img src="{{url('img/pic5.jpg')}}" alt="" class="circle">
-              <span class="title title-name">ยายละม้าย คล้ายจะเป็นลม</span>
-              <form action="#">
-                  <div class="file-field input-field" style="margin-top: -5%;">
-                      <div class="input-field col s12">
-                          <textarea id="textarea1" class="materialize-textarea">สวัสดีจ้ามีนา
-                          </textarea>
-                      </div>
-                  </div>
-              </form>
-              <a class="modal-close waves-effect waves-light btn right">ตกลง</a>
-          </li>
-      </ul>
-  </div>
   <div id="eve-del" class="modal" style="width: 480px; overflow: hidden;">
     <div class="modal-content">
         <h4>ลบกิจกรรม</h4>

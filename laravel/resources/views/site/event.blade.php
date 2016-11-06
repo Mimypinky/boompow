@@ -1,28 +1,54 @@
 @extends('site.layout')
 @section('maincontent')
-
+<script src="{{URL::asset('datepicker/picker.time.js')}}"></script>
+<script src="{{URL::asset('datepicker/picker.date.js')}}"></script>
 <script type="text/javascript">
 $(document).ready(function () {
   $(".button-collapse").sideNav();
-})
-
-$(document).ready(function () {
-  $('.modal-trigger').leanModal();
-  $('#modal1').openModal();
-  $('#modal1').closeModal();
-  $('#edit').openModal();
-  $('#edit').closeModal();
 });
+$('.datepicker').pickadate({
+  selectYears: true,
+  selectMonths: true,
+  labelMonthNext: 'เดือนถัดไป',
+  labelMonthPrev: 'เดือนก่อนหน้า',
+  labelMonthSelect: 'เลือกเดือน',
+  labelYearSelect: 'เลือกปี',
+  monthsFull: [ 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม' ],
+  monthsShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+  weekdaysFull: [ 'วันอาทิตย์', 'วันจันทร์', 'วันอังคาร', 'วันพุธ', 'วันพฤหัสบดี', 'วันศุกร์', 'วันเสาร์' ],
+  weekdaysShort: [ 'อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.' ],
+  weekdaysLetter: [ 'อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.' ],
+  today: 'วันนี้',
+  clear: 'ล้าง',
+  close: 'ปิด',
+  format: 'dddd dd mmmm yyyy',
+  formatSubmit: 'yyyy-mm-dd',
+  hiddenName: true,
+  min: new Date().now,
+  max: [2000,06,06],
+  selectYears: 65,
+});
+$('.timepicker').pickatime({
+  min: [7,30],
+  max: [14,0]
+});
+// $(document).ready(function () {
+//   $('.modal-trigger').leanModal();
+//   $('#modal1').openModal();
+//   $('#modal1').closeModal();
+//   $('#edit').openModal();
+//   $('#edit').closeModal();
+// });
 <?php
 use Carbon\Carbon;
 ?>
 
-// Creates a dropdown of 15 years to control year
-});
+
 
 
 </script>
 <script type="text/javascript">
+ 
   function eventuser() {
     var intro = introJs();
     intro.setOptions({
@@ -30,51 +56,51 @@ use Carbon\Carbon;
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#event1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถดู <b>กิจกรรมทั้งหมด</b> ได้ที่ส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#status_avai',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะบอก <b>สถานะกิจกรรม</b> ที่กำลังจัดอยู่",
             position: 'bottom'
         },
         {
             element: '#descrip',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ดูรายละเอียด</b> ของกิจกรรมได้ในส่วนนี้.",
             position: 'bottom'
         },
         {
             element: '#attend',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถคลิกที่ <b>เข้าร่วม</b> บนกิจกรรมที่คุณสนใจที่มีสถานะ <b>กำลังรับสมัคร</b>",
             position: 'bottom'
         },
         {
             element: '#event2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถดู <b>กิจกรรมที่คุณเข้าร่วม</b> ได้ที่ส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#cancelE',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ยกเลิกการเข้าร่วม</b> กิจกรรมของคุณที่นี้.",
             position: 'bottom'
         },
         {
             element: '#Eboard',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเข้า <b>กระดานกิจกรรม</b> เพื่อพูดคุยกับเพื่อนๆเกี่ยวกับกิจกรรมได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#event3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถดู <b>กิจกรรมของฉัน</b> ได้ที่ส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#addE',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้คุณสามารถ <b>เพิ่มกิจกรรม</b> ที่คุณเป็นเจ้าของเองได้",
             position: 'bottom'
         },
         ]
@@ -128,7 +154,80 @@ use Carbon\Carbon;
         }
     });
   intro.start()
+
 }
+if((RegExp('eventstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "eventuser()", 1500);
+}
+function eventmng() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เข้าใจแล้ว",
+        steps: [
+        {
+            element: '#mng1',
+            intro: "คุณสามารถ <b>แก้ไขกิจกรรม</b> ของคุณได้ที่นี้",
+            position: 'bottom'
+        },
+        {
+            element: '#mng2',
+            intro: "คุณสามารถ <b>ลบกิจกรรม</b> ที่คุณเป็นเจ้าของได้ที่นี้",
+            position: 'bottom'
+        },
+       
+        ]
+    });
+
+
+    intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#mng1').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
+        }
+        if($(targetElement).attr("id") == $('#mng2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
+        }
+        
+        
+    });
+    intro.start()
+}
+if((RegExp('eventmngstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "eventmng()", 1500);
+}
+
+function eventboard() {
+   var intro = introJs();
+   intro.setOptions({
+    showStepNumbers: false,
+    doneLabel: "เข้าใจแล้ว",
+    steps: [
+    {
+        element: '#Eboard',
+        intro: "คุณสามารถเข้า <b>กระดานกิจกรรม</b> เพื่อพูดคุยกับเพื่อนๆเกี่ยวกับกิจกรรมได้ที่นี้",
+        position: 'bottom'
+    },
+
+
+    ]
+   });
+   intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#Eboard').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
+        }
+    });
+
+   intro.start()
+}
+if((RegExp('eventboardstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "eventboard()", 1500);
+   }
 </script>
 
 
@@ -248,7 +347,7 @@ use Carbon\Carbon;
                       </ul>
                   </div>
                   @elseif(in_array($data->id,$joined) AND ($data->creator==$user))
-                  <div class="card-action">
+                  <div  class="card-action">
                       <ul class="event-menu ">
                         <li class="event-item"><a href="{{url('event/board/'.$data->id)}}"><i class="fa fa-star left" aria-hidden="true"></i>กิจกรรมของคุณ</a></li>
                       </ul>
@@ -257,7 +356,7 @@ use Carbon\Carbon;
                   @else
                   <div class="card-action " style="{{$display}}">
                       <ul class="event-menu">
-                          <li id="attend" class="event-item"><a href="#join{{$key}}" class="modal-trigger">
+                          <li class="event-item"><a href="#join{{$key}}" class="modal-trigger">
                               <i class="fa fa-plus-square-o left" aria-hidden="true"></i>เข้าร่วม</a></li>
                       </ul>
                   </div>
@@ -283,11 +382,7 @@ use Carbon\Carbon;
                       <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ไม่ ขอคิดดูก่อน</a>
                       <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ฉันต้องการเข้าร่วม</a>
                   </div>
-                  <!--<a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                  <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect waves-light btn blue darken-4" style="margin-right: 5px;">ใช่</a>
-
-
-              -->  </div>
+               </div>
               </div>
               <div class="col s6" style="margin-left: 10px;">
                 <div id="descrip" class="row" class="col s12" id="event_detail">
@@ -535,14 +630,19 @@ use Carbon\Carbon;
                              <div class="col s3 etime-col-res">
                                  <p><i class="material-icons prefix etime-icon">today</i>&nbsp&nbspวันที่จัดกิจกรรม</p>
                              </div>
-                             <div class="input-field col s3 etime-col">
-                                <input id="date" type="date" name="start_date" class="datepicker" required>
+                             <div class=" col s3 etime-col">
+                               <p>
+
+                                 <input type="date" class="datepicker" name="dob" >
+                                 <!--<input type="date" name="dob" value="1941-08-07">-->
+                             </p>
+                                <input  type="date" class="datepicker" name="start_date"  required>
                             </div>
                             <div class="col s1" style="width: 6%;">
                                  <p>ถึง</p>
                              </div>
                              <div class="input-field col s3 etime-col">
-                                 <input id="date" type="date" name="finish_date" class="datepicker" required>
+                                 <input type="date"  class="datepicker" name="finish_date"  required>
                              </div>
                          </div>
 
@@ -577,7 +677,9 @@ use Carbon\Carbon;
                                    // read the image file as a data URL.
                                    reader.readAsDataURL(this.files[0]);
                                };
+
                                </script>
+
                              </div>
                            </div>
                          </div>
@@ -655,9 +757,9 @@ use Carbon\Carbon;
 
                         <div class="card-action">
                             <ul class="event-menu">
-                                <li class="event-item"><a href="#edit{{$key}}" class="modal-trigger"><i class="fa fa-pencil-square-o left" aria-hidden="true"></i>แก้ไข</a>
+                                <li id="mng1" class="event-item"><a href="#edit{{$key}}" class="modal-trigger"><i class="fa fa-pencil-square-o left" aria-hidden="true"></i>แก้ไข</a>
                                 </li>
-                                <li class="event-item"><a href="#eve-del{{$key}}" class="modal-trigger">
+                                <li id="mng2" class="event-item"><a href="#eve-del{{$key}}" class="modal-trigger">
                                     <i class="fa fa-minus-square-o left" aria-hidden="true"></i>ลบกิจกรรม</a>
                                 </li>
                                 <li class="event-item"><a href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>
@@ -789,6 +891,7 @@ use Carbon\Carbon;
                                         </div>
 
                                         <div class="input-field col s3 etime-colm">
+
                                             <input id="date" type="date" class="datepicker" name="start_date" value="{{$mine->start_date}}">
                                         </div>
 

@@ -17,36 +17,30 @@
         },
         {
             element: '#chat2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะแสดง <b>รายชื่อเพื่อนของคุณ</b> ทั้งหมด",
             position: 'bottom'
         },
         {
             element: '#friendList',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "<b>รายชื่อเพื่อนทั้งหมด</b> ที่คุณมี",
             position: 'right'
         },
         {
             element: '#chat4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะแสดง <b>แจ้งเตือนข้อความใหม่</b> ที่เพื่อนส่งมาให้คุณ",
             position: 'bottom'
         },
         {
             element: '#recentMessage',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "รายชื่อเพื่อนที่ส่ง <b>ข้อความใหม่</b> มาหาคุณ",
             position: 'right'
         },
         {
             element: '#chat5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ส่งข้อความ</b> หาเพื่อนคุณได้ที่นี้",
             position: 'top'
         },
-        {
-            element: '#sendmsg',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'left'
-        },
-
-
+        
         ]
     });
 
@@ -61,6 +55,11 @@
     });
   intro.start()
 }
+
+if((RegExp('msgstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "message()", 1500);
+   }
 </script>
 <meta charset="utf-8">
 <div class="container chat-container" style="width: 90%;"> <!--Chat is extending from css/chat.css-->
@@ -107,11 +106,11 @@
            <ul class="list" style="margin-top: 1px">
 
                <li class="clearfix">
-                 <img class="circle" src="img/mim_tn.jpg"/>
+                 <!--<img class="circle" src="img/mim_tn.jpg"/>
                  <div class="about">
                    <div class="name">สุนิสา ปานหิบ (4)</div>
 
-                 </div>
+                 </div>-->
                </li>
 
            </ul>
@@ -219,6 +218,7 @@
         }
 
            function addToChatBox(text) {
+<<<<<<< HEAD
 
                var li ='';
                var msg = text.sender;
@@ -253,6 +253,48 @@
             }
               ul.append(li);
 
+=======
+             var li ='';
+             var msg = text.sender;
+<<<<<<< HEAD
+=======
+             var timeLocale = moment.locale('th');
+             var timeOfMessage = moment(text.time).fromNow();
+             var dateOfMessage = moment(text.time).calendar();
+
+             $(document).ready(function(){
+               $('.tooltipped').tooltip({delay: 50});
+             });
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
+
+             if(msg==($('#username1').val())){
+               li = '<li class="clearfix"><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
+<<<<<<< HEAD
+                   '<span class="message-data-time">'+text.time+'</span>'+
+                 '</div>'+
+                 '<div class="message my-message" style="float: left">'+
+=======
+                   '<span class="message-data-time">'+timeOfMessage+'</span>'+
+                 '</div>'+
+                 '<div style="float:left"class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
+>>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+                   '<p>'+text.message+'</p>'+
+                 '</div>'+
+               '</li>' ;
+
+          }else{
+            li = '<li class="clearfix">'+
+              '<div class="message-data align-right">'+
+                '<span class="message-data-time" >'+timeOfMessage+'</span> &nbsp; &nbsp;'+
+                '<span class="message-data-name" >'+text.sender+'</span>'+
+
+              '</div>'+
+              '<div class="message other-message float-right tooltipped" data-position="left" data-delay="50" data-tooltip="'+dateOfMessage+'">'+
+                '<p>'+text.message+'</p>'+
+              '</div>'+
+            '</li>' ;
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
           }
 
       });

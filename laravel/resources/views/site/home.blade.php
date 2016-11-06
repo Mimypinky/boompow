@@ -19,29 +19,69 @@ function content() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "อ่านเพิ่มเติม",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#content1',
-            intro: "ในส่วนนี้คุณสามารถกดเพื่อดูหน้าต่อไปของเนื้อหาได้",
+            intro: "ในส่วนนี้คุณสามารถกดเพื่อ <b>ดูหน้าต่อไป</b> ของเนื้อหาได้",
             position: 'bottom'
         },
         {
             element: '#content2',
-            intro: "ในส่วนนี้จะแสดงภาพประกอบ และเนื้อหาบางส่วน",
+            intro: "ในส่วนนี้จะ <b>แสดงภาพประกอบ</b> และ <b>เนื้อหาบางส่วน</b>",
             position: 'right'
         },
         {
             element: '#content3',
-            intro: "คุณสามารถคลิกอ่านเนื้อหาเพิ่มเติมได้ที่นี้",
+            intro: "คุณสามารถคลิก <b>อ่านเนื้อหาเพิ่มเติม</b> ได้ที่นี้",
+            position: 'right'
+        },
+
+
+        ]
+    });
+   
+    intro.start();
+}
+if((RegExp('contentstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "content()", 1500);
+}
+
+function pinfav() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เข้าใจแล้ว",
+        steps: [
+        {
+            element: '#pinfav1',
+            intro: "เลือกเนื้อหาที่คุณ <b>สนใจ</b> ในส่วนนี้ จากนั้นคลิกที่ปุ่ม <b>อ่านเนื้อหาเพิ่มเติม</b>",
+            position: 'top'
+        },
+        {
+            element: '#content2',
+            intro: "ในส่วนนี้จะ <b>แสดงภาพประกอบ</b> และ <b>เนื้อหาบางส่วน</b>",
+            position: 'right'
+        },
+        {
+            element: '#content3',
+            intro: "คุณสามารถคลิก <b>อ่านเนื้อหาเพิ่มเติม</b> ได้ที่นี้",
             position: 'right'
         },
         
       
         ]
     });
-
+   
     intro.start();
+}
+if((RegExp('pinfavstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "pinfav()", 1500);
 }
 
 
@@ -59,7 +99,7 @@ function content() {
 <div class="container" style="width: 90%;">
 
   <div class="row">
-      <div class="col s12">
+      <div id="pinfav1" class="col s12">
         <div id="content1" class="center">
           {!! (new Landish\Pagination\Materialize($content))->render() !!}
         </div>
@@ -72,9 +112,9 @@ function content() {
                     <div class="card-image">
                         <img src="{{url('img/content/'.$data->head_pic_content)}}">
                     </div>
-                    <div class="card-content" style="height: 230px;">
+                    <div class="card-content" style="max-height: 230px;">
                         <h5>{{$data->content_title}}</h5>
-                        <p class="wordwrap">{{$data->description}}</p>
+                        <div class="wordwrap" style="line-height:1.25">{!!$data->description!!}</div>
                     </div>
                     <div id="content3" class="card-action" style="background-color: #ee6e73;">
                         <center><a href="{{ url('content/'.$data->category->category_title.'/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
@@ -85,7 +125,7 @@ function content() {
 
           @endforeach
 
-      
+
 
       </div>
       <div class="col s12">

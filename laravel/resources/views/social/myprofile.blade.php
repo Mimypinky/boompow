@@ -1,5 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
+
 <script type="text/javascript">
     function myprofile() {
     var intro = introJs();
@@ -8,11 +9,11 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '.myprofile1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>แก้ไขข้อมูลส่วนตัว</b> และ <b>รูปภาพประจำตัว</b> ของคุณ",
             position: 'bottom'
         },
         {
@@ -22,33 +23,33 @@
         },
         {
             element: '#myprofile2',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'left'
+            intro: "ส่วนนี้บอก <b>จำนวนเพื่อนทั้งหมด</b> ที่คุณมี คุณสามารถคลิกที่นี้เพื่อ <b>ดูรายชื่อเพื่อนของคุณ</b>",
+            position: 'bottom'
         },
 
         {
             element: '#myprofile3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้บอก <b>จำนวนโพสต์ทั้งหมด</b> ที่คุณมีบนหน้าโปรไฟล์ของคุณ",
             position: 'bottom'
         },
         {
             element: '#myprofile4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้จะแสดง <b>จำรวนรูปภาพ</b> ที่คุณเคยโพสต์ไว้บนหน้าโปรไฟล์ของคุณ โดยคุณสามารถคลิกที่นี้เพื่อ <b>ดูรูปภาพทั้งหมด</b>",
             position: 'bottom'
         },
         {
             element: '#myprofile5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถทำการ <b>โพสต์ข้อความของคุณ</b> ลงบนโปรไฟล์ของคุณได้ที่นี้ บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!",
             position: 'bottom'
         },
         {
             element: '#myprofile6',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>อัพโหลดรูปภาพ</b> ของคุณได้ที่นี้ โชว์อะไรสวยๆให้เพื่อนคุณดูหน่อยสิ!!",
             position: 'bottom'
         },
         {
             element: '#myprofile7',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>โพสต์</b> ข้อความของคุณ",
             position: 'bottom'
         },
         ]
@@ -63,26 +64,6 @@ intro.onchange(function(targetElement) {
         }
     });
 
-
-    /*intro.start().oncomplete(function() { $('#profile-edit').hide();
-    }).onexit(function(){ $('#profile-edit').hide();
-    }).onchange(function(targetElement) {
-
-
-        // and show modal on Step 4
-        if($(targetElement).attr("id") == $('#profile-edit').attr('id')) {
-
-            $('#profile-edit').show();
-
-
-        }
-        // don't forget to hide modal on other steps
-        if($(targetElement).attr("id") != $('#profile-edit').attr('id')) {
-            $('#profile-edit').hide();
-        }
-
-
-    });*/
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
@@ -105,6 +86,10 @@ intro.onchange(function(targetElement) {
     });
     intro.start()
 }
+if((RegExp('profilestart', 'gi').test(window.location.search))){
+
+   setTimeout( "myprofile()", 1500);
+}
 
 function mypost() {
     var intro = introJs();
@@ -113,28 +98,24 @@ function mypost() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#namecomment',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้จะแสดง <b>ชื่อของเจ้าของโพสต์</b> คุณสามารถ คลิกที่ชื่อเพื่อ <b>เข้าดูหน้าโปรไฟล์ของเพื่อน</b> ได้ที่นี่",
             position: 'bottom'
         },
         {
             element: '#datecomment2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้จะแสดง <b>วัน และ เวลา</b> ที่เจ้าของโพสต์ได้ทำการโพสต์",
             position: 'bottom'
         },
         {
-            element: '#mypost3',
-            intro: "This is a <b>bold</b> tooltip.",
+            element: '#likeMe2',
+            intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
             position: 'bottom'
         },
-        {
-            element: '#mypost4',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'bottom'
-        },
+
 
         ]
     });
@@ -149,15 +130,18 @@ function mypost() {
         case "datecomment":
             $('.introjs-helperLayer').css({width:'180px'})
             break;
-        case "mypost3":
-            $('.introjs-helperLayer').css({left:'480px'})
+        case "likeMe2":
+            $('.introjs-helperLayer').css({left:'488px'})
             break;
-        case "mypost4":
-            $('.introjs-helperLayer').css({left:'606px'})
-            break;
+
+
       }
     });
     intro.start()
+}
+if((RegExp('mypoststart', 'gi').test(window.location.search))){
+
+   setTimeout( "mypost()", 1500);
 }
 
 function mngpost() {
@@ -167,16 +151,16 @@ function mngpost() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#mngpost1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>แก้ไขโพสต์</b> ของคุณ",
             position: 'bottom'
         },
         {
             element: '#mngpost2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>ลบโพสต์</b> ของคุณ",
             position: 'bottom'
         },
         ]
@@ -196,6 +180,10 @@ function mngpost() {
     });
     intro.start()
 }
+if((RegExp('mngpoststart', 'gi').test(window.location.search))){
+
+   setTimeout( "mngpost()", 1500);
+}
 
 function comment() {
     var intro = introJs();
@@ -204,20 +192,23 @@ function comment() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#comment1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>แสดงความคิดเห็น</b> บนโพสต์ได้ที่นี้",
             position: 'bottom'
         },
 
         ]
     });
 
-
     intro.start()
   }
+  if((RegExp('commentstart', 'gi').test(window.location.search))){
+
+   setTimeout( "comment()", 1500);
+}
 </script>
 <div class="container" style="width: 90%;">
     <div class="row">
@@ -327,11 +318,11 @@ function comment() {
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
 
-                                      @if($user->id==$post->user_id)
+                                       @if($user->id==$post->user_id)
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/uploads/avatars/{{$info->avatar}}" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge me badge">ฉัน</span>
-                                              <!-- notice the "circle" class -->
+
                                         </div>
                                         <div class="input-field col s9 upsta-line">
 
@@ -339,7 +330,7 @@ function comment() {
                                         <div class="input-field col s3" style="padding-left: 35px;">
                                              <img src="img/uploads/avatars/{{$post->avatar}}" alt="" class="postbox-pic media-object img-circle imgthumb">
                                              <span class="posbadge me badge f">{{$post->first_name}}</span>
-                                              <!-- notice the "circle" class -->
+
                                         </div>
                                         <div class="input-field col s9 upsta-line-f">
 
@@ -385,6 +376,7 @@ function comment() {
                                                         </li>
                                                     </ul>
                                                 </div>
+
                                                 <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
                                                   <div class="modal-content" >
 
@@ -398,8 +390,37 @@ function comment() {
                                                 <p id="datecomment2" class="time-of-post">{{$post->created_at}}
                                                 </p>
                                             </div>
+
+
                                             <div class="status-post2 col s12">
                                                 <p>{{$post->post_message}}</p>
+                                                <br>
+                                                @if($post->content_id!=null)
+                                                <?php $content = DB::table('contents')->join('category','category.id','=','contents.cate_id')->select('category.id as cgid','category.category_title','contents.*')->where('contents.id','=',$post->content_id)->first();?>
+
+                                                  <div class="row ">
+                                                  <div class="col s9 offset-s2 ">
+
+                                                     <div class="card">
+                                                       <div class="card-image">
+                                                         <img src="{{url('img/content/'.$content->head_pic_content)}}" style="max-height:300px"/>
+                                                       </div>
+                                                       <div class="card-stacked">
+                                                         <div class="card-content">
+                                                          <h2>{{$content->content_title}}</h2>
+                                                         </div>
+                                                         <div class="card-action">
+                                                          <a href="{{url('/content/'.$content->category_title.'/'.$content->id)}}">อ่านเนื้อหา</a>
+                                                        </div>
+                                                       </div>
+                                                     </div>
+                                                   </div>
+                                                 </div>
+
+
+                                                @endif
+
+
 
                                                 @if($post->image!=null)
                                                 <div class="card-image">
@@ -407,6 +428,7 @@ function comment() {
                                                 </div>
                                                 @endif
                                             </div>
+
                                             <div class="card-action" style="border: none;">
                                               <?php $count_likes = DB::table('likes')->where('post_id','=',$post->id)->count();
                                                   $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
@@ -421,40 +443,90 @@ function comment() {
                                                       @if($liked == null)
                                                       <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+<<<<<<< HEAD
                                                       </button>
+=======
+
+                                                      </button>
+
+                                                    <!-- @if($liked!=null)
+                                                        <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
+                                                          <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                          </button>
+                                                        </a>
+                                                        @else
+
+                                                        <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
+                                                          <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                            <img id="likeMe2" id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                          </button>
+
+                                                        </a>
+                                                        @endif
+
+                                                      </button> -->
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                       @else
                                                       <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                       </button>
                                                       @endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                     </div>
-                                                    <div class="col s2"></div>
+
                                                     <div class="col s2">
                                                         <div class="likecount">
+<<<<<<< HEAD
                                                             <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;" id="show_total">{{$count_likes}}</a>
+=======
+
+                                                            <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;" id="show_total">{{$count_likes}}</a>
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                         </div>
                                                     </div>
-                                                    @foreach($likes as $key => $like)
+
                                                     <div id="wholike{{$key}}" class="modal" style="width: 500px;">
                                                         <ul class="collection with-header f-modal">
                                                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
                                                             <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                                                            @foreach($likes as $like)
                                                             <li class="collection-item avatar transper">
                                                                 <img src="{{url('img/uploads/avatars/'.$like->avatar)}}" alt="" class="circle">
                                                                 <p>{{$like->first_name.' '.$like->last_name}}</p>
                                                                 <a href="{{url('/friend/'.$like->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                                                             </li>
-
+                                                              @endforeach
                                                         </ul>
                                                     </div>
-                                                    @endforeach
+
                                                     <div class="col s2">
                                                         <div class="wholike" id="wholiked">
 
                                                           @foreach($likes as $like)
+<<<<<<< HEAD
                                                           <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                             <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                           </a>
+=======
+
+
+                                                          @if($like->liked_by!=$user->id)
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                            </a>
+                                                          @else
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/profile')}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                            </a>
+                                                          @endif
+
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                           @endforeach
 
 
@@ -464,7 +536,7 @@ function comment() {
 
 
                                                <div class="divider"></div>
-                                               <div>
+
                                                    <div class="row">
 
                                                    <form>
@@ -479,7 +551,15 @@ function comment() {
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
+<<<<<<< HEAD
                                                              <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง" >
+=======
+
+                                                             <input  id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+
+
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
 
                                                         </div>
 
@@ -510,33 +590,91 @@ function comment() {
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+<<<<<<< HEAD
                                                                         <p class="time-of-comment" id="datecomment">{{$comment->created_at}}</p>
+=======
+                                                                        @if($comment->user_id == $uid )
+                                                                      <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                                        <i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                                        @endif
+                                                                        <p id="datecomment">{{$comment->created_at}}</p>
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
                                                                     </li>
 
                                                                 </ul>
 
-                                                              </div>
+
+
+                                                                </div>
+                                                         <div id="deletecom{{$key}}" class="modal " style="width: 500px;">
+                                                            <div class="modal-content" >
+                                                          <p>คุณต้องการจะลบความคิดเห็นนี้ใช่หรือไม่</p>
+                                                          </div>
+                                                            <div class="modal-footer">
+                                                              <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                  <a href="{{url('/comment/delete/'.$comment->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                              </div>
+                                          </div>
+
+                                                                <script type="text/javascript">
+                                                                    $('.btn-comment').click(function(){
+                                                                      var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+"{{$post->id}}",
+                                                                      type : "POST",
+                                                                      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+                                                                      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                                                                    })
+                                                                      .done(function(html) {
+                                                                        console.log('{{$post->id}}');
+                                                                        $(this).parent().parent().parent().find('#commentboxs').append(html);
+                                                                      })
+                                                                      .fail(function(){
+                                                                        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                                                                      })
+                                                                    });
+                                                                </script>
+
+
+
+
+
+
+
+
+
+
                                                                 @endforeach
 
 
                                                             </li>
                                                         </ul>
                                                    </div>
-                                               </div>
+
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                          </div>
                       </div>
                         <div class="section"></div>
                           @endforeach
                       </div>
                     </div>
+<<<<<<< HEAD
                     </div>
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                     </div>
                 </div>
                 @endif
@@ -594,7 +732,9 @@ function comment() {
 
                             <li>
 
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
+
+                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
+
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -605,6 +745,7 @@ function comment() {
                                               <div class="file-field input-field">
 
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
+
 
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
@@ -672,8 +813,7 @@ function comment() {
 
             </div>
         </div>
-    </div>
-</div>
+
 <script type="text/javascript">
 
 $(".time-of-post").html(function(index, value) {

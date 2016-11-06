@@ -1,28 +1,24 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
 <title>Boompow Adminpanel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="application/x-javascript">
-		addEventListener("load", function()
-		{ setTimeout(hideURLbar, 0);
+		addEventListener("load", function(){
+			setTimeout(hideURLbar, 0);
 		}, false);
-		function hideURLbar()
-		{ window.scrollTo(0,1);
+		function hideURLbar(){
+			window.scrollTo(0,1);
 		}
 		</script>
 <!-- Bootstrap Core CSS -->
-<link href="{{URL::asset('admin/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{URL::asset('admin/css/bootstrap.css')}}" rel="stylesheet" type="text/css" />
 <!-- Custom CSS -->
-<link href="{{URL::asset('admin/css/style.css')}}" rel='stylesheet' type='text/css' />
-<link href="{{URL::asset('admin/css/mycss.css')}}" rel='stylesheet' type='text/css' />
+
+<link href="{{URL::asset('admin/css/style.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{URL::asset('admin/css/mycss.css')}}" rel="stylesheet" type="text/css" />
 <!-- font CSS -->
 
 <!-- font-awesome icons -->
@@ -30,19 +26,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //font-awesome icons -->
  <!-- js-->
 <script src="{{URL::asset('admin/js/jquery-1.11.1.min.js')}}"></script>
+
 <script src="{{URL::asset('admin/js/modernizr.custom.js')}}"></script>
+<script src="{{URL::asset('admin/js/bootstrap.js')}}"></script>
 <!--webfonts-->
 
 <!--//webfonts-->
 <!--animate-->
 <link href="{{URL::asset('admin/css/animate.css')}}" rel="stylesheet" type="text/css" media="all">
 <script src="{{URL::asset('admin/js/wow.min.js')}}"></script>
-	<script>
-		 new WOW().init();
-	</script>
+
 <!--//end-animate-->
 <!-- chart -->
-<script src="js/Chart.js"></script>
+<script src="{{URL::asset('admin/js/Chart.js')}}"></script>
 <!-- //chart -->
 <!--Calender-->
 <link rel="stylesheet" href="{{URL::asset('admin/css/clndr.css')}}" type="text/css" />
@@ -65,20 +61,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="position: fixed;">
 					<ul class="nav" id="side-menu">
 						<li>
-							<a href="index.html" class="active"><i class="fa fa-tachometer nav_icon"></i>
+							<a href="{{url('/administator')}}" ><i class="fa fa-tachometer nav_icon"></i>
 							<p style="margin-left: -9px;">Dashboard</p></a>
 						</li>
 						<li>
-							<a href="user.html"><i class="fa fa fa-user nav_icon" style="margin-left: 5px;"></i>
-							<p style="margin-left: 6px;">Users <span class="nav-badge">12</span></p></a>
+							<a href="{{url('/administator/content')}}"><i class="fa fa fa-book nav_icon" style="margin-left: 5px;"></i>
+							<p style="">Contents</p></a>
+						</li>
+
+						<li>
+							<a href="{{url('/administator/user')}}"><i class="fa fa fa-user nav_icon" style="margin-left: 5px;"></i>
+							<p style="margin-left: 6px;">Users </p></a>
 						</li>
 						<li>
-							<a href="post.html"><i class="fa fa fa-book nav_icon" style="margin-left: 5px;"></i>
-							<p style="margin-left: 10px;">Post</p></a>
-						</li>
-						<li>
-							<a href="report.html"><i class="fa fa fa-bug nav_icon"></i>
-							<p style="margin-left: 2px;">Report <span class="nav-badge">12</span></p></a>
+							<a href="{{url('/administator/event')}}"><i class="fa fa fa-flag nav_icon" style="margin-left: 5px;"></i>
+							<p style="margin-left: 6px;">Events </p></a>
 						</li>
 
 					</ul>
@@ -95,8 +92,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!--toggle button end-->
 				<!--logo -->
 				<div class="logo">
-					<a href="index.html">
-						<img src="images/logo_boom2.png" style="width: 169px; margin-left: -5%; margin-top: 2px;">
+					<a href="{{url('/')}}">
+						<img src="{{url('img/logo_boom2_admin.png')}}" style="width: 189px;  ">
 
 
 					</a>
@@ -133,13 +130,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="clearfix"></div>
 							</a>
 							<ul class="dropdown-menu drp-mnu">
-								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-								<li> <a href="{{url('/admin/register')}}"><i class="fa fa-plus"></i> Add new admin</a> </li>
+
 								<li> <a href="{{url('/logout')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>
 					</ul>
 				</div>
+
 				<div class="clearfix"> </div>
 			</div>
 			<div class="clearfix"> </div>
@@ -153,31 +150,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <!--//footer-->
   </div>
   <!-- Classie -->
-  <script src="js/classie.js"></script>
+
   <script>
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-      showLeftPush = document.getElementById( 'showLeftPush' ),
-      body = document.body;
-
-    showLeftPush.onclick = function() {
-      classie.toggle( this, 'active' );
-      classie.toggle( body, 'cbp-spmenu-push-toright' );
-      classie.toggle( menuLeft, 'cbp-spmenu-open' );
-      disableOther( 'showLeftPush' );
-    };
-
-
-    function disableOther( button ) {
-      if( button !== 'showLeftPush' ) {
-        classie.toggle( showLeftPush, 'disabled' );
-      }
-    }
+  //
   </script>
   <!--scrolling js-->
-  <script src="js/jquery.nicescroll.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="{{URL::asset('admin/js/jquery.nicescroll.js')}}"></script>
+  <script src="{{URL::asset('admin/js/scripts.js')}}"></script>
+
   <!--//scrolling js-->
   <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.js"> </script>
+
+
   </body>
   </html>

@@ -111,15 +111,15 @@ class ProfileController extends Controller
 
       }
 
+
       $fof = DB::table('accounts')->join('profiles','profiles.id','=','accounts.profile_id')
-      ->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar')
+      ->select('accounts.id as id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar')
       ->get();
 
-      // dd($f_all);
       $p_all = array();
       $posts = Post::join('accounts','posts.user_id','=','accounts.id')
       ->join('profiles','accounts.profile_id','=','profiles.id')
-      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*')
+      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*','accounts.username')
       ->orderBy('created_at', 'desc')
       ->get();
 

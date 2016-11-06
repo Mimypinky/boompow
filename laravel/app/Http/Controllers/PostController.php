@@ -76,6 +76,13 @@ class PostController extends Controller
       </div>';
 
     }
+    public function deleteComment($cid)
+    {
+
+      $comment = Comment::find($cid);
+      $comment->delete();
+      return back();
+    }
     public function postFriendStatus(Request $req,$fid)
     {
       $post= new Post();
@@ -101,6 +108,7 @@ class PostController extends Controller
       $like->liked_by = $user;
       $like->post_id = $pid;
       $like->save();
+<<<<<<< HEAD
 
       $likeFrom = DB::table('likes')->join('posts','likes.post_id', '=' , 'posts.id')
       ->join('accounts','posts.user_id', '=' ,'accounts.id')
@@ -117,6 +125,8 @@ class PostController extends Controller
       $likeNoti->description = $likeTo->first_name.' กดไลค์สถานะของคุณ';
       $likeNoti->save();
 
+=======
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
       $count = DB::table('likes')->select('id')->where('post_id',$pid)->count();
       $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')->where('post_id',$pid)
       ->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')
@@ -177,13 +187,16 @@ class PostController extends Controller
     }
     public function commentsPostEvent(Request $req,$pid){
 
-      $uid =Auth::user()->id;
+
+      $uid = Auth::user()->id;
       $comment= new EventPostComm();
-      $comment->user_id =$uid;
-      $comment->message =$req['comment_message'];
+
+      $comment->user_id = $uid;
+      $comment->message = $req['comment_message'];
       $comment->event_post_id = $pid;
       $comment->save();
-      return redirect()->back();
+  return back();
+
 
       // $uid = Auth::user()->id;
       // $comment= new EventPostComm();
@@ -207,6 +220,20 @@ class PostController extends Controller
       // </div>';
 
     }
+    public function deletePostEvent($eid,$pid)
+    {
+      dd($pid);
+      $post = EventPost::find($pid);
+      $post->delete();
+      return back();
+    }
+    public function deleteComEvent($eid,$cid)
+    {
+      dd($cid);
+      $comment = EventPostComm::find($pid);
+      $comment->delete();
+      return back();
+    }
     public function likePostEvent($eid,$pid)
     {
       $like = new EventLike();
@@ -220,6 +247,34 @@ class PostController extends Controller
       $liked = EventLike::find($lid);
       $liked->delete();
       return back();
+
+    }
+    public function pinPost(Request $req,$cid)
+    {
+
+      $post = new Post();
+      $uid= Auth::user()->id;
+      $post->user_id = $uid;
+      $post->post_message = $req->message;
+      $post->content_id= $cid;
+      $post->section = 'contents';
+      $post->on_id=$uid;
+      $post->save();
+      return redirect('/profile');
+    }
+    public function showPost($id)
+    {
+
+
+      $title='Boompow';
+      $posts = Post::join('accounts','posts.user_id','=','accounts.id')
+      ->join('profiles','accounts.profile_id','=','profiles.id')
+      ->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','posts.*','accounts.username')
+      ->where('posts.id','=',$id)
+      ->first();
+
+      // dd($posts);
+      return view('social.post',compact('posts','title'));
 
     }
 

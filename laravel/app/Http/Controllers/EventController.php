@@ -29,7 +29,7 @@ class EventController extends Controller
         $user =Auth::user()->id;
         $title = 'กิจกรรม';
         $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
-            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('start_date', 'desc')
             ->paginate(7);
 
         $myEvent = Event::join('accounts', 'events.creator', '=', 'accounts.id')
@@ -77,15 +77,6 @@ class EventController extends Controller
         }
 
 
-        $party = Event::join('accounts','events.id','=','accounts.id')
-        ->join('join_event','events.id','=','join_event.eve_id')
-        ->select('accounts.first_name as fname','accounts.last_name as lname','events.id')->orderBy('create_at', 'desc')
-        ->get();
-        $eieiei = $party->toArray();
-        $attend = array();
-        foreach($eieiei as $key =>$value){
-          array_push($attend,$value['id']);
-        }
 
         return view('site.event',compact('title','event','myEvent','joinEvent','joined','user','ii','mem'));
 

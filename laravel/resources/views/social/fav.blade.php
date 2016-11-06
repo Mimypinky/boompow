@@ -25,32 +25,32 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#fav1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้คือบทความที่คุณได้ทำการบันทึกไว้เป็น <b>รายการโปรด</b>",
             position: 'right'
         },
         {
             element: '#fav2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>คัดลอกลิ้งค์</b> ของบทความนี้เพื่อส่งต่อให้เพื่อนของคุณภายนอกเว็บไซต์ได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#fav3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ปักหมุด</b> เนื้อหานี้ไว้บนหน้าโปรไฟล์ของคุณได้ที่นี้ เพื่อนของคุณก็จะสามารถเห็นในสิ่งที่คุณปักหมุดไว้เช่นกัน",
             position: 'bottom'
         },
         {
             element: '#fav4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ลบรายการนี้</b> ออกจากรายการโปรดของคุณ",
             position: 'bottom'
         },
         {
             element: '#fav5',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'bottom'
+            intro: "คลิกที่นี้เพื่อ <b>อ่านเนื้อหาเพิ่มเติม</b>",
+            position: 'right'
         },
         ]
     });
@@ -66,6 +66,11 @@
     });*/
     intro.start()
   }
+
+  if((RegExp('favoritestart', 'gi').test(window.location.search))){
+
+   setTimeout( "favorite()", 1500);
+}
 </script>
 
 <div class="container" style="width: 90%; margin-top: 132px;min-height: 600px;">
@@ -89,7 +94,7 @@
                                 </div>
                                 <div class="card-content" style="height:200px;background-color:eecc6;">
                                     <h5 >{{$data->content_title}}</h5>
-                                    <div><p class="wordwrap">{{$data->description}}</p></div>
+                                    <div class="wordwrap" style="line-height:1.25"><p >{!!$data->description!!}</p></div>
                                 </div>
 
                                 <div class="card-action fav-icon-sec">
@@ -100,8 +105,10 @@
                                         </a>
                                     </div>
                                     <div id="fav3" class="col s4 pin-col">
-                                        <a class="link-icon-color tooltipped" data-position="bottom" data-delay="50" data-tooltip="ปักหมุด" href="#"><i style="margin-top: 13px;" class="pin-icon fa fa-thumb-tack fa-lg" aria-hidden="true"></i>
+                                        <a href="#pinstatus{{$key}}" class="link-icon-color tooltipped modal-trigger" data-position="bottom" data-delay="50" data-tooltip="ปักหมุด" href="#"><i style="margin-top: 13px;" class="pin-icon fa fa-thumb-tack fa-lg" aria-hidden="true"></i>
                                         </a>
+
+
                                     </div>
 
                                     <div class="col s4" id="fav4">
@@ -112,15 +119,14 @@
 
                                 </div>
 
-                                <div id="fav5" class="card-action" style="background-color: #ee6e73;">
-                                        <center><a href="{{ url('content/favourite/'.$data->id) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
+
 
                                 <div id="fav5"  class="card-action" style="background-color: #ee6e73;">
 
                                         <center><a href="{{ url('content/'.$data->category_title.'/'.$data->cid) }}" style="color: white;">อ่านเนื้อหาเพิ่มเติม</a></center>
 
 
-                                </div>
+
                             </div>
                         </div>
                         <div id="del-fav{{$key}}" class="modal" style="width: 480px; overflow: hidden;">
@@ -163,8 +169,51 @@
 
               </div>
             </div>
-                    @endforeach
+            </div>
+
+            <div id="pinstatus{{$key}}" class="modal modal-fixed-footer">
+            <div class="modal-content" style="padding:50px ">
+            <div class="row">
+                <span style="font-size:2.5em"class="card-title">ปักหมุดบทความ</span><br>
+                <span><i>บทความที่ได้ปักหมุดจะถูกโพสต์บทหน้าไทม์ไลน์ของคุณ</i></span>
+              <div class="col s12">
+                <form action="{{url('/pin/'.$data->cid)}}" method="post">
+                <div class="row">
+                   <div class="input-field col s12">
+                     <textarea id="textarea1" class="materialize-textarea" name="message"placeholder="กล่าวบางอย่างเกี่ยวกับบทความนี้"></textarea>
+                     {{ csrf_field() }}
+                   </div>
+                 </div>
+              </div>
+              <div class="row ">
+              <div class="col s8 offset-s2 ">
+
+                 <div class="card">
+                   <div class="card-image">
+                     <img src="{{url('img/content/'.$data->head_pic_content)}}" style="max-height:300px"/>
+                   </div>
+                   <div class="card-stacked">
+                     <div class="card-content">
+                      <h2>{{$data->content_title}}</h2>
+                     </div>
+                     <div class="card-action">
+                      <a href="{{ url('content/'.$data->category_title.'/'.$data->cid) }}">อ่านเนื้อหา</a>
                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+            </div>
+            </div>
+
+            <div class="modal-footer">
+              <a  class="modal-action modal-close waves-effect waves-red btn-flat ">ยกเลิก</a>
+              <button type="submit" name="action" class="modal-action  waves-effect waves-green btn-flat" >  <i class="material-icons right">send</i>ปัก</button>
+            </div>
+            </form>
+            </div>
+                    @endforeach
+
                 </div>
             </div>
         </li>

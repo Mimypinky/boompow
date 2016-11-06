@@ -38,7 +38,7 @@ class AuthController extends Controller
 
     public function handleAdminLogin(Request $request)
     {
-      
+      //
     }
 
     /**
@@ -67,7 +67,6 @@ class AuthController extends Controller
         $obj1->gender = $request['gender'];
         $obj1->remember_token;
         $obj1->save();
-
 
         $credentials = array(
           'username' => Input::get('username'),

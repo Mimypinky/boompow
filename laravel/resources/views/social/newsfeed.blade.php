@@ -8,63 +8,55 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#newsfeed1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะแสดง <b>ข้อมูลส่วนตัวของคุณ</b>",
             position: 'right'
         },
         {
             element: '#newsfeed2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>อัพเดตข่าวของคุณ</b> บนหน้ากระดานข่าวได้ โดยอัพเดตของคุณจะไปแสดงที่หน้า <b>โปรไฟล์ของคุณ</b> เช่นกัน",
             position: 'bottom'
         },
         {
             element: '#newsfeed3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>อัพโหลดรูปภาพ</b> ได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#newsfeed4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>โพสต์ข้อความ</b> ของคุณ",
             position: 'bottom'
         },
         {
             element: '#newsfeed5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะเป็นส่วนของโพสต์อัพเดต <b>ข่าวสารจากเพื่อนของคุณ</b> ทั้งหมด",
             position: 'right'
         },
         {
             element: '#newsfeed6',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
             position: 'right'
         },
         {
             element: '#newsfeed7',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>แสดงความคิดเห็น</b> ให้กับโพสต์ได้ในส่วนนี้",
             position: 'right'
         },
         {
             element: '#newsfeed8',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'right'
-        },
-        {
-            element: '#newsfeed9',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'right'
-        },
-        {
-            element: '#newsfeed10',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ระบบจะทำการ <b>แนะนำเพื่อนใหม่</b> ประจำวันให้กับคุณ เพื่อช่วยให้คุณมีสังคมที่กว้างขึ้น โดยคุณสามารถเลือก <b>เพิ่มเป็นเพื่อน</b> ได้ในส่วนนี้",
             position: 'left'
         },
         {
-            element: '#newsfeed11',
-            intro: "This is a <b>bold</b> tooltip.",
+            element: '#newsfeed9',
+            intro: "คุณสามารถ <b>เพิ่มเป็นเพื่อน</b> โดยคลิกที่ปุ่มนี้",
             position: 'bottom'
         },
+
+
         ]
     });
 
@@ -84,19 +76,18 @@
               $('.introjs-helperLayer').css({width:'91px'})
               break;
         case "newsfeed6":
-            $('.introjs-helperLayer').css({left:'288px'})
+            $('.introjs-helperLayer').css({left:'298px'})
             break;
-        case "newsfeed7":
-            $('.introjs-helperLayer').css({left:'411px'})
-            break;
-        case "newsfeed9":
-            $('.introjs-helperLayer').css({left:'651px'})
-            break;
+
 
       }
     });
     intro.start()
   }
+  if((RegExp('newsfeedstart', 'gi').test(window.location.search))){
+
+   setTimeout( "newsfeed()", 1500);
+}
 </script>
 <div class="container" style="width: 90%;">
     <div class="row">
@@ -123,7 +114,7 @@
                     <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square fa-3x left" aria-hidden="true"></i><h4>อัพเดตข่าวของคุณ</h4>
                     </li>
                 </ul>
-              <div class="row" style="">
+              <div class="row" >
                             <div class="col s12">
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
@@ -178,7 +169,7 @@
 
 
             <!--Start Suggest Friend Part-->
-            <div id="newsfeed10" class="col s4 suggestF-sec">
+            <div id="newsfeed8" class="col s4 suggestF-sec">
                 <div class="card pro-upstatus-feed">
                     <ul class="collection with-header f-modal">
                         <li class="collection-header transper suggest-label"><i style="line-height: 1.3;" class="fa fa-user-plus fa-2x left" aria-hidden="true"></i>
@@ -191,21 +182,24 @@
                            <ul class="collection" style="margin-top: -15px;">
 
                              @foreach($fof as $f)
-                             @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
-
                              <?php
                              $f_status = DB::table('friends')->select('status')->where([['from_user_id','=',Auth::user()->id],['to_user_id','=',$f->id]])->first();
                              ?>
+                             @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
+
+
                             <li class="collection-item avatar">
                                 <img src="{{url('img/uploads/avatars/'.$f->avatar)}}" alt="" class="circle pic-border">
                                 <h5 class="title">{{$f->first_name.' '.$f->last_name}}</h5>
-                                @if($f_status=='pending')
-                                <a href="{{ url('/dP/'.$account->username)}}"><button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button></a>
+                                @if($f_status->status =='pending')
+                                <a href="{{ url('/dP/'.$f->username)}}">
+                                  <button class="btn red waves-effect waves-light "  type="button" name="action" >ลบคำขอ</button>
+                                </a>
                                 @else
                                 <form action="{{url('/pending')}}" method='post'>
                                   {{ csrf_field() }}
                                 <input type='hidden' value='{{$f->id}}' name='aid'>
-                              <button class="btn  waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
+                              <button id="newsfeed9" class="btn  waves-effect waves-light "  type="submit" name="action" >เพิ่มเป็นเพื่อน</button>
                               </form>
                               @endif
 
@@ -252,18 +246,46 @@
                             <div class="input-field col s9 upsta-line-f">
                             @endif
                                 <div class="col s12" id="commenthead">
-                                    <span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span>
+                                    <a href="{{url('/friend/'.$post->username)}}"><span id="namecomment">{{$post->first_name.' '.$post->last_name}}</span></a>
                                     <div class="row">
                                     <div class="edit-cmt-sec">
                                       @if($post->user_id==$user->id)
                                       <a class="black-text edit-btn-2 waves-effect waves-light btn modal-trigger" href="#post-edit{{$key}}"
                                       style="background-color: #ebeef1"><i class="fa fa-pencil-square-o"></i> แก้ไข</a>
+                                      <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
+                                          <ul class="collection with-header f-modal">
+                                              <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
+                                                  <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
+                                              <li class="transper collection-item avatar">
+                                                  <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="circle">
+                                                  <span class="title title-name">{{$post->first_name.' '.$post->last_name}}</span>
+                                                  <form action="{{url('/post/'.$post->id.'/edit')}}" method="get" enctype="multipart/form-data">
+                                                      <div class="file-field input-field" style="margin-top: -5%;">
+                                                          <div class="input-field col s12">
+                                                              <textarea id="textarea1" class="materialize-textarea" name="post_message" >{{$post->post_message}}
+                                                              </textarea>
+                                                          </div>
+                                                      </div>
+                                                  <button name="action" type="submit"  class="modal-close waves-effect waves-light btn right">ตกลง</button>
+                                                  </form>
+
+                                              </li>
+                                          </ul>
+                                      </div>
                                       <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1">
                                         <i class="fa fa-trash-o"></i> ลบ</a>
 
-                                        <!-- <a href="#deletePost{{$key}}" class="modal-trigger black-text del-btn waves-effect waves-light btn" style="background-color: #ebeef1;margin-right:205px">
-                                          <i class="fa fa-trash-o"></i> ลบ</a> -->
+                                        <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
+                                          <div class="modal-content" >
+
+                                                <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                 <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                              </div>
+                                        </div>
                                           @endif
 
                                           </div>
@@ -272,6 +294,31 @@
                                 </div>
                                 <div class="status-post2 col s12">
                                     <p>{{$post->post_message}}</p>
+                                    <br>
+                                    @if($post->content_id!=null)
+                                    <?php $content = DB::table('contents')->join('category','category.id','=','contents.cate_id')->select('category.id as cgid','category.category_title','contents.*')->where('contents.id','=',$post->content_id)->first();?>
+
+                                      <div class="row ">
+                                      <div class="col s9 offset-s2 ">
+
+                                         <div class="card">
+                                           <div class="card-image">
+                                             <img src="{{url('img/content/'.$content->head_pic_content)}}" style="max-height:300px"/>
+                                           </div>
+                                           <div class="card-stacked">
+                                             <div class="card-content">
+                                              <h2>{{$content->content_title}}</h2>
+                                             </div>
+                                             <div class="card-action">
+                                              <a href="{{url('/content/'.$content->category_title.'/'.$content->id)}}">อ่านเนื้อหา</a>
+                                            </div>
+                                           </div>
+                                         </div>
+                                       </div>
+                                     </div>
+
+
+                                    @endif
                                     @if($post->image!=null)
                                     <div class="card-image">
                                         <img class="materialboxed " src="img/uploads/posts/{{$post->image}}" style="width:60%">
@@ -286,6 +333,10 @@
                                       $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
                                           ?>
                                     <div class="row wholike-sec">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                       <div class="col s2" style="margin-top: 20px;">
                                         @if($liked == null)
                                         <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
@@ -296,6 +347,10 @@
                                           <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                         </button>
                                         @endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                             </div>
 
 
@@ -309,22 +364,30 @@
                                             <ul class="collection with-header f-modal">
                                                 <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
                                                     <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
-
+                                                    @foreach($likes as $like)
                                                 <li class="collection-item avatar transper">
-                                                    <img src="" alt="" class="circle">
-                                                    <p>พิชิต จิตมั่นคง </p>
-                                                    <a href="#!" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
+                                                    <img src="{{url('img/uploads/avatars/'.$like->avatar)}}" alt="" class="circle">
+                                                    <p>{{$like->first_name.'  '.$like->last_name}}</p>
+                                                    <a href="{{url('/friend/'.$like->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                                                 </li>
-
+                                                @endforeach
                                             </ul>
                                         </div>
 
                                         <div class="col s2">
                                             <div class="wholike" id="wholiked">
                                               @foreach($likes as $like)
+<<<<<<< HEAD
                                                   <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                     <img  id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                   </a>
+=======
+
+                                                  <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                    <img  id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                  </a>
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
 
                                                   @endforeach
                                             </div>
@@ -336,15 +399,22 @@
                                           <form>
                                               <div class="input-field cmt-coll-space">
 
-                                              <div id="newsfeed8" class="input-field w-cmt">
+                                              <div id="newsfeed7" class="input-field w-cmt">
 
                                                    <div class="input-field col s12">
                                                        <textarea id="newComment" class="newComment materialize-textarea" name="comment_message"></textarea>
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
+
+
+
+
                                                    <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-                                               </div>
+                                             </div>
+
+
+
                                            </form>
                                         </div>
                                         <div class="comment-section">
@@ -363,20 +433,42 @@
                                                           <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                       </div>
                                                     @endif
-                                                      @foreach($comments as $comment)
+                                                      @foreach($comments as $key=>$comment)
                                                       <div class="collapsible-body nonborder">
                                                           <ul class="col s12 collection cmt-box">
 
                                                           <li class="transper collection-item avatar">
                                                           <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                               <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+<<<<<<< HEAD
                                                               <p class="time-of-comment" id="datecomment">{{$comment->created_at}}</p>
+=======
+                                                                @if($comment->user_id == $uid )
+                                                              <a class="tooltipped modal-trigger" id="delcom" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
+                                                                <i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                                @endif
+                                                              <p id="datecomment">{{$comment->created_at}}</p>
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                               <p class="space-cmt">{{$comment->message}}<br></p>
 
                                                           </li>
 
                                                       </ul>
                                                       </div>
+
+                                                      <div id="deletecom{{$key}}" class="modal " style="width: 500px;">
+                                                        <div class="modal-content" >
+
+                                                              <p>คุณต้องการจะลบความคิดเห็นนี้ใช่หรือไม่</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
+                                                               <a href="{{url('/comment/delete/'.$comment->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
+                                                            </div>
+                                                      </div>
+
+
+                                                        <script></script>
                                                       @endforeach
 
                                                 </li>
@@ -387,37 +479,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="deletePost{{$key}}" class="modal" style="width: 500px;">
-                      <div class="modal-content" >
 
-                            <p>คุณต้องการจะลบโพสต์นี้ใช่หรือไม่</p>
-                          </div>
-                          <div class="modal-footer">
-                            <a  class=" modal-close modal-action waves-effect waves-green btn-flat">ยกเลิก</a>
-                             <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
-                          </div>
-                    </div>
-                    <div id="post-edit{{$key}}" class="modal" style="width: 500px;">
-                        <ul class="collection with-header f-modal">
-                            <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square-o fa-lg left" aria-hidden="true"></i><h4>แก้ไขโพสต์</h4>
-                                <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
 
-                            <li class="transper collection-item avatar">
-                                <img src="{{url('img/uploads/avatars/'.$post->avatar)}}" alt="" class="circle">
-                                <span class="title title-name">{{$post->first_name.' '.$post->last_name}}</span>
-                                <form action="{{url('/post/'.$post->id.'/edit')}}" method="get" enctype="multipart/form-data">
-                                    <div class="file-field input-field" style="margin-top: -5%;">
-                                        <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea" name="post_message" >{{$post->post_message}}
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                <button name="action" type="submit"  class="modal-close waves-effect waves-light btn right">ตกลง</button>
-                                </form>
-
-                            </li>
-                        </ul>
-                    </div>
 
 
                   @endif
@@ -440,6 +503,7 @@
     <!--wholike-->
 
     <script type="text/javascript">
+<<<<<<< HEAD
     $(".time-of-post").html(function(index, value) {
       moment.locale('th');
       return moment(value).calendar();
@@ -449,11 +513,14 @@
       moment.locale('th');
       return moment(value).calendar();
     });
+=======
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
       var $self;
       $('.btn-comment').click(function(){
         $self = $(this);
         var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
         console.log(id);
+<<<<<<< HEAD
         if($self.parent().parent().find('.newComment').val() != ''){
           $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
           type : "POST",
@@ -529,7 +596,80 @@
           console.log('unlike failed : ');
         });
       }
+=======
+        var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+        type : "POST",
+        data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+        headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(html) {
+          // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+          console.log(html);
+          $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+        })
+        .fail(function(){
+          alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+        })
+      });
+
+
+
+    </script>
+
+    <script type="text/javascript">
+    $('.like-btn').click(function(){
+      $self = $(this);
+      var id = $self.parent().parent().parent().find('.idofpost').val();
+      // var checkLiked = $self.find('#likeMe');
+      if($self.attr("id") == "canLike"){
+        $.ajax({
+          type: "POST",
+          url: "{{url('/like/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}'
+          },
+          headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(data){
+          console.log(data);
+          var json = $.parseJSON(data);
+          console.log(json['count']);
+          console.log('like');
+          $self.attr("id","canUnlike");
+          $self.find('#likeMe').attr("src","{{url('img/heart-like.png')}}");
+          $self.parent().parent().find('#show_total').html(json['count']);
+          $self.parent().parent().find('#wholiked').append(json['html']);
+        })
+        .fail(function(data){
+          console.log('like failed');
+        });
+      }
+      else if($self.attr("id") == "canUnlike"){
+        $.ajax({
+          type: "POST",
+          url: "{{url('/unlike/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}',
+            post_id: id
+          },
+          headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(data){
+          console.log('unlike');
+          $self.attr("id","canLike");
+          $self.find('#likeMe').attr("src","{{url('img/heart-default-like.png')}}");
+          $self.parent().parent().find('#userLiked').remove();
+          $self.parent().parent().find('#show_total').html(data);
+
+
+        })
+        .fail(function(data){
+          console.log('unlike failed : ');
+        });
+      }
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
 
     });
     </script>
+
 @stop

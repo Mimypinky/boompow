@@ -1,5 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
+
 <div style="min-height: 900px;">
 
     <div class="parallax-container">
