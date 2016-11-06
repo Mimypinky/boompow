@@ -327,7 +327,7 @@ function message() {
             intro: "สมัครสมาชิกแล้วใช่ไหม? ถึงเวลาพบปะผู้คนใหม่ๆแล้ว! คลิกที่นี้เพื่อทำการ <b>เข้าสู่ระบบ</b>",
             position: 'left'
         },
-        
+
         ]
     });
 
@@ -371,7 +371,7 @@ function goto(page) {
               window.location.href ='content?contentstart=true';
           }
           break;
-    
+
       case 'pinfav':
           if(location =="/content" || location =="/"){
               pinfav();
@@ -379,7 +379,7 @@ function goto(page) {
               window.location.href ='content?pinfavstart=true';
           }
           break;
-  
+
       case 'myprofile':
           if(location =="/profile"){
               myprofile();
@@ -469,7 +469,7 @@ function goto(page) {
           }
           break;
 
-      case 'message':   
+      case 'message':
           if(location =="/message_box" ){
               message();
           }else{
@@ -478,7 +478,7 @@ function goto(page) {
           break;
   }
 }
-            
+
 
  </script>
 
@@ -550,11 +550,13 @@ function goto(page) {
       <li id="beginerU5">
         <a class="button-collapse2 navlink" data-activates="slide-out" >
           <i style="margin-top: 6px;" class="material-icons left">people</i>
-        <span class="mynoti noti-right">7</span><span class="rps-bar">สังคมของฉัน</span>
+        <!-- <span class="mynoti noti-right"></span> -->
+        <span class="rps-bar">สังคมของฉัน</span>
       </a>
     </li>
     <li id="beginerU6"><a class="navlink" href="{{url('/message_box')}}"><i style="margin-top: 6px;" class="material-icons left">question_answer</i>
-      <span class="mynoti">2</span><span class="rps-bar">ข้อความ</span></a></li>
+      <!-- <span class="mynoti"></span> -->
+      <span class="rps-bar">ข้อความ</span></a></li>
 
 
       @endif
@@ -918,7 +920,7 @@ function goto(page) {
                 <div class="input-field col s8 offset-s2">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="inputUsername" type="text" class="validate tooltipped" data-position="right" data-delay="50" data-tooltip="กรอกชื่อผู้ใช้" name="username" value="{{ old('username') }}" onchange="allowLogin()" onmouseleave="allowLogin()">
-                   
+
                     <label for="inputUsername">เข้าสู่ระบบ</label>
                 </div>
 

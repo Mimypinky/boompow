@@ -64,26 +64,6 @@ intro.onchange(function(targetElement) {
         }
     });
 
-
-    /*intro.start().oncomplete(function() { $('#profile-edit').hide();
-    }).onexit(function(){ $('#profile-edit').hide();
-    }).onchange(function(targetElement) {
-
-
-        // and show modal on Step 4
-        if($(targetElement).attr("id") == $('#profile-edit').attr('id')) {
-
-            $('#profile-edit').show();
-
-
-        }
-        // don't forget to hide modal on other steps
-        if($(targetElement).attr("id") != $('#profile-edit').attr('id')) {
-            $('#profile-edit').hide();
-        }
-
-
-    });*/
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
@@ -107,7 +87,7 @@ intro.onchange(function(targetElement) {
     intro.start()
 }
 if((RegExp('profilestart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "myprofile()", 1500);
 }
 
@@ -135,7 +115,7 @@ function mypost() {
             intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
             position: 'bottom'
         },
-        
+
 
         ]
     });
@@ -153,14 +133,14 @@ function mypost() {
         case "likeMe2":
             $('.introjs-helperLayer').css({left:'488px'})
             break;
-        
-        
+
+
       }
     });
     intro.start()
 }
 if((RegExp('mypoststart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "mypost()", 1500);
 }
 
@@ -201,7 +181,7 @@ function mngpost() {
     intro.start()
 }
 if((RegExp('mngpoststart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "mngpost()", 1500);
 }
 
@@ -226,7 +206,7 @@ function comment() {
     intro.start()
   }
   if((RegExp('commentstart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "comment()", 1500);
 }
 </script>
@@ -463,13 +443,10 @@ function comment() {
                                                       @if($liked == null)
                                                       <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-                                                      </button> -->
+                                                      </button>
 
-                                                    @if($liked!=null)
+                                                    <!-- @if($liked!=null)
                                                         <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
                                                           <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                             <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
@@ -484,9 +461,8 @@ function comment() {
 
                                                         </a>
                                                         @endif
-=======
->>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
-                                                      </button>
+
+                                                      </button> -->
                                                       @else
                                                       <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
@@ -502,25 +478,26 @@ function comment() {
 
                                                         </div>
                                                     </div>
-                                                    @foreach($likes as $like)
-                                                    <div id="wholike" class="modal" style="width: 500px;">
+
+                                                    <div id="wholike{{$key}}" class="modal" style="width: 500px;">
                                                         <ul class="collection with-header f-modal">
                                                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
                                                             <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                                                            @foreach($likes as $like)
                                                             <li class="collection-item avatar transper">
                                                                 <img src="{{url('img/uploads/avatars/'.$like->avatar)}}" alt="" class="circle">
                                                                 <p>{{$like->first_name.' '.$like->last_name}}</p>
                                                                 <a href="{{url('/friend/'.$like->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                                                             </li>
-
+                                                              @endforeach
                                                         </ul>
                                                     </div>
-                                                    @endforeach
+
                                                     <div class="col s2">
                                                         <div class="wholike" id="wholiked">
 
                                                           @foreach($likes as $like)
-<<<<<<< HEAD
+
 
                                                           @if($like->liked_by!=$user->id)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
@@ -532,11 +509,7 @@ function comment() {
                                                             </a>
                                                           @endif
 
-=======
-                                                          <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                            <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
-                                                          </a>
->>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
+
                                                           @endforeach
 
 

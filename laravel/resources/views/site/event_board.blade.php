@@ -55,8 +55,8 @@
             intro: "ในส่วนนี้คือ <b>เพื่อนร่วมกิจกรรม</b> ของคุณ",
             position: 'left'
         },
-        
-        
+
+
         ]
     });
 
@@ -80,7 +80,7 @@
     });
     intro.start()
   }
- 
+
 setTimeout( "eventboard2()", 1500);
 </script>
 
@@ -324,17 +324,10 @@ setTimeout( "eventboard2()", 1500);
                                     <form>
                                         <div class="input-field cmt-coll-space">
                                         <div class="input-field w-cmt">
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
                                              <div id="eveb7" class="input-field col s12">
                                                  <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
-=======
->>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
-                                             <div class="input-field col s12">
-                                                 <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
->>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
+
                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                  <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                              </div>
@@ -492,12 +485,7 @@ setTimeout( "eventboard2()", 1500);
 
 
       <!--End newsfeed section-->
-      <!--Start detail section-->
-<<<<<<< HEAD
-
-  <!--End detail section-->
-  <!--Start whojoined section-->
-=======
+      <!--Start detail section--
   <div class="col s4">
       <div id="eveb8" class="row event-detail">
           <div class="collection pro-upstatus-feed">
@@ -536,22 +524,23 @@ setTimeout( "eventboard2()", 1500);
   </div>
   <!--End detail section-->
   <!--Start whojoined section-->
-  <div class="col s4">
+  <!-- <div class="col s4">
       <div id="eveb9" class="row joined-f">
           <div class="collection pro-upstatus-feed">
               <div class="collection-item">
-                <?php $parties  =DB::table('join_event')
-                ->join('accounts','join_event.user_id','=','accounts.id')
-                ->join('profiles','accounts.profile_id','=','profiles.id')
-                ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
-                ->where('eve_id','=',$eve_name->id)->get();
-                $count_parties  =DB::table('join_event')
-                ->join('accounts','join_event.user_id','=','accounts.id')
-                ->join('profiles','accounts.profile_id','=','profiles.id')
-                ->where('eve_id','=',$eve_name->id)->count();
+                <?php
+                // $parties  =DB::table('join_event')
+                // ->join('accounts','join_event.user_id','=','accounts.id')
+                // ->join('profiles','accounts.profile_id','=','profiles.id')
+                // ->select('accounts.first_name','accounts.last_name','profiles.avatar','accounts.id','accounts.username')
+                // ->where('eve_id','=',$eve_name->id)->get();
+                // $count_parties  =DB::table('join_event')
+                // ->join('accounts','join_event.user_id','=','accounts.id')
+                // ->join('profiles','accounts.profile_id','=','profiles.id')
+                // ->where('eve_id','=',$eve_name->id)->count();
                 ?>
                   <h5><span class="joiner-f-head">เพื่อนร่วมกิจกรรม {{$count_parties}} คน</span></h5>
->>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
+
 
   <!--End whojoined section-->
 

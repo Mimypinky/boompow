@@ -55,8 +55,8 @@
             intro: "คุณสามารถ <b>เพิ่มเป็นเพื่อน</b> โดยคลิกที่ปุ่มนี้",
             position: 'bottom'
         },
-       
-        
+
+
         ]
     });
 
@@ -78,14 +78,14 @@
         case "newsfeed6":
             $('.introjs-helperLayer').css({left:'298px'})
             break;
-        
+
 
       }
     });
     intro.start()
   }
   if((RegExp('newsfeedstart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "newsfeed()", 1500);
 }
 </script>
@@ -114,7 +114,7 @@
                     <li class="collection-header transper"><i style="line-height: 1.2;" class="fa fa-pencil-square fa-3x left" aria-hidden="true"></i><h4>อัพเดตข่าวของคุณ</h4>
                     </li>
                 </ul>
-              <div class="row" style="">
+              <div class="row" >
                             <div class="col s12">
                                 <div class="card" style="box-shadow:none; background-color: transparent;">
                                     <div class="card-content black-text" >
@@ -182,12 +182,12 @@
                            <ul class="collection" style="margin-top: -15px;">
 
                              @foreach($fof as $f)
-
-                             @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
-
                              <?php
                              $f_status = DB::table('friends')->select('status')->where([['from_user_id','=',Auth::user()->id],['to_user_id','=',$f->id]])->first();
                              ?>
+                             @if(in_array($f->id,$f_all)AND !in_array($f->id,$myfriend) AND ($f->id!=Auth::user()->id))
+
+
                             <li class="collection-item avatar">
                                 <img src="{{url('img/uploads/avatars/'.$f->avatar)}}" alt="" class="circle pic-border">
                                 <h5 class="title">{{$f->first_name.' '.$f->last_name}}</h5>
@@ -371,15 +371,11 @@
                                         <div class="col s2">
                                             <div class="wholike" id="wholiked">
                                               @foreach($likes as $like)
-<<<<<<< HEAD
 
-                                                <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                  <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
-=======
                                                   <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                     <img  id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                   </a>
->>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
+
 
                                                   @endforeach
                                             </div>
@@ -398,28 +394,15 @@
                                                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                        <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                    </div>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-                                                   <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
-=======
-<<<<<<< HEAD
->>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
+
 
 
                                                    <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
                                              </div>
 
-<<<<<<< HEAD
-=======
 
-=======
-                                                   <input  id="newsfeed9" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
->>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
-                                               </div>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
->>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
+
                                            </form>
                                         </div>
                                         <div class="comment-section">

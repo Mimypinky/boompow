@@ -107,11 +107,9 @@ $fav = DB::table('favourite')->where([['user_id','=',$uid],['content_id','=',$da
               <i class="fa fa-star" aria-hidden="true"></i></a>
               @endif
 
-<<<<<<< HEAD
-            <a id="more2" href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
-=======
+
             <a href="#pinstatus"class="modal-trigger btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
->>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
+
               <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <a id="more3" href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
               <i class="fa fa-link" aria-hidden="true"></i></a>

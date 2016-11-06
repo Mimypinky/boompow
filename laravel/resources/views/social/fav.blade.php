@@ -68,7 +68,7 @@
   }
 
   if((RegExp('favoritestart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "favorite()", 1500);
 }
 </script>
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="card-content" style="height:200px;background-color:eecc6;">
                                     <h5 >{{$data->content_title}}</h5>
-                                    <div class="wordwrap"><p >{!!$data->description!!}</p></div>
+                                    <div class="wordwrap" style="line-height:1.25"><p >{!!$data->description!!}</p></div>
                                 </div>
 
                                 <div class="card-action fav-icon-sec">
