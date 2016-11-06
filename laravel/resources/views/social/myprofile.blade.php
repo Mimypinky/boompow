@@ -271,9 +271,9 @@ function comment() {
                                         <div class="input-field col s8 upsta-line">
                                           <form enctype="multipart/form-data" action="/post" method="post">
                                           <div id="myprofile5">
-                                            <textarea style="margin-left: 20px;" id="textarea1" name="post_message" class="materialize-textarea"></textarea>
+                                            <textarea style="margin-left: 20px;" id="newPost" name="post_message" class="materialize-textarea"></textarea>
 
-                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
+                                            <label style="margin-left: 20px;" for="newPost">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
                                             <div class="card-action" style="border: none;">
 
                                                     <div class="file-field input-field">
@@ -395,7 +395,7 @@ function comment() {
                                                          <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
                                                       </div>
                                                 </div>
-                                                <p id="datecomment2">{{$post->created_at}}
+                                                <p id="datecomment2" class="time-of-post">{{$post->created_at}}
                                                 </p>
                                             </div>
                                             <div class="status-post2 col s12">
@@ -412,36 +412,26 @@ function comment() {
                                                   $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')
                                                   ->where('post_id',$post->id)->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')->orderBy('created_at', 'desc')->get();
                                                   $uid = Auth::user()->id;
-                                                  $uid = Auth::user()->id;
 
                                                   $liked= DB::table('likes')->select('id')->where([['post_id','=',$post->id],['liked_by','=',$uid]])->first();
 
                                                       ?>
                                                 <div class="row wholike-sec">
                                                     <div class="col s1 like-section">
-                                                      <!-- <button class="tooltipped like-btn" href="#" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ" onclick="changeLike()">
+                                                      @if($liked == null)
+                                                      <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
-                                                      </button> -->
-
-                                                    @if($liked!=null)
-                                                        <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
-                                                          <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
-                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
-                                                          </button>
-                                                        </a>
-                                                        @else
-
-                                                        <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
-                                                          <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
-                                                          </button>
-                                                        </a>
-                                                        @endif
+                                                      </button>
+                                                      @else
+                                                      <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                        <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                      </button>
+                                                      @endif
                                                     </div>
                                                     <div class="col s2"></div>
                                                     <div class="col s2">
                                                         <div class="likecount">
-                                                            <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
+                                                            <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;" id="show_total">{{$count_likes}}</a>
                                                         </div>
                                                     </div>
                                                     @foreach($likes as $key => $like)
@@ -459,20 +449,12 @@ function comment() {
                                                     </div>
                                                     @endforeach
                                                     <div class="col s2">
-                                                        <div class="wholike">
+                                                        <div class="wholike" id="wholiked">
 
                                                           @foreach($likes as $like)
-
-                                                          @if($like->liked_by!=$user->id)
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                              <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
-                                                            </a>
-                                                          @else
-                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/profile')}}">
-                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
-                                                            </a>
-                                                          @endif
-
+                                                          <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                            <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                          </a>
                                                           @endforeach
 
 
@@ -497,7 +479,7 @@ function comment() {
                                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
-                                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
+                                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง" >
 
                                                         </div>
 
@@ -528,7 +510,7 @@ function comment() {
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
-                                                                        <p id="datecomment">{{$comment->created_at}}</p>
+                                                                        <p class="time-of-comment" id="datecomment">{{$comment->created_at}}</p>
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
                                                                     </li>
 
@@ -554,14 +536,7 @@ function comment() {
                           @endforeach
                       </div>
                     </div>
-
-
-
-
-                                        </div>
-
-
-
+                    </div>
                     </div>
                 </div>
                 @endif
@@ -605,8 +580,6 @@ function comment() {
                                </div>
                            </div>
                          </div>
-
-
 
                             @endforeach
 
@@ -702,61 +675,78 @@ function comment() {
     </div>
 </div>
 <script type="text/javascript">
+
+$(".time-of-post").html(function(index, value) {
+  moment.locale('th');
+  return moment(value).calendar();
+});
+
+$(".time-of-comment").html(function(index, value) {
+  moment.locale('th');
+  return moment(value).calendar();
+});
+
   var $self;
   $('.btn-comment').click(function(){
     $self = $(this);
     var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
     console.log(id);
-    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
-    type : "POST",
-    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-    })
-    .done(function(html) {
-      // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
-      console.log(html);
-      $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
-    })
-    .fail(function(){
-      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-    })
+    if($self.parent().parent().find('.newComment').val() != ''){
+      $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+      type : "POST",
+      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+      })
+      .done(function(html) {
+        // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+        console.log(html);
+        $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+        Materialize.toast('คุณได้แสดงความคิดเห็นแล้ว', 5000);
+        $self.parent().parent().find('.newComment').val('');
+      })
+      .fail(function(){
+        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      })
+    }
+    else {
+      Materialize.toast('คุณยังไม่กรอกความเห็น', 5000);
+    }
+
   });
+
+
+
 </script>
 
-
-
 <script type="text/javascript">
-    // function changeLike() {
-    //   if(document.getElementById('likeMe').src == "{{url('img/heart-default-like.png')}}"){
-    //     console.log('Yes');
-    //     document.getElementById('likeMe').src = "{{url('img/heart-like.png')}}";
-    //   } else if(document.getElementById('likeMe').src == "{{url('img/heart-like.png')}}") {
-    //     console.log('No');
-    //     document.getElementById('likeMe').src = "{{url('img/heart-default-like.png')}}";
-    //   }
-    // }
-    var $self;
-    function likeFunction() {
-      $self = $(this);
-      var id = $self.parent().parent().parent().parent().find('.idofpost').val();
-        $.ajax({
-          type: "POST",
-          url: "{{url('/like/')}}"+"/"+id,
-          data: {
-            liked_by: '{{Auth::user()->id}}',
-            post_id: id
-          },
-          success: function () {
-            if(document.getElementById('likeMe').src == "{{url('img/heart-default-like.png')}}"){
-              console.log('like Yes');
-              document.getElementById('likeMe').src = "{{url('img/heart-like.png')}}";
-            }
-          }
-        });
-      }
-function unlikeFunction() {
+$('.like-btn').click(function(){
   $self = $(this);
-  var id = $self.parent().parent().parent().parent().find('.idofpost').val();
+  var id = $self.parent().parent().parent().find('.idofpost').val();
+  // var checkLiked = $self.find('#likeMe');
+  if($self.attr("id") == "canLike"){
+    $.ajax({
+      type: "POST",
+      url: "{{url('/like/')}}"+"/"+id,
+      data: {
+        liked_by: '{{Auth::user()->id}}'
+      },
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+    })
+    .done(function(data){
+      console.log(data);
+      var json = $.parseJSON(data);
+      console.log(json['count']);
+      console.log('like');
+      $self.attr("id","canUnlike");
+      $self.find('#likeMe').attr("src","{{url('img/heart-like.png')}}");
+      $self.parent().parent().find('#show_total').html(json['count']);
+      $self.parent().parent().find('#wholiked').append(json['html']);
+    })
+    .fail(function(data){
+      console.log('like failed');
+    });
+  }
+  else if($self.attr("id") == "canUnlike"){
     $.ajax({
       type: "POST",
       url: "{{url('/unlike/')}}"+"/"+id,
@@ -764,35 +754,22 @@ function unlikeFunction() {
         liked_by: '{{Auth::user()->id}}',
         post_id: id
       },
-      success: function () {
-        if(document.getElementById('likeMe').src == "{{url('img/heart-like.png')}}"){
-          console.log('unlike Yes');
-          document.getElementById('likeMe').src = "{{url('img/heart-default-like.png')}}";
-        }
-      }
-    });
-}
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+    })
+    .done(function(data){
+      console.log('unlike');
+      $self.attr("id","canLike");
+      $self.find('#likeMe').attr("src","{{url('img/heart-default-like.png')}}");
+      $self.parent().parent().find('#userLiked').remove();
+      $self.parent().parent().find('#show_total').html(data);
 
-    // $('.like-btn').click(function(){
-    //   $self = $(this);
-    //   var status_like = $self.parent().attr("class");
-    //   console.log(status_like);
-    //   var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
-    //   var likePost = $.ajax({ url: "{{url('/like/')}}"+"/"+id,
-    //   type : "POST",
-    //   data : {liked_by: '{{Auth::user()->id}}',
-    //
-    //           like_status: status_like
-    //          },
-    //   headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-    //   })
-    //   .done(function(html) {
-    //     // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
-    //     console.log('yes');
-    //   })
-    //   .fail(function(){
-    //     console.log('no');
-    //   })
-    // });
+
+    })
+    .fail(function(data){
+      console.log('unlike failed : ');
+    });
+  }
+
+});
 </script>
 @stop

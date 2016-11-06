@@ -185,25 +185,25 @@
         var Connection = new Firebase(firebaseUrl).child(uid+'chatwith'+uid2);
         queryChat();
 
-
-
-
         btn.click(function(){
-              var text = input.val();
-              var sender = $('#username2').val();
-              var reciever = $('#username1').val();
+           if($('#chat-text').val()!=''){
+             var text = input.val();
+             var sender = $('#username2').val();
+             var reciever = $('#username1').val();
 
-              input.val('');
-             var msg = {
-                sender : sender ,
-                message : text,
-                reciever : reciever,
-                time : 'sent at '+new Date()
-                // time: new Date()
-                // t: 'sent at'+time.getDate()+'/'+(time.getMonth()+1)+'/'+time.getFullYear()+' @ '+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()
+             input.val('');
+            var msg = {
+               sender : sender ,
+               message : text,
+               reciever : reciever,
+               time : 'sent at '+new Date()
 
-             };
-             Connection.push(msg);
+            };
+            Connection.push(msg);
+           }
+           else{
+             Materialize.toast('กรุณาใส่ข้อความที่จะส่ง', 4000);
+           }
 
         });
         function queryChat(){
@@ -219,40 +219,41 @@
         }
 
            function addToChatBox(text) {
-             var li ='';
-             var msg = text.sender;
-             var timeLocale = moment.locale('th');
-             var timeOfMessage = moment(text.time).fromNow();
-             var dateOfMessage = moment(text.time).calendar();
 
-             $(document).ready(function(){
-               $('.tooltipped').tooltip({delay: 50});
-             });
+               var li ='';
+               var msg = text.sender;
+               var timeLocale = moment.locale('th');
+               var timeOfMessage = moment(text.time).fromNow();
+               var dateOfMessage = moment(text.time).calendar();
 
+               $(document).ready(function(){
+                 $('.tooltipped').tooltip({delay: 50});
+               });
 
-             if(msg==($('#username1').val())){
-               li = '<li class="clearfix"><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
-                   '<span class="message-data-time">'+timeOfMessage+'</span>'+
-                 '</div>'+
-                 '<div style="float:left"class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
-                   '<p>'+text.message+'</p>'+
-                 '</div>'+
-               '</li>' ;
+               if(msg==($('#username1').val())){
+                 li = '<li class="clearfix"><div class="message-data"><span class="message-data-name">'+text.sender+'</span>'+
+                     '<span class="message-data-time">'+timeOfMessage+'</span>'+
+                   '</div>'+
+                   '<div style="float:left"class="message my-message tooltipped" data-position="right" data-delay="50" data-tooltip="'+dateOfMessage+'" >'+
+                     '<p>'+text.message+'</p>'+
+                   '</div>'+
+                 '</li>' ;
 
-          }else{
-            li = '<li class="clearfix">'+
-              '<div class="message-data align-right">'+
-                '<span class="message-data-time" >'+timeOfMessage+'</span> &nbsp; &nbsp;'+
-                '<span class="message-data-name" >'+text.sender+'</span>'+
+            }else{
+              li = '<li class="clearfix">'+
+                '<div class="message-data align-right">'+
+                  '<span class="message-data-time" >'+timeOfMessage+'</span> &nbsp; &nbsp;'+
+                  '<span class="message-data-name" >'+text.sender+'</span>'+
 
-              '</div>'+
-              '<div class="message other-message float-right tooltipped" data-position="left" data-delay="50" data-tooltip="'+dateOfMessage+'">'+
-                '<p>'+text.message+'</p>'+
-              '</div>'+
-            '</li>' ;
+                '</div>'+
+                '<div class="message other-message float-right tooltipped" data-position="left" data-delay="50" data-tooltip="'+dateOfMessage+'">'+
+                  '<p>'+text.message+'</p>'+
+                '</div>'+
+              '</li>' ;
+            }
+              ul.append(li);
+
           }
-            ul.append(li);
-}
 
       });
 

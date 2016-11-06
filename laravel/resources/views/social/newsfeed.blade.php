@@ -268,7 +268,7 @@
 
                                           </div>
                                         </div>
-                                    <p id="datecomment2">{{$post->created_at}}</p>
+                                    <p class="time-of-post" id="datecomment2">{{$post->created_at}}</p>
                                 </div>
                                 <div class="status-post2 col s12">
                                     <p>{{$post->post_message}}</p>
@@ -287,23 +287,21 @@
                                           ?>
                                     <div class="row wholike-sec">
                                       <div class="col s2" style="margin-top: 20px;">
-                                      @if($liked!=null)
-
-                                          <a class="tooltipped" href="{{url('/unlike/'.$liked->id)}}" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
-                                            <img class="heart-i" src="{{url('img/heart-default-like.png')}}">
-                                          </a>
-                                          @else
-                                          <a class="tooltipped" href="{{url('/like/'.$post->id)}}" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
-                                            <img id="newsfeed6" class="heart-i" src="{{url('img/heart-like.png')}}">
-                                          </a>
-
-                                          @endif
+                                        @if($liked == null)
+                                        <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                          <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                        </button>
+                                        @else
+                                        <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                          <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                        </button>
+                                        @endif
                                             </div>
 
 
                                         <div class="col s2">
                                             <div class="likecount">
-                                                <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
+                                                <a href="#wholike" id="show_total" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
                                             </div>
                                         </div>
 
@@ -322,11 +320,11 @@
                                         </div>
 
                                         <div class="col s2">
-                                            <div class="wholike">
+                                            <div class="wholike" id="wholiked">
                                               @foreach($likes as $like)
-
-                                                <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                  <img id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"></a>
+                                                  <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                    <img  id="newsfeed7" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                  </a>
 
                                                   @endforeach
                                             </div>
@@ -372,7 +370,7 @@
                                                           <li class="transper collection-item avatar">
                                                           <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                               <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
-                                                              <p id="datecomment">{{$comment->created_at}}</p>
+                                                              <p class="time-of-comment" id="datecomment">{{$comment->created_at}}</p>
                                                               <p class="space-cmt">{{$comment->message}}<br></p>
 
                                                           </li>
@@ -442,22 +440,96 @@
     <!--wholike-->
 
     <script type="text/javascript">
-        var $self;
-        $('.btn-comment').click(function(){
-          $self = $(this);
-          var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
-          var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+    $(".time-of-post").html(function(index, value) {
+      moment.locale('th');
+      return moment(value).calendar();
+    });
+
+    $(".time-of-comment").html(function(index, value) {
+      moment.locale('th');
+      return moment(value).calendar();
+    });
+      var $self;
+      $('.btn-comment').click(function(){
+        $self = $(this);
+        var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+        console.log(id);
+        if($self.parent().parent().find('.newComment').val() != ''){
+          $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
           type : "POST",
           data : {comment_message: $(this).parent().parent().find('.newComment').val()},
           headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
           })
           .done(function(html) {
-            console.log(id);
+            // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+            console.log(html);
             $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+            Materialize.toast('คุณได้แสดงความคิดเห็นแล้ว', 5000);
+            $self.parent().parent().find('.newComment').val('');
           })
           .fail(function(){
             alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
           })
+        }
+        else {
+          Materialize.toast('คุณยังไม่กรอกความเห็น', 5000);
+        }
+
+      });
+    </script>
+
+    <script type="text/javascript">
+    $('.like-btn').click(function(){
+      $self = $(this);
+      var id = $self.parent().parent().parent().find('.idofpost').val();
+      // var checkLiked = $self.find('#likeMe');
+      if($self.attr("id") == "canLike"){
+        $.ajax({
+          type: "POST",
+          url: "{{url('/like/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}'
+          },
+          headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(data){
+          console.log(data);
+          var json = $.parseJSON(data);
+          console.log(json['count']);
+          console.log('like');
+          $self.attr("id","canUnlike");
+          $self.find('#likeMe').attr("src","{{url('img/heart-like.png')}}");
+          $self.parent().parent().find('#show_total').html(json['count']);
+          $self.parent().parent().find('#wholiked').append(json['html']);
+        })
+        .fail(function(data){
+          console.log('like failed');
         });
+      }
+      else if($self.attr("id") == "canUnlike"){
+        $.ajax({
+          type: "POST",
+          url: "{{url('/unlike/')}}"+"/"+id,
+          data: {
+            liked_by: '{{Auth::user()->id}}',
+            post_id: id
+          },
+          headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+        })
+        .done(function(data){
+          console.log('unlike');
+          $self.attr("id","canLike");
+          $self.find('#likeMe').attr("src","{{url('img/heart-default-like.png')}}");
+          $self.parent().parent().find('#userLiked').remove();
+          $self.parent().parent().find('#show_total').html(data);
+
+
+        })
+        .fail(function(data){
+          console.log('unlike failed : ');
+        });
+      }
+
+    });
     </script>
 @stop

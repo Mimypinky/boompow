@@ -32,7 +32,6 @@ public function sendFriendRequest(Request $req){
 }
 
   public function viewFriendRequest(){
-    //$pending = Friend::where('to_user_id' , Auth::user()->id->get();
 
     $title = 'Friends Request';
 

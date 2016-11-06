@@ -203,29 +203,30 @@
                                        </div>
                                   <div class="divider"></div>
                                   <div class="row">
-                                    <form action="{{url('/event/board/'.$post->id.'/comment')}}" method="post">
+                                    <form>
                                         <div class="input-field cmt-coll-space">
 
                                         <div class="input-field w-cmt">
 
                                              <div class="input-field col s12">
-                                                 <textarea id="textarea1" class="materialize-textarea" name="comment_message"></textarea>
+                                                 <textarea id="newComment" class="materialize-textarea newComment" name="comment_message"></textarea>
                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                 <label style="font-size: 13pt;" for="textarea1">แสดงความคิดเห็น</label>
+                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                              </div>
-
-                                             <button type="submit" name="action"class="comment-btn-feed waves-effect waves-light btn">ตกลง</button>
+                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
                                          </div>
-
+                                       </div>
                                      </form>
                                   </div>
                                   <div class="comment-section">
                                       <ul class="cmt-coll cmt-coll-space collapsible" data-collapsible="accordion">
 
-                                            <li>
+                                            <li id="commentboxs" class="commentboxs">
+                                              <input type="hidden" value="{{$eid}}" class="idofEvent" />
+                                              <input type="hidden" value="{{$post->pid}}" class="idofEventPost" />
                                               <?php $comments = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
-                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
+                                              ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
                                               ->where('event_post_id','=',$post->pid)->get();
                                               $count_comments = DB::table('event_board_comment')->where('event_post_id','=',$post->pid)->count();
 
@@ -240,7 +241,7 @@
                                                     <ul class="col s12 collection cmt-box">
 
                                                     <li class="transper collection-item avatar">
-                                                    <a href="{{url('/friend/$comment->id')}}"><img src="{{url('img/uploads/avatars/'.$comment->avatar)}}" alt="" class="circle">
+                                                    <a href="{{url('/friend/$comment->username')}}"><img src="{{url('img/uploads/avatars/'.$comment->avatar)}}" alt="" class="circle">
                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
                                                         <p id="datecomment">{{$comment->created_at}}</p>
                                                         <p class="space-cmt">{{$comment->message}}<br></p>
@@ -587,5 +588,28 @@
       </div>
   </div>
   <!--End Modal Structure-->
+  <script type="text/javascript">
+    var $self;
+    $('.btn-comment').click(function(){
+      $self = $(this);
+      var eventId = $self.parent().parent().parent().parent().parent().parent().find('.idofEvent').val();
+      var postId = $self.parent().parent().parent().parent().parent().parent().find('.idofEventPost').val();
+      console.log(postId+" "+eventId);
+      var addingComment = $.ajax({ url: "{{url('/event/board/')}}"+"/"+eventId+"/comment/"+postId,
+      type : "POST",
+      data : {comment_message: $(this).parent().find('.newComment').val()},
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+      })
+      .done(function(html) {
+        console.log(html);
+        $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+      })
+      .fail(function(){
+        console.log('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      })
+    });
 
+
+
+  </script>
 @stop

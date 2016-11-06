@@ -10,6 +10,7 @@ use App\Like;
 use App\Post;
 use App\PostPhoto;
 use App\Comment;
+use App\Notification;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\EventPosts;
@@ -43,6 +44,22 @@ class PostController extends Controller
       $comment->message =$req['comment_message'];
       $comment->post_id = $pid;
       $comment->save();
+
+      $commentFrom = DB::table('comments')->join('posts','comments.post_id', '=' , 'posts.id')
+      ->join('accounts','posts.user_id', '=' ,'accounts.id')
+      ->select('accounts.first_name','accounts.last_name')->where('comments.post_id', $pid)->first();
+
+      $commentTo = DB::table('comments')->join('posts','comments.post_id', '=' , 'posts.id')
+      ->join('accounts','comments.user_id', '=' ,'accounts.id')
+      ->select('accounts.first_name','accounts.last_name','accounts.id')->where('comments.user_id', $uid)->first();
+
+      $commentNoti = new Notification();
+      $commentNoti->noti_type_id = 1;
+      $commentNoti->user_id = $uid;
+      $commentNoti->post_id = $pid;
+      $commentNoti->description = $commentTo->first_name.' ได้แสดงความคิดเห็นบนสถานะของ '.$commentFrom->first_name;
+      $commentNoti->save();
+
       $commentbox = DB::table('comments')->join('accounts','comments.user_id','=','accounts.id')
             ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','comments.*')
             ->where('post_id',$pid)->orderBy('created_at', 'desc')->first();
@@ -52,7 +69,7 @@ class PostController extends Controller
           <li class="transper collection-item avatar">
           <a href="/friend/'.$commentbox->username.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
               <span class="title title-name">'.$commentbox->first_name.' '.$commentbox->last_name.'</span></a>
-              <p id="datecomment">'.$commentbox->created_at.'</p>
+              <p class="time-of-comment" id="datecomment">'.$commentbox->created_at.'</p>
               <p class="space-cmt">'.$commentbox->message.'<br></p>
           </li>
       </ul>
@@ -84,12 +101,39 @@ class PostController extends Controller
       $like->liked_by = $user;
       $like->post_id = $pid;
       $like->save();
-      return back();
+
+      $likeFrom = DB::table('likes')->join('posts','likes.post_id', '=' , 'posts.id')
+      ->join('accounts','posts.user_id', '=' ,'accounts.id')
+      ->select('accounts.first_name','accounts.last_name')->where('likes.post_id', $pid)->first();
+
+      $likeTo = DB::table('likes')->join('posts','likes.post_id', '=' , 'posts.id')
+      ->join('accounts','likes.liked_by', '=' ,'accounts.id')
+      ->select('accounts.first_name','accounts.last_name','accounts.id')->where('likes.liked_by', $user)->first();
+
+      $likeNoti = new Notification();
+      $likeNoti->noti_type_id = 2;
+      $likeNoti->user_id = $user;
+      $likeNoti->post_id = $pid;
+      $likeNoti->description = $likeTo->first_name.' กดไลค์สถานะของคุณ';
+      $likeNoti->save();
+
+      $count = DB::table('likes')->select('id')->where('post_id',$pid)->count();
+      $likes = DB::table('likes')->join('accounts','likes.liked_by','=','accounts.id')->join('profiles','accounts.profile_id','=','profiles.id')->where('post_id',$pid)
+      ->select('likes.*','accounts.first_name','accounts.last_name','accounts.id','profiles.avatar','accounts.username')
+      ->orderBy('created_at', 'desc')->first();
+      $wholiked = '<a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="'.$likes->first_name.' '.$likes->last_name.'" href="/friend/'.$likes->username.'"> <img  id="mypost4" class="pic-wholike " src="img/uploads/avatars/'.$likes->avatar.'"/> </a>';
+      $json = '{ "count" : "'.$count.'",
+                 "html" : "'.str_replace('"', "'", $wholiked).'"
+      }';
+      return $json;
+      // return response()->json([$count,$wholiked]);
     }
-    public function unlikePost($lid){
-      $liked = Like::find($lid);
-      $liked->delete();
-      return back();
+    public function unlikePost(Request $req,$pid){
+      $liked_by = Auth::user()->id;
+      $post_id = $pid;
+      $lid = Like::select('id')->where([['liked_by',$liked_by],['post_id',$post_id]])->delete();
+      $count = DB::table('likes')->select('id')->where('post_id',$pid)->count();
+      return $count;
 
     }
 
@@ -140,6 +184,27 @@ class PostController extends Controller
       $comment->event_post_id = $pid;
       $comment->save();
       return redirect()->back();
+
+      // $uid = Auth::user()->id;
+      // $comment= new EventPostComm();
+      // $comment->user_id = $uid;
+      // $comment->message = $req['comment_message'];
+      // $comment->event_post_id = $pid;
+      // $comment->save();
+      // $commentbox = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
+      //               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
+      //               ->where('event_post_id','=',$pid)->orderBy('created_at', 'desc')->first();
+                    // return back();
+      // return '<div class="collapsible-body">
+      //     <ul class="col s12 collection cmt-box">
+      //     <li class="transper collection-item avatar">
+      //     <a href="/friend/'.$commentbox->username.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
+      //     <span class="title title-name">'.$commentbox->first_name.' '.$commentbox->last_name.'</span></a>
+      //     <p id="datecomment">'.$commentbox->created_at.'</p>
+      //     <p class="space-cmt">'.$commentbox->message.'<br></p>
+      // </li>
+      // </ul>
+      // </div>';
 
     }
     public function likePostEvent($eid,$pid)
