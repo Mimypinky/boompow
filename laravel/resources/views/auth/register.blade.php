@@ -35,7 +35,7 @@ if (RegExp('regismultipage', 'gi').test(window.location.search)) {
           {
             element: '#register6',
             intro: "เลือก <b>คำถามสำหรับรหัสผ่าน</b> เพื่อช่วยเตือนความจำรหัสผ่านในการเข้าใช้งานระบบของคุณ",
-            position: 'right'
+            position: 'bottom'
           },
           {
             element: '#register7',
@@ -77,12 +77,15 @@ if (RegExp('regismultipage', 'gi').test(window.location.search)) {
     <div class="row" style="margin-top: 160px;">
         <div class="col s12 m12 l10 offset-l1">
           <form method="POST" action="{{ url('/register') }}" id="registerForm">
+          <ul class="collection with-header">
+                <li class="collection-header"><center><h4>สมัครสมาชิก</h4></center></li>
+            </ul>
             <ul class="collection with-header">
                 {{ csrf_field() }}
-                <li class="collection-header"><center><h4>สมัครสมาชิก</h4></center></li>
+                
                 <li id="register2" class="collection-item">
                   <br>
-                  <i class="left material-icons">verified_user</i><p>ตรวจสอบชื่อผู้ใช้</p>
+                  <i class="regis-i-hright left material-icons">verified_user</i><h5>ตรวจสอบชื่อผู้ใช้</h5>
                 <div class="section"></div>
                 <center>
                     <div class="row">
@@ -103,10 +106,73 @@ if (RegExp('regismultipage', 'gi').test(window.location.search)) {
 
                 </li>
                 <li id="register3" class="collection-item">
-                  <br><i class="left material-icons">perm_identity</i>
-                <p>ข้อมูลส่วนตัว</p>
+                  <br><i class="regis-i-hright left material-icons">person</i>
+                <h5>ข้อมูลส่วนตัว</h5>
                 <div class="section"></div>
-                    <table>
+                <div class="row" style="padding: 0px 50px 50px 50px;">
+                  <div class="col s6">
+                    <div class="input-field">
+                        <input style="font-size:18pt;" id="first_name" name="first_name" type="text" class="validate" value="{{ old('first_name' )}}" placeholder="ชื่อ">
+                    </div>
+                  </div>
+
+                  <div class="col s6">
+                    <div class="input-field">
+                        <input style="font-size:18pt;" id="last_name" name="last_name" type="text" class="validate" value="{{ old('last_name' )}}" placeholder="นามสกุล">
+                    </div>
+                  </div>
+
+                  <div class="col s6">
+                    @if ($errors->has('first_name'))
+                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('first_name') }}</span>
+                    @endif
+                  </div>
+
+                  <div class="col s6">
+                    @if ($errors->has('last_name'))
+                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('last_name') }}</span>
+                    @endif
+                  </div>
+                </div>
+
+                  <div class="row" style="padding: 0px 50px 0px 50px;">
+                  <div class="col s6">
+                    <p>
+                      <span>วันเกิด: </span> &nbsp&nbsp
+                      <input type="date" class="datepicker" name="dob" style="td{font-size:20pt}">
+                        <!--<input type="date" name="dob" value="1941-08-07">-->
+                    </p>
+                  </div>
+
+                  <div class="col s6">
+                    <p>
+                      <span>เพศ: </span> &nbsp&nbsp
+                      <input style="font-size:18pt;" name="gender" type="radio" id="male" value="male" />
+                      <label for="male" style="color: #424242;font-size:16pt">ชาย</label>
+                        &nbsp &nbsp &nbsp
+                      <input style="font-size:18pt;" name="gender" type="radio" id="female" value="female" />
+                      <label for="female" style="color: #424242;font-size:16pt">หญิง</label>
+                    </p>
+                  </div>
+                  </div>
+
+                  <div class="row" style="padding: 0px 50px 0px 50px;">
+                  <div class="col s6">
+                    @if ($errors->has('dob'))
+                      <span style='font-size: 16pt;text-align: center;color: red;bottom: 0px'>{{ $errors->first('dob') }}</span>
+                    @endif
+                  </div>
+
+                  <div class="col s6">
+                    @if ($errors->has('gender'))
+                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('gender') }}</span>
+                    @endif
+                  </div>
+                  </div>
+                  
+                
+                    <!--Old profile info form-->
+                    <!--<table>
                         <tbody>
                             <tr>
                                 <td class="col s8">
@@ -157,7 +223,7 @@ if (RegExp('regismultipage', 'gi').test(window.location.search)) {
                                   <p>
                                     <span>วันเกิด: </span> &nbsp&nbsp
                                     <input type="date" class="datepicker" name="dob" style="td{font-size:20pt}">
-                                    <!--<input type="date" name="dob" value="1941-08-07">-->
+                                   
                                 </p>
                               </td>
                               <td class="col s4">
@@ -168,16 +234,72 @@ if (RegExp('regismultipage', 'gi').test(window.location.search)) {
                               </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>-->
+                    <!--End old Profile Info form-->
 
-                    <div class="section"></div>
-
+                <div class="section"></div>
                 </li>
+
+
                 <li id="register4" class="collection-item">
                   <br>
-                  <i class="left material-icons">lock</i><p>อีเมล์ และ คำถามสำหรับรหัสผ่าน</p>
+                  <i class="regis-i-hright left material-icons">lock</i><h5>อีเมล์ และ คำถามสำหรับรหัสผ่าน</h5>
                 <br>
-                <table>
+
+                <div class="row" style="padding: 0px 50px 0px 50px;">
+                  <div class="col s6" id="register5">
+                    <label for="icon_prefix" class="email-label" >กรอกอีเมล์ของคุณ </label>
+                        <input style="font-size:18pt;" class="input-field" placeholder="เช่น this_is_email@mail.com" type="email" name="email">
+                  </div>
+                  <div class="col s6" id="register6">
+                    <select name="question">
+                        <option value="" disabled selected>โปรดเลือกคำถามสำหรับรหัสผ่าน</option>
+                        @foreach($questions as $question)
+                        <option value="{{$question->id}}">{{$question->question}}?</option>
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="col s6">
+                    @if ($errors->has('email'))
+                        <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('email') }}</span>
+                    @endif
+                  </div>
+                  <div class="col s6">
+                    @if ($errors->has('question'))
+                        <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('question') }}</span>
+                    @endif
+                  </div>
+                  
+                </div>
+
+                <div class="row" style="padding: 0px 50px 0px 50px;">
+                  <div class="col s6">
+                    <div id="register7" class="input-field">
+                        <input style="font-size: 18pt;" id="answer" type="password" name="password" class="validate" placeholder="กรอกคำตอบของคุณ">
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <div id="register8" class="input-field">
+                        
+                        <input style="font-size: 18pt;" id="confirm-answer" name="password_confirmation" type="password" class="validate" placeholder="กรอกคำตอบของคุณอีกครั้ง">
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    @if ($errors->has('password'))
+                        <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password') }}</span>
+                    @endif
+                  </div>
+                  <div class="col s6">
+                    @if ($errors->has('password_confirmation'))
+                      <span style='font-size: 16pt;text-align: center;color: red'>{{ $errors->first('password_confirmation') }}</span>
+                    @endif
+                  </div>
+                  
+                </div>
+
+
+                <!--Old email password form-->
+                <!--<table>
                   <tbody>
                     <tr>
                       <td id="register5" class="col s8">
@@ -239,13 +361,13 @@ if (RegExp('regismultipage', 'gi').test(window.location.search)) {
                         </tr>
 
                       </tbody>
-                    </table>
+                    </table>-->
+                    <!--End old email password form-->
+
                   <div class="section"></div>
-                <div align="center">
-
-
-                </div>
+                  <div align="center"></div>
                 </li>
+
                 <li class="collection-item" style="padding-bottom: 20px;">
                     <div class="section"></div>
                     <div align="center">

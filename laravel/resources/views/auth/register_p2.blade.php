@@ -12,7 +12,7 @@
             </ul>
 
             <ul class="collection with-header sp-head">
-                <li class="collection-header"><h5>เพิ่มภาพประจำตัว</h5></li>
+                <li class="collection-header"><i class="regis-i-hright left material-icons">account_box</i><h5>เพิ่มภาพประจำตัว</h5></li>
                 <li class="collection-item sp-item">
                     <form class="col s12" action="" method="POST" enctype="multipart/form-data">
                         <div class="row">
@@ -66,7 +66,7 @@
                                         <label for="test6">ลุงเจียม2</label>
                                     </div>
 
-                                    <button class="btn" onclick="myFunction();">Try it</button>
+                                    <button style="margin-top: 37px;" class="btn" onclick="myFunction();">Try it</button>
                                     <script type="text/javascript">
 
                                     document.getElementById("uploadImage").onchange = function () {
@@ -92,7 +92,7 @@
             </ul>
 
             <ul class="collection with-header sp-head">
-                <li class="collection-header"><h4>เขียนอธิบายเกี่ยวกับตัวคุณ</h4></li>
+                <li class="collection-header"><i class="regis-i-hright left material-icons">create</i><h4>เขียนอธิบายเกี่ยวกับตัวคุณ</h4></li>
                 <li class="collection-item sp-item">
 
                         <div class="row">
