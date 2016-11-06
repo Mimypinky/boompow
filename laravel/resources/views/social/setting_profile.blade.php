@@ -2,6 +2,7 @@
 @section('maincontent')
 
 <script type="text/javascript">
+if (RegExp('prosetmultipage', 'gi').test(window.location.search)) {
     function profilesetting() {
     var intro = introJs();
     intro.setOptions({
@@ -9,36 +10,36 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#ps1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเปลี่ยน <b>ชื่อ นามสกุล และ คำอธิบายเกี่ยวกับตัวคุณ</b> ได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#ps2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเปลี่ยน <b>รูปภาพประจำตัว</b> ของคุณได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#ps3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>อัพโหลดภาพประจำตัวใหม่</b> ของคุณ",
             position: 'bottom'
         },
         {
             element: '#ps4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "หรือเลือก <b>ภาพประจำตัวที่เรามีให้</b> ได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#ps5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเปลี่ยน <b>อีเมล์</b> ของคุณได้ในส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#ps6',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "<b>บันทึก</b> หรือ <b>ยกเลิก</b> การตั้งค่าของคุณทั้งหมดได้ในส่วนนี้",
             position: 'bottom'
         },
         ]
@@ -55,6 +56,9 @@
       }
     });
     intro.start()
+
+}
+setTimeout( "profilesetting()", 1500);
 }
 </script>
 

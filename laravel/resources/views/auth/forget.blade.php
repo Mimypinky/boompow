@@ -65,16 +65,28 @@
             </ul>
             <script type="text/javascript">
             // function allowLogin(){
+<<<<<<< HEAD
             //   var inputUsername = document.getElementById('username');
+=======
+            //   var inputUsername = document.getElementById('inputUsername');
+>>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
             //   var inputPassword = document.getElementById('inputPassword');
             //   var loginBtn = document.getElementById('loginBtn');
             //     if(inputUsername.value.length > 0 && inputPassword.value.length > 0) {
             //       loginBtn.disabled = false;
+<<<<<<< HEAD
             //       // console.log('yes');
             //     }
             //     else{
             //       loginBtn.disabled = true;
             //       // console.log('no');
+=======
+            //       console.log('yes');
+            //     }
+            //     else{
+            //       loginBtn.disabled = true;
+            //       console.log('no');
+>>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
             //     }
             // }
             </script>

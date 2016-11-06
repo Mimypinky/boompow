@@ -48,6 +48,7 @@ use Carbon\Carbon;
 
 </script>
 <script type="text/javascript">
+ 
   function eventuser() {
     var intro = introJs();
     intro.setOptions({
@@ -55,51 +56,51 @@ use Carbon\Carbon;
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#event1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถดู <b>กิจกรรมทั้งหมด</b> ได้ที่ส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#status_avai',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้จะบอก <b>สถานะกิจกรรม</b> ที่กำลังจัดอยู่",
             position: 'bottom'
         },
         {
             element: '#descrip',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ดูรายละเอียด</b> ของกิจกรรมได้ในส่วนนี้.",
             position: 'bottom'
         },
         {
             element: '#attend',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถคลิกที่ <b>เข้าร่วม</b> บนกิจกรรมที่คุณสนใจที่มีสถานะ <b>กำลังรับสมัคร</b>",
             position: 'bottom'
         },
         {
             element: '#event2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถดู <b>กิจกรรมที่คุณเข้าร่วม</b> ได้ที่ส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#cancelE',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>ยกเลิกการเข้าร่วม</b> กิจกรรมของคุณที่นี้.",
             position: 'bottom'
         },
         {
             element: '#Eboard',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถเข้า <b>กระดานกิจกรรม</b> เพื่อพูดคุยกับเพื่อนๆเกี่ยวกับกิจกรรมได้ที่นี้",
             position: 'bottom'
         },
         {
             element: '#event3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถดู <b>กิจกรรมของฉัน</b> ได้ที่ส่วนนี้",
             position: 'bottom'
         },
         {
             element: '#addE',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ในส่วนนี้คุณสามารถ <b>เพิ่มกิจกรรม</b> ที่คุณเป็นเจ้าของเองได้",
             position: 'bottom'
         },
         ]
@@ -153,7 +154,80 @@ use Carbon\Carbon;
         }
     });
   intro.start()
+
 }
+if((RegExp('eventstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "eventuser()", 1500);
+}
+function eventmng() {
+    var intro = introJs();
+    intro.setOptions({
+      showStepNumbers: false,
+      nextLabel: "ต่อไป",
+      prevLabel: "กลับ",
+      skipLabel: "ข้าม",
+      doneLabel: "เข้าใจแล้ว",
+        steps: [
+        {
+            element: '#mng1',
+            intro: "คุณสามารถ <b>แก้ไขกิจกรรม</b> ของคุณได้ที่นี้",
+            position: 'bottom'
+        },
+        {
+            element: '#mng2',
+            intro: "คุณสามารถ <b>ลบกิจกรรม</b> ที่คุณเป็นเจ้าของได้ที่นี้",
+            position: 'bottom'
+        },
+       
+        ]
+    });
+
+
+    intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#mng1').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
+        }
+        if($(targetElement).attr("id") == $('#mng2').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'myevent');
+        }
+        
+        
+    });
+    intro.start()
+}
+if((RegExp('eventmngstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "eventmng()", 1500);
+}
+
+function eventboard() {
+   var intro = introJs();
+   intro.setOptions({
+    showStepNumbers: false,
+    doneLabel: "เข้าใจแล้ว",
+    steps: [
+    {
+        element: '#Eboard',
+        intro: "คุณสามารถเข้า <b>กระดานกิจกรรม</b> เพื่อพูดคุยกับเพื่อนๆเกี่ยวกับกิจกรรมได้ที่นี้",
+        position: 'bottom'
+    },
+
+
+    ]
+   });
+   intro.onchange(function(targetElement) {
+        if($(targetElement).attr("id") == $('#Eboard').attr('id')) {
+           $('ul.tabs').tabs('select_tab', 'attendevent');
+        }
+    });
+
+   intro.start()
+}
+if((RegExp('eventboardstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "eventboard()", 1500);
+   }
 </script>
 
 
@@ -273,7 +347,7 @@ use Carbon\Carbon;
                       </ul>
                   </div>
                   @elseif(in_array($data->id,$joined) AND ($data->creator==$user))
-                  <div class="card-action">
+                  <div  class="card-action">
                       <ul class="event-menu ">
                         <li class="event-item"><a href="{{url('event/board/'.$data->id)}}"><i class="fa fa-star left" aria-hidden="true"></i>กิจกรรมของคุณ</a></li>
                       </ul>
@@ -282,7 +356,7 @@ use Carbon\Carbon;
                   @else
                   <div class="card-action " style="{{$display}}">
                       <ul class="event-menu">
-                          <li id="attend" class="event-item"><a href="#join{{$key}}" class="modal-trigger">
+                          <li class="event-item"><a href="#join{{$key}}" class="modal-trigger">
                               <i class="fa fa-plus-square-o left" aria-hidden="true"></i>เข้าร่วม</a></li>
                       </ul>
                   </div>
@@ -683,9 +757,9 @@ use Carbon\Carbon;
 
                         <div class="card-action">
                             <ul class="event-menu">
-                                <li class="event-item"><a href="#edit{{$key}}" class="modal-trigger"><i class="fa fa-pencil-square-o left" aria-hidden="true"></i>แก้ไข</a>
+                                <li id="mng1" class="event-item"><a href="#edit{{$key}}" class="modal-trigger"><i class="fa fa-pencil-square-o left" aria-hidden="true"></i>แก้ไข</a>
                                 </li>
-                                <li class="event-item"><a href="#eve-del{{$key}}" class="modal-trigger">
+                                <li id="mng2" class="event-item"><a href="#eve-del{{$key}}" class="modal-trigger">
                                     <i class="fa fa-minus-square-o left" aria-hidden="true"></i>ลบกิจกรรม</a>
                                 </li>
                                 <li class="event-item"><a href="{{url('event/board/'.$mine->id)}}"><i class="fa fa-comments left" aria-hidden="true"></i>กระดานกิจกรรม</a></li>

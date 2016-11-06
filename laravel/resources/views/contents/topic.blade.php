@@ -11,17 +11,23 @@ function more(){
         nextLabel: "ต่อไป",
         prevLabel: "กลับ",
         skipLabel: "ข้าม",
-        doneLabel: "เสร็จ",
+        doneLabel: "เข้าใจแล้ว",
 
         steps: [
           {
             element: "#more",
-            intro: "This is a dropdown"
+            intro: "คุณสามารถบันทึกเนื้อหานี้เป็น <b>รายการโปรด</b> โดยการคลิกที่นี่ แต่เมื่อสัญลักษณ์รูปดาวเปลี่ยนเป็น <b>สีเทา</b> หมายถึงคุณได้ทำการ <b>นำเนื้อหาออกจากรายโปรด</b> แล้ว",
+            position: 'right'
           },
           {
             element: '#more2',
-            intro: "This is an option within a dropdown.",
-            position: 'bottom'
+            intro: "คุณสามารถ <b>ปักหมุด</b> เนื้อหานี้ไว้บนหน้าโปรไฟล์ของคุณได้ที่นี้ เพื่อนของคุณก็จะสามารถเห็นในสิ่งที่คุณปักหมุดไว้เช่นกัน",
+            position: 'right'
+          },
+          {
+            element: '#more3',
+            intro: "คุณสามารถ <b>คัดลอกลิ้งค์</b> ของบทความนี้เพื่อส่งต่อให้เพื่อนของคุณภายนอกเว็บไซต์ได้ที่นี้",
+            position: 'right'
           },
 
         ]
@@ -32,6 +38,7 @@ function more(){
   };
 
   setTimeout( "more()", 1500);
+
 
 </script>
 
@@ -93,16 +100,20 @@ function more(){
 $uid =Auth::user()->id;
 $fav = DB::table('favourite')->where([['user_id','=',$uid],['content_id','=',$data->id]])->first();?>
       @if($fav)
-      <a href="{{url('/unfav/'.$fav->id)}}"class="btn-floating waves-effect waves-light grey lighten-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
+      <a id="more" href="{{url('/unfav/'.$fav->id)}}"class="btn-floating waves-effect waves-light grey lighten-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
         <i class="fa fa-star" aria-hidden="true"></i></a>
         @else
-            <a href="{{url('/fav/'.$data->id)}}"class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
+            <a id="more" href="{{url('/fav/'.$data->id)}}"class="btn-floating waves-effect waves-light yellow darken-2 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="รายการโปรด">
               <i class="fa fa-star" aria-hidden="true"></i></a>
               @endif
 
+<<<<<<< HEAD
+            <a id="more2" href="{{url('/pinned/'.$data->id)}}"class="btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
+=======
             <a href="#pinstatus"class="modal-trigger btn-floating waves-effect waves-light orange darken-3 darken-1 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="ปักหมุด">
+>>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
               <i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
-            <a href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
+            <a id="more3" href="#sharecontent"class="modal-trigger btn-floating waves-effect waves-light light-blue darken-3 marginShareBtn-side tooltipped" data-position="right" data-delay="50" data-tooltip="คัดลอกลิ้งค์">
               <i class="fa fa-link" aria-hidden="true"></i></a>
 @endif
 <div id="pinstatus" class="modal modal-fixed-footer">

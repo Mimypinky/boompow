@@ -154,12 +154,33 @@ class PostController extends Controller
 
       $uid = Auth::user()->id;
       $comment= new EventPostComm();
+<<<<<<< HEAD
       $comment->user_id = $uid;
       $comment->message = $req['comment_message'];
       $comment->event_post_id = $pid;
       $comment->save();
   return back();
 
+=======
+      // $comment->user_id = $uid;
+      // $comment->message = $req['comment_message'];
+      // $comment->event_post_id = $pid;
+      // $comment->save();
+      // $commentbox = DB::table('event_board_comment')->join('accounts','event_board_comment.user_id','=','accounts.id')
+      //               ->join('profiles','accounts.profile_id','=','profiles.id')->select('accounts.id','accounts.username','accounts.first_name','accounts.last_name','profiles.avatar','event_board_comment.*')
+      //               ->where('event_post_id','=',$pid)->orderBy('created_at', 'desc')->first();
+                    return echo $uid;
+      // return '<div class="collapsible-body">
+      //     <ul class="col s12 collection cmt-box">
+      //     <li class="transper collection-item avatar">
+      //     <a href="/friend/'.$commentbox->username.'"><img src="img/uploads/avatars/'.$commentbox->avatar.'" alt="" class="circle">
+      //     <span class="title title-name">'.$commentbox->first_name.' '.$commentbox->last_name.'</span></a>
+      //     <p id="datecomment">'.$commentbox->created_at.'</p>
+      //     <p class="space-cmt">'.$commentbox->message.'<br></p>
+      // </li>
+      // </ul>
+      // </div>';
+>>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
 
     }
     public function deletePostEvent($eid,$pid)

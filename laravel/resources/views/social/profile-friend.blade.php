@@ -262,7 +262,7 @@
                                                                 </div>
                                                               @endif
                                                               @foreach($comments as $comment)
-                                                              <div class="collapsible-body">
+                                                              <div class="collapsible-body nonborder">
                                                                   <ul class="col s12 collection cmt-box">
                                                                   <li class="transper collection-item avatar">
                                                                   <a href="{{url('/friend/'.$comment->username)}}"><img src="{{url('img/uploads/avatars/'.$info->avatar)}}" alt="" class="circle">

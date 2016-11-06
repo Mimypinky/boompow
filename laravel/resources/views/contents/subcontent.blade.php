@@ -30,6 +30,10 @@ function content() {
 
     intro.start();
 }
+if((RegExp('contentstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "content()", 1500);
+}
 
 
 </script>

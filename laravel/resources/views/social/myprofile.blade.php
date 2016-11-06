@@ -9,11 +9,11 @@
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '.myprofile1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>แก้ไขข้อมูลส่วนตัว</b> และ <b>รูปภาพประจำตัว</b> ของคุณ",
             position: 'bottom'
         },
         {
@@ -23,33 +23,33 @@
         },
         {
             element: '#myprofile2',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'left'
+            intro: "ส่วนนี้บอก <b>จำนวนเพื่อนทั้งหมด</b> ที่คุณมี คุณสามารถคลิกที่นี้เพื่อ <b>ดูรายชื่อเพื่อนของคุณ</b>",
+            position: 'bottom'
         },
 
         {
             element: '#myprofile3',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้บอก <b>จำนวนโพสต์ทั้งหมด</b> ที่คุณมีบนหน้าโปรไฟล์ของคุณ",
             position: 'bottom'
         },
         {
             element: '#myprofile4',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้จะแสดง <b>จำรวนรูปภาพ</b> ที่คุณเคยโพสต์ไว้บนหน้าโปรไฟล์ของคุณ โดยคุณสามารถคลิกที่นี้เพื่อ <b>ดูรูปภาพทั้งหมด</b>",
             position: 'bottom'
         },
         {
             element: '#myprofile5',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถทำการ <b>โพสต์ข้อความของคุณ</b> ลงบนโปรไฟล์ของคุณได้ที่นี้ บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!",
             position: 'bottom'
         },
         {
             element: '#myprofile6',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>อัพโหลดรูปภาพ</b> ของคุณได้ที่นี้ โชว์อะไรสวยๆให้เพื่อนคุณดูหน่อยสิ!!",
             position: 'bottom'
         },
         {
             element: '#myprofile7',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>โพสต์</b> ข้อความของคุณ",
             position: 'bottom'
         },
         ]
@@ -106,6 +106,10 @@ intro.onchange(function(targetElement) {
     });
     intro.start()
 }
+if((RegExp('profilestart', 'gi').test(window.location.search))){
+    
+   setTimeout( "myprofile()", 1500);
+}
 
 function mypost() {
     var intro = introJs();
@@ -114,28 +118,24 @@ function mypost() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#namecomment',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้จะแสดง <b>ชื่อของเจ้าของโพสต์</b> คุณสามารถ คลิกที่ชื่อเพื่อ <b>เข้าดูหน้าโปรไฟล์ของเพื่อน</b> ได้ที่นี่",
             position: 'bottom'
         },
         {
             element: '#datecomment2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "ส่วนนี้จะแสดง <b>วัน และ เวลา</b> ที่เจ้าของโพสต์ได้ทำการโพสต์",
             position: 'bottom'
         },
         {
-            element: '#mypost3',
-            intro: "This is a <b>bold</b> tooltip.",
+            element: '#likeMe2',
+            intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
             position: 'bottom'
         },
-        {
-            element: '#mypost4',
-            intro: "This is a <b>bold</b> tooltip.",
-            position: 'bottom'
-        },
+        
 
         ]
     });
@@ -150,15 +150,18 @@ function mypost() {
         case "datecomment":
             $('.introjs-helperLayer').css({width:'180px'})
             break;
-        case "mypost3":
-            $('.introjs-helperLayer').css({left:'480px'})
+        case "likeMe2":
+            $('.introjs-helperLayer').css({left:'488px'})
             break;
-        case "mypost4":
-            $('.introjs-helperLayer').css({left:'606px'})
-            break;
+        
+        
       }
     });
     intro.start()
+}
+if((RegExp('mypoststart', 'gi').test(window.location.search))){
+    
+   setTimeout( "mypost()", 1500);
 }
 
 function mngpost() {
@@ -168,16 +171,16 @@ function mngpost() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#mngpost1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>แก้ไขโพสต์</b> ของคุณ",
             position: 'bottom'
         },
         {
             element: '#mngpost2',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คลิกที่นี้เพื่อ <b>ลบโพสต์</b> ของคุณ",
             position: 'bottom'
         },
         ]
@@ -197,6 +200,10 @@ function mngpost() {
     });
     intro.start()
 }
+if((RegExp('mngpoststart', 'gi').test(window.location.search))){
+    
+   setTimeout( "mngpost()", 1500);
+}
 
 function comment() {
     var intro = introJs();
@@ -205,20 +212,23 @@ function comment() {
       nextLabel: "ต่อไป",
       prevLabel: "กลับ",
       skipLabel: "ข้าม",
-      doneLabel: "เสร็จ",
+      doneLabel: "เข้าใจแล้ว",
         steps: [
         {
             element: '#comment1',
-            intro: "This is a <b>bold</b> tooltip.",
+            intro: "คุณสามารถ <b>แสดงความคิดเห็น</b> บนโพสต์ได้ที่นี้",
             position: 'bottom'
         },
 
         ]
     });
 
-
     intro.start()
   }
+  if((RegExp('commentstart', 'gi').test(window.location.search))){
+    
+   setTimeout( "comment()", 1500);
+}
 </script>
 <div class="container" style="width: 90%;">
     <div class="row">
@@ -453,7 +463,29 @@ function comment() {
                                                       @if($liked == null)
                                                       <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+                                                      </button> -->
+
+                                                    @if($liked!=null)
+                                                        <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
+                                                          <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
+                                                            <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
+                                                          </button>
+                                                        </a>
+                                                        @else
+
+                                                        <a href="{{url('/like/'.$post->id)}}" onclick="likeFunction()">
+                                                          <button class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
+                                                            <img id="likeMe2" id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
+                                                          </button>
+
+                                                        </a>
+                                                        @endif
+=======
+>>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
                                                       </button>
                                                       @else
                                                       <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
@@ -488,9 +520,23 @@ function comment() {
                                                         <div class="wholike" id="wholiked">
 
                                                           @foreach($likes as $like)
+<<<<<<< HEAD
+
+                                                          @if($like->liked_by!=$user->id)
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                            </a>
+                                                          @else
+                                                            <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/profile')}}">
+                                                              <img class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                            </a>
+                                                          @endif
+
+=======
                                                           <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
                                                             <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
                                                           </a>
+>>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
                                                           @endforeach
 
 

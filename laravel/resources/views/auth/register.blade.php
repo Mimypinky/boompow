@@ -1,82 +1,79 @@
 @extends('site.layout')
 @section('maincontent')
 
-
 <script type="text/javascript">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
 if (RegExp('regismultipage', 'gi').test(window.location.search)) {
-
-function registerP2(){
+  function registerP2(){
     var intro = introJs();
       intro.setOptions({
         showStepNumbers: false,
         nextLabel: "ต่อไป",
         prevLabel: "กลับ",
         skipLabel: "ข้าม",
-        doneLabel: "เสร็จ",
+        doneLabel: "เข้าใจแล้ว",
 
         steps: [
           {
             element: "#register2",
-            intro: "This is a dropdown"
+            intro: "กรอก <b>ชื่อผู้ใช้</b> ของคุณ โดยชื่อผู้ใช้นี้จะใช้เป็นชื่อเพื่อ <b>เข้าสู่ระบบ</b>"
           },
           {
             element: '#register3',
-            intro: "This is an option within a dropdown.",
-            position: 'bottom'
+            intro: "กรอก <b>ชื่อ นามสกุลของ เพศ และอายุของคุณ</b> โดยในส่วนนี้จะแสดงบน <b>หน้าโปรไฟล์ของคุณ</b>",
+            position: 'top'
           },
           {
             element: '#register4',
-            intro: "This is an option within a dropdown.",
-            position: 'bottom'
+            intro: "กรอก <b>อีเมล์</b> ของคุณ และ <b>คำถามสำหรับรหัสผ่าน</b> เพื่อจะเป็นคำถามช่วยคุณเตือนความจำว่ารหัสผ่านของคุณคืออะไร โดย <b>รหัสผ่านของคุณ</b> ก็คือ <b>คำตอบของคำถามสำหรับรหัสผ่าน</b> ที่คุณได้เลือกไว้",
+            position: 'top'
           },
           {
             element: '#register5',
-            intro: "This is an option within a dropdown.",
+            intro: "กรอก <b>อีเมล์</b> ของคุณที่นี้",
             position: 'bottom'
           },
           {
             element: '#register6',
-            intro: "This is an option within a dropdown.",
+            intro: "เลือก <b>คำถามสำหรับรหัสผ่าน</b> เพื่อช่วยเตือนความจำรหัสผ่านในการเข้าใช้งานระบบของคุณ",
             position: 'right'
           },
           {
             element: '#register7',
-            intro: "This is an option within a dropdown.",
+            intro: "กรอก <b>คำตอบของคำถามสำหรับรหัสผ่าน</b> ของคุณ",
             position: 'bottom'
           },
           {
             element: '#register8',
-            intro: "This is an option within a dropdown.",
+            intro: "กรอก <b>คำตอบของคำถามสำหรับรหัสผ่าน</b> ของคุณ <b>เหมือนเดิมอีกครั้ง</b> เพื่อยืนยันความถูกต้อง",
             position: 'bottom'
           },
           {
             element: '#register9',
-            intro: "This is an option within a dropdown.",
+            intro: "คลิก <b>ทีนี่</b> เพื่ออ่านข้อตกลงในการให้บริการ",
             position: 'bottom'
           },
           {
             element: '#register10',
-            intro: "This is an option within a dropdown.",
+            intro: "คลิกที่ <b>ช่องสีเหลี่ยม</b> เพื่อยืนยันว่าคุณได้อ่านข้อตกลงการให้บริการของเราเรียบร้อยแล้ว",
             position: 'bottom'
           },
           {
             element: '#register11',
-            intro: "This is an option within a dropdown.",
+            intro: "คลิก <b>ตกลง</b> เพื่อยืนยันการสมัครสมาชิก",
             position: 'bottom'
           },
-
-
         ]
       });
-
-
       intro.start();
-  };
+  }
 
   setTimeout( "registerP2()", 1500);
-}
+  }
 </script>
 
 
