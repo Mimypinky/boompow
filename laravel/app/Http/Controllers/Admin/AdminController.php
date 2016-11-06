@@ -158,4 +158,21 @@ class AdminController extends Controller
       $content->delete();
       return back();
     }
+    public function banUser($id)
+    {
+
+      $accounts = Account::find($id);
+      $accounts->permission = 0;
+      $accounts->admin_status ='banned';
+      $accounts->save();
+      return back();
+    }
+    public function changeRole($id)
+    {
+      $accounts = find($id);
+      $accounts->permission = 0;
+
+      $accounts->save();
+      return back();
+    }
 }

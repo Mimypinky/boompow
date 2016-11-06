@@ -153,7 +153,7 @@
                                                 </span>
 
 
-                                                <p id="datecomment">{{$post->updated_at}}
+                                                <p class="time-of-post" id="datecomment">{{$post->updated_at}}
                                                 </p>
                                             </div>
                                             <div class="status-post2 col s12">
@@ -265,13 +265,17 @@
                                                               <div class="collapsible-body nonborder">
                                                                   <ul class="col s12 collection cmt-box">
                                                                   <li class="transper collection-item avatar">
-                                                                  <a href="{{url('/friend/'.$comment->username)}}"><img src="{{url('img/uploads/avatars/'.$info->avatar)}}" alt="" class="circle">
+                                                                  <a href="{{url('/friend/'.$comment->username)}}"><img src="{{url('img/uploads/avatars/'.$comment->avatar)}}" alt="" class="circle">
                                                                       <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+<<<<<<< HEAD
+                                                                      <p class="time-of-comment" id="datecomment">{{$comment->created_at}}</p>
+=======
                                                                       @if($comment->user_id == $uid )
                                                                     <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
                                                                       <i class="fa fa-times" aria-hidden="true"></i> </a>
                                                                       @endif
                                                                       <p id="datecomment">{{$comment->created_at}}</p>
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                                       <p class="space-cmt">{{$comment->message}}<br></p>
                                                                   </li>
                                                               </ul>
@@ -467,12 +471,24 @@
       </div>
 
       <script type="text/javascript">
-          var $self;
-          $('.btn-comment').click(function(){
-            $self = $(this);
-            var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
-            console.log(id);
-            var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+
+      $(".time-of-post").html(function(index, value) {
+        moment.locale('th');
+        return moment(value).calendar();
+      });
+
+      $(".time-of-comment").html(function(index, value) {
+        moment.locale('th');
+        return moment(value).calendar();
+      });
+
+        var $self;
+        $('.btn-comment').click(function(){
+          $self = $(this);
+          var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
+          console.log(id);
+          if($self.parent().parent().find('.newComment').val() != ''){
+            $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
             type : "POST",
             data : {comment_message: $(this).parent().parent().find('.newComment').val()},
             headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
@@ -481,14 +497,28 @@
               // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
               console.log(html);
               $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+              Materialize.toast('คุณได้แสดงความคิดเห็นแล้ว', 5000);
+              $self.parent().parent().find('.newComment').val('');
             })
             .fail(function(){
               alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
             })
+<<<<<<< HEAD
+          }
+          else {
+            Materialize.toast('คุณยังไม่กรอกความเห็น', 5000);
+          }
+
+        });
+
+      </script>
+
+=======
           });
 
       </script>
 
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
       <script type="text/javascript">
       $('.like-btn').click(function(){
         $self = $(this);

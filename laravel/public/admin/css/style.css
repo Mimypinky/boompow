@@ -1183,6 +1183,7 @@ h3.hdg {
 .label {
   font-weight: 300 !important;
   border-radius:4px;
+  font-size: 85%;
 }
 .grid_3 {
     padding: 1.5em 1em;

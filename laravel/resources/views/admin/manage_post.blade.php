@@ -14,7 +14,7 @@ $('#myModal').modal('show');
                 <button class="btn btn-default" type="button">Search</button>
               </span>
           </div><!-- /input-group -->
-        
+
           <label style="color: #555">Sort by: </label>
             <div class="form-group ">
               <select class="form-control">
@@ -89,7 +89,7 @@ $('#myModal').modal('show');
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-         <button type="submit" class="btn btn-default">ใช่</button>
+         <button type="submit" class="btn btn-primary">ใช่</button>
       </div>
     </div>
   </form>

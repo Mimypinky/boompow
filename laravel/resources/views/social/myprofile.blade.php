@@ -1,5 +1,6 @@
 @extends('site.layout')
 @section('maincontent')
+
 <script type="text/javascript">
     function myprofile() {
     var intro = introJs();
@@ -63,26 +64,6 @@ intro.onchange(function(targetElement) {
         }
     });
 
-
-    /*intro.start().oncomplete(function() { $('#profile-edit').hide();
-    }).onexit(function(){ $('#profile-edit').hide();
-    }).onchange(function(targetElement) {
-
-
-        // and show modal on Step 4
-        if($(targetElement).attr("id") == $('#profile-edit').attr('id')) {
-
-            $('#profile-edit').show();
-
-
-        }
-        // don't forget to hide modal on other steps
-        if($(targetElement).attr("id") != $('#profile-edit').attr('id')) {
-            $('#profile-edit').hide();
-        }
-
-
-    });*/
     intro.onafterchange(function(targetElement) {
       console.log(targetElement.id);
       switch (targetElement.id){
@@ -106,7 +87,7 @@ intro.onchange(function(targetElement) {
     intro.start()
 }
 if((RegExp('profilestart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "myprofile()", 1500);
 }
 
@@ -134,7 +115,7 @@ function mypost() {
             intro: "คุณสามารถ <b>ถูกใจ</b> โพสต์ได้ที่นี้",
             position: 'bottom'
         },
-        
+
 
         ]
     });
@@ -152,14 +133,14 @@ function mypost() {
         case "likeMe2":
             $('.introjs-helperLayer').css({left:'488px'})
             break;
-        
-        
+
+
       }
     });
     intro.start()
 }
 if((RegExp('mypoststart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "mypost()", 1500);
 }
 
@@ -200,7 +181,7 @@ function mngpost() {
     intro.start()
 }
 if((RegExp('mngpoststart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "mngpost()", 1500);
 }
 
@@ -225,7 +206,7 @@ function comment() {
     intro.start()
   }
   if((RegExp('commentstart', 'gi').test(window.location.search))){
-    
+
    setTimeout( "comment()", 1500);
 }
 </script>
@@ -281,9 +262,9 @@ function comment() {
                                         <div class="input-field col s8 upsta-line">
                                           <form enctype="multipart/form-data" action="/post" method="post">
                                           <div id="myprofile5">
-                                            <textarea style="margin-left: 20px;" id="textarea1" name="post_message" class="materialize-textarea"></textarea>
+                                            <textarea style="margin-left: 20px;" id="newPost" name="post_message" class="materialize-textarea"></textarea>
 
-                                            <label style="margin-left: 20px;" for="textarea1">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
+                                            <label style="margin-left: 20px;" for="newPost">บอกสิ่งดีๆวันนี้ให้เพื่อนคุณรู้สิ!!</label></div>
                                             <div class="card-action" style="border: none;">
 
                                                     <div class="file-field input-field">
@@ -406,7 +387,7 @@ function comment() {
                                                          <a href="{{url('/delete/'.$post->id)}}" class="modal-action waves-effect waves-green btn-flat ">ตกลง</a>
                                                       </div>
                                                 </div>
-                                                <p id="datecomment2">{{$post->created_at}}
+                                                <p id="datecomment2" class="time-of-post">{{$post->created_at}}
                                                 </p>
                                             </div>
 
@@ -463,9 +444,12 @@ function comment() {
                                                       <button type="submit" id="canLike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="ถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
 <<<<<<< HEAD
-                                                      </button> -->
+                                                      </button>
+=======
 
-                                                    @if($liked!=null)
+                                                      </button>
+
+                                                    <!-- @if($liked!=null)
                                                         <a href="{{url('/unlike/'.$liked->id)}}" onclick="unlikeFunction()">
                                                           <button class="tooltipped like-btn"  data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                             <img id="likeMe" class="heart-i" src="{{url('img/heart-default-like.png')}}">
@@ -480,44 +464,56 @@ function comment() {
 
                                                         </a>
                                                         @endif
-=======
-                                                      </button>
+
+                                                      </button> -->
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                       @else
                                                       <button type="submit" id="canUnlike" class="tooltipped like-btn" data-position="bottom" data-delay="50" data-tooltip="เลิกถูกใจ">
                                                         <img id="likeMe" class="heart-i" src="{{url('img/heart-like.png')}}">
                                                       </button>
                                                       @endif
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                     </div>
 
                                                     <div class="col s2">
                                                         <div class="likecount">
 <<<<<<< HEAD
-                                                            <a href="#wholike" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;">{{$count_likes}}</a>
-=======
                                                             <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;" id="show_total">{{$count_likes}}</a>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+=======
+
+                                                            <a href="#wholike{{$key}}" class="modal-trigger tooltipped" data-position="bottom" data-delay="50" data-tooltip="ดูเพื่อนที่ถูกใจโพสต์นี้" href="" style="color: black;" id="show_total">{{$count_likes}}</a>
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                         </div>
                                                     </div>
-                                                    @foreach($likes as $like)
-                                                    <div id="wholike" class="modal" style="width: 500px;">
+
+                                                    <div id="wholike{{$key}}" class="modal" style="width: 500px;">
                                                         <ul class="collection with-header f-modal">
                                                             <li class="collection-header transper"><i style="line-height: 1;" class="fa fa-heart fa-lg left" aria-hidden="true"></i><h4>เพื่อนที่ถูกใจโพสต์นี้</h4>
                                                             <div class="modal-close close-fmbtn" align="right"><p><i class="fa fa-times" aria-hidden="true"></i></p></div></li>
+                                                            @foreach($likes as $like)
                                                             <li class="collection-item avatar transper">
                                                                 <img src="{{url('img/uploads/avatars/'.$like->avatar)}}" alt="" class="circle">
                                                                 <p>{{$like->first_name.' '.$like->last_name}}</p>
                                                                 <a href="{{url('/friend/'.$like->username)}}" class="secondary-content btn waves-effect waves-light"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ดูหน้าของเพื่อน</a>
                                                             </li>
-
+                                                              @endforeach
                                                         </ul>
                                                     </div>
-                                                    @endforeach
+
                                                     <div class="col s2">
                                                         <div class="wholike" id="wholiked">
 
                                                           @foreach($likes as $like)
 <<<<<<< HEAD
+                                                          <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
+                                                            <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
+                                                          </a>
+=======
+
 
                                                           @if($like->liked_by!=$user->id)
                                                             <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
@@ -529,11 +525,8 @@ function comment() {
                                                             </a>
                                                           @endif
 
-=======
-                                                          <a class="tooltipped" id="userLiked" data-position="bottom" data-delay="50" data-tooltip="{{$like->first_name.' '.$like->last_name}}" href="{{url('/friend/'.$like->username)}}">
-                                                            <img  id="mypost4" class="pic-wholike " src="{{url('img/uploads/avatars/'.$like->avatar)}}"/>
-                                                          </a>
->>>>>>> e0984f897f67bce31bf303825324d8ff340a7f86
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                           @endforeach
 
 
@@ -559,13 +552,14 @@ function comment() {
                                                                 <label style="font-size: 13pt;" for="newComment">แสดงความคิดเห็น</label>
                                                             </div>
 <<<<<<< HEAD
+                                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง" >
+=======
+
                                                              <input  id="comment2" type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
 
 
 
-=======
-                                                             <input type="button" class="btn-comment comment-btn-feed waves-effect waves-light btn" name="name" value="ตกลง">
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
 
                                                         </div>
 
@@ -588,7 +582,7 @@ function comment() {
                                                                 <div class="collapsible-header cmt-coll-head active">
                                                                     <i class="material-icons">keyboard_arrow_up</i>ความคิดเห็นเพิ่มเติม
                                                                 </div>
-                                                              @endif 
+                                                              @endif
 
                                                                 @foreach($comments as $comment)
                                                                 <div class="collapsible-body nonborder">
@@ -596,16 +590,20 @@ function comment() {
                                                                     <li class="transper collection-item avatar">
                                                                     <a href="{{url('/friend/'.$comment->username)}}"><img src="img/uploads/avatars/{{$comment->avatar}}" alt="" class="circle">
                                                                         <span class="title title-name">{{$comment->first_name.' '.$comment->last_name}}</span></a>
+<<<<<<< HEAD
+                                                                        <p class="time-of-comment" id="datecomment">{{$comment->created_at}}</p>
+=======
                                                                         @if($comment->user_id == $uid )
                                                                       <a class="tooltipped modal-trigger" href="#deletecom{{$key}}" data-position="bottom" data-delay="50" data-tooltip="ลบความคิดเห็น">
                                                                         <i class="fa fa-times" aria-hidden="true"></i> </a>
                                                                         @endif
                                                                         <p id="datecomment">{{$comment->created_at}}</p>
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                                                                         <p class="space-cmt">{{$comment->message}}<br></p>
                                                                     </li>
 
                                                                 </ul>
-<<<<<<< HEAD
+
 
 
                                                                 </div>
@@ -641,10 +639,10 @@ function comment() {
 
 
 
-=======
 
-                                                              </div>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+
+
+
                                                                 @endforeach
 
 
@@ -665,17 +663,18 @@ function comment() {
                       </div>
                     </div>
 <<<<<<< HEAD
-
-
-
-
-
-
-
-
-=======
                     </div>
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
                     </div>
                 </div>
                 @endif
@@ -733,13 +732,9 @@ function comment() {
 
                             <li>
 
-<<<<<<< HEAD
-<
+
                                 <div class="row col s10" style="margin-top: 5%; margin-left: 42px;">
 
-=======
-                                <div class="row col s10" style="margin-top: 5%; margin-left: 42px">
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 
                                         <div class="row">
                                           <div style="text-align: center;">
@@ -750,10 +745,7 @@ function comment() {
                                               <div class="file-field input-field">
 
                                                   <span style="margin-top: -15%;" class="cam-input tooltipped" data-position="right" data-delay="50" data-tooltip="เปลี่ยนภาพประจำตัว">
-<<<<<<< HEAD
 
-=======
->>>>>>> 340a36ccf41452fa5a4b7f5cca909d0d927c5896
 
                                                   <i class="cam-icon fa fa-camera" ></i>
                                                   <input type="file" id="files" name="avatar" class="inputFile">
@@ -823,24 +815,43 @@ function comment() {
         </div>
 
 <script type="text/javascript">
+
+$(".time-of-post").html(function(index, value) {
+  moment.locale('th');
+  return moment(value).calendar();
+});
+
+$(".time-of-comment").html(function(index, value) {
+  moment.locale('th');
+  return moment(value).calendar();
+});
+
   var $self;
   $('.btn-comment').click(function(){
     $self = $(this);
     var id = $self.parent().parent().parent().parent().parent().find('.idofpost').val();
     console.log(id);
-    var addingComment = $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
-    type : "POST",
-    data : {comment_message: $(this).parent().parent().find('.newComment').val()},
-    headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-    })
-    .done(function(html) {
-      // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
-      console.log(html);
-      $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
-    })
-    .fail(function(){
-      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
-    })
+    if($self.parent().parent().find('.newComment').val() != ''){
+      $.ajax({ url: "{{url('/comment/')}}"+"/"+id,
+      type : "POST",
+      data : {comment_message: $(this).parent().parent().find('.newComment').val()},
+      headers : { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+      })
+      .done(function(html) {
+        // console.log($(this).parent().parent().parent().parent().parent().find('#commentboxs').html());
+        console.log(html);
+        $self.parent().parent().parent().parent().parent().find('.commentboxs').append(html);
+        Materialize.toast('คุณได้แสดงความคิดเห็นแล้ว', 5000);
+        $self.parent().parent().find('.newComment').val('');
+      })
+      .fail(function(){
+        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      })
+    }
+    else {
+      Materialize.toast('คุณยังไม่กรอกความเห็น', 5000);
+    }
+
   });
 
 

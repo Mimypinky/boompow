@@ -47,18 +47,20 @@ Route::get('/register/step2',function(){
 });
 Route::resource('/register','Profile\AuthController',array('before' => 'csrf'),[ 'except' => ['destroy','edit']]);
 Route::get('/checkAvailableUsername','Profile\AuthController@checkAvailableUsername');
-
-
+Route::get('/checkUsername','Profile\AuthController@checkUsername');
+Route::get('/findQuesPass','Profile\AuthController@findQuesPass');
+Route::get('/checkEmail','Profile\AuthController@checkEmail');
+Route::post('/sendPassword','Profile\AuthController@sendPassword');
 Route::group(['middleware' => ['web']], function (){
   Route::post('/handleLogin',[ 'as' => 'handleLogin', 'uses' => 'Profile\AuthController@handleLogin']);
   Route::get('login',[ 'as' => 'login', 'uses' => 'Profile\AuthController@loginForm']);
   Route::get('logout',['as' => 'logout', 'uses' => 'Profile\AuthController@logout']);
 });
-Route::get('/forget',function(){
-    $title ='Boompow - ลืมรหัสผ่าน';
-    return view('auth.forget',compact('title'));
-});
 
+Route::get('/forget2',function(){
+    $title ='Boompow - ลืมรหัสผ่าน';
+    return view('auth.forget2',compact('title'));
+});
 Route::get('/newsfeed','Profile\ProfileController@newsfeed');
 
 Route::post('/newsfeed','PostController@poststatus');
@@ -68,11 +70,22 @@ Route::post('/profile','Profile\ProfileController@UpdateAvatar');
 Route::post('/post','PostController@postStatus');
 Route::post('/postfriend/{fid}','PostController@postFriendStatus');
 Route::post('/comment/{pid}','PostController@comments');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+Route::post('/like/{pid}','PostController@likePost');
+Route::post('/unlike/{pid}','PostController@unlikePost');
+=======
+>>>>>>> 3a3d104001d5d6572351ffd173bdd7ba3b131a63
 
 Route::get('/comment/delete/{cid}','PostController@deleteComment');
 Route::get('/like/{pid}','PostController@likePost');
 Route::get('/unlike/{lid}','PostController@unlikePost');
 
+<<<<<<< HEAD
+=======
+>>>>>>> 75bd266a6b4c3ac05b16e183e03593fcb80fd469
+>>>>>>> 3a3d104001d5d6572351ffd173bdd7ba3b131a63
 Route::get('/delete/{pid}','PostController@deletePost');
 Route::get('/post/{pid}/edit','PostController@editPost');
 Route::get('/delPic/{pid}','PostController@delPicPost');
@@ -86,7 +99,7 @@ Route::get('/profile-friend',function(){
 Route::get('/friend/{username}' ,'FriendController@viewFriend');
 
 Route::get('/friends','FriendController@showFriendlist');
-
+Route::get('/post/{id}','PostController@showPost');
 
 
 Route::get('/chat',function(){
@@ -96,7 +109,9 @@ Route::get('/chat',function(){
 route::get('chatHistory/{accid}','ChatController@chatRoom');
 Route::get('/message_box','ChatController@index');
 
-Route::get('/notification' , 'FriendController@viewFriendRequest');
+Route::get('/notification','NotificationController@index');
+Route::get('/post/{pid}','NotificationController@viewPost');
+Route::get('/friendNotification' , 'FriendController@viewFriendRequest');
 Route::get('/deletePending/{username}', 'FriendController@deletePending');
 Route::get('/deleteFriendReq/{username}', 'FriendController@deleteFriendRequest');
 Route::get('/unfriend/{username}', 'FriendController@unfriend');
@@ -122,6 +137,7 @@ Route::get('/administator/content/edit/{id}','Admin\AdminController@edit');
 Route::post('administator/content/update/{id}','Admin\AdminController@update');
 Route::get('/administator/content/delete/{id}','Admin\AdminController@deleteContent');
 Route::get('/administator/event','Admin\AdminController@showEvent');
+Route::get('/administator/user/ban/{id}','Admin\AdminController@banUser');
 Route::get('/administator/login',function(){
   return view('admin.adminlogin');
 });

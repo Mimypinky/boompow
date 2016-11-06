@@ -2,6 +2,11 @@
 @section('maincontent')
 
 <script type="text/javascript">
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4feed475a2c4e840328de280cdc020d1ede7ebc5
 if (RegExp('regismultipage', 'gi').test(window.location.search)) {
   function registerP2(){
     var intro = introJs();

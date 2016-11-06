@@ -1,24 +1,49 @@
 @extends('site.layout')
 @section('maincontent')
-
+<script src="{{URL::asset('datepicker/picker.time.js')}}"></script>
+<script src="{{URL::asset('datepicker/picker.date.js')}}"></script>
 <script type="text/javascript">
 $(document).ready(function () {
   $(".button-collapse").sideNav();
-})
-
-$(document).ready(function () {
-  $('.modal-trigger').leanModal();
-  $('#modal1').openModal();
-  $('#modal1').closeModal();
-  $('#edit').openModal();
-  $('#edit').closeModal();
 });
+$('.datepicker').pickadate({
+  selectYears: true,
+  selectMonths: true,
+  labelMonthNext: 'เดือนถัดไป',
+  labelMonthPrev: 'เดือนก่อนหน้า',
+  labelMonthSelect: 'เลือกเดือน',
+  labelYearSelect: 'เลือกปี',
+  monthsFull: [ 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม' ],
+  monthsShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+  weekdaysFull: [ 'วันอาทิตย์', 'วันจันทร์', 'วันอังคาร', 'วันพุธ', 'วันพฤหัสบดี', 'วันศุกร์', 'วันเสาร์' ],
+  weekdaysShort: [ 'อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.' ],
+  weekdaysLetter: [ 'อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.' ],
+  today: 'วันนี้',
+  clear: 'ล้าง',
+  close: 'ปิด',
+  format: 'dddd dd mmmm yyyy',
+  formatSubmit: 'yyyy-mm-dd',
+  hiddenName: true,
+  min: new Date().now,
+  max: [2000,06,06],
+  selectYears: 65,
+});
+$('.timepicker').pickatime({
+  min: [7,30],
+  max: [14,0]
+});
+// $(document).ready(function () {
+//   $('.modal-trigger').leanModal();
+//   $('#modal1').openModal();
+//   $('#modal1').closeModal();
+//   $('#edit').openModal();
+//   $('#edit').closeModal();
+// });
 <?php
 use Carbon\Carbon;
 ?>
 
-// Creates a dropdown of 15 years to control year
-});
+
 
 
 </script>
@@ -357,11 +382,7 @@ if((RegExp('eventboardstart', 'gi').test(window.location.search))){
                       <a href="#!" class=" modal-action modal-close waves-effect btn-flat">ไม่ ขอคิดดูก่อน</a>
                       <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect btn-flat green white-text">ใช่ ฉันต้องการเข้าร่วม</a>
                   </div>
-                  <!--<a href="#!" class=" modal-action modal-close waves-effect waves-light btn red darken-3" style="margin-right: 5px;">ยกเลิก</a>
-                  <a href="{{url('event/join/'.$data->id)}}" class=" modal-action modal-close waves-effect waves-light btn blue darken-4" style="margin-right: 5px;">ใช่</a>
-
-
-              -->  </div>
+               </div>
               </div>
               <div class="col s6" style="margin-left: 10px;">
                 <div id="descrip" class="row" class="col s12" id="event_detail">
@@ -609,14 +630,19 @@ if((RegExp('eventboardstart', 'gi').test(window.location.search))){
                              <div class="col s3 etime-col-res">
                                  <p><i class="material-icons prefix etime-icon">today</i>&nbsp&nbspวันที่จัดกิจกรรม</p>
                              </div>
-                             <div class="input-field col s3 etime-col">
-                                <input id="date" type="date" name="start_date" class="datepicker" required>
+                             <div class=" col s3 etime-col">
+                               <p>
+
+                                 <input type="date" class="datepicker" name="dob" >
+                                 <!--<input type="date" name="dob" value="1941-08-07">-->
+                             </p>
+                                <input  type="date" class="datepicker" name="start_date"  required>
                             </div>
                             <div class="col s1" style="width: 6%;">
                                  <p>ถึง</p>
                              </div>
                              <div class="input-field col s3 etime-col">
-                                 <input id="date" type="date" name="finish_date" class="datepicker" required>
+                                 <input type="date"  class="datepicker" name="finish_date"  required>
                              </div>
                          </div>
 
@@ -651,7 +677,9 @@ if((RegExp('eventboardstart', 'gi').test(window.location.search))){
                                    // read the image file as a data URL.
                                    reader.readAsDataURL(this.files[0]);
                                };
+
                                </script>
+
                              </div>
                            </div>
                          </div>
@@ -863,6 +891,7 @@ if((RegExp('eventboardstart', 'gi').test(window.location.search))){
                                         </div>
 
                                         <div class="input-field col s3 etime-colm">
+
                                             <input id="date" type="date" class="datepicker" name="start_date" value="{{$mine->start_date}}">
                                         </div>
 

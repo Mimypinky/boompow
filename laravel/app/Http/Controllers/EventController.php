@@ -29,7 +29,7 @@ class EventController extends Controller
         $user =Auth::user()->id;
         $title = 'กิจกรรม';
         $event = Event::join('accounts', 'events.creator', '=', 'accounts.id')
-            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('create_at', 'desc')
+            ->select('events.*', 'accounts.first_name as fname','accounts.last_name as lname')->orderBy('start_date', 'desc')
             ->paginate(7);
 
         $myEvent = Event::join('accounts', 'events.creator', '=', 'accounts.id')

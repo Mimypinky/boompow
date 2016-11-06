@@ -554,6 +554,10 @@ span.badge.new:after {
     content: " ใหม่";
 }
 
+span.badge.new.person:after {
+    content: " คน";
+}
+
 span.mynoti:after {
     content: "";
 }
